@@ -1,0 +1,315 @@
+/* =====================================================
+   YI PENG — i18n: TH / EN Translations
+   ===================================================== */
+
+window.LANG = {
+  th: {
+    /* NAV */
+    nav_home:       'หน้าแรก',
+    nav_festival:   'เทศกาล',
+    nav_lanterns:   'โคมลอย',
+    nav_traditions: 'ประเพณี',
+    nav_plan:       'วางแผนมา',
+    nav_gallery:    'แกลเลอรี',
+
+    /* INTRO overlay */
+    intro_scroll:   'เลื่อนลงเพื่อเริ่ม',
+
+    /* COUNTDOWN */
+    countdown_label: 'นับถอยหลังสู่คืนยี่เป็ง',
+    cd_days:   'วัน', cd_hours:  'ชั่วโมง',
+    cd_mins:   'นาที', cd_secs:  'วินาที',
+
+    /* HOME */
+    home_eyebrow:   'เชียงใหม่ · ล้านนา',
+    home_h1a:       'ยี่เป็ง',
+    home_h1b:       'คืนแห่งแสงสวรรค์',
+    home_sub:       'เมื่อหมื่นโคมลอยขึ้นสู่ท้องฟ้า — ความปิติ ความศรัทธา และความงามของล้านนาบรรจบกันในคืนเดียว',
+    home_cta1:      'สำรวจเทศกาล',
+    home_cta2:      'วางแผนเดินทาง',
+    home_stat1_num: '700+', home_stat1_txt: 'ปีแห่งประเพณี',
+    home_stat2_num: '10,000+', home_stat2_txt: 'โคมในคืนเดียว',
+    home_stat3_num: '3 คืน', home_stat3_txt: 'แห่งการเฉลิมฉลอง',
+
+    /* FESTIVAL */
+    fest_eyebrow:   'ประวัติ & ที่มา',
+    fest_h2:        'เทศกาลยี่เป็ง',
+    fest_sub:       'เทศกาลโคมแห่งล้านนา ที่มีประวัติยาวนานกว่า 700 ปี สืบสานความเชื่อ ศรัทธา และงานศิลปะของชาวเหนือ',
+    fest_card1_h:   'ประวัติและที่มา',
+    fest_card1_p:   'ยี่เป็งกำเนิดในราชอาณาจักรล้านนา ตรงกับวันเพ็ญเดือน 12 ของปฏิทินล้านนา (เดือนพฤศจิกายน) เป็นเทศกาลที่รวมประเพณีพุทธศาสนาและวัฒนธรรมพื้นเมืองไว้ด้วยกัน',
+    fest_card2_h:   'วัน เวลา & สถานที่',
+    fest_card2_p:   'เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน บริเวณคูเมืองเชียงใหม่ ท่าแพ วัดพระธาตุดอยสุเทพ และสนามกีฬาสมโภชเชียงใหม่ 700 ปี',
+    fest_card3_h:   'ไทม์ไลน์เทศกาล',
+    fest_card3_p:   'บ่าย: ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์ · 20:00 น.: ปล่อยโคมพร้อมกัน · ดึก: ลอยกระทง',
+    fest_timeline_h: 'ลำดับคืนยี่เป็ง',
+    fest_tl1_time: '17:00', fest_tl1_ev: 'ตลาดโคมและงานศิลปะพื้นบ้านเปิด',
+    fest_tl2_time: '18:30', fest_tl2_ev: 'พิธีสวดมนต์และจุดเทียนที่วัด',
+    fest_tl3_time: '19:30', fest_tl3_ev: 'ขบวนแห่แสงไฟและโคมแขวน',
+    fest_tl4_time: '20:30', fest_tl4_ev: 'ปล่อยโคมลอยพร้อมกันหมื่นดวง',
+    fest_tl5_time: '21:30', fest_tl5_ev: 'ลอยกระทงในแม่น้ำปิง',
+    fest_tl6_time: 'ตลอดคืน', fest_tl6_ev: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง',
+
+    /* LANTERNS */
+    lant_eyebrow:   'โคมลอย · ความหมาย & ศิลปะ',
+    lant_h2:        'แสงแห่งศรัทธา',
+    lant_sub:       'โคมแต่ละดวงคือคำอธิษฐาน คือการส่งความชั่วร้ายออกไป และต้อนรับสิ่งดีงามเข้ามา',
+    lant_meaning_h: 'ความหมายของแสง',
+    lant_meaning_p: 'การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวางความทุกข์ โรค ภัย และสิ่งที่ไม่ต้องการในชีวิต แสงที่ลอยขึ้นฟ้าคือการส่งความปรารถนาดีสู่สรวงสวรรค์',
+    lant_types_h:   'ความหลากหลายของโคมล้านนา',
+    lant_type1_h:   'โคมแขวน (Khom Kwaen)',
+    lant_type1_p:   'โคมที่ใช้ประดับตกแต่งตามวัดและบ้านเรือน มีรูปทรงหลากหลาย เช่น รูปดาว หรือทรงกระบอก สื่อถึงการบูชาพระรัตนตรัย',
+    lant_type2_h:   'โคมผัด (Khom Phat)',
+    lant_type2_p:   'โคมหมุนที่มีภาพเงาของสัตว์มงคลหรือนักษัตรหมุนวนอยู่ภายในเมื่อจุดไฟ สื่อถึงวัฏสงสารและการขับเคลื่อนของชีวิต',
+    lant_type3_h:   'โคมถือ (Khom Thue)',
+    lant_type3_p:   'โคมขนาดเล็กที่มีด้ามถือ มักมีรูปทรงดอกบัว ใช้เดินขบวนแห่หรือถวายเป็นพุทธบูชาตามวัดต่างๆ',
+    lant_type4_h:   'โคมลอย (Khom Loi)',
+    lant_type4_p:   'โคมที่ลอยขึ้นสู่ท้องฟ้าด้วยความร้อน เป็นจุดเด่นของเทศกาลยี่เป็ง สื่อถึงการปล่อยทุกข์โศกให้ลอยไปกับสายลม',
+    lant_diy_h:     'ทำโคมเองได้ — DIY Guide',
+    lant_diy_1:     'เตรียมโครงไม้ไผ่วงกลม',
+    lant_diy_2:     'ติดกระดาษสาบางให้รอบ',
+    lant_diy_3:     'ติดแท่งเชื้อเพลิงไว้กลาง',
+    lant_diy_4:     'จุดไฟให้ร้อน — รอลม',
+    lant_diy_5:     'อธิษฐาน แล้วปล่อย',
+    lant_do_h:      'ข้อควรรู้ก่อนปล่อยโคม',
+    lant_do1:       '✓ ปล่อยในพื้นที่ที่กำหนดเท่านั้น',
+    lant_do2:       '✓ ตรวจสอบให้แน่ใจว่าไฟลุกสม่ำเสมอ',
+    lant_do3:       '✓ รอให้ลมสงบก่อนปล่อย',
+    lant_dont1:     '✗ ห้ามปล่อยใกล้สนามบิน (รัศมี 9 กม.)',
+    lant_dont2:     '✗ ห้ามปล่อยใกล้สายไฟแรงสูง',
+    lant_dont3:     '✗ ห้ามปล่อยโดยไม่มีผู้ดูแล',
+
+    /* TRADITIONS */
+    trad_eyebrow:   'ประเพณี & ความเชื่อ',
+    trad_h2:        'จิตวิญญาณล้านนา',
+    trad_sub:       'ยี่เป็งไม่ใช่แค่เทศกาล — แต่เป็นการเชื่อมต่อระหว่างผู้คน ธรรมชาติ และสิ่งเหนือธรรมชาติ',
+    trad_vs_h:      'ยี่เป็ง vs ลอยกระทง',
+    trad_vs_yp_h:   'ยี่เป็ง (ล้านนา)',
+    trad_vs_yp_p:   'โคมลอยขึ้นฟ้า ส่งสิ่งชั่วร้ายออกไป ประเพณีเฉพาะภาคเหนือ จัดตามปฏิทินล้านนา',
+    trad_vs_lk_h:   'ลอยกระทง (ไทย)',
+    trad_vs_lk_p:   'กระทงลอยน้ำ ขอขมาแม่คงคา ประเพณีทั่วประเทศ จัดวันเดียวกัน',
+    trad_belief_h:  'ความเชื่อและจิตวิญญาณ',
+    trad_belief1_h: 'บูชาพระเกศแก้วจุฬามณี',
+    trad_belief1_p: 'ชาวล้านนาเชื่อว่าโคมลอยส่งแสงบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์',
+    trad_belief2_h: 'ปล่อยทุกข์โทษ',
+    trad_belief2_p: 'การส่งโคมขึ้นฟ้าเปรียบดังการปล่อยวางบาปและทุกข์ทั้งปวงออกไปจากชีวิต',
+    trad_belief3_h: 'อธิษฐานขอพร',
+    trad_belief3_p: 'ก่อนปล่อยโคม ผู้คนจะอธิษฐานขอสิ่งที่ปรารถนาในปีหน้า',
+    trad_cloth_h:   'ชุดพื้นเมืองล้านนา',
+    trad_cloth_p:   'ในเทศกาลยี่เป็ง ชาวเชียงใหม่นิยมแต่งกายชุดพื้นเมืองล้านนา ผ้าฝ้ายทอมือลายดอก สีน้ำตาล แดง และทอง นักท่องเที่ยวสามารถเช่าชุดได้ตามร้านรอบคูเมือง',
+
+    /* PLAN */
+    plan_eyebrow:   'เตรียมตัวให้พร้อม',
+    plan_h2:        'วางแผนมาเชียงใหม่',
+    plan_sub:       'ทุกสิ่งที่ต้องรู้ก่อนมาสัมผัสประสบการณ์ยี่เป็ง',
+    plan_how_h:     'เดินทางมาเชียงใหม่',
+    plan_fly_h:     '✈ บิน', plan_fly_p: 'สนามบินนานาชาติเชียงใหม่ (CNX) มีเที่ยวบินตรงจากกรุงเทพฯ (50 นาที) และหลายเมืองในเอเชีย',
+    plan_train_h:   '🚂 รถไฟ', plan_train_p: 'รถไฟสายเหนือจากกรุงเทพฯ (หัวลำโพง) ใช้เวลา 12-13 ชั่วโมง มีรถนอนชั้น 1 และ 2',
+    plan_bus_h:     '🚌 รถทัวร์', plan_bus_p: 'รถทัวร์ VIP จากกรุงเทพฯ ใช้เวลา 9-10 ชั่วโมง มีหลายบริษัท ราคาเริ่ม 450 บาท',
+    plan_stay_h:    'ที่พักแนะนำ',
+    plan_stay1_h:   'โซนเมืองเก่า (ในคูเมือง)', plan_stay1_p: 'ใกล้วัดและการปล่อยโคม เหมาะที่สุด — จองล่วงหน้า 3-6 เดือน',
+    plan_stay2_h:   'โซนนิมมานเหมินท์', plan_stay2_p: 'ร้านอาหาร คาเฟ่ และไลฟ์สไตล์ ตกแต่งสวย เดินทางสะดวก',
+    plan_stay3_h:   'โซนท่าแพ-ช้างคลาน', plan_stay3_p: 'เข้าถึงแม่น้ำปิงและตลาดกลางคืน ดูการลอยกระทงได้ดี',
+    plan_eat_h:     'อาหารเชียงใหม่ต้องลอง',
+    plan_food1:     'ข้าวซอย — เส้นแกงกะหรี่ใส่ขาไก่',
+    plan_food2:     'แกงฮังเล — หมูพะโล้แบบล้านนา',
+    plan_food3:     'น้ำพริกอ่อง — พริกผัดหมูสับ',
+    plan_food4:     'ไส้อั่ว — แหนมสดเชียงใหม่',
+    plan_food5:     'ลาบเมือง — ลาบแบบเหนือ ไม่ดิบ',
+    plan_checklist_h: 'Checklist ก่อนเดินทาง',
+    plan_check1: 'จองที่พักล่วงหน้า (อย่างน้อย 2 เดือน)',
+    plan_check2: 'ซื้อบัตรงานปล่อยโคมแบบ Official',
+    plan_check3: 'เตรียมเสื้อผ้าอุ่น (กลางคืนอาจหนาว)',
+    plan_check4: 'พกถุงขยะสำหรับซากโคมที่ตก',
+    plan_check5: 'ติดตั้งแอป Grab สำหรับรถใน CNX',
+    plan_check6: 'เรียนคำไทยง่ายๆ — ชาวบ้านจะยิ้มให้',
+    plan_map_h:   'แผนที่เชียงใหม่',
+    plan_map_sub: 'แตะที่จุดเพื่อดูรายละเอียด',
+
+    /* GALLERY */
+    gal_eyebrow: 'ภาพถ่าย & ความทรงจำ',
+    gal_h2:      'แกลเลอรี',
+    gal_sub:     'ช่วงเวลาที่จับภาพโดยผู้คนทั่วโลกที่ผ่านคืนนี้',
+    gal_filter_all: 'ทั้งหมด',
+    gal_filter_sky: 'ท้องฟ้า',
+    gal_filter_river: 'แม่น้ำ',
+    gal_filter_temple: 'วัด',
+    gal_filter_people: 'ผู้คน',
+
+    /* FOOTER */
+    footer_tagline: 'สร้างด้วยความรักต่อเทศกาลยี่เป็งและวัฒนธรรมล้านนา',
+    footer_nav_h:   'ไปยัง',
+    footer_info_h:  'เกี่ยวกับ',
+    footer_info1:   'เกี่ยวกับโครงการ',
+    footer_info2:   'ติดต่อเรา',
+    footer_copy:    '© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม',
+  },
+
+  en: {
+    nav_home:       'Home',
+    nav_festival:   'Festival',
+    nav_lanterns:   'Sky Lanterns',
+    nav_traditions: 'Traditions',
+    nav_plan:       'Plan Visit',
+    nav_gallery:    'Gallery',
+
+    intro_scroll:   'Scroll to begin',
+
+    countdown_label: 'Countdown to Yi Peng Night',
+    cd_days:  'Days', cd_hours: 'Hours',
+    cd_mins:  'Mins', cd_secs:  'Secs',
+
+    home_eyebrow: 'Chiang Mai · Lanna Kingdom',
+    home_h1a:     'Yi Peng',
+    home_h1b:     'Night of a Thousand Lights',
+    home_sub:     'When ten thousand lanterns rise — joy, devotion, and the beauty of Lanna converge in a single magical night.',
+    home_cta1:    'Explore the Festival',
+    home_cta2:    'Plan Your Visit',
+    home_stat1_num: '700+', home_stat1_txt: 'Years of Tradition',
+    home_stat2_num: '10,000+', home_stat2_txt: 'Lanterns in One Night',
+    home_stat3_num: '3 Nights', home_stat3_txt: 'of Celebration',
+
+    fest_eyebrow:   'History & Origins',
+    fest_h2:        'The Yi Peng Festival',
+    fest_sub:       'A Lanna lantern festival with over 700 years of history — weaving together Buddhist devotion, folk belief, and living artistry.',
+    fest_card1_h:   'History & Origins',
+    fest_card1_p:   'Yi Peng was born in the ancient Lanna Kingdom, celebrated on the full moon of the 12th Lanna month (November). It merges Buddhist practice with indigenous northern Thai culture.',
+    fest_card2_h:   'Dates, Times & Venues',
+    fest_card2_p:   'The festival occurs during the November full moon around the Old City moat, Tha Phae Gate, Doi Suthep Temple, and the 700th Anniversary Sports Complex.',
+    fest_card3_h:   'Festival Timeline',
+    fest_card3_p:   'Afternoon: lantern markets · Dusk: temple ceremonies · 20:00: mass lantern release · Late night: Loy Krathong on the river.',
+    fest_timeline_h: 'Yi Peng Night Schedule',
+    fest_tl1_time: '17:00', fest_tl1_ev: 'Lantern markets & folk art stalls open',
+    fest_tl2_time: '18:30', fest_tl2_ev: 'Chanting ceremonies & candle lighting at temples',
+    fest_tl3_time: '19:30', fest_tl3_ev: 'Illuminated procession & hanging lanterns',
+    fest_tl4_time: '20:30', fest_tl4_ev: 'Simultaneous mass release of ten thousand lanterns',
+    fest_tl5_time: '21:30', fest_tl5_ev: 'Loy Krathong floating on the Ping River',
+    fest_tl6_time: 'All Night', fest_tl6_ev: 'Folk music, northern Thai food, light installations',
+
+    lant_eyebrow:   'Sky Lanterns · Meaning & Craft',
+    lant_h2:        'Light as a Prayer',
+    lant_sub:       'Each lantern is a wish, a release of suffering, an invitation for good things to come.',
+    lant_meaning_h: 'The Meaning of Light',
+    lant_meaning_p: 'Releasing a sky lantern symbolises letting go of misfortunes, illness, and negativity. The rising light carries prayers and good intentions skyward, toward the heavens.',
+    lant_types_h:   'Diversity of Lanna Lanterns',
+    lant_type1_h:   'Hanging Lantern (Khom Kwaen)',
+    lant_type1_p:   'Intricately crafted lanterns hung in temples and homes. Their various shapes, like stars, symbolise devotion to the Triple Gem.',
+    lant_type2_h:   'Revolving Lantern (Khom Phat)',
+    lant_type2_p:   'A rotating lantern featuring silhouettes of auspicious animals or zodiac signs, symbolising the cycle of life and rebirth.',
+    lant_type3_h:   'Hand-held Lantern (Khom Thue)',
+    lant_type3_p:   'Small lanterns on sticks, often in lotus shapes, carried during processions as a light offering to the Buddha.',
+    lant_type4_h:   'Sky Lantern (Khom Loi)',
+    lant_type4_p:   'The iconic floating lantern that rises with heat, representing the release of sorrows and burdens into the wind.',
+    lant_diy_h:     'Make Your Own — DIY Guide',
+    lant_diy_1:     'Prepare a circular bamboo frame',
+    lant_diy_2:     'Attach thin mulberry paper around it',
+    lant_diy_3:     'Fix a fuel tab at the centre',
+    lant_diy_4:     'Light it and let hot air fill the lantern',
+    lant_diy_5:     'Make a wish — then let it go',
+    lant_do_h:      'What You Must Know',
+    lant_do1:       '✓ Release only in designated areas',
+    lant_do2:       '✓ Ensure the flame is burning evenly',
+    lant_do3:       '✓ Wait for calm wind before releasing',
+    lant_dont1:     '✗ Never release within 9km of the airport',
+    lant_dont2:     '✗ Never release near high-voltage power lines',
+    lant_dont3:     '✗ Never release unattended or alone',
+
+    trad_eyebrow:   'Traditions & Beliefs',
+    trad_h2:        'The Lanna Soul',
+    trad_sub:       'Yi Peng is not merely a festival — it is a connection between people, nature, and the divine.',
+    trad_vs_h:      'Yi Peng vs Loy Krathong',
+    trad_vs_yp_h:   'Yi Peng (Lanna)',
+    trad_vs_yp_p:   'Sky lanterns released upward. Sending away misfortune. Unique to Northern Thailand. Follows the Lanna lunar calendar.',
+    trad_vs_lk_h:   'Loy Krathong (National)',
+    trad_vs_lk_p:   'Floating banana-leaf offerings on water. Paying respect to the water goddess. Celebrated nationwide on the same night.',
+    trad_belief_h:  'Spiritual Beliefs',
+    trad_belief1_h: 'Offering to the Relic in Heaven',
+    trad_belief1_p: 'Lanna people believe lanterns carry light as an offering to the sacred Chula Mani relic enshrined in the Tavatimsa heaven.',
+    trad_belief2_h: 'Release of Suffering',
+    trad_belief2_p: 'Sending a lantern skyward is an act of releasing all sins, burdens, and sorrows of the past year.',
+    trad_belief3_h: 'Wishing for the Future',
+    trad_belief3_p: 'Before releasing the lantern, people make a heartfelt wish for the coming year.',
+    trad_cloth_h:   'Lanna Traditional Dress',
+    trad_cloth_p:   'During Yi Peng, locals wear handwoven Lanna cotton outfits in deep reds, browns, and gold. Visitors can rent traditional dress from shops around the Old City moat.',
+
+    plan_eyebrow:   'Get Ready',
+    plan_h2:        'Plan Your Chiang Mai Visit',
+    plan_sub:       'Everything you need to know before experiencing Yi Peng.',
+    plan_how_h:     'Getting to Chiang Mai',
+    plan_fly_h:     '✈ By Air', plan_fly_p: 'Chiang Mai International Airport (CNX) has direct flights from Bangkok (50 mins) and many Asian cities.',
+    plan_train_h:   '🚂 By Train', plan_train_p: 'Northern Line from Bangkok (Hua Lamphong) takes 12-13 hours. First and second-class sleepers available.',
+    plan_bus_h:     '🚌 By Bus', plan_bus_p: 'VIP coaches from Bangkok take 9-10 hours. Multiple operators, fares from ~450 THB.',
+    plan_stay_h:    'Where to Stay',
+    plan_stay1_h:   'Old City (Inside the Moat)', plan_stay1_p: 'Closest to temples and lantern zones — the best base. Book 3-6 months ahead.',
+    plan_stay2_h:   'Nimman District', plan_stay2_p: 'Trendy cafés, restaurants, and boutique hotels. Great vibe, easy transport.',
+    plan_stay3_h:   'Tha Phae – Chang Khlan', plan_stay3_p: 'River access and night markets. Perfect for watching Loy Krathong.',
+    plan_eat_h:     'Chiang Mai Must-Eats',
+    plan_food1:     'Khao Soi — curry noodle soup with chicken',
+    plan_food2:     'Hang Lay Curry — slow-cooked pork Lanna style',
+    plan_food3:     'Nam Prik Ong — chili dip with minced pork',
+    plan_food4:     'Sai Oua — northern Thai herbed sausage',
+    plan_food5:     'Laab Mueang — northern-style minced meat salad',
+    plan_checklist_h: 'Pre-Trip Checklist',
+    plan_check1: 'Book accommodation well in advance (2+ months)',
+    plan_check2: 'Purchase official lantern-release event tickets',
+    plan_check3: 'Pack warm clothes (nights can be cool in November)',
+    plan_check4: 'Bring a bag for lantern debris — be a responsible visitor',
+    plan_check5: 'Install Grab app for local transport',
+    plan_check6: 'Learn a few Thai words — locals will love you for it',
+    plan_map_h:   'Chiang Mai Festival Map',
+    plan_map_sub: 'Tap a pin for details',
+
+    gal_eyebrow: 'Photography & Memories',
+    gal_h2:      'Gallery',
+    gal_sub:     'Moments captured by people from around the world who lived this night.',
+    gal_filter_all: 'All',
+    gal_filter_sky: 'Sky',
+    gal_filter_river: 'River',
+    gal_filter_temple: 'Temple',
+    gal_filter_people: 'People',
+
+    footer_tagline: 'Made with love for Yi Peng and the Lanna spirit.',
+    footer_nav_h:   'Navigate',
+    footer_info_h:  'About',
+    footer_info1:   'About this Project',
+    footer_info2:   'Contact',
+    footer_copy:    '© 2026 Yi Peng Chiang Mai · Made with love and lantern light',
+  }
+};
+
+/* ── Language state ─────────────────────────────── */
+window.currentLang = localStorage.getItem('yp-lang') || 'th';
+
+function applyLang(lang) {
+  window.currentLang = lang;
+  localStorage.setItem('yp-lang', lang);
+
+  const t = window.LANG[lang];
+  document.documentElement.lang = lang === 'th' ? 'th' : 'en';
+
+  // Update all [data-i18n] elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+
+  // Update body lang class
+  document.body.classList.toggle('lang-th', lang === 'th');
+
+  // Update toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+function toggleLang() {
+  applyLang(window.currentLang === 'th' ? 'en' : 'th');
+}
+
+window.applyLang  = applyLang;
+window.toggleLang = toggleLang;
