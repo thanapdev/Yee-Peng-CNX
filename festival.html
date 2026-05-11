@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เทศกาลยี่เป็ง | Festival — ยี่เป็ง เชียงใหม่</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- CUSTOM CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Ambient canvas -->
+  <canvas id="ambient-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;"></canvas>
+
+  <!-- ── NAVBAR ────────────────────────────────────── -->
+  <nav id="navbar" class="scrolled">
+    <a class="nav-logo" href="index.html">
+      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none">
+        <ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="1.2" />
+        <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#F5A623" stroke-width="1" stroke-dasharray="2 2" />
+        <line x1="18" y1="24" x2="18" y2="30" stroke="#F5A623" stroke-width="1" />
+        <ellipse cx="18" cy="24" rx="3" ry="1.2" fill="rgba(255,180,60,0.5)" />
+      </svg>
+      <span class="nav-logo-text">ยี่เป็ง</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+      <li><a href="festival.html" class="active" data-i18n="nav_festival">เทศกาล</a></li>
+      <li><a href="lanterns.html" data-i18n="nav_lanterns">โคมลอย</a></li>
+      <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
+      <li><a href="plan.html" data-i18n="nav_plan">วางแผนมา</a></li>
+      <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="th">TH</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav-mobile" id="nav-mobile">
+    <ul class="nav-mobile-links">
+      <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+      <li><a href="festival.html" data-i18n="nav_festival">เทศกาล</a></li>
+      <li><a href="lanterns.html" data-i18n="nav_lanterns">โคมลอย</a></li>
+      <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
+      <li><a href="plan.html" data-i18n="nav_plan">วางแผนมา</a></li>
+      <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section id="sec-festival">
+      <div style="padding-top:6rem;min-height:100vh;background:var(--night-sky-2);">
+        <!-- Hero banner -->
+        <div style="position:relative;height:55vh;overflow:hidden;display:flex;align-items:flex-end;">
+          <img src="assets/images/gallery-crowd.png" alt="Festival"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.2);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,5,0,1) 0%,rgba(10,5,0,0.2) 100%);">
+          </div>
+          <div style="position:relative;padding:0 8vw 4rem;max-width:700px;">
+            <p class="eyebrow reveal" data-i18n="fest_eyebrow">ประวัติ & ที่มา</p>
+            <h1 class="reveal reveal-delay-1 display-lg" style="color:#FFFDF5;margin-top:.5rem;" data-i18n="fest_h2">
+              เทศกาลยี่เป็ง</h1>
+            <p class="reveal reveal-delay-2" style="color:rgba(255,253,245,0.65);margin-top:1rem;line-height:1.8;"
+              data-i18n="fest_sub">เทศกาลโคมแห่งล้านนา</p>
+          </div>
+        </div>
+
+        <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem;">
+            <div class="glass-card reveal" style="padding:2rem;">
+              <div style="font-size:2rem;margin-bottom:1rem;">📜</div>
+              <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:#F5A623;margin-bottom:.75rem;"
+                data-i18n="fest_card1_h">ประวัติและที่มา</h3>
+              <p style="color:rgba(255,253,245,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card1_p">
+                ยี่เป็งกำเนิดในราชอาณาจักรล้านนา</p>
+            </div>
+            <div class="glass-card reveal reveal-delay-1" style="padding:2rem;">
+              <div style="font-size:2rem;margin-bottom:1rem;">📍</div>
+              <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:#F5A623;margin-bottom:.75rem;"
+                data-i18n="fest_card2_h">วัน เวลา & สถานที่</h3>
+              <p style="color:rgba(255,253,245,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card2_p">
+                เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน</p>
+            </div>
+            <div class="glass-card reveal reveal-delay-2" style="padding:2rem;">
+              <div style="font-size:2rem;margin-bottom:1rem;">⏰</div>
+              <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:#F5A623;margin-bottom:.75rem;"
+                data-i18n="fest_card3_h">ไทม์ไลน์เทศกาล</h3>
+              <p style="color:rgba(255,253,245,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card3_p">บ่าย:
+                ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์</p>
+            </div>
+          </div>
+
+          <h2 class="reveal display-md" style="color:#FFFDF5;text-align:center;margin-bottom:3rem;"
+            data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
+          <div style="max-width:680px;margin:0 auto;position:relative;">
+            <div style="position:absolute;left:72px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(245,166,35,0),rgba(245,166,35,0.4),rgba(245,166,35,0));"></div>
+            <div id="tl-items"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ COUNTDOWN BAR ══════════════════════════════ -->
+  <div id="countdown-bar">
+    <span class="countdown-label" data-i18n="countdown_label">นับถอยหลังสู่คืนยี่เป็ง</span>
+    <div class="countdown-units">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub" data-i18n="cd_days">วัน</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub" data-i18n="cd_hours">ชั่วโมง</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub" data-i18n="cd_mins">นาที</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub" data-i18n="cd_secs">วินาที</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="1.2"/><ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#F5A623" stroke-width="1"/><line x1="18" y1="24" x2="18" y2="30" stroke="#F5A623" stroke-width="1"/></svg>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#FFFDF5;">ยี่เป็ง เชียงใหม่</span>
+        </div>
+        <p data-i18n="footer_tagline">สร้างด้วยความรักต่อเทศกาลยี่เป็งและวัฒนธรรมล้านนา</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_nav_h">ไปยัง</h4>
+        <ul>
+          <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
+          <li><a href="festival.html" data-i18n="nav_festival">เทศกาล</a></li>
+          <li><a href="lanterns.html" data-i18n="nav_lanterns">โคมลอย</a></li>
+          <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
+          <li><a href="plan.html" data-i18n="nav_plan">วางแผนมา</a></li>
+          <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม</span>
+      <span>🏮</span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = [
+        { t:'fest_tl1_time', e:'fest_tl1_ev' },
+        { t:'fest_tl2_time', e:'fest_tl2_ev' },
+        { t:'fest_tl3_time', e:'fest_tl3_ev' },
+        { t:'fest_tl4_time', e:'fest_tl4_ev' },
+        { t:'fest_tl5_time', e:'fest_tl5_ev' },
+        { t:'fest_tl6_time', e:'fest_tl6_ev' },
+      ];
+      const container = document.getElementById('tl-items');
+      if (container) {
+        items.forEach((item) => {
+          container.innerHTML += `
+            <div class="reveal" style="display:flex;gap:2.5rem;margin-bottom:3rem;">
+              <div style="flex:0 0 80px;text-align:right;padding-top:.3rem;">
+                <span data-i18n="${item.t}" style="font-family:'Cormorant Garamond',serif;color:#F5A623;font-weight:600;font-size:1.1rem;"></span>
+              </div>
+              <div style="flex:1;position:relative;padding-bottom:1rem;">
+                <div style="position:absolute;left:-44px;top:8px;width:12px;height:12px;border-radius:50%;background:#F5A623;box-shadow:0 0 10px rgba(245,166,35,0.6);"></div>
+                <p data-i18n="${item.e}" style="color:rgba(255,253,245,0.85);font-size:.95rem;line-height:1.6;"></p>
+              </div>
+            </div>`;
+        });
+      }
+      // Re-apply language to fill the new elements
+      if (window.applyLang) window.applyLang(window.currentLang);
+      window.initReveal?.();
+    });
+  </script>
+</body>
+</html>

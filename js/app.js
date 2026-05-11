@@ -1,12 +1,10 @@
 /* =====================================================
-   YI PENG — COUNTDOWN + AMBIENT CANVAS + APP LOGIC
+   YI PENG — CORE APP LOGIC (Multi-page Version)
    ===================================================== */
 
 /* ── Countdown ──────────────────────────────────── */
 (function initCountdown() {
-  // Yi Peng 2026 — full moon night, November 5, 2026, 20:00 ICT
   const TARGET = new Date('2026-11-05T20:00:00+07:00').getTime();
-
   const elD = document.getElementById('cd-days');
   const elH = document.getElementById('cd-hours');
   const elM = document.getElementById('cd-mins');
@@ -32,7 +30,7 @@
   setInterval(tick, 1000);
 })();
 
-/* ── Ambient background lanterns (post-intro) ───── */
+/* ── Ambient background lanterns ────────────────── */
 (function () {
   let ambientCanvas, ambientCtx, ambientLanterns = [], ambientRaf;
   let ambientW, ambientH;
@@ -49,6 +47,7 @@
     window.addEventListener('resize', resize);
     resize();
 
+    ambientLanterns = [];
     for (let i = 0; i < 18; i++) {
       ambientLanterns.push(makeAmbient());
     }
@@ -56,9 +55,11 @@
   };
 
   function makeAmbient() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
     return {
-      x:     Math.random() * (ambientW || window.innerWidth),
-      y:     (ambientH || window.innerHeight) + Math.random() * 300,
+      x:     Math.random() * w,
+      y:     h + Math.random() * 300,
       vy:    -(Math.random() * 0.4 + 0.2),
       vx:    (Math.random() - 0.5) * 0.15,
       s:     Math.random() * 0.4 + 0.3,
@@ -97,7 +98,7 @@
 
   function ambientLoop() {
     ambientRaf = requestAnimationFrame(ambientLoop);
-    ambientCtx.clearRect(0, 0, ambientW, ambientH);
+    ambientCtx.clearRect(0, 0, ambientW || window.innerWidth, ambientH || window.innerHeight);
 
     ambientLanterns.forEach(l => {
       l.glow += l.gdir * 0.012;
@@ -128,17 +129,18 @@
     dot.style.top  = my + 'px';
   });
 
-  (function lerp() {
+  function lerp() {
     rx += (mx - rx) * 0.1;
     ry += (my - ry) * 0.1;
     ring.style.left = rx + 'px';
     ring.style.top  = ry + 'px';
     requestAnimationFrame(lerp);
-  })();
+  }
+  lerp();
 
-  document.querySelectorAll('a, button, [data-nav]').forEach(el => {
+  document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      dot.style.transform  = 'translate(-50%,-50%) scale(2)';
+      dot.style.transform  = 'translate(-50%,-50%) scale(2.2)';
       ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
       ring.style.borderColor = 'rgba(245,166,35,0.9)';
     });
@@ -150,46 +152,43 @@
   });
 })();
 
-/* ── Section navigation ──────────────────────────── */
+/* ── UI Logic (Nav & Language) ──────────────────── */
 (function () {
-  const sections = ['home', 'festival', 'lanterns', 'traditions', 'plan', 'gallery'];
-
-  window.showSection = function (id) {
-    sections.forEach(s => {
-      const el = document.getElementById('sec-' + s);
-      if (el) el.style.display = (s === id) ? 'block' : 'none';
-    });
-
-    document.querySelectorAll('[data-nav]').forEach(a => {
-      a.classList.toggle('active', a.dataset.nav === id);
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    window.initReveal();
-
-    // Close mobile nav
-    document.getElementById('nav-mobile')?.classList.remove('open');
-  };
-
-  // Attach nav click events
-  document.querySelectorAll('[data-nav]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      window.showSection(a.dataset.nav);
-    });
-  });
-
-  // Hamburger
+  // Mobile Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('nav-mobile');
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('active');
     });
   }
+
+  // Navbar Scroll
+  const nb = document.getElementById('navbar');
+  if (nb) {
+    window.addEventListener('scroll', () => {
+      nb.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+    if (window.scrollY > 60) nb.classList.add('scrolled');
+  }
+
+  // Language Persistence
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('yp-lang') || 'th';
+    if (window.applyLang) window.applyLang(savedLang);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        localStorage.setItem('yp-lang', lang);
+        if (window.applyLang) window.applyLang(lang);
+      });
+    });
+  });
 })();
 
-/* ── Scroll reveal ───────────────────────────────── */
+/* ── Scroll Reveal ──────────────────────────────── */
 window.initReveal = function () {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -198,7 +197,7 @@ window.initReveal = function () {
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => {
     el.classList.remove('visible');
@@ -206,120 +205,61 @@ window.initReveal = function () {
   });
 };
 
-/* ── Navbar scroll behavior ──────────────────────── */
-(function () {
-  const nb = document.getElementById('navbar');
-  if (!nb) return;
-  window.addEventListener('scroll', () => {
-    nb.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-})();
-
-/* ── Language buttons ────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => window.applyLang(btn.dataset.lang));
-  });
-  // Apply stored language
-  window.applyLang(window.currentLang);
-});
-
-/* ── Gallery filter ──────────────────────────────── */
-(function () {
-  window.initGallery = function () {
-    document.querySelectorAll('.gal-filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.gal-filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.gal-item').forEach(item => {
-          const show = filter === 'all' || item.dataset.cat === filter;
-          item.style.display = show ? 'block' : 'none';
-          if (show) item.classList.add('anim-scale-in');
-        });
-      });
-    });
-  };
-})();
-
-/* ── Do & Dont tabs ──────────────────────────────── */
-window.initDoDont = function () {
-  document.querySelectorAll('.dd-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.dd-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const target = tab.dataset.target;
-      document.querySelectorAll('.dd-panel').forEach(p => {
-        p.style.display = p.id === target ? 'block' : 'none';
+/* ── Specialized Components Inits ────────────────── */
+window.initGallery = function () {
+  const btns = document.querySelectorAll('.gal-filter-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.gal-item').forEach(item => {
+        const show = filter === 'all' || item.dataset.cat === filter;
+        item.style.display = show ? 'block' : 'none';
       });
     });
   });
 };
 
-/* ── DIY Stepper ─────────────────────────────────── */
 window.initDIY = function () {
   let step = 0;
   const steps = document.querySelectorAll('.diy-step');
-  const total = steps.length;
-  if (!total) return;
+  if (!steps.length) return;
 
   function show(i) {
-    steps.forEach((s, idx) => {
-      s.classList.toggle('active', idx === i);
-    });
+    steps.forEach((s, idx) => s.style.display = (idx === i ? 'block' : 'none'));
     const counter = document.getElementById('diy-counter');
-    if (counter) counter.textContent = `${i + 1} / ${total}`;
+    if (counter) counter.textContent = `${i + 1} / ${steps.length}`;
   }
-
-  document.getElementById('diy-prev')?.addEventListener('click', () => {
-    step = Math.max(0, step - 1); show(step);
-  });
-  document.getElementById('diy-next')?.addEventListener('click', () => {
-    step = Math.min(total - 1, step + 1); show(step);
-  });
-
+  document.getElementById('diy-prev')?.addEventListener('click', () => { step = Math.max(0, step - 1); show(step); });
+  document.getElementById('diy-next')?.addEventListener('click', () => { step = Math.min(steps.length - 1, step + 1); show(step); });
   show(0);
 };
 
-/* ── Interactive Map pins ─────────────────────────── */
 window.initMap = function () {
   const pins = document.querySelectorAll('.map-pin');
   const popup = document.getElementById('map-popup');
-
   pins.forEach(pin => {
     pin.addEventListener('click', e => {
       e.stopPropagation();
-      const info = {
-        name:    pin.dataset.name,
-        nameEn:  pin.dataset.nameEn,
-        desc:    pin.dataset.desc,
-        descEn:  pin.dataset.descEn,
-        type:    pin.dataset.type
-      };
-      const lang = window.currentLang;
       if (popup) {
-        popup.querySelector('.popup-name').textContent = lang === 'th' ? info.name : info.nameEn;
-        popup.querySelector('.popup-desc').textContent = lang === 'th' ? info.desc : info.descEn;
-        popup.querySelector('.popup-type').textContent = info.type;
+        const isEn = window.currentLang === 'en';
+        popup.querySelector('.popup-name').textContent = isEn ? pin.dataset.nameEn : pin.dataset.name;
+        popup.querySelector('.popup-desc').textContent = isEn ? pin.dataset.descEn : pin.dataset.desc;
+        popup.querySelector('.popup-type').textContent = pin.dataset.type;
         popup.style.display = 'block';
         popup.style.left = (pin.offsetLeft + 20) + 'px';
-        popup.style.top  = (pin.offsetTop  - 10) + 'px';
+        popup.style.top  = (pin.offsetTop - 10) + 'px';
       }
-      pins.forEach(p => p.classList.remove('active'));
-      pin.classList.add('active');
     });
   });
-
-  document.addEventListener('click', () => {
-    if (popup) popup.style.display = 'none';
-    pins.forEach(p => p.classList.remove('active'));
-  });
+  document.addEventListener('click', () => { if (popup) popup.style.display = 'none'; });
 };
 
-/* ── Initialize everything on DOM ready ───────────── */
+/* ── Global Init ────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  window.initGallery?.();
-  window.initDoDont?.();
-  window.initDIY?.();
-  window.initMap?.();
+  window.initReveal?.();
+  if (!document.getElementById('intro-wrapper')) {
+    window.startAmbientLanterns?.();
+  }
 });

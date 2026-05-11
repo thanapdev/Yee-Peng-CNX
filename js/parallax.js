@@ -61,7 +61,7 @@
 
   function drawLantern(l, progress) {
     // Increase scale as scroll progress increases to create "fly through" effect
-    const flyScale = 1 + (Math.pow(progress, 2.5) * 25 * l.z); 
+    const flyScale = 1 + (Math.pow(progress, 2) * 18 * l.z); 
     const s = l.scale * flyScale;
     const bw = 30 * s;
     const bh = 45 * s;
@@ -156,7 +156,7 @@
   function onScroll() {
     if (introComplete) return;
     const scrollY = window.scrollY;
-    const threshold = window.innerHeight * 0.8; 
+    const threshold = window.innerHeight * 1.5; 
     introProgress = Math.min(scrollY / threshold, 1);
 
     const overlay = document.getElementById('intro-overlay');
@@ -218,7 +218,7 @@
   
   const skipBtn = document.getElementById('intro-skip');
   if (skipBtn) skipBtn.onclick = () => {
-    window.scrollTo(0, window.innerHeight * 2.1);
+    window.scrollTo(0, window.innerHeight * 3.5);
     onScroll();
   };
 })();
