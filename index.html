@@ -163,50 +163,88 @@
         </div>
       </div>
 
-      <!-- Feature cards -->
-      <div style="max-width:1200px;margin:0 auto;padding:6rem 2rem;">
-        <div class="section-header reveal">
-          <p class="eyebrow">ค้นพบยี่เป็ง</p>
-          <h2 class="display-md" style="margin-top:.5rem;color:#FFFDF5;">ทุกมิติของเทศกาล</h2>
+      <!-- ═══ SECTION: HIGHLIGHT STORYTELLING ══════════ -->
+      <div id="home-highlights">
+        
+        <!-- Segment 1: The Festival -->
+        <div class="parallax-segment" style="position:relative;height:100vh;overflow:hidden;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/gallery-crowd.png" alt="Festival" style="width:100%;height:120%;object-fit:cover;filter:brightness(0.4);">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,5,0,1) 0%,transparent 30%,transparent 70%,rgba(10,5,0,1) 100%);"></div>
+          <div style="position:relative;height:100%;display:flex;align-items:center;padding:0 10vw;">
+            <div style="max-width:600px;">
+              <p class="eyebrow reveal" style="color:#F5A623;">The Festival</p>
+              <h2 class="display-md reveal reveal-delay-1" style="color:#FFFDF5;margin-top:.75rem;">ตำนานแห่งยี่เป็ง</h2>
+              <div class="reveal reveal-delay-2" style="color:rgba(255,253,245,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
+                <p>ยี่เป็งไม่ได้เป็นเพียงงานรื่นเริง แต่คือมรดกทางวัฒนธรรมที่สืบทอดมายาวนานกว่า 700 ปี ตั้งแต่ยุคทองของราชอาณาจักรล้านนา ในคืนเดือนเพ็ญเดือน 12 ทั่วทั้งเชียงใหม่จะถูกเนรมิตให้สว่างไสวด้วยแสงไฟจากโคมนับหมื่นดวง</p>
+                <p style="margin-top:1rem;">สัมผัสเสน่ห์ตั้งแต่ยามบ่ายกับตลาดโคมและงานศิลปะพื้นบ้าน ต่อด้วยพิธีสวดมนต์จุดเทียนที่วัดปันเส่า และขบวนแห่แสงไฟที่ประตูท่าแพ ก่อนจะเข้าสู่ช่วงเวลาที่งดงามที่สุดกับการปล่อยโคมลอยพร้อมกันในช่วงเวลา 20:30 น.</p>
+              </div>
+              <a href="festival.html" class="btn btn-outline reveal reveal-delay-3">สำรวจประวัติศาสตร์ & ไทม์ไลน์</a>
+            </div>
+          </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
-          <a href="festival.html" class="glass-card reveal" style="padding:2rem;text-decoration:none;"
-            onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(245,166,35,0.15)'"
-            onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:2.5rem;margin-bottom:1rem;">🏮</div>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#FFFDF5;margin-bottom:.6rem;"
-              data-i18n="nav_festival">เทศกาล</h3>
-            <p style="color:rgba(255,253,245,0.55);font-size:.9rem;line-height:1.7;" data-i18n="fest_card1_p">
-              ยี่เป็งกำเนิดในราชอาณาจักรล้านนา</p>
-          </a>
-          <a href="lanterns.html" class="glass-card reveal reveal-delay-1" style="padding:2rem;text-decoration:none;"
-            onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(245,166,35,0.15)'"
-            onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:2.5rem;margin-bottom:1rem;">✨</div>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#FFFDF5;margin-bottom:.6rem;"
-              data-i18n="nav_lanterns">โคมลอย</h3>
-            <p style="color:rgba(255,253,245,0.55);font-size:.9rem;line-height:1.7;" data-i18n="lant_meaning_p">
-              การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวาง</p>
-          </a>
-          <a href="traditions.html" class="glass-card reveal reveal-delay-2" style="padding:2rem;text-decoration:none;"
-            onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(245,166,35,0.15)'"
-            onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:2.5rem;margin-bottom:1rem;">🙏</div>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#FFFDF5;margin-bottom:.6rem;"
-              data-i18n="nav_traditions">ประเพณี</h3>
-            <p style="color:rgba(255,253,245,0.55);font-size:.9rem;line-height:1.7;" data-i18n="trad_belief2_p">
-              การส่งโคมขึ้นฟ้าเปรียบดังการปล่อยวางบาป</p>
-          </a>
-          <a href="plan.html" class="glass-card reveal reveal-delay-3" style="padding:2rem;text-decoration:none;"
-            onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(245,166,35,0.15)'"
-            onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="font-size:2.5rem;margin-bottom:1rem;">🗺️</div>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#FFFDF5;margin-bottom:.6rem;"
-              data-i18n="nav_plan">วางแผนมา</h3>
-            <p style="color:rgba(255,253,245,0.55);font-size:.9rem;line-height:1.7;" data-i18n="plan_sub">
-              ทุกสิ่งที่ต้องรู้ก่อนมาสัมผัสประสบการณ์ยี่เป็ง</p>
-          </a>
+
+        <!-- Segment 2: Sky Lanterns -->
+        <div class="parallax-segment" style="position:relative;height:100vh;overflow:hidden;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/lantern-closeup.png" alt="Lanterns" style="width:100%;height:120%;object-fit:cover;filter:brightness(0.35);">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,5,0,1) 0%,transparent 30%,transparent 70%,rgba(10,5,0,1) 100%);"></div>
+          <div style="position:relative;height:100%;display:flex;align-items:center;justify-content:flex-end;padding:0 10vw;text-align:right;">
+            <div style="max-width:600px;">
+              <p class="eyebrow reveal" style="color:#F5A623;">Sky Lanterns</p>
+              <h2 class="display-md reveal reveal-delay-1" style="color:#FFFDF5;margin-top:.75rem;">แสงแห่งศรัทธา</h2>
+              <div class="reveal reveal-delay-2" style="color:rgba(255,253,245,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
+                <p>โคมแต่ละดวงคือคำอธิษฐานที่ถูกส่งผ่านกระดาษสาบางเบา การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวางความทุกข์ โรคภัย และสิ่งไม่ดีในชีวิตให้ลอยไปกับสายลม เพื่อเปิดรับสิ่งดีงามและความเป็นสิริมงคลเข้ามาในชีวิต</p>
+                <p style="margin-top:1rem;">ร่วมทำความรู้จักโคมล้านนาทั้ง 4 ประเภท ไม่ว่าจะเป็นโคมแขวนเพื่อบูชาพระรัตนตรัย โคมผัดที่เล่าเรื่องวัฏสงสาร หรือโคมถือในขบวนแห่ พร้อมศึกษาขั้นตอนการทำโคม (DIY) แบบดั้งเดิมที่ใส่ใจในทุกรายละเอียด</p>
+              </div>
+              <a href="lanterns.html" class="btn btn-outline reveal reveal-delay-3">เรียนรู้เรื่องโคม & DIY</a>
+            </div>
+          </div>
         </div>
+
+        <!-- Segment 3: Traditions -->
+        <div class="parallax-segment" style="position:relative;height:100vh;overflow:hidden;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/temple.png" alt="Traditions" style="width:100%;height:120%;object-fit:cover;filter:brightness(0.35);">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,5,0,1) 0%,transparent 30%,transparent 70%,rgba(10,5,0,1) 100%);"></div>
+          <div style="position:relative;height:100%;display:flex;align-items:center;padding:0 10vw;">
+            <div style="max-width:600px;">
+              <p class="eyebrow reveal" style="color:#F5A623;">Traditions</p>
+              <h2 class="display-md reveal reveal-delay-1" style="color:#FFFDF5;margin-top:.75rem;">จิตวิญญาณแห่งล้านนา</h2>
+              <div class="reveal reveal-delay-2" style="color:rgba(255,253,245,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
+                <p>ยี่เป็งไม่ใช่แค่การปล่อยโคม แต่คือการเชื่อมโยงระหว่างผู้คน ธรรมชาติ และสิ่งเหนือธรรมชาติ ผ่านความเชื่อที่ว่าแสงโคมจะถูกส่งไปบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์</p>
+                <p style="margin-top:1rem;">พบกับความแตกต่างที่น่าสนใจระหว่าง "ยี่เป็งล้านนา" และ "ลอยกระทงภาคกลาง" รวมถึงการแต่งกายด้วยชุดพื้นเมืองล้านนาอันเป็นเอกลักษณ์ ที่ช่วยส่งเสริมบรรยากาศของเทศกาลให้มีความงดงามและทรงคุณค่าทางจิตใจ</p>
+              </div>
+              <a href="traditions.html" class="btn btn-outline reveal reveal-delay-3">เข้าถึงวัฒนธรรม & ชุดพื้นเมือง</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segment 4: Plan Visit -->
+        <div class="parallax-segment" style="position:relative;height:100vh;overflow:hidden;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/krathong.png" alt="Plan" style="width:100%;height:120%;object-fit:cover;filter:brightness(0.35);">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,5,0,1) 0%,transparent 30%,transparent 70%,rgba(10,5,0,1) 100%);"></div>
+          <div style="position:relative;height:100%;display:flex;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;">
+            <div style="max-width:700px;">
+              <p class="eyebrow reveal" style="color:#F5A623;">Plan Your Visit</p>
+              <h2 class="display-md reveal reveal-delay-1" style="color:#FFFDF5;margin-top:.75rem;">สัมผัสด้วยตาตนเอง</h2>
+              <div class="reveal reveal-delay-2" style="color:rgba(255,253,245,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
+                <p>เตรียมตัวให้พร้อมสำหรับการเดินทางที่ไม่มีวันลืมเลือน ไม่ว่าคุณจะเลือกเดินทางด้วยรถไฟสายเหนือที่มีเสน่ห์ หรือเลือกบินตรงสู่หัวใจของล้านนา การวางแผนล่วงหน้าคือหัวใจสำคัญของการสัมผัสประสบการณ์ยี่เป็งอย่างสมบูรณ์</p>
+                <p style="margin-top:1rem;">แนะนำที่พักในเขตเมืองเก่าเพื่อให้คุณอยู่ใกล้ชิดกับกิจกรรมหลัก พร้อมแผนที่ Interactive Map ที่รวบรวมพิกัดสำคัญตั้งแต่ประตูท่าแพจนถึงแม่น้ำปิง และ Checklist สิ่งของที่ต้องเตรียมเพื่อให้ทริปของคุณราบรื่นที่สุด</p>
+              </div>
+              <div class="reveal reveal-delay-3" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <a href="plan.html" class="btn btn-primary">วางแผนการเดินทาง</a>
+                <a href="gallery.html" class="btn btn-outline">ชมแกลเลอรีภาพ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     <!-- ═══ COUNTDOWN BAR ══════════════════════════════ -->

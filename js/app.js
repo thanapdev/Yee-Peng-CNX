@@ -262,4 +262,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('intro-wrapper')) {
     window.startAmbientLanterns?.();
   }
+
+  // ── Highlights Parallax Logic ──
+  const segments = document.querySelectorAll('.parallax-segment');
+  if (segments.length) {
+    window.addEventListener('scroll', () => {
+      const winH = window.innerHeight;
+
+      segments.forEach(seg => {
+        const rect = seg.getBoundingClientRect();
+        if (rect.top < winH && rect.bottom > 0) {
+          // Background Parallax (Subtle)
+          const bg = seg.querySelector('.parallax-bg img');
+          if (bg) {
+            const shift = (rect.top / winH) * 10; 
+            bg.style.transform = `translateY(${shift}%)`;
+          }
+        }
+      });
+    }, { passive: true });
+  }
 });
