@@ -175,6 +175,13 @@
           </div>
           <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);"></div>
           <div style="position:relative;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 10vw;gap:5vw;">
+            <!-- Segment-Local Close Button (Positioned at top-right of segment) -->
+            <button id="book-close-btn" onclick="openBook()" style="position:absolute; top:2.5rem; right:2.5rem; background:rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.3); color:white; width:60px; height:60px; border-radius:50%; cursor:pointer; z-index:9999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; box-shadow: 0 15px 50px rgba(0,0,0,0.6);">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
             <!-- Left Text Content -->
             <div id="segment1-text" style="max-width:500px; transition: all 0.8s var(--ease-out);">
               <p class="eyebrow reveal-left" style="color:#E8925C;">The Festival</p>
@@ -188,8 +195,6 @@
 
             <!-- Right Book Content -->
             <div id="history-book-wrapper" class="reveal-right reveal-delay-3" style="flex:1; display:flex; justify-content:center; align-items:center;">
-              <!-- Book will be here -->
-
               <div class="book-perspective">
                 <div id="history-book" class="book" onclick="handleBookClick(event)">
                   <!-- The Spine -->
@@ -360,13 +365,5 @@
   <script src="js/parallax.js"></script>
   <script src="js/hero.js"></script>
   <script src="js/app.js"></script>
-
-  <!-- Global Book Close Button -->
-  <button id="book-close-btn" onclick="openBook()" style="position:fixed; top:2.5rem; right:2.5rem; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.3); color:white; width:54px; height:54px; border-radius:50%; cursor:pointer; z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  </button>
 </body>
 </html>
