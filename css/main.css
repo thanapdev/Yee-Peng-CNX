@@ -706,6 +706,7 @@ body.book-open #book-close-btn {
   100% { transform: scale(2.5); opacity: 0; }
 }
 
+
 #history-book-wrapper.is-expanded .book-perspective {
   width: 450px;
   height: 600px;
