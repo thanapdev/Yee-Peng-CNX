@@ -171,11 +171,11 @@ window.LANG = {
     book_cover_back_p:  'บันทึกเรื่องราวความรุ่งเรืองของอาณาจักรล้านนา ที่สืบทอดผ่านแสงไฟและศรัทธามานานกว่า 7 ศตวรรษ...',
     book_start:    'เปิดบันทึก →',
 
-    seg2_eyebrow: 'Sky Lanterns',
-    seg2_h2:      'แสงแห่งศรัทธา',
-    seg2_p1:      'โคมแต่ละดวงคือคำอธิษฐานที่ถูกส่งผ่านกระดาษสาบางเบา การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวางความทุกข์ โรคภัย และสิ่งไม่ดีในชีวิตให้ลอยไปกับสายลม เพื่อเปิดรับสิ่งดีงามและความเป็นสิริมงคลเข้ามาในชีวิต',
-    seg2_p2:      'ร่วมทำความรู้จักโคมล้านนาทั้ง 4 ประเภท ไม่ว่าจะเป็นโคมแขวนเพื่อบูชาพระรัตนตรัย โคมผัดที่เล่าเรื่องวัฏสงสาร หรือโคมถือในขบวนแห่ พร้อมศึกษาขั้นตอนการทำโคม (DIY) แบบดั้งเดิมที่ใส่ใจในทุกรายละเอียด',
-    seg2_cta:     'เรียนรู้เรื่องโคม & DIY',
+    seg2_eyebrow: 'ตำนานล้านนา',
+    seg2_h2:      'ประวัติความเป็นมา',
+    seg2_p1:      'ประเพณียี่เป็งเป็นประเพณีเก่าแก่ของล้านนาที่ถือปฏิบัติกันมาตั้งแต่พุทธศตวรรษที่ 14 ในสมัยอาณาจักรหริภุญชัยได้มีการทำพิธีลอยโขมดแล้ว',
+    seg2_p2:      'โดยในเวลาค่ำคืนวันเพ็ญเดือนยี่ มีการจัดแต่งเครื่องสักการบูชาใส่กระทง จุดธูปเทียนแล้วนำปล่อยลงน้ำ แสงไฟที่กระทบกับน้ำเกิดเป็นเงาวับแวม คล้ายแสงพะเนียงไฟผีโขมด ชาวล้านนาจึงเรียกว่า "ลอยโขมด"',
+    seg2_cta:     'สำรวจประวัติศาสตร์เพิ่มเติม',
 
     seg3_eyebrow: 'Traditions',
     seg3_h2:      'จิตวิญญาณแห่งล้านนา',
@@ -350,11 +350,11 @@ window.LANG = {
     book_cover_back_p:  'Recording the glory of the Lanna Kingdom, passed down through light and faith for over 7 centuries...',
     book_start:    'Open Journal →',
 
-    seg2_eyebrow: 'Sky Lanterns',
-    seg2_h2:      'Light of Faith',
-    seg2_p1:      'Each lantern is a prayer sent through delicate mulberry paper. Releasing it symbolises letting go of suffering, illness, and misfortune to welcome good things and prosperity into life.',
-    seg2_p2:      'Get to know the four types of Lanna lanterns—from hanging lanterns for the Triple Gem to revolving lanterns telling the story of Samsara—and learn how to make your own (DIY) with care in every detail.',
-    seg2_cta:     'Learn About Lanterns & DIY',
+    seg2_eyebrow: 'Lanna Legends',
+    seg2_h2:      'Historical Background',
+    seg2_p1:      'Yi Peng is an ancient Lanna tradition practiced since the 14th Buddhist century. During the Hariphunchai era, the "Loy Khamot" ceremony was already observed.',
+    seg2_p2:      'On the full moon night, offerings were placed in krathongs with incense and candles and released onto the water. The shimmering light reflecting on the water, resembling ghost fire (Khamot), led Lanna people to call it "Loy Khamot".',
+    seg2_cta:     'Explore History Further',
 
     seg3_eyebrow: 'Traditions',
     seg3_h2:      'The Lanna Soul',
