@@ -14,6 +14,21 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
+  <style>
+    .gallery-card:hover img {
+      transform: scale(1.08);
+    }
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1 !important;
+    }
+    .gallery-card {
+      transition: box-shadow .4s ease;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .gallery-card:hover {
+      box-shadow: 0 20px 60px rgba(232,146,92,0.2);
+    }
+  </style>
 </head>
 
 <body>
@@ -390,36 +405,240 @@
           </div>
         </div>
 
-        <!-- Segment 4: Plan Visit -->
-        <div class="parallax-segment" style="position:relative;height:100vh;overflow:hidden;">
+        <!-- Segment 4: Planning & Timeline -->
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;background:#0d1b2a;">
           <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
-            <img src="assets/images/krathong.png" alt="Plan"
+            <img src="assets/images/plan-your-visit.png" alt="Planning"
+              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.3) saturate(0.8);">
+          </div>
+          
+          <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 2rem;">
+            <div style="text-align:center;margin-bottom:4rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg4_eyebrow">ปฏิทินและสถานที่</p>
+              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
+                data-i18n="seg4_h2">วางแผนไปงานได้เลย</h2>
+            </div>
+
+            <!-- Timeline -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:4rem;" class="reveal-up reveal-delay-2">
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
+                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day1_h">การเตรียมงาน</div>
+                <p style="color:rgba(255,248,231,0.65);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day1_p"></p>
+              </div>
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
+                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day2_h">วันยี่เป็ง (เช้า)</div>
+                <p style="color:rgba(255,248,231,0.65);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day2_p"></p>
+              </div>
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(232,146,92,0.1);border:1px solid rgba(232,146,92,0.3);backdrop-filter:blur(10px);">
+                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day3_h">วันยี่เป็ง (กลางคืน)</div>
+                <p style="color:rgba(255,248,231,0.8);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day3_p"></p>
+              </div>
+            </div>
+
+            <!-- Planning Details Grid -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;" class="reveal-up reveal-delay-3">
+              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
+                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_dates_h">ช่วงเวลาจัดงาน</h4>
+                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_dates_p"></p>
+              </div>
+              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
+                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_locs_h">จุดเช็คอินสำคัญ</h4>
+                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_locs_p"></p>
+              </div>
+              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
+                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_tips_h">ทิปส์การเดินทาง</h4>
+                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_tips_p"></p>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:4rem;" class="reveal-up reveal-delay-4">
+              <a href="plan.html" class="btn btn-outline" data-i18n="seg4_cta">วางแผนการเดินทางทั้งหมด</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segment 5: Main Activities -->
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/festival-activities.png" alt="Activities"
+              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.25);">
+          </div>
+          <div
+            style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
+          </div>
+          
+          <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 2rem;">
+            <div style="text-align:center;margin-bottom:5rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg5_eyebrow">กิจกรรมหลักในงาน</p>
+              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
+                data-i18n="seg5_h2">สัมผัสความงามผ่านกิจกรรมต่าง ๆ</h2>
+            </div>
+
+            <!-- Activity Details Grid -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;text-align:center;" class="reveal-up reveal-delay-2">
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">🕯️</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act1_h">ต๋ามผางประทีป</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act1_p"></p>
+              </div>
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">🏮</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act2_h">ปล่อยโคมลอย (โคมควัน)</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act2_p"></p>
+              </div>
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">⛵</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act3_h">ลอยสะเปา (ลอยกระทง)</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act3_p"></p>
+              </div>
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">🎭</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act4_h">ขบวนแห่กระทงใหญ่</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act4_p"></p>
+              </div>
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">🎆</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act5_h">แสง สี เสียง</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act5_p"></p>
+              </div>
+              <div class="activity-item">
+                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                  <span style="font-size:1.2rem;">🏆</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act6_h">ประกวดเทพียี่เป็ง</h4>
+                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act6_p"></p>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:5rem;" class="reveal-up reveal-delay-3">
+              <a href="#" class="btn btn-primary" data-i18n="seg5_cta">ลองเข้าร่วมกิจกรรมออนไลน์</a>
+            </div>
+          </div>
+        </div>
+        <!-- Segment 6: Etiquette & Rules -->
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;">
+          <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
+            <img src="assets/images/etiquette-guide.png" alt="Etiquette"
               style="width:100%;height:120%;object-fit:cover;filter:brightness(0.35);">
           </div>
           <div
             style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
           </div>
-          <div
-            style="position:relative;height:100%;display:flex;align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;">
-            <div style="max-width:700px;">
-              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg4_eyebrow">Plan Your Visit</p>
+          
+          <div style="position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 2rem;">
+            <div style="text-align:center;margin-bottom:5rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg6_eyebrow">มารยาทและข้อควรรู้</p>
               <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
-                data-i18n="seg4_h2">สัมผัสด้วยตาตนเอง</h2>
-              <div class="reveal-zoom reveal-delay-2"
-                style="color:rgba(255,248,231,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
-                <p data-i18n="seg4_p1">เตรียมตัวให้พร้อมสำหรับการเดินทางที่ไม่มีวันลืมเลือน
-                  ไม่ว่าคุณจะเลือกเดินทางด้วยรถไฟสายเหนือที่มีเสน่ห์ หรือเลือกบินตรงสู่หัวใจของล้านนา
-                  การวางแผนล่วงหน้าคือหัวใจสำคัญของการสัมผัสประสบการณ์ยี่เป็งอย่างสมบูรณ์</p>
-                <p style="margin-top:1rem;" data-i18n="seg4_p2">
-                  แนะนำที่พักในเขตเมืองเก่าเพื่อให้คุณอยู่ใกล้ชิดกับกิจกรรมหลัก พร้อมแผนที่ Interactive Map
-                  ที่รวบรวมพิกัดสำคัญตั้งแต่ประตูท่าแพจนถึงแม่น้ำปิง และ Checklist
-                  สิ่งของที่ต้องเตรียมเพื่อให้ทริปของคุณราบรื่นที่สุด</p>
+                data-i18n="seg6_h2">ไปอย่างถูกต้อง เคารพวัฒนธรรม</h2>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;" class="reveal-up reveal-delay-2">
+              <!-- Item 1 -->
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+                  <span style="font-size:1.2rem;">⚖️</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item1_h">กฎหมายโคมลอย</h4>
+                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item1_p"></p>
               </div>
-              <div class="reveal-zoom reveal-delay-3"
-                style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-                <a href="plan.html" class="btn btn-primary" data-i18n="seg4_cta1">วางแผนการเดินทาง</a>
-                <a href="gallery.html" class="btn btn-outline" data-i18n="seg4_cta2">ชมแกลเลอรีภาพ</a>
+              <!-- Item 2 -->
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+                  <span style="font-size:1.2rem;">👗</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item2_h">มารยาทในวัด</h4>
+                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item2_p"></p>
               </div>
+              <!-- Item 3 -->
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+                  <span style="font-size:1.2rem;">🧘</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item3_h">การเคารพความเชื่อ</h4>
+                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item3_p"></p>
+              </div>
+              <!-- Item 4 -->
+              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+                  <span style="font-size:1.2rem;">📸</span>
+                </div>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item4_h">เคล็ดลับถ่ายภาพ</h4>
+                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item4_p"></p>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:5rem;" class="reveal-up reveal-delay-3">
+              <a href="#" class="btn btn-primary" data-i18n="seg6_cta">อ่านข้อปฏิบัติและกฎหมายทั้งหมด</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segment 7: Gallery / Atmosphere -->
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;background:#0d1b2a;">
+          <div style="position:relative;z-index:10;max-width:1400px;margin:0 auto;padding:0 2rem;">
+            <div style="text-align:center;margin-bottom:5rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg7_eyebrow">แกลเลอรี / บรรยากาศ</p>
+              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
+                data-i18n="seg7_h2">ให้รู้สึกราวกับอยู่ที่นั่น</h2>
+            </div>
+
+            <!-- Mosaic Gallery Grid -->
+            <div style="display:grid;grid-template-columns:repeat(12, 1fr);grid-template-rows:repeat(2, 300px);gap:1.5rem;" class="reveal-up reveal-delay-2">
+              <!-- Large Image (Sky) -->
+              <div style="grid-column:span 8;grid-row:span 2;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
+                <img src="assets/images/gallery-sky.png" alt="Sky Lanterns" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:2rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+                  <p style="color:#FFF8E7;font-size:1rem;font-weight:500;" data-i18n="seg7_img1_cap"></p>
+                </div>
+              </div>
+              <!-- Small Image 1 (Parade) -->
+              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
+                <img src="assets/images/gallery-parade.png" alt="Parade" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+                  <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img2_cap"></p>
+                </div>
+              </div>
+              <!-- Small Image 2 (River) -->
+              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
+                <img src="assets/images/gallery-river.png" alt="River" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+                  <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img3_cap"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extra row for temple and video placeholder -->
+            <div style="display:grid;grid-template-columns:repeat(12, 1fr);gap:1.5rem;margin-top:1.5rem;" class="reveal-up reveal-delay-3">
+              <div style="grid-column:span 4;position:relative;overflow:hidden;border-radius:24px;height:350px;" class="gallery-card">
+                <img src="assets/images/gallery-temple.png" alt="Temple" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+                  <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img4_cap"></p>
+                </div>
+              </div>
+              <div style="grid-column:span 8;position:relative;overflow:hidden;border-radius:24px;height:350px;background:#000;" class="gallery-card">
+                <!-- Video Placeholder with Cinematic Blur -->
+                <div style="position:absolute;inset:0;background:url('assets/images/gallery-sky.png') center/cover;filter:blur(10px) brightness(0.4);opacity:0.6;"></div>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FFF8E7;z-index:2;">
+                  <div style="width:70px;height:70px;background:rgba(232,146,92,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;cursor:pointer;transition:transform .3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <span style="font-size:2rem;margin-left:5px;">▶</span>
+                  </div>
+                  <p style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:1px;">PLAY CINEMATIC CLIP</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:5rem;" class="reveal-up reveal-delay-4">
+              <a href="gallery.html" class="btn btn-outline" data-i18n="seg7_cta">ชมบรรยากาศเพิ่มเติม</a>
             </div>
           </div>
         </div>
