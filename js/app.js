@@ -311,18 +311,30 @@ window.handleBookClick = function (event) {
   const isRightSide = clickX > rect.width / 2;
 
   if (isRightSide) {
-    // Flip forward: find the first page that isn't flipped yet
-    for (let p of pages) {
-      if (!p.classList.contains('is-flipped')) {
-        p.classList.add('is-flipped');
+    // Flip forward: find the last page in DOM (top-most) that isn't flipped
+    let flippedAny = false;
+    const pagesArray = Array.from(pages);
+    for (let i = pagesArray.length - 1; i >= 0; i--) {
+      if (!pagesArray[i].classList.contains('is-flipped')) {
+        pagesArray[i].classList.add('is-flipped');
+        flippedAny = true;
         break;
       }
     }
+    // If no more pages to flip (reached the end) -> Close the book
+    if (!flippedAny) {
+      window.openBook();
+    }
   } else {
-    // Flip backward: find the last page that IS flipped
-    const flippedPages = Array.from(pages).filter(p => p.classList.contains('is-flipped'));
-    if (flippedPages.length > 0) {
-      flippedPages[flippedPages.length - 1].classList.remove('is-flipped');
+    // Flip backward: find the first page in DOM (bottom-most on left stack) that IS flipped
+    // Wait, if [P3, P2, P1] are flipped, P3 is on top of left stack? 
+    // No, P3 is z-index 11, P2 is 8, P1 is 5. So P3 is on top.
+    // In DOM, P3 is first. So we should un-flip the first one in DOM that is flipped.
+    for (let p of pages) {
+      if (p.classList.contains('is-flipped')) {
+        p.classList.remove('is-flipped');
+        break;
+      }
     }
   }
 };

@@ -23,7 +23,7 @@ window.LANG = {
     /* HOME */
     home_eyebrow:   'เชียงใหม่ · ล้านนา',
     home_h1a:       'ยี่เป็ง',
-    home_h1b:       'คืนแห่งแสงสวรรค์',
+    home_h1b:       'กว่า 700 ปีแห่งประเพณี',
     home_sub:       'เมื่อหมื่นโคมลอยขึ้นสู่ท้องฟ้า — ความปิติ ความศรัทธา และความงามของล้านนาบรรจบกันในคืนเดียว',
     home_cta1:      'สำรวจเทศกาล',
     home_cta2:      'วางแผนเดินทาง',
@@ -142,7 +142,55 @@ window.LANG = {
     footer_info1:   'เกี่ยวกับโครงการ',
     footer_info2:   'ติดต่อเรา',
     footer_copy:    '© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม',
+
+    /* HOME SEGMENTS */
+    seg1_eyebrow: 'The Festival',
+    seg1_h2:      'ความหมายและที่มาของชื่อ',
+    seg1_p1:      'คำว่า "ยี่" แปลว่า สอง และ "เป็ง" แปลว่า เพ็ญ หรือคืนพระจันทร์เต็มดวง รวมกันหมายถึงประเพณีในวันเพ็ญเดือนสองของชาวล้านนา',
+    seg1_p2:      'ในภาษาคำเมืองเรียกว่า "ป๋าเวณียี่เป็ง" ซึ่งเป็นมรดกทางวัฒนธรรมที่สืบทอดมายาวนานกว่า 700 ปี ในคืนนี้ทั่วทั้งเชียงใหม่จะถูกเนรมิตให้สว่างไสวด้วยแสงไฟจากโคมนับหมื่นดวง',
+    seg1_cta:     'สำรวจประวัติศาสตร์ & ไทม์ไลน์',
+    tap_to_read:  'คลิกเพื่อเปิดอ่านบันทึก',
+
+    book_page2_h3: 'มรดกที่ยังมีลมหายใจ',
+    book_page2_p:  'ในปัจจุบัน ยี่เป็งเชียงใหม่ได้กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลก ให้มาสัมผัสเสน่ห์แห่งเมืองเหนือและแสงโคมด้วยตาตนเอง...',
+    book_page2_back_h3: 'รสชาติแห่งยี่เป็ง',
+    book_page2_back_p:  'นอกจากโคมไฟแล้ว อาหารล้านนาอย่าง ข้าวซอย และแกงฮังเล ก็เป็นส่วนสำคัญของการเฉลิมฉลองที่ขาดไม่ได้ ให้คุณได้อิ่มอร่อยท่ามกลางบรรยากาศหนาวเย็น...',
+    book_page3_h3: 'งานฝีมือล้ำค่า',
+    book_page3_p:  'การประดิษฐ์โคมและกระทงด้วยมือ เป็นการฝึกสมาธิและความประณีตที่ส่งต่อจากรุ่นสู่รุ่น เพื่อรักษาเอกลักษณ์ดั้งเดิมของชาวล้านนาเอาไว้...',
+    book_page3_back_h3: 'รอยยิ้มและมิตรภาพ',
+    book_page3_back_p:  'เทศกาลนี้เป็นช่วงเวลาที่ครอบครัวมารวมตัวกัน และต้อนรับผู้มาเยือนด้วยรอยยิ้มที่เป็นเอกลักษณ์ของชาวเชียงใหม่ ทำให้ทุกคนรู้สึกเหมือนอยู่บ้าน...',
+    book_page4_h3: 'บทสรุปความทรงจำ',
+    book_page4_p:  'ขอให้แสงโคมนำทางความฝัน และความสุขของคุณให้สว่างไสวตลอดไป ขอบคุณที่ร่วมเดินทางผ่านหน้ากระดาษแห่งประวัติศาสตร์นี้...',
+    book_page1_h3: 'เดือนสองเพ็ญ',
+    book_page1_p:  'คำว่า "ยี่" หมายถึงสอง และ "เป็ง" คือเพ็ญ ยี่เป็งจึงตรงกับวันเพ็ญเดือนสองตามปฏิทินล้านนา ซึ่งเป็นช่วงเวลาที่ลมหนาวเริ่มพัดผ่านและท้องฟ้าสดใส...',
+    book_next:     'หน้าถัดไป →',
+    book_page1_back_h3: 'ส่องสว่างบูชา',
+    book_page1_back_p:  'การปล่อยโคมคือการส่งแสงไฟไปบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์ และเป็นการปล่อยวางทุกข์โศกให้ลอยไปกับสายลมเพื่อเริ่มต้นสิ่งใหม่...',
+    book_prev:     '← กลับ',
+    book_cover_back_h3: 'ป๋าเวณียี่เป็ง',
+    book_cover_back_p:  'บันทึกเรื่องราวความรุ่งเรืองของอาณาจักรล้านนา ที่สืบทอดผ่านแสงไฟและศรัทธามานานกว่า 7 ศตวรรษ...',
+    book_start:    'เปิดบันทึก →',
+
+    seg2_eyebrow: 'Sky Lanterns',
+    seg2_h2:      'แสงแห่งศรัทธา',
+    seg2_p1:      'โคมแต่ละดวงคือคำอธิษฐานที่ถูกส่งผ่านกระดาษสาบางเบา การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวางความทุกข์ โรคภัย และสิ่งไม่ดีในชีวิตให้ลอยไปกับสายลม เพื่อเปิดรับสิ่งดีงามและความเป็นสิริมงคลเข้ามาในชีวิต',
+    seg2_p2:      'ร่วมทำความรู้จักโคมล้านนาทั้ง 4 ประเภท ไม่ว่าจะเป็นโคมแขวนเพื่อบูชาพระรัตนตรัย โคมผัดที่เล่าเรื่องวัฏสงสาร หรือโคมถือในขบวนแห่ พร้อมศึกษาขั้นตอนการทำโคม (DIY) แบบดั้งเดิมที่ใส่ใจในทุกรายละเอียด',
+    seg2_cta:     'เรียนรู้เรื่องโคม & DIY',
+
+    seg3_eyebrow: 'Traditions',
+    seg3_h2:      'จิตวิญญาณแห่งล้านนา',
+    seg3_p1:      'ยี่เป็งไม่ใช่แค่การปล่อยโคม แต่คือการเชื่อมโยงระหว่างผู้คน ธรรมชาติ และสิ่งเหนือธรรมชาติ ผ่านความเชื่อที่ว่าแสงโคมจะถูกส่งไปบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์',
+    seg3_p2:      'พบกับความแตกต่างที่น่าสนใจระหว่าง "ยี่เป็งล้านนา" และ "ลอยกระทงภาคกลาง" รวมถึงการแต่งกายด้วยชุดพื้นเมืองล้านนาอันเป็นเอกลักษณ์ ที่ช่วยส่งเสริมบรรยากาศของเทศกาลให้มีความงดงามและทรงคุณค่าทางจิตใจ',
+    seg3_cta:     'เข้าถึงวัฒนธรรม & ชุดพื้นเมือง',
+
+    seg4_eyebrow: 'Plan Your Visit',
+    seg4_h2:      'สัมผัสด้วยตาตนเอง',
+    seg4_p1:      'เตรียมตัวให้พร้อมสำหรับการเดินทางที่ไม่มีวันลืมเลือน ไม่ว่าคุณจะเลือกเดินทางด้วยรถไฟสายเหนือที่มีเสน่ห์ หรือเลือกบินตรงสู่หัวใจของล้านนา การวางแผนล่วงหน้าคือหัวใจสำคัญของการสัมผัสประสบการณ์ยี่เป็งอย่างสมบูรณ์',
+    seg4_p2:      'แนะนำที่พักในเขตเมืองเก่าเพื่อให้คุณอยู่ใกล้ชิดกับกิจกรรมหลัก พร้อมแผนที่ Interactive Map ที่รวบรวมพิกัดสำคัญตั้งแต่ประตูท่าแพจนถึงแม่น้ำปิง และ Checklist สิ่งของที่ต้องเตรียมเพื่อให้ทริปของคุณราบรื่นที่สุด',
+    seg4_cta1:    'วางแผนการเดินทาง',
+    seg4_cta2:    'ชมแกลเลอรีภาพ',
   },
+
 
   en: {
     nav_home:       'Home',
@@ -160,7 +208,7 @@ window.LANG = {
 
     home_eyebrow: 'Chiang Mai · Lanna Kingdom',
     home_h1a:     'Yi Peng',
-    home_h1b:     'Night of a Thousand Lights',
+    home_h1b:     'Over 700 Years of Tradition',
     home_sub:     'When ten thousand lanterns rise — joy, devotion, and the beauty of Lanna converge in a single magical night.',
     home_cta1:    'Explore the Festival',
     home_cta2:    'Plan Your Visit',
@@ -273,7 +321,55 @@ window.LANG = {
     footer_info1:   'About this Project',
     footer_info2:   'Contact',
     footer_copy:    '© 2026 Yi Peng Chiang Mai · Made with love and lantern light',
+
+    /* HOME SEGMENTS */
+    seg1_eyebrow: 'The Festival',
+    seg1_h2:      'Meaning and Origin of the Name',
+    seg1_p1:      'The word "Yee" means two, and "Peng" means full moon. Together they refer to the Lanna tradition held on the full moon of the second month.',
+    seg1_p2:      'In the local northern dialect, it is called "Paweni Yee Peng," a cultural heritage spanning over 700 years where Chiang Mai is transformed by ten thousand lanterns.',
+    seg1_cta:     'Explore History & Timeline',
+    tap_to_read:  'Click to Read the Journal',
+
+    book_page2_h3: 'A Living Heritage',
+    book_page2_p:  'Today, Chiang Mai\'s Yi Peng has become a world-class festival, drawing people from around the globe to witness the charm of the north and its lanterns with their own eyes...',
+    book_page2_back_h3: 'Tastes of Yi Peng',
+    book_page2_back_p:  'Beyond the lanterns, Lanna dishes like Khao Soi and Hang Lay curry are essential parts of the celebration, warming the heart during the cool nights...',
+    book_page3_h3: 'Priceless Craftsmanship',
+    book_page3_p:  'Crafting lanterns and krathongs by hand is a practice of mindfulness and precision passed down through generations to preserve Lanna identity...',
+    book_page3_back_h3: 'Smiles and Friendship',
+    book_page3_back_p:  'This festival is a time for families to reunite and welcome visitors with the unique smiles of Chiang Mai, making everyone feel at home...',
+    book_page4_h3: 'Final Memories',
+    book_page4_p:  'May the lantern light guide your dreams and happiness forever. Thank you for traveling through these pages of history with us...',
+    book_page1_h3: 'The Second Full Moon',
+    book_page1_p:  '"Yee" means two, and "Peng" means full moon. Yi Peng falls on the full moon of the second Lanna month, when the cool breeze begins and the sky is at its clearest...',
+    book_next:     'Next Page →',
+    book_page1_back_h3: 'Glow of Devotion',
+    book_page1_back_p:  'Releasing lanterns is an offering of light to the sacred Chula Mani relic in heaven, and a symbolic release of sorrows to welcome a fresh start...',
+    book_prev:     '← Back',
+    book_cover_back_h3: 'Paweni Yee Peng',
+    book_cover_back_p:  'Recording the glory of the Lanna Kingdom, passed down through light and faith for over 7 centuries...',
+    book_start:    'Open Journal →',
+
+    seg2_eyebrow: 'Sky Lanterns',
+    seg2_h2:      'Light of Faith',
+    seg2_p1:      'Each lantern is a prayer sent through delicate mulberry paper. Releasing it symbolises letting go of suffering, illness, and misfortune to welcome good things and prosperity into life.',
+    seg2_p2:      'Get to know the four types of Lanna lanterns—from hanging lanterns for the Triple Gem to revolving lanterns telling the story of Samsara—and learn how to make your own (DIY) with care in every detail.',
+    seg2_cta:     'Learn About Lanterns & DIY',
+
+    seg3_eyebrow: 'Traditions',
+    seg3_h2:      'The Lanna Soul',
+    seg3_p1:      'Yi Peng is more than releasing lanterns; it is a connection between people, nature, and the divine, through the belief that the light will be offered to the Chula Mani relic in heaven.',
+    seg3_p2:      'Discover the fascinating differences between "Lanna Yi Peng" and "Central Thai Loy Krathong," and see how wearing traditional Lanna dress enhances the spiritual and aesthetic value of the festival.',
+    seg3_cta:     'Access Culture & Traditional Dress',
+
+    seg4_eyebrow: 'Plan Your Visit',
+    seg4_h2:      'Experience It Yourself',
+    seg4_p1:      'Prepare for an unforgettable journey. Whether you choose the charming northern train line or fly direct to the heart of Lanna, planning ahead is key to a perfect Yi Peng experience.',
+    seg4_p2:      'We recommend staying in the Old City to be near the main activities. Use our Interactive Map to find key locations from Tha Phae Gate to the Ping River, and follow our Checklist for a smooth trip.',
+    seg4_cta1:    'Plan Your Journey',
+    seg4_cta2:    'View Photo Gallery',
   }
+
 };
 
 /* ── Language state ─────────────────────────────── */
