@@ -205,30 +205,6 @@ window.initReveal = function () {
   });
 };
 
-/* ── Hero Cinematic Parallax ─────────────────────── */
-window.initHeroParallax = function () {
-  const heroImg = document.getElementById('hero-img');
-  if (!heroImg) return;
-
-  window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    const vh = window.innerHeight;
-    if (scroll > vh * 1.2) return;
-
-    const p = Math.min(scroll / vh, 1);
-
-    // Drone Perspective logic:
-    // Scale up (Flying into the scene)
-    // Translate Y (Tilting down/Camera rising)
-    const scale = 1 + (p * 0.15);
-    const yShift = p * -8; // Slight rise to see "more" below
-    const blur = p * 4;
-
-    heroImg.style.transform = `scale(${scale}) translateY(${yShift}%) translateZ(0)`;
-    heroImg.style.filter = `brightness(${0.45 - p * 0.1}) saturate(1.3) blur(${blur}px)`;
-  }, { passive: true });
-};
-
 /* ── Specialized Components Inits ────────────────── */
 window.initGallery = function () {
   const btns = document.querySelectorAll('.gal-filter-btn');
