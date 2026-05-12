@@ -14,131 +14,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
-  <style>
-    .gallery-card:hover img {
-      transform: scale(1.08);
-    }
-
-    .gallery-card:hover .gallery-overlay {
-      opacity: 1 !important;
-    }
-
-    .gallery-card {
-      transition: box-shadow .4s ease;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .gallery-card:hover {
-      box-shadow: 0 20px 60px rgba(232, 146, 92, 0.2);
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
-      transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
-      position: relative;
-    }
-
-    /* Balanced & Spacous Timeline Layout */
-    .timeline-accordion-container {
-      max-width: 1050px; /* Increased for better Thai text flow */
-      margin: 0 auto;
-      padding-left: 5.5rem;
-    }
-
-    .timeline-card {
-      max-height: 180px;
-      transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1) !important;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-    }
-    
-    .timeline-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(232, 146, 92, 0.2), transparent 50%, rgba(232, 146, 92, 0.1));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      opacity: 0.5;
-    }
-
-    .timeline-card.active-point {
-      max-height: 1200px; /* Fully expanded */
-      background: rgba(255, 255, 255, 0.06) !important;
-      border-color: rgba(232, 146, 92, 0.4) !important;
-      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6), 0 0 30px rgba(232, 146, 92, 0.05);
-      transform: translateY(-8px) scale(1.01);
-    }
-    
-    .timeline-card.active-point::before {
-      opacity: 1;
-      background: linear-gradient(135deg, rgba(232, 146, 92, 0.8), transparent 40%, rgba(232, 146, 92, 0.3));
-    }
-
-    .timeline-card.active-point .expansion-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      padding-top: 1.5rem;
-    }
-    
-    .timeline-card.active-point .arrow-icon {
-      transform: rotate(180deg);
-      opacity: 1 !important;
-      color: #E8925C !important;
-    }
-    /* Add a subtle glow to the active card title */
-    .glass-card.active-point h3 {
-      text-shadow: 0 0 15px rgba(232, 146, 92, 0.3);
-    }
-
-    .glass-card:hover h3 {
-      color: #FFF8E7 !important;
-    }
-    /* Ensure images inside active cards are fully visible and vivid */
-    .glass-card.active-point img {
-      opacity: 1 !important;
-      filter: sepia(0.2) contrast(1.1) !important;
-      transform: scale(1) !important;
-    }
-    .glass-card.active-point .image-frame {
-      box-shadow: inset 0 0 30px rgba(0,0,0,0.15), 0 10px 30px rgba(0,0,0,0.2) !important;
-      transform: rotate(1deg) scale(1) !important;
-    }
-      z-index: 20;
-    }
-    .timeline-detail {
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
-      margin-top: 0;
-    }
-    .timeline-card:hover .timeline-detail {
-      opacity: 1;
-      max-height: 600px;
-      margin-top: 2rem;
-    }
-    .book-image-detail {
-      filter: sepia(0.3) contrast(1.1) brightness(0.9);
-      mix-blend-mode: multiply;
-      opacity: 0.85;
-      border-radius: 8px;
-      width: 100%;
-      height: auto;
-      margin-top: 1.5rem;
-      border: 1px solid rgba(0,0,0,0.1);
-      background: #fdf5e6; /* Parchment-like background for the multiply blend */
-    }
-  </style>
 </head>
 
 <body>
@@ -575,10 +450,7 @@
 
                   <div class="glass-card timeline-card" id="timeline-card-1" onclick="selectTimelinePoint(1)" style="width:100%; cursor:pointer; overflow:hidden;">
                     <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
-                      <!-- Column 1: Number -->
                       <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">01</div>
-                      
-                      <!-- Column 2: Content -->
                       <div style="display:flex;flex-direction:column;gap:0.4rem;">
                         <div style="display:flex;align-items:center;gap:1rem;">
                           <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day1_tag">Chapter I</span>
@@ -586,11 +458,8 @@
                         </div>
                         <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day1_p"></p>
                       </div>
-
-                      <!-- Column 3: Arrow -->
                       <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
                     </div>
-
                     <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
                       <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
                         <div style="flex:1;">
@@ -609,17 +478,12 @@
 
                 <!-- Chapter 02 -->
                 <div style="position:relative;">
-                  <div class="timeline-dot" onclick="selectTimelinePoint(2)" 
-                    style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
+                  <div class="timeline-dot" onclick="selectTimelinePoint(2)" style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
                     <div style="width:6px;height:6px;background:#E8925C;border-radius:50%;opacity:0.3;transition:all 0.4s ease;" class="dot-core"></div>
                   </div>
-
                   <div class="glass-card timeline-card" id="timeline-card-2" onclick="selectTimelinePoint(2)" style="width:100%; cursor:pointer; overflow:hidden;">
                     <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
-                      <!-- Column 1: Number -->
                       <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">02</div>
-                      
-                      <!-- Column 2: Content -->
                       <div style="display:flex;flex-direction:column;gap:0.4rem;">
                         <div style="display:flex;align-items:center;gap:1rem;">
                           <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day2_tag">Chapter II</span>
@@ -627,16 +491,13 @@
                         </div>
                         <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day2_p"></p>
                       </div>
-
-                      <!-- Column 3: Arrow -->
                       <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
                     </div>
-
                     <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
                       <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
                         <div style="flex:1;">
                           <div style="height:1px;background:linear-gradient(to right, rgba(232,146,92,0.25), transparent);margin-bottom:2rem;"></div>
-                          <p style="color:rgba(255,248,231,0.95);font-size:1.05rem;line-height:2;font-style:italic;font-weight:300;" data-i18n="seg4_day2_detail"></p>
+                          <p style="color:rgba(255,248,231,0.85);font-size:1.05rem;line-height:2;font-style:italic;font-weight:300;" data-i18n="seg4_day2_detail"></p>
                         </div>
                         <div style="flex:0.65;display:flex;justify-content:center;">
                           <div class="image-frame" style="background:#f4e4bc;padding:12px;border-radius:16px;box-shadow:inset 0 0 30px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4);transform:rotate(-2deg);width:100%;max-width:280px;">
@@ -648,7 +509,7 @@
                   </div>
                 </div>
 
-                <!-- Chapter 03 -->
+                <!-- Chapter 03: วันยี่เป็ง (กลางคืน) -->
                 <div style="position:relative;">
                   <div class="timeline-dot" onclick="selectTimelinePoint(3)" 
                     style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
@@ -657,10 +518,7 @@
 
                   <div class="glass-card timeline-card" id="timeline-card-3" onclick="selectTimelinePoint(3)" style="width:100%; cursor:pointer; overflow:hidden;">
                     <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
-                      <!-- Column 1: Number -->
                       <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">03</div>
-                      
-                      <!-- Column 2: Content -->
                       <div style="display:flex;flex-direction:column;gap:0.4rem;">
                         <div style="display:flex;align-items:center;gap:1rem;">
                           <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day3_tag">Chapter III</span>
@@ -668,11 +526,8 @@
                         </div>
                         <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day3_p"></p>
                       </div>
-
-                      <!-- Column 3: Arrow -->
                       <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
                     </div>
-
                     <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
                       <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
                         <div style="flex:1;">
@@ -721,85 +576,125 @@
           </div>
         </div>
 
-        <!-- Segment 5: Main Activities -->
-        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;">
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0;background:#0d1b2a;">
           <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
             <img src="assets/images/festival-activities.png" alt="Activities"
-              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.25);">
+              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.15) saturate(0.5);opacity:0.4;">
           </div>
-          <div
-            style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
-          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(13,27,42,1) 0%, transparent 20%, transparent 80%, rgba(13,27,42,1) 100%);"></div>
 
-          <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 2rem;">
-            <div style="text-align:center;margin-bottom:5rem;">
-              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg5_eyebrow">กิจกรรมหลักในงาน</p>
-              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
-                data-i18n="seg5_h2">สัมผัสความงามผ่านกิจกรรมต่าง ๆ</h2>
+          <div style="position:relative;z-index:10;">
+            <div style="text-align:center;margin-bottom:5rem;padding:0 2rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;letter-spacing:0.4em;" data-i18n="seg5_eyebrow">กิจกรรมหลักในงาน</p>
+              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;" data-i18n="seg5_h2">สัมผัสความงามผ่านกิจกรรมต่าง ๆ</h2>
             </div>
 
-            <!-- Activity Details Grid -->
-            <div
-              style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;text-align:center;"
-              class="reveal-up reveal-delay-2">
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">🕯️</span>
+            <!-- Polaroid Gallery Wall - Fresh Set -->
+            <div class="polaroid-container reveal-up reveal-delay-2">
+              
+              <!-- Polaroid 1: ต๋ามผางประทีป -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/activity_tam_phang.jpg" alt="Phang Prateep" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.1) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act1_h">ต๋ามผางประทีป</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">"ต๋ามผางประทีป" การจุดตะเกียงดินเผาถวายเป็นพุทธบูชา แสงไฟสว่างไสวทั่วกำแพงเมืองและวัดวาอาราม เพื่อความเป็นสิริมงคลและแสงสว่างแห่งปัญญา</p>
+                  </div>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act1_h">ต๋ามผางประทีป
-                </h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act1_p"></p>
               </div>
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">🏮</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act2_h">ปล่อยโคมลอย
-                  (โคมควัน)</h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act2_p"></p>
-              </div>
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">⛵</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act3_h">ลอยสะเปา
-                  (ลอยกระทง)</h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act3_p"></p>
-              </div>
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">🎭</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act4_h">
-                  ขบวนแห่กระทงใหญ่</h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act4_p"></p>
-              </div>
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">🎆</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act5_h">แสง สี เสียง
-                </h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act5_p"></p>
-              </div>
-              <div class="activity-item">
-                <div
-                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
-                  <span style="font-size:1.2rem;">🏆</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act6_h">
-                  ประกวดเทพียี่เป็ง</h4>
-                <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act6_p"></p>
-              </div>
-            </div>
 
-            <div style="text-align:center;margin-top:5rem;" class="reveal-up reveal-delay-3">
-              <a href="#" class="btn btn-primary" data-i18n="seg5_cta">ลองเข้าร่วมกิจกรรมออนไลน์</a>
+              <!-- Polaroid 2: ปล่อยโคมลอย -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/book_page_1.png" alt="Sky Lanterns" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.05) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act2_h">ปล่อยโคมลอย</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">"โคมลอย" หรือโคมไฟที่ลอยขึ้นสู่ท้องฟ้า เป็นสัญลักษณ์ของการปล่อยวางทุกข์โศก โรคภัย และส่งคำอธิษฐานไปสู่สรวงสวรรค์ในคืนเดือนเพ็ญ</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Polaroid 3: ลอยสะเปา -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/book_page_2.png" alt="Water Lanterns" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.05) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act3_h">ลอยสะเปา (กระทง)</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">"ลอยสะเปา" คือการลอยกระทงในแม่น้ำปิง เพื่อขอขมาพระแม่คงคาและระลึกถึงบรรพบุรุษท่ามกลางสายน้ำที่เต็มไปด้วยแสงไฟสะท้อนเงาจันทร์</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Polaroid 4: ขบวนแห่กระทงใหญ่ -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/book_page_3.png" alt="Grand Parade" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.05) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act4_h">ขบวนแห่กระทงใหญ่</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">"ขบวนแห่สะเปาล้านนา" ขบวนรถกระทงที่ตกแต่งอย่างวิจิตรสวยงามตระการตา แห่ผ่านถนนท่าแพแสดงถึงพลังแห่งศิลปะและศรัทธาของชาวเชียงใหม่</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Polaroid 5: แสง สี เสียง -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/book_page_4.png" alt="Light and Sound" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.05) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act5_h">แสง สี เสียง</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">การแสดงสื่อผสมอลังการที่เล่าเรื่องราวตำนานยี่เป็งและประวัติศาสตร์เชียงใหม่ผ่านเทคนิคสมัยใหม่ ผสานความเชื่อดั้งเดิมเข้ากับแสงสีตระการตา</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Polaroid 6: เที่ยววัดไหว้พระ -->
+              <div class="polaroid-card" onclick="this.classList.toggle('flipped')">
+                <div class="polaroid-inner">
+                  <div class="polaroid-front">
+                    <div class="polaroid-tape"></div>
+                    <div style="background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="assets/images/book_page_5.png" alt="Temple" 
+                        style="width:100%; height:auto; display:block; filter: sepia(0.1) contrast(1.05) brightness(1.1);">
+                    </div>
+                    <div class="polaroid-caption" data-i18n="seg5_act6_h">เที่ยววัดไหว้พระ</div>
+                  </div>
+                  <div class="polaroid-back">
+                    <p class="polaroid-description">สัมผัสความสงบและชมความงามของสถาปัตยกรรมล้านนาในวัดค่ำคืนที่ประดับตกแต่งด้วยโคมล้านนา (โคมแขวน) หลากสีสันสวยงาม</p>
+                  </div>
+                </div>
+              </div>
+            <div style="text-align:center;margin-top:5rem;padding:0 2rem;" class="reveal-up reveal-delay-3">
+              <a href="#" class="btn btn-primary" style="padding:1.2rem 3.5rem;border-radius:100px;font-size:1rem;background:linear-gradient(135deg, #E8925C, #D17B4A);border:none;" data-i18n="seg5_cta">ลองเข้าร่วมกิจกรรมออนไลน์</a>
             </div>
           </div>
         </div>
@@ -1022,54 +917,6 @@
   <script src="js/parallax.js"></script>
   <script src="js/hero.js"></script>
 
-  <script>
-    function selectTimelinePoint(point) {
-      console.log("Selecting Point:", point);
-      const card = document.getElementById('timeline-card-' + point);
-      const progressLine = document.getElementById('timeline-progress-line');
-      if (!card) return;
-
-      // Toggle Active Card
-      card.classList.toggle('active-point');
-
-      // Update Dots and Progress Line
-      const dots = document.querySelectorAll('.timeline-dot');
-      const cards = document.querySelectorAll('.timeline-card');
-      let maxActiveTop = 0;
-
-      cards.forEach((c, idx) => {
-        const dot = dots[idx];
-        const core = dot.querySelector('.dot-core');
-        
-        if (c.classList.contains('active-point')) {
-          // Glow Dot
-          dot.style.borderColor = '#E8925C';
-          dot.style.background = '#E8925C';
-          dot.style.boxShadow = '0 0 15px rgba(232, 146, 92, 0.6)';
-          if (core) {
-            core.style.opacity = '1';
-            core.style.background = '#0D1B2A';
-          }
-          
-          // Calculate cumulative offset (Step Wrapper offset + Dot offset)
-          const stepWrapper = dot.parentElement;
-          const currentTop = stepWrapper.offsetTop + dot.offsetTop + 12;
-          maxActiveTop = Math.max(maxActiveTop, currentTop);
-        } else {
-          // Reset Dot
-          dot.style.borderColor = 'rgba(232,146,92,0.3)';
-          dot.style.background = '#0D1B2A';
-          dot.style.boxShadow = 'none';
-          if (core) {
-            core.style.opacity = '0.3';
-            core.style.background = '#E8925C';
-          }
-        }
-      });
-
-      progressLine.style.height = maxActiveTop + 'px';
-    }
-  </script>
 </body>
 
 </html>

@@ -361,3 +361,56 @@ window.openBook = function () {
 
 
 
+
+/* ── Timeline Logic ─────────────────────────────── */
+window.selectTimelinePoint = function (point) {
+  console.log("Selecting Point:", point);
+  const card = document.getElementById('timeline-card-' + point);
+  const progressLine = document.getElementById('timeline-progress-line');
+  if (!card) {
+    console.error("Timeline card not found for point:", point);
+    return;
+  }
+
+  // Toggle Active Card
+  card.classList.toggle('active-point');
+
+  // Update Dots and Progress Line
+  const dots = document.querySelectorAll('.timeline-dot');
+  const cards = document.querySelectorAll('.timeline-card');
+  let maxActiveTop = 0;
+
+  cards.forEach((c, idx) => {
+    const dot = dots[idx];
+    if (!dot) return;
+    const core = dot.querySelector('.dot-core');
+    
+    if (c.classList.contains('active-point')) {
+      // Glow Dot
+      dot.style.borderColor = '#E8925C';
+      dot.style.background = '#E8925C';
+      dot.style.boxShadow = '0 0 15px rgba(232, 146, 92, 0.6)';
+      if (core) {
+        core.style.opacity = '1';
+        core.style.background = '#0D1B2A';
+      }
+      
+      const stepWrapper = dot.parentElement;
+      const currentTop = stepWrapper.offsetTop + dot.offsetTop + 12;
+      maxActiveTop = Math.max(maxActiveTop, currentTop);
+    } else {
+      // Reset Dot
+      dot.style.borderColor = 'rgba(232,146,92,0.3)';
+      dot.style.background = '#0D1B2A';
+      dot.style.boxShadow = 'none';
+      if (core) {
+        core.style.opacity = '0.3';
+        core.style.background = '#E8925C';
+      }
+    }
+  });
+
+  if (progressLine) {
+    progressLine.style.height = maxActiveTop + 'px';
+  }
+};
