@@ -78,16 +78,16 @@
     ambientCtx.translate(l.x, l.y);
 
     const grd = ambientCtx.createRadialGradient(0, 0, 1, 0, 0, bw * 2);
-    grd.addColorStop(0, `rgba(255,180,60,${0.4 * l.glow * l.a})`);
-    grd.addColorStop(1, 'rgba(245,120,20,0)');
+    grd.addColorStop(0, `rgba(232,120,60,${0.4 * l.glow * l.a})`);
+    grd.addColorStop(1, 'rgba(212,100,20,0)');
     ambientCtx.fillStyle = grd;
     ambientCtx.beginPath();
     ambientCtx.ellipse(0, 0, bw * 2, bw * 2, 0, 0, Math.PI * 2);
     ambientCtx.fill();
 
     const bg = ambientCtx.createRadialGradient(-bw * 0.2, -bh * 0.2, 1, 0, 0, bw);
-    bg.addColorStop(0, `rgba(255,220,120,${l.a})`);
-    bg.addColorStop(1, `rgba(200,90,20,${l.a * 0.7})`);
+    bg.addColorStop(0, `rgba(240,168,117,${l.a})`);
+    bg.addColorStop(1, `rgba(184,92,74,${l.a * 0.7})`);
     ambientCtx.fillStyle = bg;
     ambientCtx.beginPath();
     ambientCtx.ellipse(0, 0, bw * 0.5, bh * 0.48, 0, 0, Math.PI * 2);
@@ -142,12 +142,12 @@
     el.addEventListener('mouseenter', () => {
       dot.style.transform  = 'translate(-50%,-50%) scale(2.2)';
       ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
-      ring.style.borderColor = 'rgba(245,166,35,0.9)';
+      ring.style.borderColor = 'rgba(232,146,92,0.9)';
     });
     el.addEventListener('mouseleave', () => {
       dot.style.transform  = 'translate(-50%,-50%) scale(1)';
       ring.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.borderColor = 'rgba(245,166,35,0.5)';
+      ring.style.borderColor = 'rgba(232,146,92,0.5)';
     });
   });
 })();
@@ -199,7 +199,7 @@ window.initReveal = function () {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.reveal').forEach(el => {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom').forEach(el => {
     el.classList.remove('visible');
     observer.observe(el);
   });

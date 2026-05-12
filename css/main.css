@@ -3,34 +3,43 @@
    Design System, Tokens, Global Styles
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Thai:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 /* ─── CSS TOKENS ──────────────────────────────────── */
 :root {
-  /* Colors */
-  --night-sky:      #1A0A00;
-  --night-sky-2:    #0D0500;
-  --night-sky-3:    #120800;
-  --lantern-gold:   #F5A623;
-  --lantern-gold-2: #FFB84D;
-  --lantern-glow:   #FF8C00;
-  --warm-paper:     #F7E4B6;
-  --temple-red:     #C0392B;
-  --mountain-night: #2C4A3E;
-  --moonlight:      #FFFDF5;
-  --deep-indigo:    #0A0A1A;
-  --midnight-blue:  #0F1729;
+  /* Primary Colors — สีหลัก */
+  --night-sky:      #0D1B2A;   /* Deep Indigo Night */
+  --night-sky-2:    #091422;   /* deeper variant */
+  --night-sky-3:    #0b1a27;   /* mid variant */
+  --lantern-gold:   #E8925C;   /* Warm Flame */
+  --lantern-gold-2: #F0A875;   /* Warm Flame lighter */
+  --lantern-glow:   #D4784A;   /* Warm Flame deeper */
+  --warm-paper:     #F4D8A6;   /* Paper Glow */
+
+  /* Accent Colors — สีเสริม */
+  --temple-red:     #B85C4A;   /* Terracotta Clay */
+  --mountain-night: #1E4D3B;   /* Forest Shadow */
+  --moonlight:      #FFF8E7;   /* Moonlit Cream */
+
+  /* Supporting Colors — สีรอง */
+  --golden-bamboo:  #D4A574;   /* Golden Bamboo — borders, dividers */
+  --mist-blue:      #5D7A8C;   /* Mist Blue — neutral elements */
+  --rich-tamarind:  #2A1810;   /* Rich Tamarind — text on light bg, footer */
+
+  /* Legacy aliases (kept for compatibility) */
+  --deep-indigo:    #0D1B2A;
+  --midnight-blue:  #0D1B2A;
 
   /* Glass */
-  --glass-bg:       rgba(245, 166, 35, 0.07);
-  --glass-border:   rgba(245, 166, 35, 0.2);
-  --glass-bg-dark:  rgba(10, 5, 0, 0.6);
+  --glass-bg:       rgba(232, 146, 92, 0.07);
+  --glass-border:   rgba(232, 146, 92, 0.2);
+  --glass-bg-dark:  rgba(9, 20, 34, 0.6);
 
   /* Typography */
-  --font-display:   'Cormorant Garamond', Georgia, serif;
-  --font-th:        'Noto Serif Thai', serif;
-  --font-ui-en:     'DM Sans', sans-serif;
-  --font-ui-th:     'IBM Plex Sans Thai', sans-serif;
+  --font-display:   'Nunito', 'Kodchasan', sans-serif;
+  --font-th:        'Kodchasan', sans-serif;
+  --font-ui-en:     'Nunito', sans-serif;
+  --font-ui-th:     'Kodchasan', sans-serif;
 
   /* Spacing */
   --spacing-xs:  0.5rem;
@@ -92,14 +101,14 @@ body.lang-th {
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, opacity 0.2s;
   mix-blend-mode: screen;
-  box-shadow: 0 0 20px 6px rgba(245,166,35,0.4);
+  box-shadow: 0 0 20px 6px rgba(232,146,92,0.4);
 }
 
 #cursor-ring {
   position: fixed;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(245, 166, 35, 0.5);
+  border: 1.5px solid rgba(232, 146, 92, 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -126,7 +135,7 @@ h1, h2, h3 {
 }
 
 .lang-th h1, .lang-th h2, .lang-th h3 {
-  font-family: var(--font-th);
+  font-family: var(--font-th) !important;
 }
 
 .display-xl {
@@ -176,10 +185,10 @@ h1, h2, h3 {
 }
 
 #navbar.scrolled {
-  background: rgba(10, 5, 0, 0.85);
+  background: rgba(9, 20, 34, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(245,166,35,0.12);
+  border-bottom: 1px solid rgba(232,146,92,0.12);
   padding: 0.9rem 2.5rem;
 }
 
@@ -212,7 +221,7 @@ h1, h2, h3 {
 
 .nav-links a {
   text-decoration: none;
-  color: rgba(255, 253, 245, 0.75);
+  color: rgba(255, 248, 231, 0.75);
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -247,8 +256,8 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(245,166,35,0.1);
-  border: 1px solid rgba(245,166,35,0.2);
+  background: rgba(232,146,92,0.1);
+  border: 1px solid rgba(232,146,92,0.2);
   border-radius: 20px;
   padding: 3px;
   cursor: pointer;
@@ -262,7 +271,7 @@ h1, h2, h3 {
   letter-spacing: 0.1em;
   border: none;
   background: transparent;
-  color: rgba(255,253,245,0.5);
+  color: rgba(255,248,231,0.5);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -299,17 +308,17 @@ h1, h2, h3 {
   right: -100%;
   width: min(320px, 85vw);
   height: 100vh;
-  background: rgba(10, 5, 0, 0.97);
+  background: rgba(9, 20, 34, 0.97);
   backdrop-filter: blur(30px);
   z-index: var(--z-modal);
   padding: 5rem 2rem 2rem;
   transition: right 0.4s var(--ease-smooth);
-  border-left: 1px solid rgba(245,166,35,0.12);
+  border-left: 1px solid rgba(232,146,92,0.12);
 }
 
 .nav-mobile.open { right: 0; }
 .nav-mobile-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
-.nav-mobile-links li { border-bottom: 1px solid rgba(245,166,35,0.08); }
+.nav-mobile-links li { border-bottom: 1px solid rgba(232,146,92,0.08); }
 .nav-mobile-links a {
   display: block;
   padding: 1.1rem 0;
@@ -354,13 +363,13 @@ h1, h2, h3 {
 .btn-primary:hover {
   background: var(--lantern-gold-2);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(245,166,35,0.35);
+  box-shadow: 0 12px 40px rgba(232,146,92,0.35);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--moonlight);
-  border: 1px solid rgba(255,253,245,0.35);
+  border: 1px solid rgba(255,248,231,0.35);
 }
 
 .btn-outline:hover {
@@ -388,10 +397,10 @@ h1, h2, h3 {
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  background: rgba(10, 5, 0, 0.88);
+  background: rgba(9, 20, 34, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(245,166,35,0.15);
+  border-top: 1px solid rgba(232,146,92,0.15);
   padding: 0.65rem 2rem;
   display: flex;
   align-items: center;
@@ -403,7 +412,7 @@ h1, h2, h3 {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,253,245,0.5);
+  color: rgba(255,248,231,0.5);
 }
 
 .countdown-units {
@@ -432,21 +441,21 @@ h1, h2, h3 {
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,253,245,0.4);
+  color: rgba(255,248,231,0.4);
   margin-top: 2px;
 }
 
 .countdown-sep {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  color: rgba(245,166,35,0.4);
+  color: rgba(232,146,92,0.4);
   margin-bottom: 8px;
 }
 
 /* ─── FOOTER ──────────────────────────────────────── */
 footer {
   background: var(--night-sky-2);
-  border-top: 1px solid rgba(245,166,35,0.1);
+  border-top: 1px solid rgba(232,146,92,0.1);
   padding: 3rem 2.5rem 6rem;
 }
 
@@ -459,7 +468,7 @@ footer {
 }
 
 .footer-brand p {
-  color: rgba(255,253,245,0.45);
+  color: rgba(255,248,231,0.45);
   font-size: 0.85rem;
   line-height: 1.7;
   margin-top: 0.75rem;
@@ -482,7 +491,7 @@ footer {
 }
 
 .footer-col ul a {
-  color: rgba(255,253,245,0.45);
+  color: rgba(255,248,231,0.45);
   text-decoration: none;
   font-size: 0.85rem;
   transition: color 0.3s;
@@ -495,11 +504,11 @@ footer {
   max-width: 1200px;
   margin: 2rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(245,166,35,0.08);
+  border-top: 1px solid rgba(232,146,92,0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: rgba(255,253,245,0.25);
+  color: rgba(255,248,231,0.25);
   font-size: 0.75rem;
 }
 
@@ -516,7 +525,7 @@ footer {
 .section-header .eyebrow { margin-bottom: 0.75rem; }
 .section-header h2 { margin-bottom: 1rem; }
 .section-header p {
-  color: rgba(255,253,245,0.6);
+  color: rgba(255,248,231,0.6);
   max-width: 540px;
   margin: 0 auto;
   font-size: 1rem;

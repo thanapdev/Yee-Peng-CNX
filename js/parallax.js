@@ -74,19 +74,19 @@
     
     // Glow
     const g = ctx.createRadialGradient(0, 0, 0, 0, 0, bw * 2);
-    g.addColorStop(0, `rgba(245, 166, 35, ${0.4 * l.glow * opacity})`);
-    g.addColorStop(1, 'rgba(245, 166, 35, 0)');
+    g.addColorStop(0, `rgba(232, 146, 92, ${0.4 * l.glow * opacity})`);
+    g.addColorStop(1, 'rgba(232, 146, 92, 0)');
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.arc(0, 0, bw * 2, 0, Math.PI * 2);
     ctx.fill();
 
     // Body
-    ctx.fillStyle = `rgba(247, 228, 182, ${opacity})`;
+    ctx.fillStyle = `rgba(244, 216, 166, ${opacity})`;
     const bodyG = ctx.createLinearGradient(0, -bh/2, 0, bh/2);
-    bodyG.addColorStop(0, `rgba(255, 235, 180, ${opacity})`);
-    bodyG.addColorStop(0.5, `rgba(245, 166, 35, ${opacity})`);
-    bodyG.addColorStop(1, `rgba(200, 80, 0, ${opacity})`);
+    bodyG.addColorStop(0, `rgba(255, 248, 231, ${opacity})`);
+    bodyG.addColorStop(0.5, `rgba(232, 146, 92, ${opacity})`);
+    bodyG.addColorStop(1, `rgba(212, 120, 74, ${opacity})`);
     ctx.fillStyle = bodyG;
     
     // Lantern Shape
@@ -115,7 +115,7 @@
 
     // Dynamic background
     const bgOpacity = Math.max(0.2, 1 - introProgress);
-    ctx.fillStyle = `rgba(10, 5, 0, ${bgOpacity})`;
+    ctx.fillStyle = `rgba(13, 27, 42, ${bgOpacity})`;
     ctx.fillRect(0, 0, W, H);
 
     // Stars twinkle
