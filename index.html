@@ -18,15 +18,125 @@
     .gallery-card:hover img {
       transform: scale(1.08);
     }
+
     .gallery-card:hover .gallery-overlay {
       opacity: 1 !important;
     }
+
     .gallery-card {
       transition: box-shadow .4s ease;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
+
     .gallery-card:hover {
-      box-shadow: 0 20px 60px rgba(232,146,92,0.2);
+      box-shadow: 0 20px 60px rgba(232, 146, 92, 0.2);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+      position: relative;
+    }
+
+    /* Balanced & Spacous Timeline Layout */
+    .timeline-accordion-container {
+      max-width: 1050px; /* Increased for better Thai text flow */
+      margin: 0 auto;
+      padding-left: 5.5rem;
+    }
+
+    .timeline-card {
+      max-height: 180px;
+      transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1) !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    }
+    
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(232, 146, 92, 0.2), transparent 50%, rgba(232, 146, 92, 0.1));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      opacity: 0.5;
+    }
+
+    .timeline-card.active-point {
+      max-height: 1200px; /* Fully expanded */
+      background: rgba(255, 255, 255, 0.06) !important;
+      border-color: rgba(232, 146, 92, 0.4) !important;
+      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6), 0 0 30px rgba(232, 146, 92, 0.05);
+      transform: translateY(-8px) scale(1.01);
+    }
+    
+    .timeline-card.active-point::before {
+      opacity: 1;
+      background: linear-gradient(135deg, rgba(232, 146, 92, 0.8), transparent 40%, rgba(232, 146, 92, 0.3));
+    }
+
+    .timeline-card.active-point .expansion-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      padding-top: 1.5rem;
+    }
+    
+    .timeline-card.active-point .arrow-icon {
+      transform: rotate(180deg);
+      opacity: 1 !important;
+      color: #E8925C !important;
+    }
+    /* Add a subtle glow to the active card title */
+    .glass-card.active-point h3 {
+      text-shadow: 0 0 15px rgba(232, 146, 92, 0.3);
+    }
+
+    .glass-card:hover h3 {
+      color: #FFF8E7 !important;
+    }
+    /* Ensure images inside active cards are fully visible and vivid */
+    .glass-card.active-point img {
+      opacity: 1 !important;
+      filter: sepia(0.2) contrast(1.1) !important;
+      transform: scale(1) !important;
+    }
+    .glass-card.active-point .image-frame {
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.15), 0 10px 30px rgba(0,0,0,0.2) !important;
+      transform: rotate(1deg) scale(1) !important;
+    }
+      z-index: 20;
+    }
+    .timeline-detail {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+      margin-top: 0;
+    }
+    .timeline-card:hover .timeline-detail {
+      opacity: 1;
+      max-height: 600px;
+      margin-top: 2rem;
+    }
+    .book-image-detail {
+      filter: sepia(0.3) contrast(1.1) brightness(0.9);
+      mix-blend-mode: multiply;
+      opacity: 0.85;
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+      margin-top: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: #fdf5e6; /* Parchment-like background for the multiply blend */
     }
   </style>
 </head>
@@ -211,9 +321,13 @@
                 data-i18n="seg1_h2">ความหมายและที่มาของชื่อ</h2>
               <div class="reveal-left reveal-delay-2"
                 style="color:rgba(255,248,231,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
-                <p data-i18n="seg1_p1">คำว่า "ยี่" แปลว่า สอง และ "เป็ง" แปลว่า เพ็ญ หรือคืนพระจันทร์เต็มดวง รวมกันหมายถึงประเพณีในวันเพ็ญเดือนสองของชาวล้านนา</p>
-                <p style="margin-top:1rem;" data-i18n="seg1_p2">ในภาษาคำเมืองเรียกว่า "ป๋าเวณียี่เป็ง" ซึ่งเป็นมรดกทางวัฒนธรรมที่สืบทอดมายาวนานกว่า 700 ปี ในคืนนี้ทั่วทั้งเชียงใหม่จะถูกเนรมิตให้สว่างไสวด้วยแสงไฟจากโคมนับหมื่นดวง</p>
-                <div class="read-more-hint reveal-left reveal-delay-3" style="display:flex; align-items:center; gap:0.5rem; margin-top:2rem; color:var(--lantern-gold); font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;">
+                <p data-i18n="seg1_p1">คำว่า "ยี่" แปลว่า สอง และ "เป็ง" แปลว่า เพ็ญ หรือคืนพระจันทร์เต็มดวง
+                  รวมกันหมายถึงประเพณีในวันเพ็ญเดือนสองของชาวล้านนา</p>
+                <p style="margin-top:1rem;" data-i18n="seg1_p2">ในภาษาคำเมืองเรียกว่า "ป๋าเวณียี่เป็ง"
+                  ซึ่งเป็นมรดกทางวัฒนธรรมที่สืบทอดมายาวนานกว่า 700 ปี
+                  ในคืนนี้ทั่วทั้งเชียงใหม่จะถูกเนรมิตให้สว่างไสวด้วยแสงไฟจากโคมนับหมื่นดวง</p>
+                <div class="read-more-hint reveal-left reveal-delay-3"
+                  style="display:flex; align-items:center; gap:0.5rem; margin-top:2rem; color:var(--lantern-gold); font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;">
                   <span class="pulse-ring"></span>
                   <span data-i18n="tap_to_read">คลิกเพื่ออ่านบันทึก</span>
                 </div>
@@ -235,8 +349,10 @@
                       <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;" data-i18n="book_page4_h3">
                         บทสรุปความทรงจำ</h3>
                       <p style="font-size: 0.88rem; line-height: 1.6; opacity: 0.9;" data-i18n="book_page4_p">
-                        ขอให้แสงโคมนำทางความฝัน และความสุขของคุณให้สว่างไสวตลอดไป ขอบคุณที่ร่วมเดินทางผ่านหน้ากระดาษแห่งประวัติศาสตร์นี้...</p>
-                      <img src="assets/images/book_page_3.png" style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
+                        ขอให้แสงโคมนำทางความฝัน และความสุขของคุณให้สว่างไสวตลอดไป
+                        ขอบคุณที่ร่วมเดินทางผ่านหน้ากระดาษแห่งประวัติศาสตร์นี้...</p>
+                      <img src="assets/images/book_page_3.png"
+                        style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
                     </div>
                   </div>
 
@@ -247,8 +363,10 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;" data-i18n="book_page3_h3">
                           งานฝีมือล้ำค่า</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;" data-i18n="book_page3_p">การประดิษฐ์โคมและกระทงด้วยมือ เป็นการฝึกสมาธิและความประณีตที่ส่งต่อจากรุ่นสู่รุ่น...</p>
-                        <img src="assets/images/book_page_5.png" style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
+                        <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;" data-i18n="book_page3_p">
+                          การประดิษฐ์โคมและกระทงด้วยมือ เป็นการฝึกสมาธิและความประณีตที่ส่งต่อจากรุ่นสู่รุ่น...</p>
+                        <img src="assets/images/book_page_5.png"
+                          style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
                         <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: right;"
                           data-i18n="book_next">หน้าถัดไป →</p>
                       </div>
@@ -258,7 +376,9 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;"
                           data-i18n="book_page3_back_h3">รอยยิ้มและมิตรภาพ</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page3_back_p">เทศกาลนี้เป็นช่วงเวลาที่ครอบครัวมารวมตัวกัน และต้อนรับผู้มาเยือนด้วยรอยยิ้มที่เป็นเอกลักษณ์...</p>
+                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page3_back_p">
+                          เทศกาลนี้เป็นช่วงเวลาที่ครอบครัวมารวมตัวกัน และต้อนรับผู้มาเยือนด้วยรอยยิ้มที่เป็นเอกลักษณ์...
+                        </p>
                         <p style="margin-top: 1.5rem; font-weight: 600; color: #E8925C; text-align: left;"
                           data-i18n="book_prev">← กลับ</p>
                       </div>
@@ -272,7 +392,9 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;" data-i18n="book_page2_h3">
                           มรดกที่ยังมีลมหายใจ</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;" data-i18n="book_page2_p">ในปัจจุบัน ยี่เป็งเชียงใหม่ได้กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนให้มาสัมผัสเสน่ห์ด้วยตาตนเอง...</p>
+                        <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;" data-i18n="book_page2_p">
+                          ในปัจจุบัน
+                          ยี่เป็งเชียงใหม่ได้กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนให้มาสัมผัสเสน่ห์ด้วยตาตนเอง...</p>
                         <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: right;"
                           data-i18n="book_next">หน้าถัดไป →</p>
                       </div>
@@ -282,8 +404,10 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;"
                           data-i18n="book_page2_back_h3">รสชาติแห่งยี่เป็ง</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page2_back_p">นอกจากโคมไฟแล้ว อาหารล้านนาอย่าง ข้าวซอย และแกงฮังเล ก็เป็นส่วนสำคัญของการเฉลิมฉลอง...</p>
-                        <img src="assets/images/book_page_4.png" style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
+                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page2_back_p">นอกจากโคมไฟแล้ว
+                          อาหารล้านนาอย่าง ข้าวซอย และแกงฮังเล ก็เป็นส่วนสำคัญของการเฉลิมฉลอง...</p>
+                        <img src="assets/images/book_page_4.png"
+                          style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
                         <p style="margin-top: 1.5rem; font-weight: 600; color: #E8925C; text-align: left;"
                           data-i18n="book_prev">← กลับ</p>
                       </div>
@@ -297,8 +421,11 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;" data-i18n="book_page1_h3">
                           เดือนสองเพ็ญ</h3>
-                        <p style="font-size: 0.88rem; line-height: 1.6; opacity: 0.9;" data-i18n="book_page1_p">คำว่า "ยี่" หมายถึงสอง และ "เป็ง" คือเพ็ญ ยี่เป็งจึงตรงกับวันเพ็ญเดือนสองตามปฏิทินล้านนา ซึ่งเป็นช่วงเวลาที่ลมหนาวเริ่มพัดผ่านและท้องฟ้าสดใส...</p>
-                        <img src="assets/images/book_page_1.png" style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
+                        <p style="font-size: 0.88rem; line-height: 1.6; opacity: 0.9;" data-i18n="book_page1_p">คำว่า
+                          "ยี่" หมายถึงสอง และ "เป็ง" คือเพ็ญ ยี่เป็งจึงตรงกับวันเพ็ญเดือนสองตามปฏิทินล้านนา
+                          ซึ่งเป็นช่วงเวลาที่ลมหนาวเริ่มพัดผ่านและท้องฟ้าสดใส...</p>
+                        <img src="assets/images/book_page_1.png"
+                          style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
                         <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: right;"
                           data-i18n="book_next">หน้าถัดไป →</p>
                       </div>
@@ -308,8 +435,11 @@
                         style="padding: 2.5rem 2.2rem; color: #3d1f14; font-family: var(--font-ui-th);">
                         <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #1a0f0a;"
                           data-i18n="book_page1_back_h3">ส่องสว่างบูชา</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page1_back_p">การปล่อยโคมคือการส่งแสงไฟไปบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์ และเป็นการปล่อยวางทุกข์โศกให้ลอยไปกับสายลมเพื่อเริ่มต้นสิ่งใหม่...</p>
-                        <img src="assets/images/book_page_2.png" style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
+                        <p style="font-size: 0.85rem; line-height: 1.5;" data-i18n="book_page1_back_p">
+                          การปล่อยโคมคือการส่งแสงไฟไปบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์
+                          และเป็นการปล่อยวางทุกข์โศกให้ลอยไปกับสายลมเพื่อเริ่มต้นสิ่งใหม่...</p>
+                        <img src="assets/images/book_page_2.png"
+                          style="width:100%; height:auto; border-radius:4px; margin-top:1.2rem; filter: sepia(0.2) contrast(1.1); mix-blend-mode: multiply; opacity: 0.85;">
                         <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: left;"
                           data-i18n="book_prev">← กลับ</p>
                       </div>
@@ -351,7 +481,7 @@
             <img src="assets/images/lantern-closeup.png" alt="Lanterns"
               style="width:100%;height:120%;object-fit:cover;filter:brightness(0.3) contrast(1.1);">
           </div>
-          
+
 
           <div
             style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%); z-index:3;">
@@ -405,54 +535,188 @@
           </div>
         </div>
 
-        <!-- Segment 4: Planning & Timeline -->
-        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;background:#0d1b2a;">
+        <!-- Segment 4: Planning & Timeline (RE-ENGINEERED FOR STABILITY) -->
+        <div class="parallax-segment" style="position:relative;min-height:120vh;overflow:hidden;padding:15vh 0;background:#0d1b2a;">
+          <!-- BG Image -->
           <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
-            <img src="assets/images/plan-your-visit.png" alt="Planning"
-              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.3) saturate(0.8);">
+            <img src="assets/images/plan-your-visit-redesign.png" alt="Planning"
+              style="width:100%;height:130%;object-fit:cover;filter:brightness(0.3) contrast(1.1) saturate(0.5); opacity: 0.5;">
           </div>
+          <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, transparent 20%, rgba(13,27,42,0.8) 80%, rgba(13,27,42,1) 100%);"></div>
           
-          <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 2rem;">
-            <div style="text-align:center;margin-bottom:4rem;">
-              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg4_eyebrow">ปฏิทินและสถานที่</p>
-              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
-                data-i18n="seg4_h2">วางแผนไปงานได้เลย</h2>
-            </div>
-
-            <!-- Timeline -->
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:4rem;" class="reveal-up reveal-delay-2">
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day1_h">การเตรียมงาน</div>
-                <p style="color:rgba(255,248,231,0.65);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day1_p"></p>
-              </div>
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day2_h">วันยี่เป็ง (เช้า)</div>
-                <p style="color:rgba(255,248,231,0.65);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day2_p"></p>
-              </div>
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(232,146,92,0.1);border:1px solid rgba(232,146,92,0.3);backdrop-filter:blur(10px);">
-                <div style="color:#E8925C;font-family:var(--font-display);font-size:1.3rem;margin-bottom:1rem;font-weight:600;" data-i18n="seg4_day3_h">วันยี่เป็ง (กลางคืน)</div>
-                <p style="color:rgba(255,248,231,0.8);font-size:.9rem;line-height:1.7;" data-i18n="seg4_day3_p"></p>
+          <div style="position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 2rem;">
+            <!-- Header -->
+            <div style="text-align:center;margin-bottom:6rem;">
+              <p class="eyebrow reveal-zoom" style="color:#E8925C;letter-spacing:0.4em;" data-i18n="seg4_eyebrow">ปฏิทินและสถานที่</p>
+              <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:.75rem;">
+                <div style="height:1px;width:60px;background:linear-gradient(to right, transparent, #E8925C);"></div>
+                <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin:0;" data-i18n="seg4_h2">วางแผนไปงานได้เลย</h2>
+                <div style="height:1px;width:60px;background:linear-gradient(to left, transparent, #E8925C);"></div>
               </div>
             </div>
 
-            <!-- Planning Details Grid -->
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;" class="reveal-up reveal-delay-3">
-              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
-                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_dates_h">ช่วงเวลาจัดงาน</h4>
-                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_dates_p"></p>
+            <!-- THE STABLE UNIFIED TIMELINE -->
+            <div style="position:relative; max-width:900px; margin:0 auto; padding-left:80px;">
+              
+              <!-- Vertical Line: Relative to this centered wrapper -->
+              <div style="position:absolute;left:20px;top:0;bottom:0;width:2px;background:rgba(232,146,92,0.1);z-index:1;">
+                <div id="timeline-progress-line" style="position:absolute;top:0;left:0;width:100%;height:0;background:#E8925C;box-shadow:0 0 20px #E8925C;transition:height 0.7s cubic-bezier(0.33, 1, 0.68, 1);"></div>
               </div>
-              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
-                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_locs_h">จุดเช็คอินสำคัญ</h4>
-                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_locs_p"></p>
+
+              <!-- Accordion Stack -->
+              <div style="display:flex;flex-direction:column;gap:2rem;">
+                
+                <!-- Chapter 01 -->
+                <div style="position:relative;">
+                  <div class="timeline-dot" onclick="selectTimelinePoint(1)" 
+                    style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
+                    <div style="width:6px;height:6px;background:#E8925C;border-radius:50%;opacity:0.3;transition:all 0.4s ease;" class="dot-core"></div>
+                  </div>
+
+                  <div class="glass-card timeline-card" id="timeline-card-1" onclick="selectTimelinePoint(1)" style="width:100%; cursor:pointer; overflow:hidden;">
+                    <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
+                      <!-- Column 1: Number -->
+                      <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">01</div>
+                      
+                      <!-- Column 2: Content -->
+                      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                          <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day1_tag">Chapter I</span>
+                          <h3 style="color:#E8925C;font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin:0;letter-spacing:0.03em;" data-i18n="seg4_day1_h">การเตรียมงาน</h3>
+                        </div>
+                        <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day1_p"></p>
+                      </div>
+
+                      <!-- Column 3: Arrow -->
+                      <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
+                    </div>
+
+                    <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
+                      <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
+                        <div style="flex:1;">
+                          <div style="height:1px;background:linear-gradient(to right, rgba(232,146,92,0.25), transparent);margin-bottom:2rem;"></div>
+                          <p style="color:rgba(255,248,231,0.85);font-size:1.05rem;line-height:2;font-style:italic;font-weight:300;" data-i18n="seg4_day1_detail"></p>
+                        </div>
+                        <div style="flex:0.65;display:flex;justify-content:center;">
+                          <div class="image-frame" style="background:#f4e4bc;padding:12px;border-radius:16px;box-shadow:inset 0 0 30px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4);transform:rotate(2deg);width:100%;max-width:280px;">
+                            <img src="assets/images/timeline-day1-detail.png" alt="Preparation" style="width:100%;height:auto;display:block;border-radius:4px;filter:sepia(0.2) contrast(1.1);mix-blend-mode:multiply;opacity:1;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chapter 02 -->
+                <div style="position:relative;">
+                  <div class="timeline-dot" onclick="selectTimelinePoint(2)" 
+                    style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
+                    <div style="width:6px;height:6px;background:#E8925C;border-radius:50%;opacity:0.3;transition:all 0.4s ease;" class="dot-core"></div>
+                  </div>
+
+                  <div class="glass-card timeline-card" id="timeline-card-2" onclick="selectTimelinePoint(2)" style="width:100%; cursor:pointer; overflow:hidden;">
+                    <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
+                      <!-- Column 1: Number -->
+                      <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">02</div>
+                      
+                      <!-- Column 2: Content -->
+                      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                          <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day2_tag">Chapter II</span>
+                          <h3 style="color:#E8925C;font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin:0;letter-spacing:0.03em;" data-i18n="seg4_day2_h">วันยี่เป็ง (เช้า)</h3>
+                        </div>
+                        <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day2_p"></p>
+                      </div>
+
+                      <!-- Column 3: Arrow -->
+                      <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
+                    </div>
+
+                    <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
+                      <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
+                        <div style="flex:1;">
+                          <div style="height:1px;background:linear-gradient(to right, rgba(232,146,92,0.25), transparent);margin-bottom:2rem;"></div>
+                          <p style="color:rgba(255,248,231,0.95);font-size:1.05rem;line-height:2;font-style:italic;font-weight:300;" data-i18n="seg4_day2_detail"></p>
+                        </div>
+                        <div style="flex:0.65;display:flex;justify-content:center;">
+                          <div class="image-frame" style="background:#f4e4bc;padding:12px;border-radius:16px;box-shadow:inset 0 0 30px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4);transform:rotate(-2deg);width:100%;max-width:280px;">
+                            <img src="assets/images/timeline-day2-detail.png" alt="Morning" style="width:100%;height:auto;display:block;border-radius:4px;filter:sepia(0.2) contrast(1.1);mix-blend-mode:multiply;opacity:1;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chapter 03 -->
+                <div style="position:relative;">
+                  <div class="timeline-dot" onclick="selectTimelinePoint(3)" 
+                    style="position:absolute;left:-71px;top:2.5rem;width:24px;height:24px;background:#0D1B2A;border:2px solid rgba(232,146,92,0.3);border-radius:50%;z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;">
+                    <div style="width:6px;height:6px;background:#E8925C;border-radius:50%;opacity:0.3;transition:all 0.4s ease;" class="dot-core"></div>
+                  </div>
+
+                  <div class="glass-card timeline-card" id="timeline-card-3" onclick="selectTimelinePoint(3)" style="width:100%; cursor:pointer; overflow:hidden;">
+                    <div style="padding:2.8rem 3rem;display:grid;grid-template-columns: 80px 1fr 40px;align-items:center;gap:2rem;">
+                      <!-- Column 1: Number -->
+                      <div style="font-family:var(--font-display);font-size:2.8rem;color:rgba(232,146,92,0.1);font-weight:900;line-height:1;user-select:none;text-align:center;">03</div>
+                      
+                      <!-- Column 2: Content -->
+                      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                        <div style="display:flex;align-items:center;gap:1rem;">
+                          <span style="font-size:0.55rem;color:#E8925C;text-transform:uppercase;letter-spacing:0.25em;border:1px solid rgba(232,146,92,0.4);padding:3px 10px;border-radius:100px;font-weight:700;white-space:nowrap;" data-i18n="seg4_day3_tag">Chapter III</span>
+                          <h3 style="color:#E8925C;font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin:0;letter-spacing:0.03em;" data-i18n="seg4_day3_h">วันยี่เป็ง (กลางคืน)</h3>
+                        </div>
+                        <p style="color:rgba(255,248,231,0.55);font-size:0.88rem;margin:0;font-weight:400;line-height:1.5;max-width:600px;" data-i18n="seg4_day3_p"></p>
+                      </div>
+
+                      <!-- Column 3: Arrow -->
+                      <div class="arrow-icon" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(232,146,92,0.05);border:1px solid rgba(232,146,92,0.2);color:#E8925C;transition:all 0.4s ease;justify-self:end;">↓</div>
+                    </div>
+
+                    <div style="visibility:hidden;opacity:0;transition:all 0.6s ease;" class="expansion-content">
+                      <div style="padding:0 2.5rem 2.5rem;display:flex;gap:3.5rem;align-items:flex-start;">
+                        <div style="flex:1;">
+                          <div style="height:1px;background:linear-gradient(to right, rgba(232,146,92,0.25), transparent);margin-bottom:2rem;"></div>
+                          <p style="color:rgba(255,248,231,0.85);font-size:1.05rem;line-height:2;font-style:italic;font-weight:300;" data-i18n="seg4_day3_detail"></p>
+                        </div>
+                        <div style="flex:0.65;display:flex;justify-content:center;">
+                          <div class="image-frame" style="background:#f4e4bc;padding:12px;border-radius:16px;box-shadow:inset 0 0 30px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4);transform:rotate(1.5deg);width:100%;max-width:280px;">
+                            <img src="assets/images/book_page_2.png" alt="Night" style="width:100%;height:auto;display:block;border-radius:4px;filter:sepia(0.2) contrast(1.1);mix-blend-mode:multiply;opacity:1;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- End Accordion Stack -->
+            </div> <!-- End Timeline Wrapper -->
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:6rem;" class="reveal-up reveal-delay-5">
+              <div style="background:rgba(0,0,0,0.4);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:1.5rem;">
+                <div style="font-size:1.8rem;opacity:0.8;">📅</div>
+                <div>
+                  <h4 style="color:#E8925C;margin-bottom:.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;" data-i18n="seg4_dates_h">ช่วงเวลา</h4>
+                  <p style="color:rgba(255,248,231,0.5);font-size:.9rem;line-height:1.6;" data-i18n="seg4_dates_p"></p>
+                </div>
               </div>
-              <div style="background:rgba(0,0,0,0.3);padding:2rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);">
-                <h4 style="color:#E8925C;margin-bottom:1rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;" data-i18n="seg4_tips_h">ทิปส์การเดินทาง</h4>
-                <p style="color:rgba(255,248,231,0.6);font-size:.9rem;line-height:1.6;" data-i18n="seg4_tips_p"></p>
+              <div style="background:rgba(0,0,0,0.4);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:1.5rem;">
+                <div style="font-size:1.8rem;opacity:0.8;">📍</div>
+                <div>
+                  <h4 style="color:#E8925C;margin-bottom:.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;" data-i18n="seg4_locs_h">จุดสำคัญ</h4>
+                  <p style="color:rgba(255,248,231,0.5);font-size:.9rem;line-height:1.6;" data-i18n="seg4_locs_p"></p>
+                </div>
+              </div>
+              <div style="background:rgba(0,0,0,0.4);padding:2.5rem;border-radius:24px;border:1px solid rgba(255,255,255,0.05);display:flex;align-items:flex-start;gap:1.5rem;">
+                <div style="font-size:1.8rem;opacity:0.8;">🚗</div>
+                <div>
+                  <h4 style="color:#E8925C;margin-bottom:.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;" data-i18n="seg4_tips_h">ทิปส์</h4>
+                  <p style="color:rgba(255,248,231,0.5);font-size:.9rem;line-height:1.6;" data-i18n="seg4_tips_p"></p>
+                </div>
               </div>
             </div>
 
-            <div style="text-align:center;margin-top:4rem;" class="reveal-up reveal-delay-4">
-              <a href="plan.html" class="btn btn-outline" data-i18n="seg4_cta">วางแผนการเดินทางทั้งหมด</a>
+            <div style="text-align:center;margin-top:6rem;" class="reveal-up reveal-delay-6">
+              <a href="plan.html" class="btn btn-outline" style="padding:1.2rem 3rem;border-radius:100px;font-size:.9rem;" data-i18n="seg4_cta">วางแผนการเดินทางทั้งหมด</a>
             </div>
           </div>
         </div>
@@ -466,7 +730,7 @@
           <div
             style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
           </div>
-          
+
           <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 2rem;">
             <div style="text-align:center;margin-bottom:5rem;">
               <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg5_eyebrow">กิจกรรมหลักในงาน</p>
@@ -475,47 +739,61 @@
             </div>
 
             <!-- Activity Details Grid -->
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;text-align:center;" class="reveal-up reveal-delay-2">
+            <div
+              style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;text-align:center;"
+              class="reveal-up reveal-delay-2">
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">🕯️</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act1_h">ต๋ามผางประทีป</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act1_h">ต๋ามผางประทีป
+                </h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act1_p"></p>
               </div>
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">🏮</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act2_h">ปล่อยโคมลอย (โคมควัน)</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act2_h">ปล่อยโคมลอย
+                  (โคมควัน)</h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act2_p"></p>
               </div>
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">⛵</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act3_h">ลอยสะเปา (ลอยกระทง)</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act3_h">ลอยสะเปา
+                  (ลอยกระทง)</h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act3_p"></p>
               </div>
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">🎭</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act4_h">ขบวนแห่กระทงใหญ่</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act4_h">
+                  ขบวนแห่กระทงใหญ่</h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act4_p"></p>
               </div>
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">🎆</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act5_h">แสง สี เสียง</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act5_h">แสง สี เสียง
+                </h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act5_p"></p>
               </div>
               <div class="activity-item">
-                <div style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
+                <div
+                  style="width:50px;height:50px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;border:1px solid rgba(232,146,92,0.2);">
                   <span style="font-size:1.2rem;">🏆</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act6_h">ประกวดเทพียี่เป็ง</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:.75rem;font-size:1.1rem;" data-i18n="seg5_act6_h">
+                  ประกวดเทพียี่เป็ง</h4>
                 <p style="color:rgba(255,248,231,0.5);font-size:.85rem;line-height:1.6;" data-i18n="seg5_act6_p"></p>
               </div>
             </div>
@@ -534,7 +812,7 @@
           <div
             style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
           </div>
-          
+
           <div style="position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 2rem;">
             <div style="text-align:center;margin-bottom:5rem;">
               <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg6_eyebrow">มารยาทและข้อควรรู้</p>
@@ -542,37 +820,49 @@
                 data-i18n="seg6_h2">ไปอย่างถูกต้อง เคารพวัฒนธรรม</h2>
             </div>
 
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;" class="reveal-up reveal-delay-2">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;"
+              class="reveal-up reveal-delay-2">
               <!-- Item 1 -->
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <div class="glass-card"
+                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div
+                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
                   <span style="font-size:1.2rem;">⚖️</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item1_h">กฎหมายโคมลอย</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item1_h">กฎหมายโคมลอย
+                </h4>
                 <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item1_p"></p>
               </div>
               <!-- Item 2 -->
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <div class="glass-card"
+                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div
+                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
                   <span style="font-size:1.2rem;">👗</span>
                 </div>
                 <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item2_h">มารยาทในวัด</h4>
                 <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item2_p"></p>
               </div>
               <!-- Item 3 -->
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <div class="glass-card"
+                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div
+                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
                   <span style="font-size:1.2rem;">🧘</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item3_h">การเคารพความเชื่อ</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item3_h">
+                  การเคารพความเชื่อ</h4>
                 <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item3_p"></p>
               </div>
               <!-- Item 4 -->
-              <div class="glass-card" style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <div class="glass-card"
+                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
+                <div
+                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
                   <span style="font-size:1.2rem;">📸</span>
                 </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item4_h">เคล็ดลับถ่ายภาพ</h4>
+                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item4_h">เคล็ดลับถ่ายภาพ
+                </h4>
                 <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item4_p"></p>
               </div>
             </div>
@@ -584,7 +874,8 @@
         </div>
 
         <!-- Segment 7: Gallery / Atmosphere -->
-        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;background:#0d1b2a;">
+        <div class="parallax-segment"
+          style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;background:#0d1b2a;">
           <div style="position:relative;z-index:10;max-width:1400px;margin:0 auto;padding:0 2rem;">
             <div style="text-align:center;margin-bottom:5rem;">
               <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg7_eyebrow">แกลเลอรี / บรรยากาศ</p>
@@ -593,46 +884,73 @@
             </div>
 
             <!-- Mosaic Gallery Grid -->
-            <div style="display:grid;grid-template-columns:repeat(12, 1fr);grid-template-rows:repeat(2, 300px);gap:1.5rem;" class="reveal-up reveal-delay-2">
+            <div
+              style="display:grid;grid-template-columns:repeat(12, 1fr);grid-template-rows:repeat(2, 300px);gap:1.5rem;"
+              class="reveal-up reveal-delay-2">
               <!-- Large Image (Sky) -->
-              <div style="grid-column:span 8;grid-row:span 2;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
-                <img src="assets/images/gallery-sky.png" alt="Sky Lanterns" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
-                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:2rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+              <div style="grid-column:span 8;grid-row:span 2;position:relative;overflow:hidden;border-radius:24px;"
+                class="gallery-card">
+                <img src="assets/images/gallery-sky.png" alt="Sky Lanterns"
+                  style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:2rem;opacity:0;transition:opacity .4s;"
+                  class="gallery-overlay">
                   <p style="color:#FFF8E7;font-size:1rem;font-weight:500;" data-i18n="seg7_img1_cap"></p>
                 </div>
               </div>
               <!-- Small Image 1 (Parade) -->
-              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
-                <img src="assets/images/gallery-parade.png" alt="Parade" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
-                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;"
+                class="gallery-card">
+                <img src="assets/images/gallery-parade.png" alt="Parade"
+                  style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;"
+                  class="gallery-overlay">
                   <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img2_cap"></p>
                 </div>
               </div>
               <!-- Small Image 2 (River) -->
-              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;" class="gallery-card">
-                <img src="assets/images/gallery-river.png" alt="River" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
-                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+              <div style="grid-column:span 4;grid-row:span 1;position:relative;overflow:hidden;border-radius:24px;"
+                class="gallery-card">
+                <img src="assets/images/gallery-river.png" alt="River"
+                  style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;"
+                  class="gallery-overlay">
                   <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img3_cap"></p>
                 </div>
               </div>
             </div>
 
             <!-- Extra row for temple and video placeholder -->
-            <div style="display:grid;grid-template-columns:repeat(12, 1fr);gap:1.5rem;margin-top:1.5rem;" class="reveal-up reveal-delay-3">
-              <div style="grid-column:span 4;position:relative;overflow:hidden;border-radius:24px;height:350px;" class="gallery-card">
-                <img src="assets/images/gallery-temple.png" alt="Temple" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
-                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;" class="gallery-overlay">
+            <div style="display:grid;grid-template-columns:repeat(12, 1fr);gap:1.5rem;margin-top:1.5rem;"
+              class="reveal-up reveal-delay-3">
+              <div style="grid-column:span 4;position:relative;overflow:hidden;border-radius:24px;height:350px;"
+                class="gallery-card">
+                <img src="assets/images/gallery-temple.png" alt="Temple"
+                  style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.2, 0, 0.2, 1);">
+                <div
+                  style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .4s;"
+                  class="gallery-overlay">
                   <p style="color:#FFF8E7;font-size:.9rem;font-weight:500;" data-i18n="seg7_img4_cap"></p>
                 </div>
               </div>
-              <div style="grid-column:span 8;position:relative;overflow:hidden;border-radius:24px;height:350px;background:#000;" class="gallery-card">
+              <div
+                style="grid-column:span 8;position:relative;overflow:hidden;border-radius:24px;height:350px;background:#000;"
+                class="gallery-card">
                 <!-- Video Placeholder with Cinematic Blur -->
-                <div style="position:absolute;inset:0;background:url('assets/images/gallery-sky.png') center/cover;filter:blur(10px) brightness(0.4);opacity:0.6;"></div>
-                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FFF8E7;z-index:2;">
-                  <div style="width:70px;height:70px;background:rgba(232,146,92,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;cursor:pointer;transition:transform .3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                <div
+                  style="position:absolute;inset:0;background:url('assets/images/gallery-sky.png') center/cover;filter:blur(10px) brightness(0.4);opacity:0.6;">
+                </div>
+                <div
+                  style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#FFF8E7;z-index:2;">
+                  <div
+                    style="width:70px;height:70px;background:rgba(232,146,92,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;cursor:pointer;transition:transform .3s;"
+                    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                     <span style="font-size:2rem;margin-left:5px;">▶</span>
                   </div>
-                  <p style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:1px;">PLAY CINEMATIC CLIP</p>
+                  <p style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:1px;">PLAY CINEMATIC CLIP
+                  </p>
                 </div>
               </div>
             </div>
@@ -703,6 +1021,55 @@
   <script src="js/app.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/hero.js"></script>
+
+  <script>
+    function selectTimelinePoint(point) {
+      console.log("Selecting Point:", point);
+      const card = document.getElementById('timeline-card-' + point);
+      const progressLine = document.getElementById('timeline-progress-line');
+      if (!card) return;
+
+      // Toggle Active Card
+      card.classList.toggle('active-point');
+
+      // Update Dots and Progress Line
+      const dots = document.querySelectorAll('.timeline-dot');
+      const cards = document.querySelectorAll('.timeline-card');
+      let maxActiveTop = 0;
+
+      cards.forEach((c, idx) => {
+        const dot = dots[idx];
+        const core = dot.querySelector('.dot-core');
+        
+        if (c.classList.contains('active-point')) {
+          // Glow Dot
+          dot.style.borderColor = '#E8925C';
+          dot.style.background = '#E8925C';
+          dot.style.boxShadow = '0 0 15px rgba(232, 146, 92, 0.6)';
+          if (core) {
+            core.style.opacity = '1';
+            core.style.background = '#0D1B2A';
+          }
+          
+          // Calculate cumulative offset (Step Wrapper offset + Dot offset)
+          const stepWrapper = dot.parentElement;
+          const currentTop = stepWrapper.offsetTop + dot.offsetTop + 12;
+          maxActiveTop = Math.max(maxActiveTop, currentTop);
+        } else {
+          // Reset Dot
+          dot.style.borderColor = 'rgba(232,146,92,0.3)';
+          dot.style.background = '#0D1B2A';
+          dot.style.boxShadow = 'none';
+          if (core) {
+            core.style.opacity = '0.3';
+            core.style.background = '#E8925C';
+          }
+        }
+      });
+
+      progressLine.style.height = maxActiveTop + 'px';
+    }
+  </script>
 </body>
 
 </html>
