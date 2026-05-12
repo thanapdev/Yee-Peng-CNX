@@ -127,8 +127,7 @@
             data-i18n="home_sub">เมื่อหมื่นโคมลอยขึ้นสู่ท้องฟ้า</p>
           <div class="reveal reveal-delay-4"
             style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;">
-            <a href="festival.html" class="btn btn-primary" data-i18n="home_cta1">สำรวจเทศกาล</a>
-            <a href="plan.html" class="btn btn-outline" data-i18n="home_cta2">วางแผนเดินทาง</a>
+            <a href="#home-highlights" class="btn btn-primary" data-i18n="home_cta1">สำรวจเทศกาล</a>
           </div>
         </div>
         <!-- Scroll arrow -->
@@ -175,8 +174,9 @@
             <img src="assets/images/gallery-crowd.png" alt="Festival" style="width:100%;height:120%;object-fit:cover;filter:brightness(0.4);">
           </div>
           <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);"></div>
-          <div style="position:relative;height:100%;display:flex;align-items:center;padding:0 10vw;">
-            <div style="max-width:600px;">
+          <div style="position:relative;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 10vw;gap:5vw;">
+            <!-- Left Text Content -->
+            <div id="segment1-text" style="max-width:500px; transition: all 0.8s var(--ease-out);">
               <p class="eyebrow reveal-left" style="color:#E8925C;">The Festival</p>
               <h2 class="display-md reveal-left reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;">ตำนานแห่งยี่เป็ง</h2>
               <div class="reveal-left reveal-delay-2" style="color:rgba(255,248,231,0.65);margin:1.5rem 0;line-height:1.9;font-size:.95rem;">
@@ -184,6 +184,62 @@
                 <p style="margin-top:1rem;">สัมผัสเสน่ห์ตั้งแต่ยามบ่ายกับตลาดโคมและงานศิลปะพื้นบ้าน ต่อด้วยพิธีสวดมนต์จุดเทียนที่วัดปันเส่า และขบวนแห่แสงไฟที่ประตูท่าแพ ก่อนจะเข้าสู่ช่วงเวลาที่งดงามที่สุดกับการปล่อยโคมลอยพร้อมกันในช่วงเวลา 20:30 น.</p>
               </div>
               <a href="festival.html" class="btn btn-outline reveal-left reveal-delay-3">สำรวจประวัติศาสตร์ & ไทม์ไลน์</a>
+            </div>
+
+            <!-- Right Book Content -->
+            <div id="history-book-wrapper" class="reveal-right reveal-delay-3" style="flex:1; display:flex; justify-content:center; align-items:center;">
+              <!-- Book will be here -->
+
+              <div class="book-perspective">
+                <div id="history-book" class="book" onclick="handleBookClick(event)">
+                  <!-- The Spine -->
+                  <div class="book-spine"></div>
+                  
+                  <!-- Page 2 (Static Base) -->
+                  <div class="book-page-static" style="z-index: 1;">
+                    <div class="page-text-content" style="padding: 3rem 2.5rem; color: #3d1f14; font-family: var(--font-ui-th);">
+                      <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #1a0f0a;">มรดกแห่งล้านนา</h3>
+                      <p style="font-size: 0.95rem; line-height: 1.8; opacity: 0.9;">ประเพณียี่เป็งที่สืบทอดกันมานั้น ไม่ใช่เพียงการปล่อยโคมเพื่อความสวยงาม แต่แฝงไปด้วยคติธรรมและความเชื่อที่หยั่งรากลึกในจิตใจของผู้คน...</p>
+                    </div>
+                  </div>
+
+                  <!-- Page 1 (Flippable) -->
+                  <div class="book-flipping-page" data-page-index="1" style="z-index: 10;">
+                    <div class="page-front" style="background: #FDF8E1;">
+                      <div class="page-text-content" style="padding: 3rem 2.5rem; color: #3d1f14; font-family: var(--font-ui-th);">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #1a0f0a;">ตำนานยี่เป็ง</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.8; opacity: 0.9;">ยี่เป็ง (Yee Peng) หมายถึง "วันเพ็ญเดือนสอง" ในภาษาเหนือ ซึ่งตรงกับวันเพ็ญเดือนสิบสองตามปฏิทินสุริยคติ เป็นช่วงเวลาที่ชาวล้านนาจะออกมารวมตัวกัน...</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: right;">หน้าถัดไป →</p>
+                      </div>
+                    </div>
+                    <div class="page-back" style="background: #FDF8E1; border-right: 1px solid rgba(0,0,0,0.05);">
+                      <div class="page-text-content" style="padding: 3rem 2.5rem; color: #3d1f14; font-family: var(--font-ui-th);">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #1a0f0a;">พิธีกรรมสำคัญ</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.6;">ในอดีต การปล่อยโคมจะทำควบคู่กับการเทศน์มหาชาติและการประดับประดา 'เขาวงกต' ที่หน้าวัด เพื่อให้พุทธศาสนิกชนได้ร่วมเดินเวียนเทียน...</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: left;">← กลับ</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- The Cover -->
+                  <div id="book-cover-part" class="book-flipping-part" style="z-index: 20;">
+                    <div class="book-cover-front">
+                      <img src="assets/images/history_book_cover.png" alt="History Book Cover">
+                    </div>
+                    <div class="book-cover-back" style="background: #FDF8E1; box-shadow: inset -10px 0 20px rgba(0,0,0,0.05);">
+                       <div class="page-text-content" style="padding: 3rem 2.5rem; color: #3d1f14; font-family: var(--font-ui-th);">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #1a0f0a;">ประวัติศาสตร์ยี่เป็ง</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.6;">บันทึกเรื่องราวการเฉลิมฉลองของอาณาจักรล้านนา ที่สืบทอดความรุ่งเรืองและแสงสว่างมาจนถึงปัจจุบัน...</p>
+                        <p style="margin-top: 1rem; font-weight: 600; color: #E8925C; text-align: right;">เริ่มอ่าน →</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Thickness Layers -->
+                  <div class="book-page-layer" style="transform: translateZ(-2px);"></div>
+                  <div class="book-page-layer" style="transform: translateZ(-4px);"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -303,5 +359,14 @@
   <script src="js/app.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/hero.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Global Book Close Button -->
+  <button id="book-close-btn" onclick="openBook()" style="position:fixed; top:2.5rem; right:2.5rem; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.3); color:white; width:54px; height:54px; border-radius:50%; cursor:pointer; z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
 </body>
 </html>

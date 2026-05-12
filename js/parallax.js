@@ -61,8 +61,8 @@
   function drawLantern(l, progress) {
     const flyScale = 1 + (Math.pow(progress, 2) * 18 * l.z); 
     const s = l.scale * flyScale;
-    const bw = 30 * s;
-    const bh = 45 * s;
+    const bw = 32 * s;
+    const bh = 50 * s;
     const opacity = l.alpha * (1 - (progress > 0.8 ? (progress - 0.8) * 5 : 0));
 
     if (opacity <= 0) return;
@@ -70,29 +70,44 @@
     ctx.save();
     ctx.translate(l.x, l.y);
     
-    // Glow
-    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, bw * 2);
-    g.addColorStop(0, `rgba(232, 146, 92, ${0.4 * l.glow * opacity})`);
-    g.addColorStop(1, 'rgba(232, 146, 92, 0)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(0, 0, bw * 2, 0, Math.PI * 2);
-    ctx.fill();
+    // 1. Soft Outer Glow
+    const glowG = ctx.createRadialGradient(0, 0, 0, 0, 0, bw * 3);
+    glowG.addColorStop(0, `rgba(232, 146, 92, ${0.35 * opacity})`);
+    glowG.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ctx.fillStyle = glowG;
+    ctx.beginPath(); ctx.arc(0, 0, bw * 3, 0, Math.PI * 2); ctx.fill();
 
-    // Body
-    const bodyG = ctx.createLinearGradient(0, -bh/2, 0, bh/2);
-    bodyG.addColorStop(0, `rgba(255, 248, 231, ${opacity})`);
-    bodyG.addColorStop(0.5, `rgba(232, 146, 92, ${opacity})`);
-    bodyG.addColorStop(1, `rgba(212, 120, 74, ${opacity})`);
-    ctx.fillStyle = bodyG;
-    
+    // 2. 3D Volume Shading (Cylindrical highlight)
+    const volumeG = ctx.createLinearGradient(-bw/2, 0, bw/2, 0);
+    volumeG.addColorStop(0, `rgba(184, 92, 74, ${opacity})`); 
+    volumeG.addColorStop(0.3, `rgba(255, 250, 240, ${opacity})`); 
+    volumeG.addColorStop(0.7, `rgba(244, 216, 166, ${opacity})`);
+    volumeG.addColorStop(1, `rgba(184, 92, 74, ${opacity})`);
+    ctx.fillStyle = volumeG;
+
     ctx.beginPath();
-    ctx.moveTo(-bw/2, -bh/2);
-    ctx.quadraticCurveTo(-bw/2.2, bh/2, -bw/2.5, bh/2);
-    ctx.lineTo(bw/2.5, bh/2);
-    ctx.quadraticCurveTo(bw/2.2, bh/2, bw/2, -bh/2);
+    ctx.moveTo(-bw/2, -bh/2 + bh/4);
+    ctx.bezierCurveTo(-bw/2, -bh/2 - bh/8, bw/2, -bh/2 - bh/8, bw/2, -bh/2 + bh/4);
+    ctx.lineTo(bw/2.2, bh/2);
+    ctx.quadraticCurveTo(0, bh/2 + bh/6, -bw/2.2, bh/2);
+    ctx.lineTo(-bw/2, -bh/2 + bh/4);
     ctx.closePath();
     ctx.fill();
+
+    // 3. Internal Fire Glow (Bottom up)
+    const fireG = ctx.createRadialGradient(0, bh/2, 0, 0, bh/2, bh);
+    fireG.addColorStop(0, `rgba(255, 255, 255, ${0.8 * opacity})`);
+    fireG.addColorStop(0.5, `rgba(232, 146, 92, ${0.4 * opacity})`);
+    fireG.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ctx.fillStyle = fireG;
+    ctx.fill();
+
+    // 4. Bottom Ring (3D ellipse)
+    ctx.strokeStyle = `rgba(100, 40, 20, ${opacity * 0.6})`;
+    ctx.lineWidth = 1.5 * s;
+    ctx.beginPath();
+    ctx.ellipse(0, bh/2, bw/2.2, bh/10, 0, 0, Math.PI * 2);
+    ctx.stroke();
 
     ctx.restore();
   }

@@ -549,3 +549,125 @@ footer {
 
   #navbar { padding: 1rem 1.5rem; }
 }
+
+/* ─── INTERACTIVE BOOK (Multi-page Version) ───────────── */
+.book-perspective {
+  perspective: 2500px;
+  width: 340px;
+  height: 480px;
+  transition: all 1s var(--ease-out);
+  z-index: 20;
+}
+
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s var(--ease-out);
+  cursor: pointer;
+}
+
+.book-page-static, .book-flipping-part, .book-flipping-page, .book-page-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: 10px 10px 40px rgba(0,0,0,0.4);
+}
+
+/* Static Base Page */
+.book-page-static {
+  background: #fdfaf0;
+}
+
+/* Flipping Mechanics (Shared) */
+.book-flipping-part, .book-flipping-page {
+  transform-origin: left;
+  transition: transform 1.2s var(--ease-smooth);
+}
+
+.book-flipping-part.is-open {
+  transform: rotateY(-180deg);
+  z-index: 5 !important; /* Move to background once open */
+}
+
+.book-flipping-page.is-flipped {
+  transform: rotateY(-180deg);
+  z-index: 25 !important; /* Stack on top of open cover */
+}
+
+.book-cover-front, .book-cover-back, .page-front, .page-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.book-cover-back, .page-back {
+  transform: rotateY(180deg);
+}
+
+.book-cover-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Depth & Spine */
+.book-spine {
+  position: absolute;
+  left: -15px;
+  top: 0; bottom: 0; width: 30px;
+  background: #3d1f14;
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}
+
+.book-page-layer { background: #f4f1ea; z-index: 0; }
+
+/* Expansion & State */
+#history-book-wrapper.is-expanded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 27, 42, 0.95);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.book-open {
+  overflow: hidden !important;
+}
+
+body.book-open #book-close-btn {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: scale(1);
+}
+
+#book-close-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+#history-book-wrapper.is-expanded .book-perspective {
+  width: 450px;
+  height: 600px;
+  transform: translateX(225px);
+}
+
+#history-book-wrapper.is-expanded .book {
+  transform: rotateX(10deg) rotateY(-5deg);
+}
+
+#segment1-text.is-hidden {
+  opacity: 0;
+  transform: translateX(-50px);
+  pointer-events: none;
+}
+

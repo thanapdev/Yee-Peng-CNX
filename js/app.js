@@ -283,3 +283,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 });
+
+/* ── Interactive Book Toggle ─────────────────────── */
+window.handleBookClick = function (event) {
+  const wrapper = document.getElementById('history-book-wrapper');
+  const cover = document.getElementById('book-cover-part');
+  const pages = document.querySelectorAll('.book-flipping-page');
+  const text = document.getElementById('segment1-text');
+  
+  if (!wrapper || !cover || !text) return;
+
+  // 1. If book is closed -> OPEN it
+  if (!wrapper.classList.contains('is-expanded')) {
+    cover.classList.add('is-open');
+    document.body.classList.add('book-open');
+    setTimeout(() => {
+      wrapper.classList.add('is-expanded');
+      text.classList.add('is-hidden');
+    }, 300);
+    return;
+  }
+
+  // 2. Navigation (When already open)
+  // Calculate click relative to the book container
+  const rect = event.currentTarget.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const isRightSide = clickX > rect.width / 2;
+
+  if (isRightSide) {
+    // Flip forward: find the first page that isn't flipped yet
+    for (let p of pages) {
+      if (!p.classList.contains('is-flipped')) {
+        p.classList.add('is-flipped');
+        break;
+      }
+    }
+  } else {
+    // Flip backward: find the last page that IS flipped
+    const flippedPages = Array.from(pages).filter(p => p.classList.contains('is-flipped'));
+    if (flippedPages.length > 0) {
+      flippedPages[flippedPages.length - 1].classList.remove('is-flipped');
+    }
+  }
+};
+
+window.openBook = function () {
+  // This function is now used by the CLOSE button
+  const wrapper = document.getElementById('history-book-wrapper');
+  const cover = document.getElementById('book-cover-part');
+  const text = document.getElementById('segment1-text');
+  
+  if (wrapper && wrapper.classList.contains('is-expanded')) {
+    // Cinematic closing sequence
+    wrapper.classList.remove('is-expanded');
+    document.body.classList.remove('book-open');
+    text.classList.remove('is-hidden');
+    cover.classList.remove('is-open');
+    
+    // Reset all internal pages to closed state
+    document.querySelectorAll('.book-flipping-page').forEach(p => {
+      p.classList.remove('is-flipped');
+    });
+  }
+};
+
+
