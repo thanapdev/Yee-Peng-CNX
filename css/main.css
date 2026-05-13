@@ -653,7 +653,7 @@ footer {
   background: rgba(9, 20, 34, 0.98);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  z-index: 1000;
+  z-index: 10000; /* Ensure it's above the navbar (100) */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -662,9 +662,12 @@ footer {
 }
 
 #history-book-wrapper.is-expanded .book-perspective {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: min(500px, 45vw) !important;
   height: min(700px, 80vh) !important;
-  transform: translateX(min(250px, 22.5vw)) !important;
+  transform: translate(0, -50%) !important;
   margin: 0 !important;
 }
 
@@ -719,14 +722,10 @@ body.book-open #book-close-btn {
 }
 
 
-#history-book-wrapper.is-expanded .book-perspective {
-  width: 450px;
-  height: 600px;
-  transform: translateX(225px);
-}
+/* Rules removed to avoid conflict with above */
 
 #history-book-wrapper.is-expanded .book {
-  transform: rotateX(10deg) rotateY(-5deg);
+  transform: none; /* Removed tilt for better centering perception */
 }
 
 #segment1-text.is-hidden {
