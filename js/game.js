@@ -69,14 +69,19 @@
     document.getElementById('btn-release-lantern')?.addEventListener('click', () => {
       const wishes = Array.from(selectedWishes).join(', ');
       releaseLantern(wishes, selectedStyle);
+      
+      // Collapse panel and show next button
+      document.getElementById('sky-panel')?.classList.add('collapsed');
       showNextButton();
-      // Reset selections
+      
+      // Reset selections for background
       selectedWishes.clear();
       document.querySelectorAll('.wish-tag').forEach(t => t.classList.remove('active'));
     });
 
     document.getElementById('btn-light-phang')?.addEventListener('click', () => {
       lightPhangPatit();
+      document.getElementById('land-panel')?.classList.add('collapsed');
       showNextButton();
     });
 
@@ -84,6 +89,7 @@
       const input = document.getElementById('wish-krathong');
       floatKrathong(input.value);
       input.value = '';
+      document.getElementById('river-panel')?.classList.add('collapsed');
       showNextButton();
     });
 
@@ -94,6 +100,8 @@
     
     document.getElementById('btn-restart')?.addEventListener('click', () => {
       document.querySelectorAll('.next-stage-btn').forEach(b => b.classList.remove('visible'));
+      document.querySelectorAll('.interaction-panel').forEach(p => p.classList.remove('collapsed'));
+      document.querySelectorAll('.section-content').forEach(c => c.classList.remove('minimized'));
       goToStage(0);
     });
   }
@@ -107,7 +115,9 @@
 
   function showNextButton() {
     const activeSection = document.querySelectorAll('.game-section')[currentStage];
+    const content = activeSection.querySelector('.section-content');
     const nextBtn = activeSection.querySelector('.next-stage-btn');
+    if (content) content.classList.add('minimized');
     if (nextBtn) nextBtn.classList.add('visible');
   }
 
@@ -120,7 +130,7 @@
       y: cameraY + H * 0.9,
       vx: -(Math.random() * 0.4 + 0.4),
       vy: -(Math.random() * 0.6 + 0.4),
-      scale: Math.random() * 0.3 + 0.5,
+      scale: Math.random() * 0.5 + 1.0, // Increased scale
       alpha: 0, sway: Math.random() * Math.PI * 2,
       wish: wish,
       style: style
@@ -155,8 +165,10 @@
     l.sway += 0.01; l.x += l.vx + Math.sin(l.sway) * 0.2; l.y += l.vy;
     l.alpha = Math.min(l.alpha + 0.01, 1);
     const screenY = l.y - cameraY;
-    if (screenY < -200 || screenY > H + 200) return true;
-    const s = l.scale; const opacity = l.alpha; const w = 50 * s; const h = 70 * s;
+    if (screenY < -300 || screenY > H + 300) return true;
+    const s = l.scale; const opacity = l.alpha; 
+    const w = 80 * s; // Increased base width
+    const h = 110 * s; // Increased base height
     const flickerVal = Math.sin(Date.now() * 0.005 + l.id) * 0.15 + 0.85;
 
     ctx.save();
@@ -188,8 +200,8 @@
 
     if (l.wish && opacity > 0.8) {
         ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.7})`;
-        ctx.font = `${10 * s}px 'Kodchasan'`; ctx.textAlign = 'center';
-        ctx.fillText(l.wish, 0, h/2 + 20);
+        ctx.font = `${14 * s}px 'Kodchasan'`; ctx.textAlign = 'center';
+        ctx.fillText(l.wish, 0, h/2 + 25);
     }
     ctx.restore(); return true;
   }

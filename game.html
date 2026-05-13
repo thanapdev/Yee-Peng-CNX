@@ -56,20 +56,47 @@
       pointer-events: auto;
       text-align: center;
       max-width: 600px;
-      background: rgba(13, 27, 42, 0.4);
+      width: 90%;
+      background: rgba(13, 27, 42, 0.7);
       padding: 3rem;
-      border-radius: 24px;
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(232, 146, 92, 0.2);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: 32px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(232, 146, 92, 0.3);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform: translateY(30px);
       opacity: 0;
+      position: relative;
     }
 
     .game-section.active .section-content {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    /* Minimized State */
+    .section-content.minimized {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 320px;
+      padding: 1.5rem;
+      transform: scale(0.85);
+      transform-origin: bottom right;
+      z-index: 200;
+      text-align: left;
+    }
+
+    .section-content.minimized h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    .section-content.minimized p.sub {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: left;
     }
 
     h2 {
@@ -136,29 +163,36 @@
     }
 
     .next-stage-btn {
-      margin-top: 1.5rem;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--gold);
+      border: none;
+      color: #0d1b2a;
       padding: 0.8rem 2rem;
       border-radius: 50px;
       cursor: pointer;
       font-family: 'Kodchasan', sans-serif;
+      font-weight: 700;
       transition: all 0.3s ease;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
+      box-shadow: 0 10px 20px rgba(232, 146, 92, 0.3);
     }
 
     .next-stage-btn.visible {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+    }
+
+    .section-content.minimized .next-stage-btn {
+      float: right;
+      margin-top: 0;
     }
 
     .next-stage-btn:hover {
-      background: rgba(232, 146, 92, 0.1);
-      transform: scale(1.05);
+      background: var(--gold);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(232, 146, 92, 0.6);
     }
 
     /* UI Components */
@@ -201,7 +235,36 @@
       height: 50px;
       margin-bottom: 0.5rem;
       border-radius: 4px;
-      box-shadow: 0 0 10px rgba(232, 146, 92, 0.5);
+      box-shadow: 0 0 15px rgba(232, 146, 92, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .style-preview::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 15px;
+      background: radial-gradient(circle, #FFF8E7, transparent);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .interaction-panel {
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      max-height: 1000px;
+      overflow: hidden;
+    }
+
+    .interaction-panel.collapsed {
+      max-height: 0;
+      opacity: 0;
+      margin-bottom: 0;
+      pointer-events: none;
+      transform: scale(0.95) translateY(20px);
     }
 
     .style-label {
@@ -331,20 +394,21 @@
         <h2 data-i18n="game_release_lantern">ปล่อยโคมลอย</h2>
         <p class="sub" data-i18n="game_lantern_desc">อธิษฐานและส่งโคมลอยขึ้นสู่ท้องฟ้าเสมือนจริง ร่วมสืบสานประเพณีจากทุกมุมโลก</p>
         
-        <div class="selection-container">
+        <div class="interaction-panel" id="sky-panel">
+          <div class="selection-container">
           <div class="style-option active" data-style="classic">
             <div class="style-preview" style="background: #FFF8E7;"></div>
             <div class="style-label" data-i18n="lantern_style_classic">โคมสีขาว</div>
           </div>
           <div class="style-option" data-style="gold">
-            <div class="style-preview" style="background: #E8925C; border: 1px solid #FFF8E7;"></div>
+            <div class="style-preview" style="background: linear-gradient(135deg, #E8925C, #B85C4A); border: 1px solid rgba(255,255,255,0.2);"></div>
             <div class="style-label" data-i18n="lantern_style_gold">โคมสีทอง</div>
           </div>
-          <div class="style-option" data-style="red">
-            <div class="style-preview" style="background: #B85C4A;"></div>
-            <div class="style-label" data-i18n="lantern_style_red">โคมสีแดง</div>
+            <div class="style-option" data-style="red">
+              <div class="style-preview" style="background: #B85C4A; border-bottom: 3px solid #7D2E22;"></div>
+              <div class="style-label" data-i18n="lantern_style_red">โคมสีแดง</div>
+            </div>
           </div>
-        </div>
 
         <div class="wish-tags">
           <div class="wish-tag" data-wish="health" data-i18n="wish_health">สุขภาพแข็งแรง</div>
@@ -355,8 +419,9 @@
           <div class="wish-tag" data-wish="peace" data-i18n="wish_peace">สันติภาพและความสุข</div>
         </div>
 
-        <div class="input-group">
-          <button class="action-btn" id="btn-release-lantern" data-i18n="game_release_lantern">ปล่อยโคมลอย</button>
+          <div class="input-group">
+            <button class="action-btn" id="btn-release-lantern" data-i18n="game_release_lantern">ปล่อยโคมลอย</button>
+          </div>
         </div>
         <button class="next-stage-btn" id="next-to-land" data-i18n="game_next">ขั้นตอนถัดไป</button>
       </div>
@@ -367,8 +432,10 @@
       <div class="section-content">
         <h2 data-i18n="game_light_phang">จุดผางประทีป</h2>
         <p class="sub" data-i18n="game_phang_desc">เติมแสงสว่างให้แผ่นดินล้านนา จุดประทีปดินเผาบูชาพระพุทธเจ้าและความเป็นสิริมงคล</p>
-        <div class="input-group">
-          <button class="action-btn" id="btn-light-phang" data-i18n="game_light_phang">จุดผางประทีปบูชา</button>
+        <div class="interaction-panel" id="land-panel">
+          <div class="input-group">
+            <button class="action-btn" id="btn-light-phang" data-i18n="game_light_phang">จุดผางประทีปบูชา</button>
+          </div>
         </div>
         <button class="next-stage-btn" id="next-to-river" data-i18n="game_next">ขั้นตอนถัดไป</button>
       </div>
@@ -379,9 +446,11 @@
       <div class="section-content">
         <h2 data-i18n="game_float_krathong">ลอยกระทงออนไลน์</h2>
         <p class="sub" data-i18n="game_krathong_desc">ขอขมาพระแม่คงคาและลอยทุกข์โศกไปกับสายน้ำแม่ปิงจำลองที่ส่องสว่างด้วยศรัทธา</p>
-        <div class="input-group">
-          <input type="text" id="wish-krathong" class="game-input" data-i18n="game_wish_placeholder" placeholder="เขียนคำอธิษฐานของคุณที่นี่...">
-          <button class="action-btn" id="btn-float-krathong" data-i18n="game_float_krathong">ลอยกระทง</button>
+        <div class="interaction-panel" id="river-panel">
+          <div class="input-group">
+            <input type="text" id="wish-krathong" class="game-input" data-i18n="game_wish_placeholder" placeholder="เขียนคำอธิษฐานของคุณที่นี่...">
+            <button class="action-btn" id="btn-float-krathong" data-i18n="game_float_krathong">ลอยกระทง</button>
+          </div>
         </div>
         <button class="next-stage-btn" id="next-to-final" data-i18n="game_next">ขั้นตอนถัดไป</button>
       </div>
