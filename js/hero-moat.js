@@ -66,37 +66,50 @@
     function drawLantern(l) {
       const gX = l.x + Math.sin(time * 0.01 + l.glow) * 10 - mouse.x * l.z;
       const gY = l.y - mouse.y * l.z;
-      const s = l.size;
+      const s = l.size / 45; // Adjusted scale based on original size
+      const opacity = 0.3 + l.z * 0.6;
+      const flickerVal = Math.sin(time * 0.05 + l.glow) * 0.15 + 0.85;
+
+      const w = 45 * s;
+      const h = 65 * s;
 
       ctx.save();
       if (l.blur > 1) ctx.filter = `blur(${l.blur}px)`;
-      
       ctx.translate(gX, gY);
       
-      // Core Glow
-      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 2.5);
-      grad.addColorStop(0, `hsla(${l.hue}, 100%, 70%, 0.4)`);
-      grad.addColorStop(1, `hsla(${l.hue}, 100%, 70%, 0)`);
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(0, 0, s * 2.5, 0, Math.PI * 2); ctx.fill();
+      // 1. Soft Outer Glow
+      const glow = ctx.createRadialGradient(0, h/4, 0, 0, h/4, w * 3);
+      glow.addColorStop(0, `hsla(${l.hue}, 100%, 70%, ${0.35 * opacity * flickerVal})`);
+      glow.addColorStop(1, `hsla(${l.hue}, 100%, 70%, 0)`);
+      ctx.fillStyle = glow;
+      ctx.beginPath(); ctx.arc(0, h/4, w * 3, 0, Math.PI * 2); ctx.fill();
 
-      // Paper Body
-      ctx.fillStyle = `hsla(${l.hue}, 80%, 30%, ${0.3 + l.z * 0.6})`;
+      // 2. Main Body (Faceted)
+      const lg = ctx.createLinearGradient(-w/2, -h/2, 0, h/2);
+      lg.addColorStop(0, `hsla(${l.hue}, 80%, 25%, ${opacity})`);
+      lg.addColorStop(1, `hsla(${l.hue}, 80%, 45%, ${opacity})`);
+      ctx.fillStyle = lg;
       ctx.beginPath();
-      ctx.moveTo(-s * 0.6, s * 0.8);
-      ctx.lineTo(s * 0.6, s * 0.8);
-      ctx.lineTo(s * 0.8, -s * 0.6);
-      ctx.lineTo(-s * 0.8, -s * 0.6);
-      ctx.closePath();
-      ctx.fill();
+      ctx.moveTo(0, -h/2); ctx.lineTo(-w/2, -h/4);
+      ctx.lineTo(-w/2.5, h/2); ctx.lineTo(0, h/2);
+      ctx.closePath(); ctx.fill();
 
-      // Fire Core
-      const fG = ctx.createRadialGradient(0, s * 0.4, 0, 0, s * 0.4, s * 0.8);
-      fG.addColorStop(0, '#FFF');
-      fG.addColorStop(0.4, '#FFD700');
-      fG.addColorStop(1, 'rgba(255,100,0,0)');
-      ctx.fillStyle = fG;
-      ctx.beginPath(); ctx.arc(0, s * 0.4, s * 0.8, 0, Math.PI * 2); ctx.fill();
+      const rg = ctx.createLinearGradient(w/2, -h/2, 0, h/2);
+      rg.addColorStop(0, `hsla(${l.hue}, 80%, 20%, ${opacity})`);
+      rg.addColorStop(1, `hsla(${l.hue}, 80%, 40%, ${opacity})`);
+      ctx.fillStyle = rg;
+      ctx.beginPath();
+      ctx.moveTo(0, -h/2); ctx.lineTo(w/2, -h/4);
+      ctx.lineTo(w/2.5, h/2); ctx.lineTo(0, h/2);
+      ctx.closePath(); ctx.fill();
+
+      // 3. Fire
+      const fireG = ctx.createRadialGradient(0, h/2.5, 0, 0, h/2.5, h/2);
+      fireG.addColorStop(0, `rgba(255, 255, 200, ${0.9 * opacity * flickerVal})`);
+      fireG.addColorStop(0.5, `hsla(${l.hue}, 100%, 60%, ${0.4 * opacity * flickerVal})`);
+      fireG.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = fireG;
+      ctx.beginPath(); ctx.ellipse(0, h/2.5, w/2.2, h/3, 0, 0, Math.PI*2); ctx.fill();
 
       ctx.restore();
     }

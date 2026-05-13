@@ -248,40 +248,46 @@
     const bw = 32 * s;
     const bh = 50 * s;
 
+    const flickerVal = Math.sin(Date.now() * 0.01 + l.sway) * 0.15 + 0.85;
+    const w = 45 * s;
+    const h = 65 * s;
+
     ctx.save();
     ctx.translate(l.x, l.y);
     
     // 1. Soft Outer Glow
-    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, bw * 3);
-    g.addColorStop(0, `rgba(232, 146, 92, ${0.35 * opacity})`);
+    const g = ctx.createRadialGradient(0, h/4, 0, 0, h/4, w * 3);
+    g.addColorStop(0, `rgba(232, 146, 92, ${0.35 * opacity * flickerVal})`);
     g.addColorStop(1, 'rgba(232, 146, 92, 0)');
     ctx.fillStyle = g;
-    ctx.beginPath(); ctx.arc(0, 0, bw * 3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(0, h/4, w * 3, 0, Math.PI * 2); ctx.fill();
 
-    // 2. 3D Volume Shading
-    const volumeG = ctx.createLinearGradient(-bw/2, 0, bw/2, 0);
-    volumeG.addColorStop(0, `rgba(184, 92, 74, ${opacity})`);     // Shadow Left
-    volumeG.addColorStop(0.3, `rgba(255, 250, 240, ${opacity})`);   // Highlight
-    volumeG.addColorStop(0.7, `rgba(244, 216, 166, ${opacity})`);   // Mid
-    volumeG.addColorStop(1, `rgba(184, 92, 74, ${opacity})`);     // Shadow Right
-    ctx.fillStyle = volumeG;
-
+    // 2. Main Body (Faceted)
+    const lg = ctx.createLinearGradient(-w/2, -h/2, 0, h/2);
+    lg.addColorStop(0, `rgba(184, 92, 74, ${opacity})`);
+    lg.addColorStop(1, `rgba(232, 146, 92, ${opacity})`);
+    ctx.fillStyle = lg;
     ctx.beginPath();
-    ctx.moveTo(-bw/2, -bh/2 + bh/4);
-    ctx.bezierCurveTo(-bw/2, -bh/2 - bh/8, bw/2, -bh/2 - bh/8, bw/2, -bh/2 + bh/4);
-    ctx.lineTo(bw/2.2, bh/2);
-    ctx.quadraticCurveTo(0, bh/2 + bh/6, -bw/2.2, bh/2);
-    ctx.lineTo(-bw/2, -bh/2 + bh/4);
-    ctx.closePath();
-    ctx.fill();
+    ctx.moveTo(0, -h/2); ctx.lineTo(-w/2, -h/4);
+    ctx.lineTo(-w/2.5, h/2); ctx.lineTo(0, h/2);
+    ctx.closePath(); ctx.fill();
 
-    // 3. Internal Fire Glow
-    const fireG = ctx.createRadialGradient(0, bh/2, 0, 0, bh/2, bh);
-    fireG.addColorStop(0, `rgba(255, 255, 255, ${0.8 * opacity})`);
-    fireG.addColorStop(0.5, `rgba(232, 146, 92, ${0.4 * opacity})`);
+    const rg = ctx.createLinearGradient(w/2, -h/2, 0, h/2);
+    rg.addColorStop(0, `rgba(160, 80, 60, ${opacity})`);
+    rg.addColorStop(1, `rgba(210, 130, 80, ${opacity})`);
+    ctx.fillStyle = rg;
+    ctx.beginPath();
+    ctx.moveTo(0, -h/2); ctx.lineTo(w/2, -h/4);
+    ctx.lineTo(w/2.5, h/2); ctx.lineTo(0, h/2);
+    ctx.closePath(); ctx.fill();
+
+    // 3. Fire Glow
+    const fireG = ctx.createRadialGradient(0, h/2.5, 0, 0, h/2.5, h/2);
+    fireG.addColorStop(0, `rgba(255, 255, 200, ${0.9 * opacity * flickerVal})`);
+    fireG.addColorStop(0.5, `rgba(232, 146, 92, ${0.4 * opacity * flickerVal})`);
     fireG.addColorStop(1, 'rgba(232, 146, 92, 0)');
     ctx.fillStyle = fireG;
-    ctx.fill();
+    ctx.beginPath(); ctx.ellipse(0, h/2.5, w/2.2, h/3, 0, 0, Math.PI*2); ctx.fill();
 
     ctx.restore();
   }

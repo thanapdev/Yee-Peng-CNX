@@ -340,13 +340,44 @@
       fl.glow += 0.05;
       if (fl.y < -50) Object.assign(fl, makeFlying());
       
-      const op = Math.sin(fl.glow) * 0.4 + 0.6;
-      ctx.fillStyle = `rgba(255, 215, 0, ${op * 0.85})`;
-      ctx.beginPath(); ctx.arc(fl.x, fl.y, fl.s * 1.5, 0, Math.PI * 2); ctx.fill();
+      const s = fl.s * 0.7;
+      const opacity = Math.sin(fl.glow) * 0.3 + 0.7;
+      const flickerVal = opacity;
       
-      ctx.shadowBlur = 15;
+      ctx.save();
+      ctx.translate(fl.x, fl.y);
+      
+      const w = 40 * s;
+      const h = 55 * s;
+
+      // Glow
+      ctx.shadowBlur = 15 * s;
       ctx.shadowColor = '#FFD700';
-      ctx.fillRect(fl.x - fl.s, fl.y - fl.s, fl.s * 2, fl.s * 2);
+      
+      // Body (Faceted)
+      const lg = ctx.createLinearGradient(-w/2, -h/2, 0, h/2);
+      lg.addColorStop(0, `rgba(184, 92, 74, ${opacity})`);
+      lg.addColorStop(1, `rgba(232, 146, 92, ${opacity})`);
+      ctx.fillStyle = lg;
+      ctx.beginPath();
+      ctx.moveTo(0, -h/2); ctx.lineTo(-w/2, -h/4);
+      ctx.lineTo(-w/2.5, h/2); ctx.lineTo(0, h/2);
+      ctx.closePath(); ctx.fill();
+
+      const rg = ctx.createLinearGradient(w/2, -h/2, 0, h/2);
+      rg.addColorStop(0, `rgba(160, 80, 60, ${opacity})`);
+      rg.addColorStop(1, `rgba(210, 130, 80, ${opacity})`);
+      ctx.fillStyle = rg;
+      ctx.beginPath();
+      ctx.moveTo(0, -h/2); ctx.lineTo(w/2, -h/4);
+      ctx.lineTo(w/2.5, h/2); ctx.lineTo(0, h/2);
+      ctx.closePath(); ctx.fill();
+      
+      // Flame
+      ctx.fillStyle = '#FFF';
+      ctx.beginPath(); ctx.ellipse(0, h/2.5, w/3, 2*s, 0, 0, Math.PI*2); ctx.fill();
+      
+      ctx.restore();
       ctx.shadowBlur = 0;
     });
 

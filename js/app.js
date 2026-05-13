@@ -73,25 +73,47 @@
 
   function drawAmbient(l) {
     const s = l.s;
-    const bw = 28 * s, bh = 40 * s;
+    const opacity = l.a;
+    const flickerVal = l.glow;
+    
     ambientCtx.save();
     ambientCtx.translate(l.x, l.y);
+    
+    const w = 30 * s;
+    const h = 42 * s;
 
-    const grd = ambientCtx.createRadialGradient(0, 0, 1, 0, 0, bw * 2);
-    grd.addColorStop(0, `rgba(232,120,60,${0.4 * l.glow * l.a})`);
-    grd.addColorStop(1, 'rgba(212,100,20,0)');
-    ambientCtx.fillStyle = grd;
-    ambientCtx.beginPath();
-    ambientCtx.ellipse(0, 0, bw * 2, bw * 2, 0, 0, Math.PI * 2);
-    ambientCtx.fill();
+    // Glow
+    const glow = ambientCtx.createRadialGradient(0, h/4, 0, 0, h/4, w * 2.5);
+    glow.addColorStop(0, `rgba(232, 146, 92, ${0.3 * opacity * flickerVal})`);
+    glow.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ambientCtx.fillStyle = glow;
+    ambientCtx.beginPath(); ambientCtx.arc(0, h/4, w * 2.5, 0, Math.PI * 2); ambientCtx.fill();
 
-    const bg = ambientCtx.createRadialGradient(-bw * 0.2, -bh * 0.2, 1, 0, 0, bw);
-    bg.addColorStop(0, `rgba(240,168,117,${l.a})`);
-    bg.addColorStop(1, `rgba(184,92,74,${l.a * 0.7})`);
-    ambientCtx.fillStyle = bg;
+    // Body
+    const lg = ambientCtx.createLinearGradient(-w/2, -h/2, 0, h/2);
+    lg.addColorStop(0, `rgba(184, 92, 74, ${opacity})`);
+    lg.addColorStop(1, `rgba(232, 146, 92, ${opacity})`);
+    ambientCtx.fillStyle = lg;
     ambientCtx.beginPath();
-    ambientCtx.ellipse(0, 0, bw * 0.5, bh * 0.48, 0, 0, Math.PI * 2);
-    ambientCtx.fill();
+    ambientCtx.moveTo(0, -h/2); ambientCtx.lineTo(-w/2, -h/4);
+    ambientCtx.lineTo(-w/2.5, h/2); ambientCtx.lineTo(0, h/2);
+    ambientCtx.closePath(); ambientCtx.fill();
+
+    const rg = ambientCtx.createLinearGradient(w/2, -h/2, 0, h/2);
+    rg.addColorStop(0, `rgba(160, 80, 60, ${opacity})`);
+    rg.addColorStop(1, `rgba(210, 130, 80, ${opacity})`);
+    ambientCtx.fillStyle = rg;
+    ambientCtx.beginPath();
+    ambientCtx.moveTo(0, -h/2); ambientCtx.lineTo(w/2, -h/4);
+    ambientCtx.lineTo(w/2.5, h/2); ambientCtx.lineTo(0, h/2);
+    ambientCtx.closePath(); ambientCtx.fill();
+
+    // Fire
+    const fireG = ambientCtx.createRadialGradient(0, h/2.5, 0, 0, h/2.5, h/2);
+    fireG.addColorStop(0, `rgba(255, 255, 200, ${0.8 * opacity * flickerVal})`);
+    fireG.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ambientCtx.fillStyle = fireG;
+    ambientCtx.beginPath(); ambientCtx.ellipse(0, h/2.5, w/2.2, h/3, 0, 0, Math.PI*2); ambientCtx.fill();
 
     ambientCtx.restore();
   }

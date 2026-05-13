@@ -7,11 +7,10 @@ window.LANG = {
     /* NAV */
     nav_logo:       'ยี่เป็ง',
     nav_home:       'หน้าแรก',
-    nav_festival:   'เทศกาล',
-    nav_lanterns:   'โคมลอย',
-    nav_traditions: 'ประเพณี',
-    nav_plan:       'วางแผนมา',
-    nav_gallery:    'แกลเลอรี',
+    nav_festival:   'ประวัติความเป็นมา',
+    nav_lanterns:   'กิจกรรมในประเพณียี่เป็ง',
+    nav_traditions: 'เข้าร่วมงานยี่เป็งออนไลน์',
+    nav_gallery:    'บรรยากาศงาน',
 
     /* INTRO overlay */
     intro_scroll:   'เลื่อนลงเพื่อเริ่ม',
@@ -79,10 +78,10 @@ window.LANG = {
     lant_dont2:     '✗ ห้ามปล่อยใกล้สายไฟแรงสูง',
     lant_dont3:     '✗ ห้ามปล่อยโดยไม่มีผู้ดูแล',
 
-    /* TRADITIONS */
-    trad_eyebrow:   'ประเพณี & ความเชื่อ',
-    trad_h2:        'จิตวิญญาณล้านนา',
-    trad_sub:       'ยี่เป็งไม่ใช่แค่เทศกาล — แต่เป็นการเชื่อมต่อระหว่างผู้คน ธรรมชาติ และสิ่งเหนือธรรมชาติ',
+    /* TRADITIONS -> JOIN ONLINE */
+    trad_eyebrow:   'เข้าร่วมออนไลน์',
+    trad_h2:        'ร่วมงานยี่เป็งออนไลน์',
+    trad_sub:       'แม้จะอยู่ไกล แต่คุณยังสามารถสัมผัสศรัทธาและความงามของยี่เป็งได้จากทุกมุมโลก',
     trad_vs_h:      'ยี่เป็ง vs ลอยกระทง',
     trad_vs_yp_h:   'ยี่เป็ง (ล้านนา)',
     trad_vs_yp_p:   'โคมลอยขึ้นฟ้า ส่งสิ่งชั่วร้ายออกไป ประเพณีเฉพาะภาคเหนือ จัดตามปฏิทินล้านนา',
@@ -296,11 +295,10 @@ window.LANG = {
   en: {
     nav_logo:       'Yi Peng',
     nav_home:       'Home',
-    nav_festival:   'Festival',
-    nav_lanterns:   'Sky Lanterns',
-    nav_traditions: 'Traditions',
-    nav_plan:       'Plan Visit',
-    nav_gallery:    'Gallery',
+    nav_festival:   'History & Origin',
+    nav_lanterns:   'Activities',
+    nav_traditions: 'Join Online',
+    nav_gallery:    'Atmosphere',
 
     intro_scroll:   'Scroll to begin',
 
@@ -363,9 +361,10 @@ window.LANG = {
     lant_dont2:     '✗ Never release near high-voltage power lines',
     lant_dont3:     '✗ Never release unattended or alone',
 
-    trad_eyebrow:   'Traditions & Beliefs',
-    trad_h2:        'The Lanna Soul',
-    trad_sub:       'Yi Peng is not merely a festival — it is a connection between people, nature, and the divine.',
+    /* TRADITIONS -> JOIN ONLINE */
+    trad_eyebrow:   'VIRTUAL EXPERIENCE',
+    trad_h2:        'Join Yi Peng Online',
+    trad_sub:       'Experience the magic of Chiang Mai\'s lanterns from anywhere in the world.',
     trad_vs_h:      'Yi Peng vs Loy Krathong',
     trad_vs_yp_h:   'Yi Peng (Lanna)',
     trad_vs_yp_p:   'Sky lanterns released upward. Sending away misfortune. Unique to Northern Thailand. Follows the Lanna lunar calendar.',
