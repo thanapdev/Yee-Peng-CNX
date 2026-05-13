@@ -1,0 +1,102 @@
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.member-card {
+  background: rgba(13, 27, 42, 0.4);
+  border: 1px solid rgba(232, 146, 92, 0.2);
+  border-radius: 32px;
+  padding: 3rem;
+  text-align: center;
+  transition: all 0.6s var(--ease-out);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.member-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 146, 92, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-15px);
+  border-color: var(--lantern-gold);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 146, 92, 0.2);
+}
+
+.member-card:hover::before {
+  opacity: 1;
+}
+
+.member-image-wrapper {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, var(--lantern-gold), rgba(232, 146, 92, 0.2));
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.member-card:hover .member-image-wrapper {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--lantern-gold), var(--lantern-gold-2));
+}
+
+.member-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--night-sky);
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.member-card:hover .member-image {
+  transform: scale(1.1);
+}
+
+.member-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--moonlight);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.member-role {
+  color: var(--lantern-gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.member-desc {
+  color: rgba(255, 248, 231, 0.6);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.contact-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(to bottom, transparent, rgba(13, 27, 42, 0.5));
+}
