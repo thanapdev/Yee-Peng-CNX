@@ -18,13 +18,17 @@
       --night: #050a0f;
     }
 
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: var(--night);
       color: #fff8e7;
       font-family: 'Nunito', sans-serif;
       overflow: hidden;
+      height: 100%;
+      width: 100%;
+      touch-action: none;
+      user-select: none;
     }
 
     #game-canvas {
@@ -38,6 +42,7 @@
     .game-scroller {
       position: relative;
       z-index: 10;
+      will-change: transform;
     }
 
     .game-section {
@@ -76,7 +81,7 @@
 
     /* Minimized State */
     .section-content.minimized {
-      position: fixed;
+      position: absolute;
       bottom: 2rem;
       right: 2rem;
       width: 320px;

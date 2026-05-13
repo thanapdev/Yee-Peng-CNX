@@ -83,6 +83,15 @@
     document.getElementById('next-to-river')?.addEventListener('click', () => goToStage(2));
     document.getElementById('next-to-final')?.addEventListener('click', () => goToStage(3));
     
+    // Block manual scroll
+    window.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+    window.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+    window.addEventListener('keydown', e => {
+      if(['ArrowUp','ArrowDown','Space','PageUp','PageDown','Home','End'].includes(e.code)) {
+        e.preventDefault();
+      }
+    });
+
     document.getElementById('btn-restart')?.addEventListener('click', () => {
       document.querySelectorAll('.next-stage-btn').forEach(b => b.classList.remove('visible'));
       document.querySelectorAll('.interaction-panel').forEach(p => p.classList.remove('collapsed'));
@@ -293,6 +302,13 @@
   function loop() {
     requestAnimationFrame(loop);
     cameraY += (targetCameraY - cameraY) * 0.06;
+    
+    // Sync HTML sections with camera
+    const scroller = document.querySelector('.game-scroller');
+    if (scroller) {
+        scroller.style.transform = `translateY(${-cameraY}px)`;
+    }
+
     ctx.clearRect(0, 0, W, H);
     drawBackground();
     stars.forEach(s => { s.o += s.s; const op = Math.sin(s.o) * 0.4 + 0.6; const sy = s.y - cameraY * 0.5; if (sy > -10 && sy < H + 10) { ctx.fillStyle = `rgba(255, 255, 255, ${op * 0.3})`; ctx.beginPath(); ctx.arc(s.x, sy, s.r, 0, Math.PI * 2); ctx.fill(); } });
