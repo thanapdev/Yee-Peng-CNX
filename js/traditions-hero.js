@@ -26,7 +26,7 @@
     for (let i = 0; i < 150; i++) {
       stars.push({
         x: Math.random() * W,
-        y: Math.random() * H * 0.7,
+        y: Math.random() * H * 0.65,
         r: Math.random() * 1.2 + 0.2,
         o: Math.random()
       });
@@ -37,7 +37,7 @@
     const depth = Math.random(); // 0 (near) to 1 (far)
     return {
       x: Math.random() * W,
-      y: isInitial ? Math.random() * H * 0.7 : H * 0.7 + 50,
+      y: isInitial ? Math.random() * H * 0.65 : H * 0.65 + 50,
       vx: (Math.random() - 0.5) * 0.3, 
       vy: -(Math.random() * 0.8 + 0.4),
       depth: depth,
@@ -57,19 +57,20 @@
 
   function createKrathong(isInitial = false) {
     const depth = Math.random(); // 0 (near) to 1 (far)
-    // River is roughly from H*0.7 to H
-    const riverYStart = H * 0.75;
-    const riverHeight = H * 0.25;
+    // River is from H*0.65 to H
+    const riverYStart = H * 0.65;
+    const riverHeight = H * 0.35;
     
     return {
       x: isInitial ? Math.random() * W : -100,
       y: riverYStart + depth * riverHeight,
-      vx: Math.random() * 0.5 + 0.3, // Current speed
+      vx: Math.random() * 0.4 + 0.2, // Current speed
       depth: depth,
-      scale: (1 - depth) * 0.7 + 0.3,
+      scale: (1 - depth) * 0.8 + 0.3,
       bob: Math.random() * Math.PI * 2,
-      bobSpd: Math.random() * 0.02 + 0.01,
-      flicker: Math.random() * Math.PI * 2
+      bobSpd: Math.random() * 0.015 + 0.005,
+      flicker: Math.random() * Math.PI * 2,
+      type: Math.floor(Math.random() * 4) // 0: Pink, 1: Gold, 2: White, 3: Purple
     };
   }
 
@@ -80,14 +81,14 @@
   }
 
   function drawRiver() {
-    const riverYStart = H * 0.65; // Move up slightly for better visibility
+    const riverYStart = H * 0.65;
     
-    // 1. Far Bank Silhouette (Mountains/Temples)
+    // 1. Far Bank Silhouette (Larger Mountains)
     ctx.fillStyle = '#050a0f';
     ctx.beginPath();
     ctx.moveTo(0, riverYStart);
-    for (let x = 0; x <= W; x += 100) {
-      const hillH = 15 + Math.sin(x * 0.01) * 10;
+    for (let x = 0; x <= W + 100; x += 150) {
+      const hillH = 40 + Math.sin(x * 0.005) * 30 + Math.cos(x * 0.01) * 15;
       ctx.lineTo(x, riverYStart - hillH);
     }
     ctx.lineTo(W, riverYStart);
@@ -151,7 +152,7 @@
     k.bob += k.bobSpd;
     k.flicker += 0.1;
     
-    if (k.x > W + 100) {
+    if (k.x > W + 150) {
       Object.assign(k, createKrathong());
     }
 
@@ -163,8 +164,9 @@
     ctx.translate(k.x, k.y + bobY);
     
     // 1. Water Reflection/Glow
+    const glowColors = ['#E8925C', '#FFD700', '#FFF8E7', '#9370DB'];
     const rg = ctx.createRadialGradient(0, 5, 0, 0, 5, 40 * s);
-    rg.addColorStop(0, `rgba(232, 146, 92, ${0.4 * flickerVal})`);
+    rg.addColorStop(0, `${glowColors[k.type]}${Math.floor(0.4 * flickerVal * 255).toString(16).padStart(2, '0')}`);
     rg.addColorStop(1, 'rgba(232, 146, 92, 0)');
     ctx.fillStyle = rg;
     ctx.beginPath();
@@ -177,34 +179,54 @@
     ctx.ellipse(0, 0, 35 * s, 12 * s, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // 3. Petals (Lotus shape)
-    ctx.fillStyle = '#4a1a3a'; // Dark Magenta/Pink
-    for(let i=0; i<8; i++) {
-        const angle = (i / 8) * Math.PI * 2;
+    // 3. Petals (Lotus shape) - Varied by Type
+    const petalColors = [
+      ['#4a1a3a', '#b85c4a'], // 0: Pink/Terracotta
+      ['#b8860b', '#ffd700'], // 1: Gold
+      ['#e0e0e0', '#ffffff'], // 2: White/Silver
+      ['#4b0082', '#9370DB']  // 3: Purple
+    ];
+    
+    const [c1, c2] = petalColors[k.type];
+    ctx.fillStyle = c1;
+    
+    const petalCount = k.type === 3 ? 12 : 8; // Purple is more dense
+    for(let i=0; i<petalCount; i++) {
+        const angle = (i / petalCount) * Math.PI * 2;
         const px = Math.cos(angle) * 25 * s;
         const py = Math.sin(angle) * 8 * s;
+        ctx.save();
+        ctx.translate(px, py - 5*s);
+        ctx.rotate(angle + Math.PI/2);
+        
+        const pg = ctx.createLinearGradient(0, -18*s, 0, 18*s);
+        pg.addColorStop(0, c2);
+        pg.addColorStop(1, c1);
+        ctx.fillStyle = pg;
+        
         ctx.beginPath();
-        ctx.ellipse(px, py - 5*s, 12*s, 18*s, angle + Math.PI/2, 0, Math.PI*2);
+        ctx.ellipse(0, 0, 10*s, 18*s, 0, 0, Math.PI*2);
         ctx.fill();
+        ctx.restore();
     }
     
     // 4. Center
     ctx.fillStyle = '#ffd700';
     ctx.beginPath();
-    ctx.ellipse(0, -5*s, 10*s, 4*s, 0, 0, Math.PI*2);
+    ctx.ellipse(0, -5*s, 8*s, 3*s, 0, 0, Math.PI*2);
     ctx.fill();
 
     // 5. Candle & Flame
     ctx.fillStyle = '#fff';
     ctx.fillRect(-1.5*s, -25*s, 3*s, 20*s);
     
-    const fg = ctx.createRadialGradient(0, -28*s, 0, 0, -28*s, 10*s);
+    const fg = ctx.createRadialGradient(0, -28*s, 0, 0, -28*s, 12*s);
     fg.addColorStop(0, `rgba(255, 255, 200, ${flickerVal})`);
-    fg.addColorStop(0.6, `rgba(232, 146, 92, ${0.8 * flickerVal})`);
+    fg.addColorStop(0.5, `rgba(232, 146, 92, ${0.8 * flickerVal})`);
     fg.addColorStop(1, 'rgba(232, 146, 92, 0)');
     ctx.fillStyle = fg;
     ctx.beginPath();
-    ctx.ellipse(0, -28*s, 5*s, 8*s, 0, 0, Math.PI*2);
+    ctx.ellipse(0, -28*s, 5*s, 10*s, 0, 0, Math.PI*2);
     ctx.fill();
 
     ctx.restore();
@@ -268,8 +290,11 @@
     raf = requestAnimationFrame(draw);
     ctx.clearRect(0, 0, W, H);
 
-    // Deep Sky
-    ctx.fillStyle = '#0D1B2A';
+    // Deep Sky Gradient
+    const skyG = ctx.createLinearGradient(0, 0, 0, H * 0.65);
+    skyG.addColorStop(0, '#050a0f'); // Near black at top
+    skyG.addColorStop(1, '#0D1B2A'); // Deep indigo at horizon
+    ctx.fillStyle = skyG;
     ctx.fillRect(0, 0, W, H);
 
     // Stars
