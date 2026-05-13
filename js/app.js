@@ -286,12 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Interactive Book Toggle ─────────────────────── */
 window.handleBookClick = function (event) {
+  event.stopPropagation();
+
   const wrapper = document.getElementById('history-book-wrapper');
   const cover = document.getElementById('book-cover-part');
-  const pages = document.querySelectorAll('.book-flipping-page');
+  const pages = event.currentTarget.querySelectorAll('.book-flipping-page');
+
   const text = document.getElementById('segment1-text');
   
-  if (!wrapper || !cover || !text) return;
+  if (!wrapper || !cover) return;
+
 
   // 1. If book is closed -> OPEN it
   if (!wrapper.classList.contains('is-expanded')) {
@@ -299,13 +303,13 @@ window.handleBookClick = function (event) {
     document.body.classList.add('book-open');
     setTimeout(() => {
       wrapper.classList.add('is-expanded');
-      text.classList.add('is-hidden');
+      if (text) text.classList.add('is-hidden');
     }, 300);
+
     return;
   }
 
-  // 2. Navigation (When already open)
-  // Calculate click relative to the book container
+  // 2. If book is open -> HANDLE flipping
   const rect = event.currentTarget.getBoundingClientRect();
   const clickX = event.clientX - rect.left;
   const isRightSide = clickX > rect.width / 2;
@@ -349,8 +353,9 @@ window.openBook = function () {
     // Cinematic closing sequence
     wrapper.classList.remove('is-expanded');
     document.body.classList.remove('book-open');
-    text.classList.remove('is-hidden');
+    if (text) text.classList.remove('is-hidden');
     cover.classList.remove('is-open');
+
     
     // Reset all internal pages to closed state
     document.querySelectorAll('.book-flipping-page').forEach(p => {

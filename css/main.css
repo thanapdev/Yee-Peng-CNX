@@ -646,16 +646,28 @@ footer {
 
 /* Expansion & State */
 #history-book-wrapper.is-expanded {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(13, 27, 42, 0.95);
-  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(9, 20, 34, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
 }
+
+#history-book-wrapper.is-expanded .book-perspective {
+  width: min(500px, 45vw) !important;
+  height: min(700px, 80vh) !important;
+  transform: translateX(min(250px, 22.5vw)) !important;
+  margin: 0 !important;
+}
+
 
 body.book-open {
   overflow: hidden !important;

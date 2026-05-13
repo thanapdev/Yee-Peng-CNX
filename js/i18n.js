@@ -255,7 +255,17 @@ window.LANG = {
     fest_book_page1_h3_summary: 'รากเหง้าหริภุญชัย',
     fest_book_page2_h3_summary: 'สายใยแห่งความคิดถึง',
     fest_book_page3_h3_summary: 'เชียงใหม่และแสงแห่งศรัทธา',
-    fest_book_page4_p_summary: 'จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลกให้มาสัมผัสความงามของแสงโคมนับหมื่นดวงเหนือเมืองเชียงใหม่...',
+    fest_book_page4_p_summary: 'จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลก...',
+    fest_book_eyebrow: 'Interactive Record',
+    fest_book_h2: 'สมุดบันทึกแสงแห่งล้านนา',
+    fest_book_p: 'เปิดบันทึกประวัติศาสตร์ยี่เป็งฉบับย่อ ตั้งแต่รากเหง้าหริภุญชัยจนถึงปัจจุบัน...',
+    fest_book_btn: 'เปิดอ่านบันทึก',
+    fest_book_page1_p_summary: 'ประเพณีนี้เริ่มต้นที่นครหริภุญชัย ในยุคของพระนางจามเทวี...',
+    fest_book_page2_p_summary: 'ตำนานอหิวาต์ระบาดทำให้ผู้คนต้องพลัดพราก จึงส่งกระทงสื่อความคิดถึง...',
+    fest_book_page3_p_summary: 'เมื่อพญามังรายสร้างเชียงใหม่ แสงโคมได้กลายเป็นหัวใจของเมือง...',
+    fest_book_page4_h3_summary: 'สู่เทศกาลระดับโลก',
+    fest_book_cover_p_summary: 'บันทึกการเดินทางของแสงไฟแห่งศรัทธา...',
+
   },
 
 
@@ -498,6 +508,21 @@ window.LANG = {
     fest_book_page3_p:  '"Yee" means two, and "Peng" means full moon. Yi Peng refers to the full moon of the second Lanna lunar month, a time of cool breezes and the clearest skies, perfect for sending prayers to the heavens...',
     fest_book_page4_h3: 'A Global Phenomenon',
     fest_book_page4_p:  'From local spiritual rites to a world-class tourism festival, the sight of ten thousand lanterns rising over Chiang Mai is an iconic image of Lanna cultural heritage that continues to breathe life today...',
+    fest_book_eyebrow: 'Interactive Record',
+    fest_book_h2: 'Lanna Light Record',
+    fest_book_p: 'Open the condensed history of Yi Peng, from Hariphunchai roots to the present day...',
+    fest_book_btn: 'Open Record',
+    fest_book_page1_h3_summary: 'Hariphunchai Roots',
+    fest_book_page1_p_summary: 'The tradition began in Hariphunchai, under Queen Chamthewi...',
+    fest_book_page2_h3_summary: 'Bonds of Remembrance',
+    fest_book_page2_p_summary: 'A cholera outbreak led to displacement, sending lanterns of love...',
+    fest_book_page3_h3_summary: 'Chiang Mai & Faith',
+    fest_book_page3_p_summary: 'When King Mangrai founded Chiang Mai, lanterns became its soul...',
+    fest_book_page4_h3_summary: 'Global Festival',
+    fest_book_page4_p_summary: 'From spiritual rites to a world-class cultural phenomenon...',
+    fest_book_cover_h3: 'History & Legends',
+    fest_book_cover_p_summary: 'A journal of light and faith journey...',
+
   }
 
 };

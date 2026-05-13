@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/festival.css">
-  <div id="segment1-text" style="display:none;"></div>
+  <!-- i18n text placeholder removed from here and moved to section -->
+
   <style>
     /* Full-Width Book Overrides */
     #history-book-wrapper {
@@ -24,10 +25,11 @@
     }
 
     #history-book-wrapper.is-expanded .book-perspective {
-      width: min(650px, 45vw) !important;
-      height: min(850px, 85vh) !important;
-      transform: translateX(min(325px, 22.5vw)) !important;
+      width: min(500px, 45vw) !important;
+      height: min(700px, 80vh) !important;
+      transform: translateX(min(250px, 22.5vw)) !important;
     }
+
 
     #history-book-wrapper.is-expanded .book {
       transform: rotateX(5deg) rotateY(-5deg) !important;
@@ -325,60 +327,78 @@
         </div>
       </section>
 
-      <section id="history-segment" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
-        <div style="text-align:center; margin-bottom:5rem;">
-          <p class="eyebrow reveal" style="color:#E8925C; margin-bottom:1rem;">Interactive Record</p>
-          <h2 class="display-md reveal reveal-delay-1" style="color:#FFF8E7;">สมุดบันทึกแสงแห่งล้านนา</h2>
-          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,0.5); margin-top:1rem;">คลิกเพื่อเปิดอ่านบันทึกฉบับย่อ</p>
-        </div>
-        <div id="history-book-wrapper" style="width:100%; display:flex; justify-content:center; align-items:center;">
-          <div class="book-perspective">
-            <div class="book" id="interactive-book" onclick="handleBookClick(event)">
-              <div class="book-spine"></div>
-              <div class="book-page-static" style="z-index: 1;">
-                <div class="page-text-content">
-                  <h3 data-i18n="fest_book_page4_h3_summary">สู่เทศกาลระดับโลก</h3>
-                  <p data-i18n="fest_book_page4_p_summary">จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลก...</p>
-                  <img src="assets/images/fest_book_page_tourism_1778658461510.png" class="book-image-detail">
-                </div>
-              </div>
-              <div class="book-flipping-page" data-page-index="3">
-                <div class="page-front">
+      <section id="history-segment" style="padding: 8rem 0; background: rgba(13,27,42,0.4); position: relative; z-index: 10;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; padding: 0 2rem;">
+          
+          <!-- Left: Text Content -->
+          <div id="segment1-text" class="reveal-left" style="flex: 1; min-width: 300px;">
+            <p class="eyebrow" style="color:#E8925C; margin-bottom:1rem;" data-i18n="fest_book_eyebrow">Interactive Record</p>
+            <h2 class="display-md" style="color:#FFF8E7;" data-i18n="fest_book_h2">สมุดบันทึกแสงแห่งล้านนา</h2>
+            <p style="color:rgba(255,248,231,0.6); margin: 1.5rem 0 2.5rem; line-height: 1.8;" data-i18n="fest_book_p">
+              เปิดบันทึกประวัติศาสตร์ยี่เป็งฉบับย่อ ตั้งแต่รากเหง้าหริภุญชัยจนถึงปัจจุบัน...
+            </p>
+            <button class="btn btn-primary" onclick="handleBookClick(event)" data-i18n="fest_book_btn">เปิดอ่านบันทึก</button>
+          </div>
+
+          <!-- Right: Book -->
+          <div id="history-book-wrapper" class="reveal-right" style="flex: 1; display:flex; justify-content:center; align-items:center; min-width: 340px; position: relative;">
+            <!-- Close Button (Shared with modal logic) -->
+            <button id="book-close-btn" onclick="openBook()"
+              style="position:fixed; top:2.5rem; right:2.5rem; background:rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.3); color:white; width:60px; height:60px; border-radius:50%; cursor:pointer; z-index:9999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(20px); transition: all 0.4s var(--ease-out); opacity: 0; pointer-events: none; box-shadow: 0 15px 50px rgba(0,0,0,0.6);">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
+            <div class="book-perspective">
+              <div class="book" id="interactive-book" onclick="handleBookClick(event)" style="cursor: pointer;">
+                <div class="book-spine"></div>
+                <div class="book-page-static" style="z-index: 1;">
                   <div class="page-text-content">
-                    <h3 data-i18n="fest_book_page3_h3_summary">เชียงใหม่และแสงแห่งศรัทธา</h3>
-                    <p data-i18n="fest_book_page3_p_summary">เมื่อพญามังรายสร้างเชียงใหม่ในปี 1839...</p>
-                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                    <h3 data-i18n="fest_book_page4_h3_summary">สู่เทศกาลระดับโลก</h3>
+                    <p data-i18n="fest_book_page4_p_summary">จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลก...</p>
+                    <img src="assets/images/fest_book_page_tourism_1778658461510.png" class="book-image-detail">
                   </div>
                 </div>
-                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_symbols_1778658425214.png" class="page-full-image"></div>
-              </div>
-              <div class="book-flipping-page" data-page-index="2">
-                <div class="page-front">
-                  <div class="page-text-content">
-                    <h3 data-i18n="fest_book_page2_h3_summary">สายใยแห่งความคิดถึง</h3>
-                    <p data-i18n="fest_book_page2_p_summary">ตำนานอหิวาต์ระบาดในหริภุญชัย...</p>
-                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                <div class="book-flipping-page" data-page-index="3">
+                  <div class="page-front">
+                    <div class="page-text-content">
+                      <h3 data-i18n="fest_book_page3_h3_summary">เชียงใหม่และแสงแห่งศรัทธา</h3>
+                      <p data-i18n="fest_book_page3_p_summary">เมื่อพญามังรายสร้างเชียงใหม่ในปี 1839...</p>
+                      <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                    </div>
                   </div>
+                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_symbols_1778658425214.png" class="page-full-image"></div>
                 </div>
-                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_loy_khamot_1778658388061.png" class="page-full-image"></div>
-              </div>
-              <div class="book-flipping-page" data-page-index="1">
-                <div class="page-front">
-                  <div class="page-text-content">
-                    <h3 data-i18n="fest_book_page1_h3_summary">รากเหง้าหริภุญชัย</h3>
-                    <p data-i18n="fest_book_page1_p_summary">ประเพณีนี้เริ่มต้นที่นครหริภุญชัย...</p>
-                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                <div class="book-flipping-page" data-page-index="2">
+                  <div class="page-front">
+                    <div class="page-text-content">
+                      <h3 data-i18n="fest_book_page2_h3_summary">สายใยแห่งความคิดถึง</h3>
+                      <p data-i18n="fest_book_page2_p_summary">ตำนานอหิวาต์ระบาดในหริภุญชัย...</p>
+                      <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                    </div>
                   </div>
+                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_loy_khamot_1778658388061.png" class="page-full-image"></div>
                 </div>
-                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_hariphunchai_1778658356222.png" class="page-full-image"></div>
-              </div>
-              <div id="book-cover-part" class="book-flipping-part">
-                <div class="book-cover-front"><img src="assets/images/history_book_cover_fest_1778658289093.png" alt="Cover"></div>
-                <div class="book-cover-back" style="background:#FDF8E1;">
-                  <div class="page-text-content">
-                    <h3 style="font-size:1.8rem;" data-i18n="fest_book_cover_h3">ประวัติและตำนานยี่เป็ง</h3>
-                    <p data-i18n="fest_book_cover_p_summary">บันทึกการเดินทางของแสงไฟแห่งศรัทธา...</p>
-                    <p style="margin-top:2rem; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_start">เปิดอ่าน →</p>
+                <div class="book-flipping-page" data-page-index="1">
+                  <div class="page-front">
+                    <div class="page-text-content">
+                      <h3 data-i18n="fest_book_page1_h3_summary">รากเหง้าหริภุญชัย</h3>
+                      <p data-i18n="fest_book_page1_p_summary">ประเพณีนี้เริ่มต้นที่นครหริภุญชัย...</p>
+                      <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                    </div>
+                  </div>
+                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_hariphunchai_1778658356222.png" class="page-full-image"></div>
+                </div>
+                <div id="book-cover-part" class="book-flipping-part">
+                  <div class="book-cover-front"><img src="assets/images/history_book_cover_fest_1778658289093.png" alt="Cover"></div>
+                  <div class="book-cover-back" style="background:#FDF8E1;">
+                    <div class="page-text-content">
+                      <h3 style="font-size:1.8rem;" data-i18n="fest_book_cover_h3">ประวัติและตำนานยี่เป็ง</h3>
+                      <p data-i18n="fest_book_cover_p_summary">บันทึกการเดินทางของแสงไฟแห่งศรัทธา...</p>
+                      <p style="margin-top:2rem; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_start">เปิดอ่าน →</p>
+                    </div>
                   </div>
                 </div>
               </div>
