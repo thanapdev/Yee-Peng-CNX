@@ -554,8 +554,8 @@ footer {
 /* ─── INTERACTIVE BOOK (Multi-page Version) ───────────── */
 .book-perspective {
   perspective: 2500px;
-  width: 340px;
-  height: 480px;
+  width: 400px;
+  height: 600px;
   transition: all 1s var(--ease-out);
   z-index: 20;
 }
@@ -586,6 +586,7 @@ footer {
 .book-flipping-part, .book-flipping-page {
   transform-origin: left;
   transition: transform 1.2s var(--ease-smooth);
+  will-change: transform;
 }
 
 .book-flipping-part.is-open {
@@ -623,9 +624,10 @@ footer {
   overflow: hidden;
 }
 
-.book-cover-back, .page-back {
-  transform: rotateY(180deg);
-}
+.book-cover-front { transform: translateZ(1px); }
+.book-cover-back { transform: rotateY(180deg) translateZ(1px); }
+.page-front { transform: translateZ(1px); }
+.page-back { transform: rotateY(180deg) translateZ(1px); }
 
 .book-cover-front img {
   width: 100%;
