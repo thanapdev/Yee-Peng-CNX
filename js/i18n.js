@@ -261,6 +261,11 @@ window.LANG = {
     fest_book_page4_h3_summary: 'มรดกวัฒนธรรมล้านนาสู่สายตาโลก',
     fest_book_page4_p_summary: 'ปัจจุบันยี่เป็งเชียงใหม่กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลก แต่หัวใจสำคัญยังคงอยู่ที่การรักษารากเหง้าและความงดงามของแสงไฟแห่งล้านนาที่ส่องสว่างข้ามกาลเวลาสู่สายตาชาวโลก',
     fest_book_cover_p_summary: 'บันทึกการเดินทางของแสงไฟแห่งศรัทธาจากอาณาจักรหริภุญชัยสู่มหานครล้านนา...',
+    fest_refs_h: 'แหล่งข้อมูลและเอกสารอ้างอิง',
+    fest_ref1: '• Chiang Mai CAD: <a href="https://www.chiangmaicad.com/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">ศูนย์วัฒนธรรมเชียงใหม่ (CAD)</a>',
+    fest_ref2: '• บัตรเข้าชม: <a href="https://faceticket.net/th/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
+    fest_ref3: '• ข้อมูลเทศกาล: <a href="https://yipenglanternfestival.in.th/th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
+    fest_ref4: '',
 
   },
 
@@ -518,6 +523,11 @@ window.LANG = {
     fest_book_page4_p_summary: 'Today, Chiang Mai\'s Yi Peng is a global event. While its scale has grown, its core remains the preservation of Lanna roots and the timeless beauty of faith-driven lights that shine across generations.',
     fest_book_cover_h3: 'History & Legends',
     fest_book_cover_p_summary: 'A journal of light and faith from Hariphunchai to Lanna...',
+    fest_refs_h: 'Sources and References',
+    fest_ref1: '• Chiang Mai CAD: <a href="https://www.chiangmaicad.com/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Chiang Mai Culture and Art Center (CAD)</a>',
+    fest_ref2: '• Tickets: <a href="https://faceticket.net/th/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
+    fest_ref3: '• Festival Info: <a href="https://yipenglanternfestival.in.th/th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
+    fest_ref4: '',
 
   }
 
@@ -541,30 +551,28 @@ function applyLang(lang, initial = false) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       // If we are in Thai (default), save the HTML text into our translation object
+      // only if the key is not already defined in i18n.js
       if (localStorage.getItem('yp-lang') === 'th' || !localStorage.getItem('yp-lang')) {
-        const currentText = (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') ? el.placeholder : el.textContent;
-        if (currentText && currentText.trim() !== "") {
-           window.LANG['th'][key] = currentText.trim();
+        const currentHTML = (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') ? el.placeholder : el.innerHTML;
+        if (currentHTML && currentHTML.trim() !== "" && !window.LANG['th'][key]) {
+           window.LANG['th'][key] = currentHTML.trim();
         }
       }
     });
   }
 
   // ─── TRANSLATION LOGIC ─────────────────────────────────
-  // We only overwrite the text if we are NOT in the initial Thai load
-  // (because in the initial load, the HTML already has the correct text).
-  if (!(initial && lang === 'th')) {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = t[key];
-        } else {
-          el.textContent = t[key];
-        }
+  // Apply translations to all elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.innerHTML = t[key];
       }
-    });
-  }
+    }
+  });
 
   // Update UI components
   document.body.classList.toggle('lang-th', lang === 'th');

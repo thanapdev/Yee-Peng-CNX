@@ -18,13 +18,13 @@ function initTimeline() {
         container.innerHTML = '';
         items.forEach((item) => {
             container.innerHTML += `
-                <div class="reveal timeline-item">
-                    <div class="timeline-time">
-                        <span style="font-family:var(--font-display);color:#E8925C;font-weight:600;font-size:1.1rem;">${item.time}</span>
+                <div class="reveal schedule-item">
+                    <div class="schedule-time">
+                        <span>${item.time}</span>
                     </div>
-                    <div class="timeline-content">
-                        <div class="timeline-dot"></div>
-                        <p style="color:rgba(255,248,231,0.85);font-size:.95rem;line-height:1.6;">${item.event}</p>
+                    <div class="schedule-content">
+                        <div class="schedule-dot"></div>
+                        <p>${item.event}</p>
                     </div>
                 </div>`;
         });
