@@ -1,0 +1,60 @@
+/* =====================================================
+   YI PENG FESTIVAL — GALLERY SPECIFIC STYLES
+   ===================================================== */
+
+.gal-item {
+  transition: transform 0.4s ease;
+}
+
+.gal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9,20,34,0.9), transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gal-item:hover .gal-overlay {
+  opacity: 1;
+}
+
+@keyframes scroll-track {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-450px * 8)); }
+}
+
+.gal-frame {
+  border: 8px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 0 2px var(--gold-primary);
+  overflow: hidden;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.gal-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(232, 146, 92, 0.3);
+  pointer-events: none;
+}
+
+.gal-carousel-item:hover .gal-frame {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 3px var(--gold-primary);
+}
+
+.gal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  border-color: var(--gold-primary);
+}
+
+.gal-card:hover img {
+  transform: scale(1.08);
+}

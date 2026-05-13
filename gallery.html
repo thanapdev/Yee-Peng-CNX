@@ -1,64 +1,21 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .gallery-grid-masonry .gal-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-    .gallery-grid-masonry .gal-item img {
-      transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
-    }
-    .gallery-grid-masonry .gal-item:hover img {
-      transform: scale(1.1);
-    }
-    .gal-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,27,42,0.9) 0%, rgba(13,27,42,0) 50%);
-      display: flex;
-      align-items: flex-end;
-      padding: 1.5rem;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .gal-item:hover .gal-overlay {
-      opacity: 1;
-    }
-    @keyframes scroll-track {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-450px * 8)); }
-    }
-    .gal-frame {
-      border: 8px solid rgba(255, 255, 255, 0.05);
-      border-radius: 4px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 0 2px var(--gold-primary);
-      overflow: hidden;
-      transition: all 0.5s ease;
-      position: relative;
-    }
-    .gal-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(232, 146, 92, 0.3);
-      pointer-events: none;
-    }
-    .gal-carousel-item:hover .gal-frame {
-      transform: scale(1.05);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 3px var(--gold-primary);
-    }
-  </style>
+  <link rel="stylesheet" href="css/gallery.css">
   <title>แกลเลอรีภาพ | Gallery — ยี่เป็ง เชียงใหม่</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/festival.css">
 </head>
+
 <body>
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
@@ -106,13 +63,20 @@
   <main>
     <section id="sec-gallery">
       <div class="hero-container">
-        <canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block;"></canvas>
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0) 0%,rgba(13,27,42,0.4) 60%,rgba(13,27,42,1) 100%);z-index:2;pointer-events:none;"></div>
+        <canvas id="hero-canvas"
+          style="position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block;"></canvas>
+        <div
+          style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0) 0%,rgba(13,27,42,0.4) 60%,rgba(13,27,42,1) 100%);z-index:2;pointer-events:none;">
+        </div>
         <div class="text-content" style="z-index:10;">
-          <h1 class="reveal reveal-delay-1 animate-text-glow" style="font-size:clamp(2.5rem,6vw,7rem); font-weight:300; line-height:1.1; color:#FFF8E7; letter-spacing: -0.02em;">
-            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;" data-i18n="gal_h2">แกลเลอรีภาพถ่าย</span>
+          <h1 class="reveal reveal-delay-1 animate-text-glow"
+            style="font-size:clamp(2.5rem,6vw,7rem); font-weight:300; line-height:1.1; color:#FFF8E7; letter-spacing: -0.02em;">
+            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;"
+              data-i18n="gal_h2">แกลเลอรีภาพถ่าย</span>
           </h1>
-          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,1); margin-top:1.5rem; letter-spacing:.2em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;" data-i18n="gal_sub">ความทรงจำแห่งแสงสีและศรัทธา</p>
+          <p class="reveal reveal-delay-2"
+            style="color:rgba(255,248,231,1); margin-top:1.5rem; letter-spacing:.2em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;"
+            data-i18n="gal_sub">ความทรงจำแห่งแสงสีและศรัทธา</p>
         </div>
         <div style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(232,146,92,0.6)" stroke-width="1.5">
@@ -122,161 +86,217 @@
       </div>
 
       <div style="background:var(--night-sky-2); position: relative; z-index: 10;">
-          <div class="section-header reveal" style="text-align:center; margin-bottom: 3rem;">
-            <p class="eyebrow" style="color:var(--gold-primary); letter-spacing: 0.3em;" data-i18n="gal_eyebrow">FEATURED MOMENTS</p>
-            <h2 class="display-md" style="color:#FFF8E7; margin-top:.75rem; text-shadow: 0 0 20px rgba(232,146,92,0.3);" data-i18n="gal_h2_main">บันทึกความทรงจำยี่เป็ง</h2>
-          </div>
 
-          <!-- 1. Infinite Auto-Scrolling Carousel with Premium Frames -->
-          <div class="gal-carousel-container" style="overflow: hidden; padding: 3rem 0; position: relative; margin-bottom: 5rem;">
-            <div class="gal-carousel-track" style="display: flex; width: calc(450px * 16); animation: scroll-track 60s linear infinite;">
-              <!-- Carousel items -->
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-sky.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/temple.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/krathong.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-crowd.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-temple.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-river.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-parade.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/hero.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <!-- Duplicate loop -->
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-sky.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/temple.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/krathong.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
-              </div>
-              <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
-                <div class="gal-frame">
-                  <img src="assets/images/gallery-crowd.png" style="width: 100%; height: 320px; object-fit: cover; display: block;">
-                </div>
+        <!-- 1. Infinite Auto-Scrolling Carousel with Premium Frames -->
+        <div class="gal-carousel-container"
+          style="overflow: hidden; padding: 3rem 0; position: relative; margin-bottom: 5rem;">
+          <div class="gal-carousel-track"
+            style="display: flex; width: calc(450px * 16); animation: scroll-track 60s linear infinite;">
+            <!-- Carousel items -->
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-sky.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-          </div>
-
-          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:4rem;">
-            <button class="gal-filter-btn btn btn-primary active" data-filter="all" data-i18n="gal_filter_all">ทั้งหมด</button>
-            <button class="gal-filter-btn btn btn-outline" data-filter="sky" data-i18n="gal_filter_sky">ท้องฟ้า</button>
-            <button class="gal-filter-btn btn btn-outline" data-filter="river" data-i18n="gal_filter_river">แม่น้ำ</button>
-            <button class="gal-filter-btn btn btn-outline" data-filter="temple" data-i18n="gal_filter_temple">วัด</button>
-          </div>
-
-          <div class="gallery-grid-standard" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 0 2rem 6rem;">
-            <!-- Card 1 -->
-            <div class="gal-card reveal" data-cat="sky" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/gallery-sky.png" style="width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s ease;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">LANTERN SKY</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">มหัศจรรย์โคมลอยนับพันสว่างไสวทั่วท้องฟ้าเชียงใหม่</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/temple.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 2 -->
-            <div class="gal-card reveal" data-cat="temple" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/temple.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">WAT PHRA SINGH</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">ความงดงามของสถาปัตยกรรมล้านนาในคืนวันเพ็ญ</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/krathong.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 3 -->
-            <div class="gal-card reveal" data-cat="river" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/krathong.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">PING RIVER</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">แสงเทียนจากกระทงนับหมื่นไหลรินตามสายน้ำปิง</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-crowd.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 4 -->
-            <div class="gal-card reveal" data-cat="sky" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/gallery-crowd.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">MASS RELEASE</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">บรรยากาศการปล่อยโคมลอยร่วมกันอย่างพร้อมพรียง</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-temple.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 5 -->
-            <div class="gal-card reveal" data-cat="temple" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/gallery-temple.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">LANNA HERITAGE</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">พิธีกรรมทางศาสนาและวัฒนธรรมอันศักดิ์สิทธิ์</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-river.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 6 -->
-            <div class="gal-card reveal" data-cat="river" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/gallery-river.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">RIVER GLOW</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">ความโรแมนติกริมฝั่งแม่น้ำในคืนวันยี่เป็ง</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-parade.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 7 -->
-            <div class="gal-card reveal" data-cat="sky" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/hero.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">YEE PENG NIGHT</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">ค่ำคืนที่ท้องฟ้าถูกเติมเต็มด้วยความหวังและคำอธิษฐาน</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/hero.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 8 -->
-            <div class="gal-card reveal" data-cat="temple" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/activity_tam_phang.jpg" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">TAM PHANG PATIT</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">การจุดผางประทีปเพื่อถวายเป็นพุทธบูชา</p>
+            <!-- Duplicate loop -->
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-sky.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
-            <!-- Card 9 -->
-            <div class="gal-card reveal" data-cat="river" style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-              <div style="overflow: hidden;"><img src="assets/images/gallery-parade.png" style="width: 100%; height: 240px; object-fit: cover;"></div>
-              <div style="padding: 1.5rem;">
-                <h3 style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">GRAND PARADE</h3>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">ความตระการตาของขบวนรถกระทงใหญ่รอบคูเมือง</p>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/temple.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
+              </div>
+            </div>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/krathong.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
+              </div>
+            </div>
+            <div class="gal-carousel-item" style="width: 450px; flex-shrink: 0; padding: 0 15px;">
+              <div class="gal-frame">
+                <img src="assets/images/gallery-crowd.png"
+                  style="width: 100%; height: 320px; object-fit: cover; display: block;">
               </div>
             </div>
           </div>
         </div>
+
+        <div class="section-header reveal" style="text-align:center; margin-bottom: 3rem;">
+          <p class="eyebrow" style="color:var(--gold-primary); letter-spacing: 0.3em;" data-i18n="gal_eyebrow">FEATURED
+            MOMENTS</p>
+          <h2 class="display-md" style="color:#FFF8E7; margin-top:.75rem; text-shadow: 0 0 20px rgba(232,146,92,0.3);"
+            data-i18n="gal_h2_main">บันทึกความทรงจำยี่เป็ง</h2>
+        </div>
+
+        <div class="gallery-grid-standard"
+          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 0 2rem 6rem;">
+          <!-- Card 1 -->
+          <div class="gal-card reveal" data-cat="sky"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/gallery-sky.png"
+                style="width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s ease;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                LANTERN SKY</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                มหัศจรรย์โคมลอยนับพันสว่างไสวทั่วท้องฟ้าเชียงใหม่</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="gal-card reveal" data-cat="temple"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/temple.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                WAT PHRA SINGH</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                ความงดงามของสถาปัตยกรรมล้านนาในคืนวันเพ็ญ</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="gal-card reveal" data-cat="river"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/krathong.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                PING RIVER</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                แสงเทียนจากกระทงนับหมื่นไหลรินตามสายน้ำปิง</p>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="gal-card reveal" data-cat="sky"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/gallery-crowd.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                MASS RELEASE</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                บรรยากาศการปล่อยโคมลอยร่วมกันอย่างพร้อมพรียง</p>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="gal-card reveal" data-cat="temple"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/gallery-temple.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                LANNA HERITAGE</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                พิธีกรรมทางศาสนาและวัฒนธรรมอันศักดิ์สิทธิ์</p>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="gal-card reveal" data-cat="river"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/gallery-river.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                RIVER GLOW</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                ความโรแมนติกริมฝั่งแม่น้ำในคืนวันยี่เป็ง</p>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="gal-card reveal" data-cat="sky"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/hero.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                YEE PENG NIGHT</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                ค่ำคืนที่ท้องฟ้าถูกเติมเต็มด้วยความหวังและคำอธิษฐาน</p>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="gal-card reveal" data-cat="temple"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/activity_tam_phang.jpg"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                TAM PHANG PATIT</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                การจุดผางประทีปเพื่อถวายเป็นพุทธบูชา</p>
+            </div>
+          </div>
+          <!-- Card 9 -->
+          <div class="gal-card reveal" data-cat="river"
+            style="background: rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+            <div style="overflow: hidden;"><img src="assets/images/gallery-parade.png"
+                style="width: 100%; height: 240px; object-fit: cover;"></div>
+            <div style="padding: 1.5rem;">
+              <h3
+                style="color: #FFF8E7; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Kodchasan', sans-serif;">
+                GRAND PARADE</h3>
+              <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.6;">
+                ความตระการตาของขบวนรถกระทงใหญ่รอบคูเมือง</p>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
   </main>
@@ -284,11 +304,14 @@
   <div id="countdown-bar">
     <span class="countdown-label" data-i18n="countdown_label">นับถอยหลังสู่คืนยี่เป็ง</span>
     <div class="countdown-units">
-      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub" data-i18n="cd_days">วัน</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub"
+          data-i18n="cd_days">วัน</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub" data-i18n="cd_hours">ชม.</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub"
+          data-i18n="cd_hours">ชม.</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub" data-i18n="cd_mins">นาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub"
+          data-i18n="cd_mins">นาที</span></div>
     </div>
   </div>
 
@@ -296,7 +319,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-          <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2"/><ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1"/><line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1"/></svg>
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2" />
+            <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1" />
+            <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
+          </svg>
           <span style="font-family:var(--font-display);font-size:1.1rem;color:#FFF8E7;">ยี่เป็ง เชียงใหม่</span>
         </div>
         <p data-i18n="footer_tagline"></p>
@@ -317,140 +344,39 @@
   </footer>
 
   <!-- Cinematic Lightbox Modal -->
-  <div id="gal-modal" style="position:fixed; inset:0; background:rgba(2,5,10,0.85); z-index:9000; display:none; align-items:center; justify-content:center; opacity:0; transition:all 0.5s cubic-bezier(0.19, 1, 0.22, 1); backdrop-filter:blur(15px); cursor: none;">
+  <div id="gal-modal"
+    style="position:fixed; inset:0; background:rgba(2,5,10,0.85); z-index:9000; display:none; align-items:center; justify-content:center; opacity:0; transition:all 0.5s cubic-bezier(0.19, 1, 0.22, 1); backdrop-filter:blur(15px); cursor: none;">
     <!-- Header/Close -->
-    <div style="position:absolute; top:0; left:0; right:0; padding:30px; display:flex; justify-content:space-between; align-items:center; z-index:10002;">
+    <div
+      style="position:absolute; top:0; left:0; right:0; padding:30px; display:flex; justify-content:space-between; align-items:center; z-index:10002;">
       <div id="modal-title-area" style="opacity:0; transform:translateX(-20px); transition:all 0.5s 0.2s ease;">
-        <h3 id="modal-title" style="color:#FFF8E7; font-family:'Kodchasan', sans-serif; font-size:1.5rem; margin-bottom:5px;">IMAGE TITLE</h3>
+        <h3 id="modal-title"
+          style="color:#FFF8E7; font-family:'Kodchasan', sans-serif; font-size:1.5rem; margin-bottom:5px;">IMAGE TITLE
+        </h3>
         <p id="modal-desc" style="color:rgba(255,255,255,0.5); font-size:0.9rem;">Location Detail</p>
       </div>
-      <button id="modal-close" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FFF8E7; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.5rem; transition:all 0.3s ease;">&times;</button>
+      <button id="modal-close"
+        style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#FFF8E7; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.5rem; transition:all 0.3s ease;">&times;</button>
     </div>
 
     <!-- Navigation -->
-    <button id="modal-prev" style="position:absolute; left:20px; background:none; border:none; color:#FFF8E7; font-size:3rem; cursor:pointer; z-index:10002; opacity:0.3; transition:opacity 0.3s ease;">&#10094;</button>
-    <button id="modal-next" style="position:absolute; right:20px; background:none; border:none; color:#FFF8E7; font-size:3rem; cursor:pointer; z-index:10002; opacity:0.3; transition:opacity 0.3s ease;">&#10095;</button>
+    <button id="modal-prev"
+      style="position:absolute; left:20px; background:none; border:none; color:#FFF8E7; font-size:3rem; cursor:pointer; z-index:10002; opacity:0.3; transition:opacity 0.3s ease;">&#10094;</button>
+    <button id="modal-next"
+      style="position:absolute; right:20px; background:none; border:none; color:#FFF8E7; font-size:3rem; cursor:pointer; z-index:10002; opacity:0.3; transition:opacity 0.3s ease;">&#10095;</button>
 
     <!-- Main Image Container -->
-    <div id="modal-img-wrap" style="position:relative; z-index:10001; transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1); transform: scale(0.9);">
-      <img id="modal-img" src="" style="max-width:90vw; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 50px 100px rgba(0,0,0,0.8); display:block;">
+    <div id="modal-img-wrap"
+      style="position:relative; z-index:10001; transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1); transform: scale(0.9);">
+      <img id="modal-img" src=""
+        style="max-width:90vw; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 50px 100px rgba(0,0,0,0.8); display:block;">
     </div>
   </div>
 
   <script src="js/i18n.js"></script>
   <script src="js/hero-moat.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      window.initGallery?.();
-      window.initReveal?.();
-
-      // Cinematic Lightbox Logic
-      const modal = document.getElementById('gal-modal');
-      const modalImg = document.getElementById('modal-img');
-      const modalWrap = document.getElementById('modal-img-wrap');
-      const modalTitle = document.getElementById('modal-title');
-      const modalDesc = document.getElementById('modal-desc');
-      const modalTitleArea = document.getElementById('modal-title-area');
-      const closeBtn = document.getElementById('modal-close');
-      const prevBtn = document.getElementById('modal-prev');
-      const nextBtn = document.getElementById('modal-next');
-      const galCards = Array.from(document.querySelectorAll('.gal-card'));
-      let currentIndex = 0;
-      let isZoomed = false;
-
-      function updateModalContent(index) {
-        const card = galCards[index];
-        const img = card.querySelector('img');
-        const title = card.querySelector('h3').textContent;
-        const desc = card.querySelector('p').textContent;
-
-        modalImg.src = img.src;
-        modalTitle.textContent = title;
-        modalDesc.textContent = desc;
-        currentIndex = index;
-
-        // Reset zoom
-        modalImg.style.maxWidth = '90vw';
-        modalImg.style.maxHeight = '80vh';
-        modalImg.style.cursor = 'zoom-in';
-        modalWrap.style.transform = 'scale(1)';
-        isZoomed = false;
-      }
-
-      function openModal(index) {
-        updateModalContent(index);
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        setTimeout(() => { 
-          modal.style.opacity = '1'; 
-          modalWrap.style.transform = 'scale(1)';
-          modalTitleArea.style.opacity = '1';
-          modalTitleArea.style.transform = 'translateX(0)';
-        }, 50);
-      }
-
-      function closeModal() {
-        modal.style.opacity = '0';
-        modalWrap.style.transform = 'scale(0.9)';
-        modalTitleArea.style.opacity = '0';
-        modalTitleArea.style.transform = 'translateX(-20px)';
-        setTimeout(() => { modal.style.display = 'none'; }, 400);
-        document.body.style.overflow = 'auto';
-      }
-
-      function showNext() {
-        currentIndex = (currentIndex + 1) % galCards.length;
-        updateModalContent(currentIndex);
-      }
-
-      function showPrev() {
-        currentIndex = (currentIndex - 1 + galCards.length) % galCards.length;
-        updateModalContent(currentIndex);
-      }
-
-      galCards.forEach((card, index) => {
-        card.addEventListener('click', () => openModal(index));
-      });
-
-      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
-      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
-      
-      modalImg.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!isZoomed) {
-          modalImg.style.maxWidth = 'none';
-          modalImg.style.maxHeight = 'none';
-          modalImg.style.cursor = 'zoom-out';
-          isZoomed = true;
-        } else {
-          modalImg.style.maxWidth = '90vw';
-          modalImg.style.maxHeight = '80vh';
-          modalImg.style.cursor = 'zoom-in';
-          isZoomed = false;
-        }
-      });
-
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal || e.target === modalWrap) closeModal(); });
-      
-      document.addEventListener('keydown', (e) => {
-        if (modal.style.display === 'flex') {
-          if (e.key === 'Escape') closeModal();
-          if (e.key === 'ArrowRight') showNext();
-          if (e.key === 'ArrowLeft') showPrev();
-        }
-      });
-
-      [prevBtn, nextBtn].forEach(btn => {
-        btn.onmouseenter = () => btn.style.opacity = '1';
-        btn.onmouseleave = () => btn.style.opacity = '0.3';
-      });
-      
-      closeBtn.onmouseenter = () => closeBtn.style.transform = 'rotate(90deg) scale(1.2)';
-      closeBtn.onmouseleave = () => closeBtn.style.transform = 'rotate(0) scale(1)';
-    });
-  </script>
+  <script src="js/gallery.js"></script>
 </body>
+
 </html>
