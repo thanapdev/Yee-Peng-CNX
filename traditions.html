@@ -73,6 +73,56 @@
       </div>
 
       <!-- Content moved to festival.html -->
+      
+      <section class="online-activities-sec" style="padding: 100px 0; background: linear-gradient(to bottom, #0D1B2A, #1B263B); position: relative; z-index: 1;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+          <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+            <h2 data-i18n="trad_act_title" style="font-family:'Kodchasan', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); color: #FFF8E7; margin-bottom: 1rem; font-weight: 300;">สัมผัสประสบการณ์ยี่เป็งแบบออนไลน์</h2>
+            <div style="width: 80px; height: 2px; background: var(--lantern-gold); margin: 0 auto;"></div>
+          </div>
+
+          <div class="activity-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-bottom: 5rem;">
+            <!-- Sky Lantern -->
+            <div class="activity-card reveal" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(232,146,92,0.15); padding: 3rem 2rem; border-radius: 20px; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(10px);">
+              <div class="activity-icon" style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 10px rgba(232,146,92,0.5));">🏮</div>
+              <h3 data-i18n="trad_act_lantern_h" style="font-family:'Kodchasan', sans-serif; color: var(--lantern-gold); margin-bottom: 1rem; font-size: 1.5rem;">ปล่อยโคมลอยเสมือนจริง</h3>
+              <p data-i18n="trad_act_lantern_p" style="color: rgba(255,248,231,0.7); line-height: 1.7; font-weight: 300;">เขียนคำอธิษฐานแล้วส่งโคมลอยขึ้นสู่ท้องฟ้านพบุรีศรีนครพิงค์</p>
+            </div>
+
+            <!-- Loy Krathong -->
+            <div class="activity-card reveal reveal-delay-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(232,146,92,0.15); padding: 3rem 2rem; border-radius: 20px; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(10px);">
+              <div class="activity-icon" style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 10px rgba(232,146,92,0.5));">🌸</div>
+              <h3 data-i18n="trad_act_loykrathong_h" style="font-family:'Kodchasan', sans-serif; color: var(--lantern-gold); margin-bottom: 1rem; font-size: 1.5rem;">ลอยกระทงออนไลน์</h3>
+              <p data-i18n="trad_act_loykrathong_p" style="color: rgba(255,248,231,0.7); line-height: 1.7; font-weight: 300;">ขอขมาพระแม่คงคาและลอยทุกข์โศกไปกับสายน้ำแม่ปิงจำลอง</p>
+            </div>
+
+            <!-- Phang Patip -->
+            <div class="activity-card reveal reveal-delay-2" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(232,146,92,0.15); padding: 3rem 2rem; border-radius: 20px; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(10px);">
+              <div class="activity-icon" style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 10px rgba(232,146,92,0.5));">🕯️</div>
+              <h3 data-i18n="trad_act_phang_h" style="font-family:'Kodchasan', sans-serif; color: var(--lantern-gold); margin-bottom: 1rem; font-size: 1.5rem;">จุดผางประทีปบูชา</h3>
+              <p data-i18n="trad_act_phang_p" style="color: rgba(255,248,231,0.7); line-height: 1.7; font-weight: 300;">จุดประทีปดินเผาเพื่อความเป็นสิริมงคลและแสงสว่างในชีวิต</p>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <a href="game.html" class="cta-button" data-i18n="trad_act_btn" style="display: inline-block; background: var(--lantern-gold); color: #0D1B2A; padding: 1.2rem 3rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(232,146,92,0.3); font-family:'Kodchasan', sans-serif;">เข้าร่วมเทศกาลยี่เป็ง</a>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .activity-card:hover {
+          transform: translateY(-10px);
+          border-color: var(--lantern-gold) !important;
+          background: rgba(232,146,92,0.08) !important;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .cta-button:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 15px 40px rgba(232,146,92,0.5);
+          filter: brightness(1.1);
+        }
+      </style>
 
     </section>
   </main>

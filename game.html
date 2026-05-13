@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ประสบการณ์ยี่เป็งเสมือนจริง | Virtual Experience — ยี่เป็ง เชียงใหม่</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    :root {
+      --gold: #E8925C;
+      --night: #050a0f;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--night);
+      color: #fff8e7;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+    }
+
+    #game-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Scroll Container */
+    .game-scroller {
+      position: relative;
+      z-index: 10;
+    }
+
+    .game-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 2rem;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .section-content {
+      pointer-events: auto;
+      text-align: center;
+      max-width: 600px;
+      background: rgba(13, 27, 42, 0.4);
+      padding: 3rem;
+      border-radius: 24px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(232, 146, 92, 0.2);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .game-section.active .section-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    h2 {
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(232, 146, 92, 0.4);
+    }
+
+    p.sub {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .input-group {
+      margin-bottom: 2rem;
+    }
+
+    .game-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(232, 146, 92, 0.4);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      color: #fff8e7;
+      font-family: 'Kodchasan', sans-serif;
+      font-size: 1.1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .game-input:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(232, 146, 92, 0.2);
+    }
+
+    .action-btn {
+      background: var(--gold);
+      color: #0d1b2a;
+      border: none;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(232, 146, 92, 0.3);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(232, 146, 92, 0.5);
+    }
+
+    .action-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .next-stage-btn {
+      margin-top: 1.5rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Kodchasan', sans-serif;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+    }
+
+    .next-stage-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .next-stage-btn:hover {
+      background: rgba(232, 146, 92, 0.1);
+      transform: scale(1.05);
+    }
+
+    /* UI Components */
+    /* Selection Styles */
+    .selection-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .style-option {
+      width: 80px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(232, 146, 92, 0.3);
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+    }
+
+    .style-option:hover, .style-option.active {
+      border-color: var(--gold);
+      background: rgba(232, 146, 92, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .style-option.active {
+      box-shadow: 0 0 20px rgba(232, 146, 92, 0.3);
+    }
+
+    .style-preview {
+      width: 40px;
+      height: 50px;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(232, 146, 92, 0.5);
+    }
+
+    .style-label {
+      font-size: 0.7rem;
+      font-family: 'Kodchasan', sans-serif;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .wish-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .wish-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(232, 146, 92, 0.2);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: 'Kodchasan', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .wish-tag:hover {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .wish-tag.active {
+      background: var(--gold);
+      color: #0d1b2a;
+      border-color: var(--gold);
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(232, 146, 92, 0.4);
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 100;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .back-btn:hover { opacity: 1; }
+
+    .scroll-indicator {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 100;
+      opacity: 0.6;
+      animation: float 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .scroll-indicator p {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 10px); }
+    }
+
+    /* Custom Cursor */
+    #cursor, #cursor-ring { pointer-events: none; }
+
+    /* Final State Section */
+    #sec-final .section-content {
+      background: none;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    @media (max-width: 768px) {
+      .section-content { padding: 2rem; }
+      h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  
+  <canvas id="game-canvas"></canvas>
+
+  <a href="traditions.html" class="back-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7" />
+    </svg>
+    <span data-i18n="game_back">กลับหน้าประเพณี</span>
+  </a>
+
+  <div class="scroll-indicator" id="scroll-hint" style="display: none;">
+    <p data-i18n="intro_scroll">เลื่อนลงเพื่อเริ่ม</p>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+    </svg>
+  </div>
+
+  <div class="game-scroller">
+    <!-- SECTION 1: SKY (LANTERN) -->
+    <section class="game-section active" id="sec-sky">
+      <div class="section-content">
+        <h2 data-i18n="game_release_lantern">ปล่อยโคมลอย</h2>
+        <p class="sub" data-i18n="game_lantern_desc">อธิษฐานและส่งโคมลอยขึ้นสู่ท้องฟ้าเสมือนจริง ร่วมสืบสานประเพณีจากทุกมุมโลก</p>
+        
+        <div class="selection-container">
+          <div class="style-option active" data-style="classic">
+            <div class="style-preview" style="background: #FFF8E7;"></div>
+            <div class="style-label" data-i18n="lantern_style_classic">โคมสีขาว</div>
+          </div>
+          <div class="style-option" data-style="gold">
+            <div class="style-preview" style="background: #E8925C; border: 1px solid #FFF8E7;"></div>
+            <div class="style-label" data-i18n="lantern_style_gold">โคมสีทอง</div>
+          </div>
+          <div class="style-option" data-style="red">
+            <div class="style-preview" style="background: #B85C4A;"></div>
+            <div class="style-label" data-i18n="lantern_style_red">โคมสีแดง</div>
+          </div>
+        </div>
+
+        <div class="wish-tags">
+          <div class="wish-tag" data-wish="health" data-i18n="wish_health">สุขภาพแข็งแรง</div>
+          <div class="wish-tag" data-wish="love" data-i18n="wish_love">ความรักสมหวัง</div>
+          <div class="wish-tag" data-wish="wealth" data-i18n="wish_wealth">โชคลาภร่ำรวย</div>
+          <div class="wish-tag" data-wish="success" data-i18n="wish_success">ความสำเร็จ</div>
+          <div class="wish-tag" data-wish="family" data-i18n="wish_family">ครอบครัวมีความสุข</div>
+          <div class="wish-tag" data-wish="peace" data-i18n="wish_peace">สันติภาพและความสุข</div>
+        </div>
+
+        <div class="input-group">
+          <button class="action-btn" id="btn-release-lantern" data-i18n="game_release_lantern">ปล่อยโคมลอย</button>
+        </div>
+        <button class="next-stage-btn" id="next-to-land" data-i18n="game_next">ขั้นตอนถัดไป</button>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LAND (PHANG PATIT) -->
+    <section class="game-section" id="sec-land">
+      <div class="section-content">
+        <h2 data-i18n="game_light_phang">จุดผางประทีป</h2>
+        <p class="sub" data-i18n="game_phang_desc">เติมแสงสว่างให้แผ่นดินล้านนา จุดประทีปดินเผาบูชาพระพุทธเจ้าและความเป็นสิริมงคล</p>
+        <div class="input-group">
+          <button class="action-btn" id="btn-light-phang" data-i18n="game_light_phang">จุดผางประทีปบูชา</button>
+        </div>
+        <button class="next-stage-btn" id="next-to-river" data-i18n="game_next">ขั้นตอนถัดไป</button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RIVER (KRATHONG) -->
+    <section class="game-section" id="sec-river">
+      <div class="section-content">
+        <h2 data-i18n="game_float_krathong">ลอยกระทงออนไลน์</h2>
+        <p class="sub" data-i18n="game_krathong_desc">ขอขมาพระแม่คงคาและลอยทุกข์โศกไปกับสายน้ำแม่ปิงจำลองที่ส่องสว่างด้วยศรัทธา</p>
+        <div class="input-group">
+          <input type="text" id="wish-krathong" class="game-input" data-i18n="game_wish_placeholder" placeholder="เขียนคำอธิษฐานของคุณที่นี่...">
+          <button class="action-btn" id="btn-float-krathong" data-i18n="game_float_krathong">ลอยกระทง</button>
+        </div>
+        <button class="next-stage-btn" id="next-to-final" data-i18n="game_next">ขั้นตอนถัดไป</button>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PANORAMA -->
+    <section class="game-section" id="sec-final">
+      <div class="section-content">
+        <h2 data-i18n="game_final_h">รุ่งโรจน์นิรันดร์</h2>
+        <p class="sub" data-i18n="game_final_p">แสงสว่างแห่งยี่เป็งจะส่องนำทางใจของคุณตลอดไป</p>
+        <button class="action-btn" id="btn-restart" data-i18n="game_restart">เริ่มใหม่อีกครั้ง</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/game.js"></script>
+</body>
+
+</html>
