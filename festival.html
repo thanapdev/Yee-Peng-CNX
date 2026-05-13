@@ -75,15 +75,15 @@
 
     .page-text-content h3 {
       font-family: var(--font-display);
-      font-size: 2rem !important;
-      margin-bottom: 1.5rem !important;
+      font-size: 1.8rem !important;
+      margin-bottom: 1.2rem !important;
       color: #1a0f0a;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     .page-text-content p {
-      font-size: 1.05rem !important;
-      line-height: 1.9 !important;
+      font-size: 0.95rem !important;
+      line-height: 1.7 !important;
       color: #3d1f14;
       opacity: 0.9;
     }
@@ -351,7 +351,7 @@
           <!-- Left: Text Content -->
           <div id="segment1-text" class="reveal-left" style="flex: 1; min-width: 300px;">
             <p class="eyebrow" style="color:#E8925C; margin-bottom:1rem;" data-i18n="fest_book_eyebrow">Interactive Record</p>
-            <h2 class="display-md" style="color:#FFF8E7;" data-i18n="fest_book_h2">สมุดบันทึกแสงแห่งล้านนา</h2>
+            <h2 class="display-md" style="color:#FFF8E7; font-size: clamp(1.8rem, 3.2vw, 3.2rem); white-space: nowrap;" data-i18n="fest_book_h2">สมุดบันทึกแสงแห่งล้านนา</h2>
             <p style="color:rgba(255,248,231,0.6); margin: 1.5rem 0 2.5rem; line-height: 1.8;" data-i18n="fest_book_p">
               เปิดบันทึกประวัติศาสตร์ยี่เป็งฉบับย่อ ตั้งแต่รากเหง้าหริภุญชัยจนถึงปัจจุบัน...
             </p>
@@ -367,43 +367,49 @@
                 <div class="book-spine"></div>
                 <div class="book-page-static" style="z-index: 1;">
                   <div class="page-text-content">
-                    <h3 data-i18n="fest_book_page4_h3_summary">สู่เทศกาลระดับโลก</h3>
-                    <p data-i18n="fest_book_page4_p_summary">จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลก...</p>
-                    <img src="assets/images/fest_book_page_tourism_1778658461510.png" class="book-image-detail">
+                    <h3 data-i18n="fest_book_page4_h3_summary">มรดกวัฒนธรรมล้านนาสู่สายตาโลก</h3>
+                    <p data-i18n="fest_book_page4_p_summary">ปัจจุบันยี่เป็งเชียงใหม่กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลก แต่หัวใจสำคัญยังคงอยู่ที่การรักษารากเหง้าและความงดงามของแสงไฟแห่งล้านนาที่ส่องสว่างข้ามกาลเวลาสู่สายตาชาวโลก</p>
                   </div>
                 </div>
                 <div class="book-flipping-page" data-page-index="3">
                   <div class="page-front">
                     <div class="page-text-content">
-                      <h3 data-i18n="fest_book_page3_h3_summary">เชียงใหม่และแสงแห่งศรัทธา</h3>
-                      <p data-i18n="fest_book_page3_p_summary">เมื่อพญามังรายสร้างเชียงใหม่ในปี 1839...</p>
+                      <h3 data-i18n="fest_book_page3_h3_summary">แสงสว่างบูชาพระจุฬามณี</h3>
+                      <p data-i18n="fest_book_page3_p_summary">คติความเชื่อเรื่องการปล่อยโคมลอยขึ้นสู่สรวงสวรรค์ เป็นการบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์ และเป็นการสะเดาะเคราะห์ปล่อยทุกข์โศกให้ลอยไปกับสายลม นอกจากนี้การตกแต่ง "ซุ้มประตูป่า" ยังเป็นการจำลองป่าหิมพานต์เพื่อรับเสด็จพระเวสสันดรเข้าเมืองตามความเชื่อโบราณ</p>
                       <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
                     </div>
                   </div>
-                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_symbols_1778658425214.png" class="page-full-image"></div>
+                  <div class="page-back" style="background:#FDF8E1;"></div>
                 </div>
                 <div class="book-flipping-page" data-page-index="2">
                   <div class="page-front">
                     <div class="page-text-content">
-                      <h3 data-i18n="fest_book_page2_h3_summary">สายใยแห่งความคิดถึง</h3>
-                      <p data-i18n="fest_book_page2_p_summary">ตำนานอหิวาต์ระบาดในหริภุญชัย...</p>
+                      <h3 data-i18n="fest_book_page2_h3_summary">พญามังรายและสายใยวัฒนธรรม</h3>
+                      <p data-i18n="fest_book_page2_p_summary">เมื่อพญามังรายสถาปนาเชียงใหม่ในปี พ.ศ. 1839 วัฒนธรรมดั้งเดิมได้หลอมรวมเข้ากับคติพุทธศาสนาอย่างเข้มแข็ง การลอยกระทงเปลี่ยนผ่านสู่การจุด "ผางประทีป" บูชาพระรัตนตรัยและการเทศน์มหาชาติ 13 กัณฑ์ (ตั้งธรรมหลวง) เพื่อบ่มเพาะปัญญาและศรัทธาของชาวพระนคร</p>
                       <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
                     </div>
                   </div>
-                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_loy_khamot_1778658388061.png" class="page-full-image"></div>
+                  <div class="page-back" style="background:#FDF8E1;"></div>
                 </div>
                 <div class="book-flipping-page" data-page-index="1">
                   <div class="page-front">
                     <div class="page-text-content">
-                      <h3 data-i18n="fest_book_page1_h3_summary">รากเหง้าหริภุญชัย</h3>
-                      <p data-i18n="fest_book_page1_p_summary">ประเพณีนี้เริ่มต้นที่นครหริภุญชัย...</p>
+                      <h3 data-i18n="fest_book_page1_h3_summary">กำเนิดลอยโขมดแห่งหริภุญชัย</h3>
+                      <p data-i18n="fest_book_page1_p_summary">ประวัติศาสตร์ยี่เป็งเริ่มต้นในพุทธศตวรรษที่ 15 ณ อาณาจักรหริภุญชัย เมื่อเกิดโรคระบาดใหญ่จนผู้คนต้องอพยพไปหงสาวดี เมื่อสถานการณ์คลี่คลายและเดินทางกลับ พวกเขาทำ "สะเปา" ใส่เครื่องสักการะลอยน้ำไปเพื่อส่งความระลึกถึงญาติพี่น้อง แสงไฟวับแวมกลางคืนคล้าย "ผีโขมด" จึงเป็นที่มาของตำนานลอยโขมด</p>
                       <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
                     </div>
                   </div>
-                  <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_hariphunchai_1778658356222.png" class="page-full-image"></div>
+                  <div class="page-back" style="background:#FDF8E1;"></div>
                 </div>
                 <div id="book-cover-part" class="book-flipping-part">
-                  <div class="book-cover-front"><img src="assets/images/history_book_cover_fest_1778658289093.png" alt="Cover"></div>
+                  <div class="book-cover-front" style="background:#3d1f14; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#E8925C; text-align:center; padding:2rem; border-right: 2px solid rgba(0,0,0,0.2);">
+                    <div style="border: 2px solid #E8925C; padding: 2.5rem 1.5rem; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                      <span style="font-size: 1.2rem; letter-spacing: 0.3em; margin-bottom: 1rem; opacity: 0.8; font-family: var(--font-display);">LANNA</span>
+                      <h2 style="font-size: 2.8rem; margin: 1rem 0; line-height: 1.2; font-family: var(--font-display); color: #FFF8E7;" data-i18n="fest_book_cover_h3">ประวัติและตำนานยี่เป็ง</h2>
+                      <div style="width: 40px; height: 2px; background: #E8925C; margin: 1.5rem 0;"></div>
+                      <span style="font-size: 0.9rem; letter-spacing: 0.1em; opacity: 0.7;" data-i18n="fest_book_eyebrow">Interactive Record</span>
+                    </div>
+                  </div>
                   <div class="book-cover-back" style="background:#FDF8E1;">
                     <div class="page-text-content">
                       <h3 style="font-size:1.8rem;" data-i18n="fest_book_cover_h3">ประวัติและตำนานยี่เป็ง</h3>

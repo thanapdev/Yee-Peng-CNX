@@ -528,8 +528,9 @@ footer {
   color: rgba(255,248,231,0.6);
   max-width: 540px;
   margin: 0 auto;
-  font-size: 1rem;
-  line-height: 1.7;
+  color: #3d1f14;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────── */
