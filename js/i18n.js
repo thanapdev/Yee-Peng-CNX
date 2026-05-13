@@ -241,6 +241,21 @@ window.LANG = {
     seg7_img3_cap: 'แสงประทีปสะท้อนเงาบนแม่น้ำปิงอันศักดิ์สิทธิ์',
     seg7_img4_cap: 'ความสงบและศรัทธาในลานวัดยามค่ำคืน',
     seg7_cta:     'ชมบรรยากาศเพิ่มเติม',
+    /* FESTIVAL BOOK */
+    fest_book_cover_h3: 'ประวัติและตำนานยี่เป็ง',
+    fest_book_cover_p:  'บันทึกเรื่องราวการเดินทางของแสงไฟและศรัทธา จากอาณาจักรหริภุญชัยสู่มหานครล้านนาและปัจจุบัน...',
+    fest_book_page1_h3: 'อาณาจักรหริภุญชัยและพระนางจามเทวี',
+    fest_book_page1_p:  'ตำนานยี่เป็งเริ่มต้นขึ้นในพุทธศตวรรษที่ 14 ณ นครหริภุญชัย (ลำพูนปัจจุบัน) ภายใต้การปกครองของพระนางจามเทวี ในยุคนั้นมีการทำพิธี "ลอยโขมด" ซึ่งเป็นการบูชาไฟบนผิวน้ำ เพื่อถวายเป็นพุทธบูชาและขอขมาพระแม่คงคา แสงไฟที่ลอยล่องในความมืดถูกเปรียบเปรยเหมือนดวงวิญญาณหรือผีโขมดที่คอยปกปักรักษาเมืองและคุ้มครองผู้คนจากภยันตราย...',
+    fest_book_page2_h3: 'โศกนาฏกรรมอหิวาต์และสายใยแห่งความคิดถึง',
+    fest_book_page2_p:  'ในช่วงศตวรรษต่อมา เกิดอหิวาตกโรคระบาดครั้งใหญ่ในหริภุญชัย ทำให้ชาวเมืองต้องลี้ภัยไปยังเมืองหงสาวดีนานถึง 6 ปี เมื่อสถานการณ์คลี่คลายและชาวเมืองได้กลับคืนสู่ถิ่นฐาน ด้วยความระลึกถึงญาติพี่น้องที่ล่วงลับหรือยังอยู่ที่โน่น จึงได้จัดทำกระทงและโคมไฟลอยน้ำส่งไปตามลำน้ำปิง แม่กวง และแม่ทา เพื่อสื่อความหมายถึงความกตัญญูและสายใยที่ไม่มีวันตัดขาด...',
+    fest_book_page3_h3: 'พญามังรายและการสถาปนานพบุรีศรีนครพิงค์',
+    fest_book_page3_p:  'เมื่อพญามังรายสถาปนาเมืองเชียงใหม่ในปี พ.ศ. 1839 ประเพณียี่เป็งได้รับการยกระดับให้เป็นงานหลวงที่ยิ่งใหญ่ขึ้น มีการประดับประดาโคมแขวน (โคมค้าง) ทั่วทั้งเมืองเพื่อต้อนรับพระจันทร์เต็มดวงของเดือนยี่ล้านนา ความเชื่อเรื่องการปล่อยโคมลอย (โคมไฟ) สู่สรวงสวรรค์เพื่อบูชาพระเกศแก้วจุฬามณีได้กลายเป็นหัวใจหลักของการเฉลิมฉลองตั้งแต่นั้นเป็นต้นมา...',
+    fest_book_page4_h3: 'มรดกวัฒนธรรมล้านนาสู่สายตาโลก',
+    fest_book_page4_p:  'ปัจจุบัน ยี่เป็งเชียงใหม่ไม่ได้เป็นเพียงพิธีกรรมทางศาสนา แต่เป็นสัญลักษณ์ของความคิดสร้างสรรค์และภูมิปัญญาชาวบ้านที่ได้รับการยกย่องจาก UNESCO ในฐานะเมืองสร้างสรรค์ด้านหัตถกรรมและศิลปะพื้นบ้าน ขบวนแห่กระทงหลวงที่วิจิตรตระการตาและการปล่อยโคมนับหมื่นดวงเหนือท้องฟ้าเชียงใหม่ ได้กลายเป็นภาพจำที่สะท้อนถึงศรัทธาที่ยังมีลมหายใจของชาวเหนือสู่สายตาคนทั้งโลก...',
+    fest_book_page1_h3_summary: 'รากเหง้าหริภุญชัย',
+    fest_book_page2_h3_summary: 'สายใยแห่งความคิดถึง',
+    fest_book_page3_h3_summary: 'เชียงใหม่และแสงแห่งศรัทธา',
+    fest_book_page4_p_summary: 'จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลกให้มาสัมผัสความงามของแสงโคมนับหมื่นดวงเหนือเมืองเชียงใหม่...',
   },
 
 
@@ -472,6 +487,17 @@ window.LANG = {
     seg7_img3_cap: 'Sacred lights reflecting on the Ping River.',
     seg7_img4_cap: 'Spiritual stillness in the temple courtyard.',
     seg7_cta:     'Explore Full Gallery',
+    /* FESTIVAL BOOK */
+    fest_book_cover_h3: 'History & Legends',
+    fest_book_cover_p:  'A journal documenting the journey of light and faith, from the Hariphunchai Kingdom to the Lanna metropolis and today...',
+    fest_book_page1_h3: 'Roots in Hariphunchai',
+    fest_book_page1_p:  'Yi Peng traditions date back to the 14th Buddhist century in the Hariphunchai Kingdom. The "Loy Khamot" ritual was performed to worship spirits and ward off bad luck, with shimmering lights on water resembling the legendary ghost fire...',
+    fest_book_page2_h3: 'The Mon Migration',
+    fest_book_page2_p:  'Legend has it that Mon people from Hariphunchai fled a cholera outbreak to Hongsawadee for 6 years. Upon returning, they floated lanterns down the Ping, Kuang, and Tha rivers to send thoughts to their relatives left behind...',
+    fest_book_page3_h3: 'Meaning of "Yi Peng"',
+    fest_book_page3_p:  '"Yee" means two, and "Peng" means full moon. Yi Peng refers to the full moon of the second Lanna lunar month, a time of cool breezes and the clearest skies, perfect for sending prayers to the heavens...',
+    fest_book_page4_h3: 'A Global Phenomenon',
+    fest_book_page4_p:  'From local spiritual rites to a world-class tourism festival, the sight of ten thousand lanterns rising over Chiang Mai is an iconic image of Lanna cultural heritage that continues to breathe life today...',
   }
 
 };

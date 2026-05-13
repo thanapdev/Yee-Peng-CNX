@@ -5,34 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initTimeline() {
     const items = [
-        { t: 'fest_tl1_time', e: 'fest_tl1_ev' },
-        { t: 'fest_tl2_time', e: 'fest_tl2_ev' },
-        { t: 'fest_tl3_time', e: 'fest_tl3_ev' },
-        { t: 'fest_tl4_time', e: 'fest_tl4_ev' },
-        { t: 'fest_tl5_time', e: 'fest_tl5_ev' },
-        { t: 'fest_tl6_time', e: 'fest_tl6_ev' },
+        { time: '17:00', event: 'ตลาดโคมและงานศิลปะพื้นบ้านเปิด' },
+        { time: '18:30', event: 'พิธีสวดมนต์และจุดเทียนที่วัด' },
+        { time: '19:30', event: 'ขบวนแห่แสงไฟและโคมแขวน' },
+        { time: '20:30', event: 'ปล่อยโคมลอยพร้อมกันหมื่นดวง' },
+        { time: '21:30', event: 'ลอยกระทงในแม่น้ำปิง' },
+        { time: 'ตลอดคืน', event: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง' },
     ];
     
     const container = document.getElementById('tl-items');
     if (container) {
-        container.innerHTML = ''; // Clear container
+        container.innerHTML = '';
         items.forEach((item) => {
             container.innerHTML += `
                 <div class="reveal timeline-item">
                     <div class="timeline-time">
-                        <span data-i18n="${item.t}" style="font-family:var(--font-display);color:#E8925C;font-weight:600;font-size:1.1rem;"></span>
+                        <span style="font-family:var(--font-display);color:#E8925C;font-weight:600;font-size:1.1rem;">${item.time}</span>
                     </div>
                     <div class="timeline-content">
                         <div class="timeline-dot"></div>
-                        <p data-i18n="${item.e}" style="color:rgba(255,248,231,0.85);font-size:.95rem;line-height:1.6;"></p>
+                        <p style="color:rgba(255,248,231,0.85);font-size:.95rem;line-height:1.6;">${item.event}</p>
                     </div>
                 </div>`;
         });
-    }
-    
-    // Re-apply language to fill the new elements
-    if (window.applyLang) {
-        window.applyLang(window.currentLang || 'th');
     }
     
     // Initialize reveal animations if the function exists

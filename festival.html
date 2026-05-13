@@ -13,24 +13,215 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/festival.css">
+  <div id="segment1-text" style="display:none;"></div>
+  <style>
+    /* Full-Width Book Overrides */
+    #history-book-wrapper {
+      perspective: 2000px;
+      transition: all 0.8s var(--ease-out);
+      min-height: 600px;
+      padding: 4rem 0;
+    }
+
+    #history-book-wrapper.is-expanded .book-perspective {
+      width: min(650px, 45vw) !important;
+      height: min(850px, 85vh) !important;
+      transform: translateX(min(325px, 22.5vw)) !important;
+    }
+
+    #history-book-wrapper.is-expanded .book {
+      transform: rotateX(5deg) rotateY(-5deg) !important;
+    }
+
+    .book {
+      transform-style: preserve-3d;
+      transition: transform 0.8s var(--ease-out);
+    }
+
+    .page-text-content {
+      padding: 3.5rem 3rem !important;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: #FDF8E1;
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .page-front, .page-back {
+      overflow: hidden !important;
+      backface-visibility: hidden;
+    }
+
+    .page-text-content h3 {
+      font-family: var(--font-display);
+      font-size: 2rem !important;
+      margin-bottom: 1.5rem !important;
+      color: #1a0f0a;
+      letter-spacing: -0.02em;
+    }
+
+    .page-text-content p {
+      font-size: 1.05rem !important;
+      line-height: 1.9 !important;
+      color: #3d1f14;
+      opacity: 0.9;
+    }
+
+    .book-image-detail {
+      margin-top: auto !important;
+      margin-bottom: 0 !important;
+      border-radius: 4px !important;
+      max-height: 50% !important;
+      object-fit: cover !important;
+      width: 100% !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .page-full-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.95;
+      filter: sepia(0.2) contrast(1.1);
+    }
+
+    .book-flipping-page::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.1), transparent 15%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .book-flipping-page.is-flipped::after {
+      background: linear-gradient(to left, rgba(0,0,0,0.1), transparent 15%);
+    }
+
+    /* Timeline Chronicles Styles */
+    .timeline-wrapper {
+      position: relative;
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 2rem 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(232, 146, 92, 0.4), rgba(232, 146, 92, 0.4), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 50%;
+      position: relative;
+      margin-bottom: 6rem;
+      width: 100%;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: 50%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      width: 12px;
+      height: 12px;
+      background: var(--lantern-gold);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      box-shadow: 0 0 15px var(--lantern-gold);
+    }
+
+    .timeline-content {
+      width: 85%;
+      background: rgba(232, 146, 92, 0.03);
+      border: 1px solid rgba(232, 146, 92, 0.1);
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.5s var(--ease-out);
+      margin: 0 3rem;
+    }
+
+    .timeline-content::after {
+      content: '';
+      position: absolute;
+      top: 25px;
+      width: 20px;
+      height: 1px;
+      background: rgba(232, 146, 92, 0.3);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::after { right: -20px; }
+    .timeline-item:nth-child(even) .timeline-content::after { left: -20px; }
+
+    .timeline-content:hover {
+      background: rgba(232, 146, 92, 0.08);
+      border-color: rgba(232, 146, 92, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .timeline-content h3 {
+      font-family: var(--font-th);
+      color: var(--lantern-gold);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-content p {
+      color: rgba(255,248,231,0.65);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+
+    .timeline-date {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--lantern-gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+      opacity: 0.6;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-line { left: 20px; }
+      .timeline-dot { left: 20px; }
+      .timeline-item {
+        justify-content: flex-start !important;
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+      }
+      .timeline-content { width: 100%; margin: 0; }
+      .timeline-content::after { left: -20px !important; right: auto !important; }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- CUSTOM CURSOR -->
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
-
-  <!-- Ambient canvas -->
   <canvas id="ambient-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;"></canvas>
 
-  <!-- ── NAVBAR ────────────────────────────────────── -->
   <nav id="navbar" class="scrolled">
     <a class="nav-logo" href="index.html">
       <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none">
         <ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2" />
         <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1" stroke-dasharray="2 2" />
         <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
-        <ellipse cx="18" cy="24" rx="3" ry="1.2" fill="rgba(212,120,74,0.5)" />
       </svg>
       <span class="nav-logo-text">ยี่เป็ง</span>
     </a>
@@ -53,7 +244,6 @@
     </div>
   </nav>
 
-  <!-- Mobile nav -->
   <div class="nav-mobile" id="nav-mobile">
     <ul class="nav-mobile-links">
       <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
@@ -67,25 +257,15 @@
 
   <main>
     <section id="sec-festival">
-      <!-- Hero (Synchronized with index.html premium style) -->
       <div class="hero-container">
-        <!-- 3D Hero Canvas -->
-        <canvas id="hero-canvas"
-          style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
-        <div
-          style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.5) 60%,rgba(13,27,42,1) 100%);">
-        </div>
+        <canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.5) 60%,rgba(13,27,42,1) 100%);"></div>
         <div class="text-content">
-          <h1 class="reveal reveal-delay-1 animate-text-glow"
-            style="font-size:clamp(2rem,4.5vw,5rem); font-weight:300; line-height:1.2; color:#FFF8E7; letter-spacing: -0.01em; white-space: nowrap;">
-            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;"
-              data-i18n="fest_h2">ประวัติและที่มาของเทศกาลยี่เป็ง</span>
+          <h1 class="reveal reveal-delay-1 animate-text-glow" style="font-size:clamp(2rem,4.5vw,5rem); font-weight:300; line-height:1.2; color:#FFF8E7; letter-spacing: -0.01em; white-space: nowrap;">
+            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;" data-i18n="fest_h2">ประวัติและที่มาของเทศกาลยี่เป็ง</span>
           </h1>
-          <p class="reveal reveal-delay-2"
-            style="color:rgba(255,248,231,1); margin-top:1.2rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;"
-            data-i18n="fest_sub">เทศกาลแห่งล้านนา</p>
+          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,1); margin-top:1.2rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;" data-i18n="fest_sub">เทศกาลแห่งล้านนา</p>
         </div>
-        <!-- Scroll arrow -->
         <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(232,146,92,0.6)" stroke-width="1.5">
             <polyline points="6 9 12 15 18 9" />
@@ -93,60 +273,138 @@
         </div>
       </div>
 
-      <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
-        <div
-          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem;">
-          <div class="glass-card reveal" style="padding:2rem;">
-            <div style="font-size:2rem;margin-bottom:1rem;">📜</div>
-            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-              data-i18n="fest_card1_h">lolประวัติและที่มา</h3>
-            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card1_p">
-              ยี่เป็งกำเนิดในราชอาณาจักรล้านนา</p>
-          </div>
-          <div class="glass-card reveal reveal-delay-1" style="padding:2rem;">
-            <div style="font-size:2rem;margin-bottom:1rem;">📍</div>
-            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-              data-i18n="fest_card2_h">วัน เวลา & สถานที่</h3>
-            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card2_p">
-              เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน</p>
-          </div>
-          <div class="glass-card reveal reveal-delay-2" style="padding:2rem;">
-            <div style="font-size:2rem;margin-bottom:1rem;">⏰</div>
-            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-              data-i18n="fest_card3_h">ไทม์ไลน์เทศกาล</h3>
-            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card3_p">บ่าย:
-              ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์</p>
-          </div>
+      <section class="chronicle-section" style="padding: 6rem 2rem; position: relative;">
+        <div style="text-align:center; max-width:800px; margin: 0 auto 5rem;">
+          <p class="eyebrow reveal" style="color:#E8925C; margin-bottom:1rem;">The Timeline of Light</p>
+          <h2 class="display-md reveal reveal-delay-1" style="color:#FFF8E7; margin-bottom:1.5rem;">พงศาวดารแห่งแสงไฟและสายน้ำ</h2>
+          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,0.5); font-size:1.1rem; line-height:1.7;">ลำดับเหตุการณ์สำคัญจากอดีตสู่ปัจจุบันที่หล่อหลอมหัวใจล้านนา</p>
         </div>
 
-        <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3rem;"
-          data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
-        <div style="max-width:680px;margin:0 auto;position:relative;">
-          <div
-            style="position:absolute;left:72px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(232,146,92,0),rgba(232,146,92,0.4),rgba(232,146,92,0));">
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">8TH - 13TH CENTURY</span>
+              <h3>รากเหง้าหริภุญชัยและตำนานลอยโขมด</h3>
+              <p>ตำนานยี่เป็งเริ่มต้นขึ้นในนครหริภุญชัย (ลำพูนปัจจุบัน) ภายใต้การปกครองของพระนางจามเทวี ในยุคนั้นมีการทำพิธี "ลอยโขมด" ซึ่งเป็นการบูชาไฟบนผิวน้ำ เพื่อถวายเป็นพุทธบูชาและขอขมาพระแม่คงคา ในค่ำคืนที่มืดมิด แสงเทียนที่ลอยล่องบนลำน้ำกวงและลำน้ำปิงเปรียบเสมือนดวงตาของเหล่าอมนุษย์ที่คอยปกปักรักษาเมือง เป็นจุดเริ่มต้นของศรัทธาที่ผูกพันกับแสงไฟและสายน้ำมากว่าพันปี</p>
+            </div>
           </div>
-          <div id="tl-items"></div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">CHOLERA EPIDEMIC</span>
+              <h3>หกปีในหงสาวดีและสายใยแห่งความกตัญญู</h3>
+              <p>ในช่วงพุทธศตวรรษที่ 14 เกิดอหิวาตกโรคระบาดครั้งใหญ่ในหริภุญชัย ทำให้ชาวเมืองจำนวนมากต้องลี้ภัยอพยพไปพึ่งใบบุญที่เมืองสะเทิมและเมืองหงสาวดีนานถึง 6 ปี เมื่อโรคร้ายสงบลงและได้เดินทางกลับบ้านเกิด ชาวเมืองจึงได้ทำ "สะเปา" หรือกระทงรูปเรือ ใส่เครื่องสักการะและไฟสว่างไสว ลอยไปตามลำน้ำปิงและลำน้ำกวงเพื่อส่งความระลึกถึงและกตัญญูต่อญาติมิตรที่ยังติดค้างอยู่ที่เมืองหงสาวดี กลายเป็นรากฐานสำคัญของประเพณีลอยกระทงและยี่เป็งล้านนา</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">B.E. 1839 (1296 AD)</span>
+              <h3>พญามังรายและการสถาปนานพบุรีศรีนครพิงค์</h3>
+              <p>เมื่อพญามังรายสถาปนาเมืองเชียงใหม่ในปี พ.ศ. 1839 ประเพณียี่เป็งได้รับการยกระดับให้เป็นงานหลวงที่ยิ่งใหญ่ขึ้น มีการประดับประดาโคมแขวน (โคมค้าง) ทั่วทั้งเมืองเพื่อต้อนรับพระจันทร์เต็มดวงของเดือนยี่ล้านนา ความเชื่อเรื่องการปล่อยโคมลอย (โคมไฟ) สู่สรวงสวรรค์เพื่อบูชาพระเกศแก้วจุฬามณีได้กลายเป็นหัวใจหลักของการเฉลิมฉลอง เพื่อให้แสงไฟนำพาคำอธิษฐานและเคราะห์ร้ายให้ลอยลับหายไปสู่ท้องฟ้าอันกว้างไกล</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">POST WWII - 1950S</span>
+              <h3>วิวัฒนาการสู่เทศกาลท่องเที่ยวระดับโลก</h3>
+              <p>หลังสงครามโลกครั้งที่ 2 ยี่เป็งเชียงใหม่ได้ปรับตัวสู่การเป็นเทศกาลสาธารณะที่มีความอลังการ มีการจัดขบวนแห่กระทงใหญ่ที่ตระการตาโดยความร่วมมือของชาวบ้านและส่วนราชการ ภาพโคมนับหมื่นดวงที่ลอยเด่นเหนือประตูเมืองและลำน้ำปิงดึงดูดสายตาชาวโลกให้หันมามองล้านนาในฐานะดินแดนแห่งมนต์เสน่ห์และวัฒนธรรมที่ยังมีลมหายใจ ทำให้เชียงใหม่กลายเป็นจุดหมายปลายทางอันดับหนึ่งของนักเดินทางทั่วโลก</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">PRESENT DAY</span>
+              <h3>วิถีชีวิตและเครื่องสักการะบูชาในปัจจุบัน</h3>
+              <p>หัวใจของยี่เป็งในปัจจุบันยังคงรักษาเอกลักษณ์ผ่านโคม 4 ชนิดหลัก: โคมถือ, โคมแขวน, โคมหูกระต่าย และโคมลอย พร้อมกับการ "ต๋ามผางประทีป" หรือการจุดเทียนในถ้วยดินเผารอบกำแพงเมืองและหน้าบ้านเรือน เพื่อบูชาพระรัตนตรัยและสร้างความเป็นสิริมงคล แม้ยุคสมัยจะเปลี่ยนไป แต่แสงสว่างจากโคมและศรัทธาที่หนักแน่นของชาวล้านนายังคงสว่างไสวไม่เคยเสื่อมคลาย</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section id="history-segment" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+        <div style="text-align:center; margin-bottom:5rem;">
+          <p class="eyebrow reveal" style="color:#E8925C; margin-bottom:1rem;">Interactive Record</p>
+          <h2 class="display-md reveal reveal-delay-1" style="color:#FFF8E7;">สมุดบันทึกแสงแห่งล้านนา</h2>
+          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,0.5); margin-top:1rem;">คลิกเพื่อเปิดอ่านบันทึกฉบับย่อ</p>
+        </div>
+        <div id="history-book-wrapper" style="width:100%; display:flex; justify-content:center; align-items:center;">
+          <div class="book-perspective">
+            <div class="book" id="interactive-book" onclick="handleBookClick(event)">
+              <div class="book-spine"></div>
+              <div class="book-page-static" style="z-index: 1;">
+                <div class="page-text-content">
+                  <h3 data-i18n="fest_book_page4_h3_summary">สู่เทศกาลระดับโลก</h3>
+                  <p data-i18n="fest_book_page4_p_summary">จากพิธีส่งความระลึกถึง สู่เทศกาลท่องเที่ยวระดับโลก...</p>
+                  <img src="assets/images/fest_book_page_tourism_1778658461510.png" class="book-image-detail">
+                </div>
+              </div>
+              <div class="book-flipping-page" data-page-index="3">
+                <div class="page-front">
+                  <div class="page-text-content">
+                    <h3 data-i18n="fest_book_page3_h3_summary">เชียงใหม่และแสงแห่งศรัทธา</h3>
+                    <p data-i18n="fest_book_page3_p_summary">เมื่อพญามังรายสร้างเชียงใหม่ในปี 1839...</p>
+                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                  </div>
+                </div>
+                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_symbols_1778658425214.png" class="page-full-image"></div>
+              </div>
+              <div class="book-flipping-page" data-page-index="2">
+                <div class="page-front">
+                  <div class="page-text-content">
+                    <h3 data-i18n="fest_book_page2_h3_summary">สายใยแห่งความคิดถึง</h3>
+                    <p data-i18n="fest_book_page2_p_summary">ตำนานอหิวาต์ระบาดในหริภุญชัย...</p>
+                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                  </div>
+                </div>
+                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_loy_khamot_1778658388061.png" class="page-full-image"></div>
+              </div>
+              <div class="book-flipping-page" data-page-index="1">
+                <div class="page-front">
+                  <div class="page-text-content">
+                    <h3 data-i18n="fest_book_page1_h3_summary">รากเหง้าหริภุญชัย</h3>
+                    <p data-i18n="fest_book_page1_p_summary">ประเพณีนี้เริ่มต้นที่นครหริภุญชัย...</p>
+                    <p style="margin-top:auto; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_next">หน้าถัดไป →</p>
+                  </div>
+                </div>
+                <div class="page-back" style="background:#000;"><img src="assets/images/fest_book_page_hariphunchai_1778658356222.png" class="page-full-image"></div>
+              </div>
+              <div id="book-cover-part" class="book-flipping-part">
+                <div class="book-cover-front"><img src="assets/images/history_book_cover_fest_1778658289093.png" alt="Cover"></div>
+                <div class="book-cover-back" style="background:#FDF8E1;">
+                  <div class="page-text-content">
+                    <h3 style="font-size:1.8rem;" data-i18n="fest_book_cover_h3">ประวัติและตำนานยี่เป็ง</h3>
+                    <p data-i18n="fest_book_cover_p_summary">บันทึกการเดินทางของแสงไฟแห่งศรัทธา...</p>
+                    <p style="margin-top:2rem; font-weight:600; color:#E8925C; text-align:right;" data-i18n="book_start">เปิดอ่าน →</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3rem;" data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
+      <div style="max-width:680px;margin:0 auto;position:relative;">
+        <div style="position:absolute;left:72px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(232,146,92,0),rgba(232,146,92,0.4),rgba(232,146,92,0));"></div>
+        <div id="tl-items"></div>
       </div>
     </section>
   </main>
 
-  <!-- ═══ COUNTDOWN BAR ══════════════════════════════ -->
   <div id="countdown-bar">
     <span class="countdown-label" data-i18n="countdown_label">นับถอยหลังสู่คืนยี่เป็ง</span>
     <div class="countdown-units">
-      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub"
-          data-i18n="cd_days">วัน</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub" data-i18n="cd_days">วัน</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub"
-          data-i18n="cd_hours">ชั่วโมง</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub" data-i18n="cd_hours">ชั่วโมง</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub"
-          data-i18n="cd_mins">นาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub" data-i18n="cd_mins">นาที</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub"
-          data-i18n="cd_secs">วินาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub" data-i18n="cd_secs">วินาที</span></div>
     </div>
   </div>
 
@@ -163,20 +421,9 @@
         </div>
         <p data-i18n="footer_tagline">สร้างด้วยความรักต่อเทศกาลยี่เป็งและวัฒนธรรมล้านนา</p>
       </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer_nav_h">ไปยัง</h4>
-        <ul>
-          <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
-          <li><a href="festival.html" data-i18n="nav_festival">เทศกาล</a></li>
-          <li><a href="lanterns.html" data-i18n="nav_lanterns">โคมลอย</a></li>
-          <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
-          <li><a href="plan.html" data-i18n="nav_plan">วางแผนมา</a></li>
-          <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
-        </ul>
-      </div>
     </div>
     <div class="footer-bottom">
-      <span data-i18n="footer_copy">© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม</span>
+      <span data-i18n="footer_copy">© 2026 ยี่เป็ง เชียงใหม่</span>
       <span>🏮</span>
     </div>
   </footer>
@@ -187,5 +434,4 @@
   <script src="js/hero-hanging.js"></script>
   <script src="js/festival.js"></script>
 </body>
-
 </html>
