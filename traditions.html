@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ประเพณีล้านนา | Traditions — ยี่เป็ง เชียงใหม่</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/festival.css">
 </head>
+
 <body>
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
@@ -34,20 +38,32 @@
       <li><a href="plan.html" data-i18n="nav_plan">วางแผนมา</a></li>
       <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
     </ul>
-    <div class="nav-right"><div class="lang-toggle"><button class="lang-btn" data-lang="th">TH</button><button class="lang-btn" data-lang="en">EN</button></div><button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button></div>
+    <div class="nav-right">
+      <div class="lang-toggle"><button class="lang-btn" data-lang="th">TH</button><button class="lang-btn"
+          data-lang="en">EN</button></div><button class="nav-hamburger"
+        id="hamburger"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 
   <main>
     <section id="sec-traditions">
       <div class="hero-container">
-        <canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
-        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.4) 60%,rgba(13,27,42,1) 100%);"></div>
+        <canvas id="hero-canvas"
+          style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
+        <div
+          style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.4) 60%,rgba(13,27,42,1) 100%);">
+        </div>
         <div class="text-content">
-          <p class="eyebrow reveal" data-i18n="trad_eyebrow" style="color:var(--lantern-gold); letter-spacing:.3em; margin-bottom:1.5rem;">TRADITIONS & SPIRIT</p>
-          <h1 class="reveal reveal-delay-1 animate-text-glow" style="font-size:clamp(2.5rem,5vw,6rem); font-weight:300; line-height:1.1; color:#FFF8E7; letter-spacing: -0.01em;">
-            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;" data-i18n="trad_h2">จิตวิญญาณล้านนา</span>
+          <p class="eyebrow reveal" data-i18n="trad_eyebrow"
+            style="color:var(--lantern-gold); letter-spacing:.3em; margin-bottom:1.5rem;">TRADITIONS & SPIRIT</p>
+          <h1 class="reveal reveal-delay-1 animate-text-glow"
+            style="font-size:clamp(2.5rem,5vw,6rem); font-weight:300; line-height:1.1; color:#FFF8E7; letter-spacing: -0.01em;">
+            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;"
+              data-i18n="trad_h2">จิตวิญญาณล้านนา</span>
           </h1>
-          <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,1); margin-top:1.5rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;" data-i18n="trad_sub">ประเพณีและความเชื่อที่สืบทอดกันมา</p>
+          <p class="reveal reveal-delay-2"
+            style="color:rgba(255,248,231,1); margin-top:1.5rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;"
+            data-i18n="trad_sub">ประเพณีและความเชื่อที่สืบทอดกันมา</p>
         </div>
         <div style="position:absolute;bottom:4rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(232,146,92,0.6)" stroke-width="1.5">
@@ -57,47 +73,135 @@
       </div>
 
       <div style="background:linear-gradient(to bottom,var(--night-sky-2) 0%,#0e0e1a 100%);">
+        <div style="max-width:1200px; margin:0 auto; padding:6rem 2rem;">
 
-        <div style="max-width:1100px;margin:0 auto;padding:4rem 2rem;">
-          <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:2.5rem;" data-i18n="trad_vs_h">ยี่เป็ง vs ลอยกระทง</h2>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:5rem;">
-            <div class="glass-card reveal" style="padding:2.5rem;border-color:rgba(232,146,92,0.3);">
-              <div style="font-size:3rem;margin-bottom:1rem;">🏮</div>
-              <h3 style="font-family:var(--font-display);font-size:1.5rem;color:#E8925C;margin-bottom:1rem;" data-i18n="trad_vs_yp_h">ยี่เป็ง (ล้านนา)</h3>
-              <p style="color:rgba(255,248,231,0.7);line-height:1.9;" data-i18n="trad_vs_yp_p">โคมลอยขึ้นฟ้า ส่งสิ่งชั่วร้ายออกไป</p>
-            </div>
-            <div class="glass-card reveal reveal-delay-2" style="padding:2.5rem;border-color:rgba(44,74,62,0.5);">
-              <div style="font-size:3rem;margin-bottom:1rem;">🌸</div>
-              <h3 style="font-family:var(--font-display);font-size:1.5rem;color:#7ECBA1;margin-bottom:1rem;" data-i18n="trad_vs_lk_h">ลอยกระทง (ไทย)</h3>
-              <p style="color:rgba(255,248,231,0.7);line-height:1.9;" data-i18n="trad_vs_lk_p">กระทงลอยน้ำ ขอขมาแม่คงคา</p>
+          <!-- Section 1: The Essence of Faith -->
+          <div style="text-align:center; margin-bottom:6rem;">
+            <p class="eyebrow reveal" style="letter-spacing:0.4em; color:var(--lantern-gold);">SPIRITUAL JOURNEY</p>
+            <h2 class="display-md reveal reveal-delay-1 animate-text-glow"
+              style="color:#FFF8E7; margin-top:0.8rem; font-weight:300;" data-i18n="trad_beliefs_h">ศรัทธา แสงสว่าง
+              และการปล่อยวาง</h2>
+            <div
+              style="width:80px; height:1px; background:linear-gradient(to right, transparent, var(--lantern-gold), transparent); margin:2rem auto;">
             </div>
           </div>
 
-          <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:2.5rem;" data-i18n="trad_belief_h">ความเชื่อและจิตวิญญาณ</h2>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:5rem;">
-            <div class="glass-card reveal" style="padding:2rem;text-align:center;">
-              <div style="width:60px;height:60px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;border:1px solid rgba(232,146,92,0.3);">🕯️</div>
-              <h4 style="color:#E8925C;margin-bottom:.75rem;" data-i18n="trad_belief1_h">บูชาพระเกศแก้วจุฬามณี</h4>
-              <p style="color:rgba(255,248,231,0.6);font-size:.9rem;" data-i18n="trad_belief1_p">ชาวล้านนาเชื่อว่าโคมลอยส่งแสงบูชาพระธาตุบนสวรรค์</p>
+          <!-- Beliefs: Vertical Storytelling Flow -->
+          <div style="display:flex; flex-direction:column; gap:8rem; margin-bottom:12rem;">
+
+            <!-- Belief 1: Khongkha -->
+            <div class="reveal" style="display:grid; grid-template-columns: 1fr 1.2fr; gap:5rem; align-items:center;">
+              <div style="position:relative;">
+                <div
+                  style="position:absolute; inset:-15px; border:1px solid rgba(232,146,92,0.15); border-radius:20px; transform:rotate(-2deg);">
+                </div>
+                <img src="assets/images/trad_khongkha.png" alt="Mae Khongkha"
+                  style="width:100%; aspect-ratio:1; border-radius:12px; object-fit:cover; border:1px solid rgba(232,146,92,0.3); filter:sepia(0.2) brightness(0.9);">
+              </div>
+              <div>
+                <h3 style="font-family:var(--font-display); font-size:2rem; color:#E8925C; margin-bottom:1.25rem;"
+                  data-i18n="trad_belief_khongkha_h">แม่น้ำแห่งการขอขมา</h3>
+                <p style="color:rgba(255,248,231,0.7); font-size:1.05rem; line-height:1.9; font-weight:300; letter-spacing:0.01em;"
+                  data-i18n="trad_belief_khongkha_p">ไม่ใช่เพียงการบูชา แต่คือการขอขมา "พระแม่คงคา"
+                  ที่เราได้ล่วงเกินและใช้ประโยชน์จากสายน้ำตลอดปี
+                  สะท้อนถึงคติความกตัญญูที่ฝังรากลึกในจิตใจชาวพุทธ-พราหมณ์</p>
+              </div>
             </div>
-            <div class="glass-card reveal reveal-delay-1" style="padding:2rem;text-align:center;">
-              <div style="width:60px;height:60px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;border:1px solid rgba(232,146,92,0.3);">🌬️</div>
-              <h4 style="color:#E8925C;margin-bottom:.75rem;" data-i18n="trad_belief2_h">ปล่อยทุกข์โทษ</h4>
-              <p style="color:rgba(255,248,231,0.6);font-size:.9rem;" data-i18n="trad_belief2_p">การส่งโคมขึ้นฟ้าเปรียบดังการปล่อยวางบาป</p>
+
+            <!-- Belief 2: Khrao (Reverse) -->
+            <div class="reveal" style="display:grid; grid-template-columns: 1.2fr 1fr; gap:5rem; align-items:center;">
+              <div style="text-align:right;">
+                <h3 style="font-family:var(--font-display); font-size:2rem; color:#E8925C; margin-bottom:1.25rem;"
+                  data-i18n="trad_belief_khrao_h">ลอยเคราะห์: วิถีแห่งการเริ่มต้นใหม่</h3>
+                <p style="color:rgba(255,248,231,0.7); font-size:1.05rem; line-height:1.9; font-weight:300; letter-spacing:0.01em;"
+                  data-i18n="trad_belief_khrao_p">การลอยกระทงในล้านนาคือการ "ลอยเคราะห์" หรือการฝากเอาความทุกข์โศก
+                  และบาปกรรมที่ติดตัวมา ให้ไหลลับไปกับกระแสน้ำ เพื่อเปิดรับความเป็นสิริมงคล</p>
+              </div>
+              <div style="position:relative;">
+                <div
+                  style="position:absolute; inset:-15px; border:1px solid rgba(232,146,92,0.15); border-radius:20px; transform:rotate(2deg);">
+                </div>
+                <img src="assets/images/trad_khrao.png" alt="Loy Khrao"
+                  style="width:100%; aspect-ratio:1; border-radius:12px; object-fit:cover; border:1px solid rgba(232,146,92,0.3); filter:sepia(0.2) brightness(0.9);">
+              </div>
             </div>
-            <div class="glass-card reveal reveal-delay-2" style="padding:2rem;text-align:center;">
-              <div style="width:60px;height:60px;background:rgba(232,146,92,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;border:1px solid rgba(232,146,92,0.3);">⭐</div>
-              <h4 style="color:#E8925C;margin-bottom:.75rem;" data-i18n="trad_belief3_h">อธิษฐานขอพร</h4>
-              <p style="color:rgba(255,248,231,0.6);font-size:.9rem;" data-i18n="trad_belief3_p">ก่อนปล่อยโคม ผู้คนจะอธิษฐานขอสิ่งที่ปรารถนา</p>
+
+            <!-- Belief 3: Ancestors -->
+            <div class="reveal" style="display:grid; grid-template-columns: 1fr 1.2fr; gap:5rem; align-items:center;">
+              <div style="position:relative;">
+                <div
+                  style="position:absolute; inset:-15px; border:1px solid rgba(232,146,92,0.15); border-radius:20px; transform:rotate(-1deg);">
+                </div>
+                <img src="assets/images/trad_ancestors.png" alt="Ancestors"
+                  style="width:100%; aspect-ratio:1; border-radius:12px; object-fit:cover; border:1px solid rgba(232,146,92,0.3); filter:sepia(0.2) brightness(0.9);">
+              </div>
+              <div>
+                <h3 style="font-family:var(--font-display); font-size:2rem; color:#E8925C; margin-bottom:1.25rem;"
+                  data-i18n="trad_belief_ancestors_h">แสงแห่งความระลึกถึง (ลอยโขมด)</h3>
+                <p style="color:rgba(255,248,231,0.7); font-size:1.05rem; line-height:1.9; font-weight:300; letter-spacing:0.01em;"
+                  data-i18n="trad_belief_ancestors_p">ประเพณีที่มีมากว่าพันปี
+                  คือการส่งความระลึกถึงและอุทิศส่วนบุญแก่บรรพบุรุษที่ล่วงลับ
+                  ผ่านแสงเทียนที่วับแวมกลางสายน้ำราวกับดวงตาของผีโขมด</p>
+              </div>
+            </div>
+
+            <!-- Belief 4: Buddha (Wide Highlight) -->
+            <div class="reveal glass-card"
+              style="padding:4rem; margin-top:4rem; border-color:rgba(232,146,92,0.3); background:linear-gradient(135deg, rgba(232,146,92,0.05), transparent); display:grid; grid-template-columns: 1.5fr 1fr; gap:4rem; align-items:center;">
+              <div style="text-align:left;">
+                <h3
+                  style="font-family:var(--font-display); font-size:2.2rem; color:var(--lantern-gold); margin-bottom:1.5rem;"
+                  data-i18n="trad_belief_buddha_h">พุทธบูชาพระเกศแก้วจุฬามณี</h3>
+                <p style="color:rgba(255,248,231,0.8); font-size:1.15rem; line-height:1.9; font-weight:300;"
+                  data-i18n="trad_belief_buddha_p">สูงสุดแห่งศรัทธา คือการส่งโคมไฟขึ้นสู่สรวงสวรรค์ชั้นดาวดึงส์
+                  เพื่อบูชาพระบรมสารีริกธาตุ แสงสว่างเปรียบดั่งดวงประทีปแห่งปัญญาที่นำทางจิตวิญญาณ</p>
+              </div>
+              <img src="assets/images/trad_buddha.png" alt="Buddha Relic"
+                style="width:100%; aspect-ratio:1; border-radius:12px; object-fit:cover; border:1px solid rgba(232,146,92,0.3); filter:sepia(0.2) brightness(0.9);">
             </div>
           </div>
 
-          <!-- Traditional Dress -->
-          <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:5rem;">
-            <img src="assets/images/temple.png" alt="Lanna Dress" style="border-radius:16px;width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.85);">
+          <!-- Section 2: Vessantara (Cinematic Section) -->
+          <div style="margin-bottom:12rem;">
+            <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:4rem; align-items:start;">
+              <div class="reveal-left">
+                <h2
+                  style="font-family:var(--font-display); font-size:2.2rem; color:#FFF8E7; line-height:1.2; margin-bottom:1.5rem;"
+                  data-i18n="trad_vessantara_h">มหาเวสสันดรชาดก: มหาทานบารมีแห่งล้านนา</h2>
+                <div style="width:50px; height:2px; background:var(--lantern-gold); margin-bottom:2rem;"></div>
+              </div>
+              <div class="reveal-right">
+                <p style="color:rgba(255,248,231,0.8); font-size:1.1rem; line-height:2; margin-bottom:2.5rem; font-weight:300;"
+                  data-i18n="trad_vessantara_p1">หัวใจของยี่เป็งคือการฟังเทศน์ "มหาชาติ" 13 กัณฑ์ หรือ "ตั้งธรรมหลวง"
+                  ในคืนวันเพ็ญ ซึ่งเชื่อว่าหากฟังครบในวันเดียวจะได้อานิสงส์มหาศาล</p>
+                <div class="glass-card"
+                  style="padding:2.5rem; border-left:3px solid var(--lantern-gold); background:rgba(232,146,92,0.05);">
+                  <p style="color:rgba(255,248,231,0.6); font-size:1rem; line-height:1.8; font-style:italic;"
+                    data-i18n="trad_vessantara_p2">การตกแต่ง "ซุ้มประตูป่า"
+                    คือการจำลองป่าหิมพานต์เพื่อรับเสด็จพระเวสสันดรกลับเข้าเมือง
+                    เป็นการอัญเชิญสิริมงคลและความมั่งคั่งเข้าสู่ครอบครัว</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Modern Lanna Fashion -->
+          <div class="reveal"
+            style="display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; margin-top:12rem; border-top:1px solid rgba(232,146,92,0.1); padding-top:10rem;">
+            <div style="position:relative;">
+              <div
+                style="position:absolute; inset:-20px; border:1px solid rgba(232,146,92,0.15); border-radius:20px; transform:rotate(-2deg);">
+              </div>
+              <img src="assets/images/trad_dress_modern.png" alt="Modern Lanna Dress"
+                style="position:relative; z-index:1; border-radius:12px; width:100%; aspect-ratio:1; object-fit:cover; border:1px solid rgba(232,146,92,0.3); filter:sepia(0.2) brightness(0.9);">
+            </div>
             <div>
-              <h2 style="font-family:var(--font-display);font-size:2rem;color:#FFF8E7;margin-bottom:1.5rem;" data-i18n="trad_cloth_h">ชุดพื้นเมืองล้านนา</h2>
-              <p style="color:rgba(255,248,231,0.65);line-height:1.9;" data-i18n="trad_cloth_p"></p>
+              <p class="eyebrow" style="color:var(--lantern-gold); margin-bottom:1.25rem;">CONTEMPORARY HERITAGE</p>
+              <h2
+                style="font-family:var(--font-display); font-size:2.8rem; color:#FFF8E7; margin-bottom:1.5rem; font-weight:300;"
+                data-i18n="trad_cloth_h">เสน่ห์ล้านนาร่วมสมัย</h2>
+              <p style="color:rgba(255,248,231,0.7); line-height:1.9; font-size:1.05rem; font-weight:300;"
+                data-i18n="trad_cloth_p">การตีความมรดกทางวัฒนธรรมในมุมมองใหม่ ที่นำผ้าทอมือพื้นเมืองมาผสานกับดีไซน์สากลอย่างลงตัว สะท้อนถึงอัตลักษณ์ที่ไม่เคยหยุดนิ่งของชาวล้านนาในยุคปัจจุบัน</p>
             </div>
           </div>
         </div>
@@ -108,13 +212,17 @@
   <div id="countdown-bar">
     <span class="countdown-label" data-i18n="countdown_label">นับถอยหลังสู่คืนยี่เป็ง</span>
     <div class="countdown-units">
-      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub" data-i18n="cd_days">วัน</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub"
+          data-i18n="cd_days">วัน</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub" data-i18n="cd_hours">ชั่วโมง</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub"
+          data-i18n="cd_hours">ชั่วโมง</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub" data-i18n="cd_mins">นาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub"
+          data-i18n="cd_mins">นาที</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub" data-i18n="cd_secs">วินาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub"
+          data-i18n="cd_secs">วินาที</span></div>
     </div>
   </div>
 
@@ -122,7 +230,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-          <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2"/><ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1"/><line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1"/></svg>
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2" />
+            <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1" />
+            <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
+          </svg>
           <span style="font-family:var(--font-display);font-size:1.1rem;color:#FFF8E7;">ยี่เป็ง เชียงใหม่</span>
         </div>
       </div>
@@ -146,4 +258,5 @@
   <script src="js/traditions-hero.js"></script>
   <script>document.addEventListener('DOMContentLoaded', () => window.initReveal?.());</script>
 </body>
+
 </html>
