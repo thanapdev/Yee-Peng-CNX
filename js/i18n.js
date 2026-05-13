@@ -525,8 +525,8 @@ window.LANG = {
     fest_book_cover_p_summary: 'A journal of light and faith from Hariphunchai to Lanna...',
     fest_refs_h: 'Sources and References',
     fest_ref1: '• Chiang Mai CAD: <a href="https://www.chiangmaicad.com/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Chiang Mai Culture and Art Center (CAD)</a>',
-    fest_ref2: '• Tickets: <a href="https://faceticket.net/th/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
-    fest_ref3: '• Festival Info: <a href="https://yipenglanternfestival.in.th/th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
+    fest_ref2: '• Tickets: <a href="https://faceticket.net/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
+    fest_ref3: '• Festival Info: <a href="https://yipenglanternfestival.in.th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
     fest_ref4: '',
 
   }
