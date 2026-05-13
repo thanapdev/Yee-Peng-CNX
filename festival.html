@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/festival.css">
 </head>
 
 <body>
@@ -67,22 +68,22 @@
   <main>
     <section id="sec-festival">
       <!-- Hero (Synchronized with index.html premium style) -->
-      <div
-        style="position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+      <div class="hero-container">
         <!-- 3D Hero Canvas -->
         <canvas id="hero-canvas"
           style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
         <div
-          style="position:absolute;inset:0;background:radial-gradient(circle at center, rgba(13,27,42,0.4) 0%, rgba(13,27,42,0) 70%), linear-gradient(to bottom,rgba(13,27,42,0.2) 0%,rgba(13,27,42,0.55) 60%,rgba(13,27,42,1) 100%);">
+          style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.1) 0%,rgba(13,27,42,0.5) 60%,rgba(13,27,42,1) 100%);">
         </div>
-        <div
-          style="position:relative;text-align:center;padding:0 1.5rem;max-width:1100px; font-family:'Kodchasan', sans-serif !important;">
-          <h1 class="reveal reveal-delay-1"
-            style="font-family:'Kodchasan', sans-serif !important; font-size:clamp(2.5rem,5vw,5.5rem); font-weight:200; line-height:1.2; color:#FFF8E7; text-shadow:0 4px 30px rgba(0,0,0,0.5), 0 0 100px rgba(232,146,92,0.2);">
-            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;" data-i18n="fest_h2">ประวัติและที่มาของเทศกาลยี่เป็ง</span>
+        <div class="text-content">
+          <h1 class="reveal reveal-delay-1 animate-text-glow"
+            style="font-size:clamp(2rem,4.5vw,5rem); font-weight:300; line-height:1.2; color:#FFF8E7; letter-spacing: -0.01em; white-space: nowrap;">
+            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;"
+              data-i18n="fest_h2">ประวัติและที่มาของเทศกาลยี่เป็ง</span>
           </h1>
           <p class="reveal reveal-delay-2"
-            style="font-family:'Kodchasan', sans-serif; font-size:clamp(1rem,1.8vw,1.4rem); color:rgba(255,248,231,0.9); margin-top:1rem; letter-spacing:.05em; font-weight:300; text-shadow:0 2px 15px rgba(0,0,0,0.5);" data-i18n="fest_sub">เทศกาลโคมแห่งล้านนา</p>
+            style="color:rgba(255,248,231,1); margin-top:1.2rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;"
+            data-i18n="fest_sub">เทศกาลแห่งล้านนา</p>
         </div>
         <!-- Scroll arrow -->
         <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
@@ -184,36 +185,7 @@
   <script src="js/app.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/hero-hanging.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const items = [
-        { t: 'fest_tl1_time', e: 'fest_tl1_ev' },
-        { t: 'fest_tl2_time', e: 'fest_tl2_ev' },
-        { t: 'fest_tl3_time', e: 'fest_tl3_ev' },
-        { t: 'fest_tl4_time', e: 'fest_tl4_ev' },
-        { t: 'fest_tl5_time', e: 'fest_tl5_ev' },
-        { t: 'fest_tl6_time', e: 'fest_tl6_ev' },
-      ];
-      const container = document.getElementById('tl-items');
-      if (container) {
-        items.forEach((item) => {
-          container.innerHTML += `
-            <div class="reveal" style="display:flex;gap:2.5rem;margin-bottom:3rem;">
-              <div style="flex:0 0 80px;text-align:right;padding-top:.3rem;">
-                <span data-i18n="${item.t}" style="font-family:var(--font-display);color:#E8925C;font-weight:600;font-size:1.1rem;"></span>
-              </div>
-              <div style="flex:1;position:relative;padding-bottom:1rem;">
-                <div style="position:absolute;left:-44px;top:8px;width:12px;height:12px;border-radius:50%;background:#E8925C;box-shadow:0 0 10px rgba(232,146,92,0.6);"></div>
-                <p data-i18n="${item.e}" style="color:rgba(255,248,231,0.85);font-size:.95rem;line-height:1.6;"></p>
-              </div>
-            </div>`;
-        });
-      }
-      // Re-apply language to fill the new elements
-      if (window.applyLang) window.applyLang(window.currentLang);
-      window.initReveal?.();
-    });
-  </script>
+  <script src="js/festival.js"></script>
 </body>
 
 </html>

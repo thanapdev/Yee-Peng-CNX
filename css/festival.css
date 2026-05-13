@@ -1,0 +1,61 @@
+/* Festival Page Styles */
+@keyframes text-glow-pulse {
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(232,146,92,0.4), 0 0 10px rgba(255,255,255,0.3); 
+    }
+    50% { 
+        text-shadow: 0 0 25px rgba(0,0,0,0.95), 0 0 70px rgba(232,146,92,0.7), 0 0 20px rgba(255,255,255,0.5); 
+    }
+}
+
+.animate-text-glow {
+    animation: text-glow-pulse 4s ease-in-out infinite;
+}
+
+#sec-festival .hero-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sec-festival .text-content {
+    position: relative;
+    text-align: center;
+    padding: 0 1rem;
+    max-width: 1400px;
+    width: 100%;
+    font-family: 'Kodchasan', sans-serif !important;
+}
+
+/* Timeline specific styles */
+.timeline-item {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.timeline-time {
+    flex: 0 0 80px;
+    text-align: right;
+    padding-top: .3rem;
+}
+
+.timeline-content {
+    flex: 1;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -44px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #E8925C;
+    box-shadow: 0 0 10px rgba(232,146,92,0.6);
+}
