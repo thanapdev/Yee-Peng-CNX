@@ -14,6 +14,7 @@
 
 #sec-festival .hero-container,
 #sec-traditions .hero-container,
+#sec-lanterns .hero-container,
 #sec-gallery .hero-container {
     position: relative;
     height: 100vh;
@@ -25,6 +26,7 @@
 
 #sec-festival .text-content,
 #sec-traditions .text-content,
+#sec-lanterns .text-content,
 #sec-gallery .text-content {
     position: relative;
     text-align: center;

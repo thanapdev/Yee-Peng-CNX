@@ -1,0 +1,311 @@
+/* =====================================================
+   LANTERNS HERO — FULL MOON & RIVER REFLECTION
+   Massive Lanterns (Custom Styled) + Moon + Reflection
+   ===================================================== */
+
+(function () {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  let lanterns = [];
+  let krathongs = [];
+  let stars = [];
+  let mountains = [];
+  let raf;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initStars();
+    initMountains();
+    initKrathongs();
+  }
+  window.addEventListener('resize', resize);
+
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H * 0.7,
+        r: Math.random() * 1.1 + 0.2,
+        o: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function initMountains() {
+    mountains = [];
+    const horizonY = H * 0.65;
+    for (let layer = 0; layer < 2; layer++) {
+      const pts = [];
+      const step = 120;
+      for (let x = 0; x <= W + step; x += step) {
+        pts.push({
+          x: x,
+          y: horizonY - (30 + layer * 40) - Math.random() * (40 + layer * 20)
+        });
+      }
+      mountains.push({
+        pts: pts,
+        color: layer === 0 ? '#04080c' : '#071018'
+      });
+    }
+  }
+
+  function createLantern(isInitial = false) {
+    const depth = Math.random();
+    return {
+      x: Math.random() * W,
+      y: isInitial ? Math.random() * H * 0.7 : H * 0.65 + 100,
+      vx: (Math.random() - 0.5) * 0.2, 
+      vy: -(Math.random() * 0.6 + 0.3),
+      depth: depth,
+      scale: (1 - depth) * 0.6 + 0.2,
+      alpha: 0,
+      sway: Math.random() * Math.PI * 2,
+      swaySpd: Math.random() * 0.008 + 0.004,
+      flicker: Math.random() * Math.PI * 2
+    };
+  }
+
+  function initKrathongs() {
+    krathongs = [];
+    for (let i = 0; i < 12; i++) {
+      krathongs.push(createKrathong(true));
+    }
+  }
+
+  function createKrathong(isInitial = false) {
+    const depth = Math.random();
+    const riverYStart = H * 0.65;
+    return {
+      x: isInitial ? Math.random() * W : -100,
+      y: riverYStart + depth * (H * 0.35),
+      vx: Math.random() * 0.3 + 0.2,
+      depth: depth,
+      scale: (1 - depth) * 0.7 + 0.3,
+      bob: Math.random() * Math.PI * 2,
+      bobSpd: Math.random() * 0.01 + 0.005,
+      flicker: Math.random() * Math.PI * 2,
+      type: Math.floor(Math.random() * 4)
+    };
+  }
+
+  function drawMoon() {
+    const mx = W * 0.75;
+    const my = H * 0.2;
+    const mr = 45;
+    ctx.save();
+    const g = ctx.createRadialGradient(mx, my, 0, mx, my, mr * 3);
+    g.addColorStop(0, 'rgba(255, 248, 231, 0.3)');
+    g.addColorStop(1, 'rgba(255, 248, 231, 0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(mx, my, mr * 3, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#FFF8E7';
+    ctx.beginPath(); ctx.arc(mx, my, mr, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawRiver() {
+    const riverYStart = H * 0.65;
+    const mx = W * 0.75;
+    const g = ctx.createLinearGradient(0, riverYStart, 0, H);
+    g.addColorStop(0, '#0a1a2a');
+    g.addColorStop(1, '#020508');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, riverYStart, W, H - riverYStart);
+
+    const rg = ctx.createLinearGradient(mx - 80, 0, mx + 80, 0);
+    rg.addColorStop(0, 'rgba(255, 248, 231, 0)');
+    rg.addColorStop(0.5, 'rgba(255, 248, 231, 0.15)');
+    rg.addColorStop(1, 'rgba(255, 248, 231, 0)');
+    ctx.fillStyle = rg;
+    ctx.fillRect(mx - 80, riverYStart, 160, H - riverYStart);
+
+    const time = Date.now() * 0.001;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < 15; i++) {
+        const y = riverYStart + (i / 15) * (H - riverYStart);
+        const w = 40 + Math.sin(time + i) * 30;
+        const opacity = 0.1 + Math.sin(time * 0.5 + i) * 0.05;
+        ctx.fillStyle = `rgba(255, 248, 231, ${opacity})`;
+        ctx.fillRect(mx - w/2, y, w, 2);
+    }
+    ctx.restore();
+
+    ctx.strokeStyle = 'rgba(255, 248, 231, 0.03)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        const t = Date.now() * 0.0006 + i;
+        const curY = riverYStart + 20 + i * 35;
+        ctx.moveTo(0, curY);
+        for(let x=0; x<=W; x+=40) {
+            ctx.lineTo(x, curY + Math.sin(x*0.01 + t)*4);
+        }
+        ctx.stroke();
+    }
+  }
+
+  function drawKrathong(k) {
+    k.x += k.vx;
+    k.bob += k.bobSpd;
+    k.flicker += 0.1;
+    if (k.x > W + 150) Object.assign(k, createKrathong());
+    const bobY = Math.sin(k.bob) * 3;
+    const s = k.scale;
+    const flickerVal = Math.sin(k.flicker) * 0.2 + 0.8;
+    ctx.save();
+    ctx.translate(k.x, k.y + bobY);
+    const colors = ['#E8925C', '#FFD700', '#FFF8E7', '#9370DB'];
+    const rg = ctx.createRadialGradient(0, 5, 0, 0, 5, 30 * s);
+    rg.addColorStop(0, `${colors[k.type]}${Math.floor(0.4 * flickerVal * 255).toString(16).padStart(2, '0')}`);
+    rg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = rg;
+    ctx.beginPath(); ctx.ellipse(0, 5, 30*s, 10*s, 0, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#1a3a1a';
+    ctx.beginPath(); ctx.ellipse(0, 0, 25*s, 8*s, 0, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(-1*s, -18*s, 2*s, 15*s);
+    ctx.fillStyle = `rgba(255, 220, 100, ${flickerVal})`;
+    ctx.beginPath(); ctx.arc(0, -20*s, 4*s, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawLantern(l) {
+    l.sway += l.swaySpd;
+    l.flicker += 0.1;
+    l.x += l.vx + Math.sin(l.sway) * 0.2;
+    l.y += l.vy;
+    l.alpha = Math.min(l.alpha + 0.01, 1);
+
+    if (l.y < -150) Object.assign(l, createLantern());
+
+    const s = l.scale;
+    const opacity = l.alpha * (1 - l.depth * 0.6);
+    const flickerVal = Math.sin(l.flicker) * 0.15 + 0.85;
+
+    // Dimensions based on image reference
+    const w = 45 * s;
+    const h = 65 * s;
+
+    ctx.save();
+    ctx.translate(l.x, l.y);
+    
+    // 1. Soft Outer Glow
+    const g = ctx.createRadialGradient(0, h/4, 0, 0, h/4, w * 3);
+    g.addColorStop(0, `rgba(232, 146, 92, ${0.35 * opacity * flickerVal})`);
+    g.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(0, h/4, w * 3, 0, Math.PI * 2); ctx.fill();
+
+    // 2. Main Body (Faceted/Octagonal Pointy Shape)
+    // We'll draw 3 main panels to create the faceted look
+    
+    // Left Panel
+    const lg = ctx.createLinearGradient(-w/2, -h/2, 0, h/2);
+    lg.addColorStop(0, `rgba(184, 92, 74, ${opacity})`);
+    lg.addColorStop(1, `rgba(232, 146, 92, ${opacity})`);
+    
+    ctx.fillStyle = lg;
+    ctx.beginPath();
+    ctx.moveTo(0, -h/2); // Top Point
+    ctx.lineTo(-w/2, -h/4); // Shoulder
+    ctx.lineTo(-w/2.5, h/2); // Bottom
+    ctx.lineTo(0, h/2); // Bottom Center
+    ctx.lineTo(0, -h/2); // Back to top
+    ctx.fill();
+
+    // Right Panel (Slightly different gradient for 3D effect)
+    const rg = ctx.createLinearGradient(w/2, -h/2, 0, h/2);
+    rg.addColorStop(0, `rgba(160, 80, 60, ${opacity})`);
+    rg.addColorStop(1, `rgba(210, 130, 80, ${opacity})`);
+    
+    ctx.fillStyle = rg;
+    ctx.beginPath();
+    ctx.moveTo(0, -h/2); // Top Point
+    ctx.lineTo(w/2, -h/4); // Shoulder
+    ctx.lineTo(w/2.5, h/2); // Bottom
+    ctx.lineTo(0, h/2); // Bottom Center
+    ctx.lineTo(0, -h/2); // Back to top
+    ctx.fill();
+
+    // 3. Vertical Seam
+    ctx.strokeStyle = `rgba(0, 0, 0, ${0.15 * opacity})`;
+    ctx.lineWidth = 1 * s;
+    ctx.beginPath();
+    ctx.moveTo(0, -h/2);
+    ctx.lineTo(0, h/2);
+    ctx.stroke();
+
+    // 4. Internal Fire Glow (at the bottom)
+    const fireG = ctx.createRadialGradient(0, h/2.5, 0, 0, h/2.5, h/2);
+    fireG.addColorStop(0, `rgba(255, 255, 200, ${0.9 * opacity * flickerVal})`);
+    fireG.addColorStop(0.5, `rgba(232, 146, 92, ${0.4 * opacity * flickerVal})`);
+    fireG.addColorStop(1, 'rgba(232, 146, 92, 0)');
+    ctx.fillStyle = fireG;
+    ctx.beginPath();
+    ctx.ellipse(0, h/2.5, w/2.2, h/3, 0, 0, Math.PI*2);
+    ctx.fill();
+
+    // 5. Fire Source (The Wick)
+    ctx.fillStyle = `rgba(255, 255, 255, ${0.8 * opacity * flickerVal})`;
+    ctx.beginPath();
+    ctx.arc(0, h/2.1, 4 * s, 0, Math.PI*2);
+    ctx.fill();
+
+    // 6. Bottom Frame Rim
+    ctx.strokeStyle = `rgba(184, 92, 74, ${0.5 * opacity})`;
+    ctx.lineWidth = 2 * s;
+    ctx.beginPath();
+    ctx.ellipse(0, h/2, w/2.5, h/8, 0, 0, Math.PI*2);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function drawMountains() {
+    mountains.forEach(m => {
+      ctx.fillStyle = m.color;
+      ctx.beginPath();
+      m.pts.forEach((p, i) => {
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      });
+      ctx.lineTo(W, H * 0.65);
+      ctx.lineTo(0, H * 0.65);
+      ctx.fill();
+    });
+  }
+
+  // Initialize
+  resize();
+  for (let i = 0; i < 50; i++) lanterns.push(createLantern(true));
+
+  function draw() {
+    raf = requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, W, H);
+    const skyG = ctx.createLinearGradient(0, 0, 0, H * 0.65);
+    skyG.addColorStop(0, '#04080c');
+    skyG.addColorStop(1, '#0D1B2A');
+    ctx.fillStyle = skyG;
+    ctx.fillRect(0, 0, W, H * 0.65);
+    stars.forEach(s => {
+      s.o += 0.01;
+      const op = Math.sin(s.o) * 0.4 + 0.6;
+      ctx.fillStyle = `rgba(255, 255, 255, ${op * 0.3})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+    });
+    drawMoon();
+    lanterns.sort((a, b) => b.depth - a.depth);
+    lanterns.forEach(drawLantern);
+    drawMountains();
+    drawRiver();
+    krathongs.sort((a, b) => a.depth - b.depth);
+    krathongs.forEach(drawKrathong);
+  }
+  draw();
+})();

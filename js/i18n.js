@@ -51,9 +51,9 @@ window.LANG = {
     fest_tl6_time: 'ตลอดคืน', fest_tl6_ev: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง',
 
     /* LANTERNS */
-    lant_eyebrow:   'โคมลอย · ความหมาย & ศิลปะ',
-    lant_h2:        'แสงแห่งศรัทธา',
-    lant_sub:       'โคมแต่ละดวงคือคำอธิษฐาน คือการส่งความชั่วร้ายออกไป และต้อนรับสิ่งดีงามเข้ามา',
+    lant_eyebrow:   'กิจกรรมแห่งแสงในเทศกาลยี่เป็ง',
+    lant_h2:        'การปล่อยโคมลอย',
+    lant_sub:       'มรดกทางวัฒนธรรมที่ส่องสว่างเหนือท้องฟ้านพบุรีศรีนครพิงค์',
     lant_meaning_h: 'ความหมายของแสง',
     lant_meaning_p: 'การปล่อยโคมลอยเป็นสัญลักษณ์ของการปล่อยวางความทุกข์ โรค ภัย และสิ่งที่ไม่ต้องการในชีวิต แสงที่ลอยขึ้นฟ้าคือการส่งความปรารถนาดีสู่สรวงสวรรค์',
     lant_types_h:   'ความหลากหลายของโคมล้านนา',
@@ -335,9 +335,9 @@ window.LANG = {
     fest_tl5_time: '21:30', fest_tl5_ev: 'Loy Krathong floating on the Ping River',
     fest_tl6_time: 'All Night', fest_tl6_ev: 'Folk music, northern Thai food, light installations',
 
-    lant_eyebrow:   'Sky Lanterns · Meaning & Craft',
-    lant_h2:        'Light as a Prayer',
-    lant_sub:       'Each lantern is a wish, a release of suffering, an invitation for good things to come.',
+    lant_eyebrow:   'HIGHLIGHT ACTIVITY OF YI PENG',
+    lant_h2:        'Sky Lantern Release',
+    lant_sub:       'A legendary Lanna tradition that illuminates the night sky of Chiang Mai',
     lant_meaning_h: 'The Meaning of Light',
     lant_meaning_p: 'Releasing a sky lantern symbolises letting go of misfortunes, illness, and negativity. The rising light carries prayers and good intentions skyward, toward the heavens.',
     lant_types_h:   'Diversity of Lanna Lanterns',
