@@ -99,7 +99,7 @@ window.LANG = {
     trad_cloth_p:   'ในเทศกาลยี่เป็ง ชาวเชียงใหม่นิยมแต่งกายชุดพื้นเมืองล้านนา ผ้าฝ้ายทอมือลายดอก สีน้ำตาล แดง และทอง นักท่องเที่ยวสามารถเช่าชุดได้ตามร้านรอบคูเมือง',
 
     /* NEW TRADITIONS CONTENT (ENHANCED DEPTH) */
-    trad_beliefs_h: 'ศรัทธา แสงสว่าง และการปล่อยวาง',
+    trad_beliefs_h: 'ตำนานความเชื่อและจิตวิญญาณ',
     trad_belief_khongkha_h: 'แม่น้ำแห่งการขอขมา',
     trad_belief_khongkha_p: 'ไม่ใช่เพียงการบูชา แต่คือการขอขมา "พระแม่คงคา" ที่เราได้ล่วงเกินและใช้ประโยชน์จากสายน้ำตลอดปี สะท้อนถึงคติความกตัญญูที่ฝังรากลึกในจิตใจชาวพุทธ-พราหมณ์',
     trad_belief_khrao_h: 'ลอยเคราะห์: วิถีแห่งการเริ่มต้นใหม่',
@@ -109,7 +109,7 @@ window.LANG = {
     trad_belief_buddha_h: 'พุทธบูชาพระเกศแก้วจุฬามณี',
     trad_belief_buddha_p: 'สูงสุดแห่งศรัทธาในคืนยี่เป็ง คือการส่งโคมไฟขึ้นสู่สรวงสวรรค์ชั้นดาวดึงส์ เพื่อบูชาพระบรมสารีริกธาตุ แสงสว่างบนท้องฟ้าจึงเปรียบดั่งดวงประทีปแห่งปัญญาที่นำทางจิตวิญญาณ',
     
-    trad_vessantara_h: 'มหาเวสสันดรชาดก: มหาทานบารมีแห่งล้านนา',
+    trad_vessantara_h: 'มหาเวสสันดรชาดก:<br>มหาทานบารมีแห่งล้านนา',
     trad_vessantara_p1: 'หัวใจของยี่เป็งคือการฟังเทศน์ "มหาชาติ" 13 กัณฑ์ หรือ "ตั้งธรรมหลวง" ในคืนวันเพ็ญ ซึ่งเชื่อว่าหากฟังครบในวันเดียวจะได้อานิสงส์มหาศาลและได้เกิดในยุคของพระศรีอริยเมตไตรย',
     trad_vessantara_p2: 'การตกแต่ง "ซุ้มประตูป่า" ด้วยก้านมะพร้าวและต้นกล้วยหน้าบ้านเรือน คือการจำลองป่าหิมพานต์เพื่อรับเสด็จพระเวสสันดรกลับเข้าเมือง เป็นการอัญเชิญสิริมงคลและความมั่งคั่งเข้าสู่ครอบครัว',
     
@@ -382,7 +382,7 @@ window.LANG = {
     trad_cloth_p:   'During Yi Peng, locals wear handwoven Lanna cotton outfits in deep reds, browns, and gold. Visitors can rent traditional dress from shops around the Old City moat.',
 
     /* NEW TRADITIONS CONTENT (ENHANCED DEPTH) */
-    trad_beliefs_h: 'Faith, Light, and the Art of Letting Go',
+    trad_beliefs_h: 'Legends, Beliefs, and Spirit',
     trad_belief_khongkha_h: 'The River of Forgiveness',
     trad_belief_khongkha_p: 'It is not just a ritual; it is a profound apology to "Phra Mae Khongkha" for our use and pollution of the water throughout the year, reflecting a deep-rooted sense of gratitude.',
     trad_belief_khrao_h: 'Loy Khrao: The Path of Rebirth',
@@ -392,7 +392,7 @@ window.LANG = {
     trad_belief_buddha_h: 'Offering to the Heavenly Relic',
     trad_belief_buddha_p: 'The pinnacle of Yi Peng faith is sending lanterns skyward to worship the sacred Chula Mani relic in heaven. The rising lights represent the "Light of Wisdom" guiding the soul.',
     
-    trad_vessantara_h: 'Vessantara Jataka: The Virtue of Giving',
+    trad_vessantara_h: 'The Vessantara Jataka:<br>Lanna\'s Great Merit',
     trad_vessantara_p1: 'The heart of Yi Peng is "Tang Tham Luang"—listening to all 13 chapters of the Vessantara Jataka sermon in a single day, believed to lead to enlightenment in the era of the next Buddha.',
     trad_vessantara_p2: 'The "Sum Pratu Pa" (Jungle Gate) decorations recreate the Himavanta forest where the Prince stayed, inviting his immense merit and blessings into the household.',
     
