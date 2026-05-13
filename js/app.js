@@ -176,7 +176,7 @@
   // Language Persistence
   document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('yp-lang') || 'th';
-    if (window.applyLang) window.applyLang(savedLang);
+    if (window.applyLang) window.applyLang(savedLang, true);
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {

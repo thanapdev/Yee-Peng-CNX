@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>เทศกาลยี่เป็ง | Festival — ยี่เป็ง เชียงใหม่</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
+
 <body>
   <!-- CUSTOM CURSOR -->
   <div id="cursor"></div>
@@ -62,54 +66,67 @@
 
   <main>
     <section id="sec-festival">
-      <div style="padding-top:6rem;min-height:100vh;background:var(--night-sky-2);">
-        <!-- Hero banner -->
-        <div style="position:relative;height:55vh;overflow:hidden;display:flex;align-items:flex-end;">
-          <img src="assets/images/gallery-crowd.png" alt="Festival"
-            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.2);">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,1) 0%,rgba(13,27,42,0.2) 100%);">
+      <!-- Hero (Synchronized with index.html premium style) -->
+      <div
+        style="position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+        <!-- 3D Hero Canvas -->
+        <canvas id="hero-canvas"
+          style="position:absolute;inset:0;width:100%;height:100%;background:var(--night-sky);"></canvas>
+        <div
+          style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,0.2) 0%,rgba(13,27,42,0.55) 60%,rgba(13,27,42,1) 100%);">
+        </div>
+        <div
+          style="position:relative;text-align:center;padding:0 1.5rem;max-width:1100px; font-family:'Kodchasan', sans-serif !important;">
+          <h1 class="reveal reveal-delay-1"
+            style="font-family:'Kodchasan', sans-serif !important; font-size:clamp(2.5rem,5vw,5.5rem); font-weight:200; line-height:1.2; color:#FFF8E7; text-shadow:0 0 100px rgba(232,146,92,0.3);">
+            <span class="gold-shimmer" style="font-family:'Kodchasan', sans-serif !important;" data-i18n="fest_h2">ประวัติและที่มาของเทศกาลยี่เป็ง</span>
+          </h1>
+          <p class="reveal reveal-delay-2"
+            style="font-family:'Kodchasan', sans-serif; font-size:clamp(1rem,1.8vw,1.4rem); color:rgba(255,248,231,0.8); margin-top:1rem; letter-spacing:.05em; font-weight:300;" data-i18n="fest_sub">เทศกาลโคมแห่งล้านนา</p>
+        </div>
+        <!-- Scroll arrow -->
+        <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(232,146,92,0.6)" stroke-width="1.5">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+      </div>
+
+      <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
+        <div
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem;">
+          <div class="glass-card reveal" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;">📜</div>
+            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
+              data-i18n="fest_card1_h">lolประวัติและที่มา</h3>
+            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card1_p">
+              ยี่เป็งกำเนิดในราชอาณาจักรล้านนา</p>
           </div>
-          <div style="position:relative;padding:0 8vw 4rem;max-width:700px;">
-            <p class="eyebrow reveal" data-i18n="fest_eyebrow">ประวัติ & ที่มา</p>
-            <h1 class="reveal reveal-delay-1 display-lg" style="color:#FFF8E7;margin-top:.5rem;" data-i18n="fest_h2">
-              เทศกาลยี่เป็ง</h1>
-            <p class="reveal reveal-delay-2" style="color:rgba(255,248,231,0.65);margin-top:1rem;line-height:1.8;"
-              data-i18n="fest_sub">เทศกาลโคมแห่งล้านนา</p>
+          <div class="glass-card reveal reveal-delay-1" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;">📍</div>
+            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
+              data-i18n="fest_card2_h">วัน เวลา & สถานที่</h3>
+            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card2_p">
+              เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน</p>
+          </div>
+          <div class="glass-card reveal reveal-delay-2" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;">⏰</div>
+            <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
+              data-i18n="fest_card3_h">ไทม์ไลน์เทศกาล</h3>
+            <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card3_p">บ่าย:
+              ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์</p>
           </div>
         </div>
 
-        <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem;">
-            <div class="glass-card reveal" style="padding:2rem;">
-              <div style="font-size:2rem;margin-bottom:1rem;">📜</div>
-              <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-                data-i18n="fest_card1_h">ประวัติและที่มา</h3>
-              <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card1_p">
-                ยี่เป็งกำเนิดในราชอาณาจักรล้านนา</p>
-            </div>
-            <div class="glass-card reveal reveal-delay-1" style="padding:2rem;">
-              <div style="font-size:2rem;margin-bottom:1rem;">📍</div>
-              <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-                data-i18n="fest_card2_h">วัน เวลา & สถานที่</h3>
-              <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card2_p">
-                เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน</p>
-            </div>
-            <div class="glass-card reveal reveal-delay-2" style="padding:2rem;">
-              <div style="font-size:2rem;margin-bottom:1rem;">⏰</div>
-              <h3 style="font-family:var(--font-display);font-size:1.35rem;color:#E8925C;margin-bottom:.75rem;"
-                data-i18n="fest_card3_h">ไทม์ไลน์เทศกาล</h3>
-              <p style="color:rgba(255,248,231,0.65);line-height:1.8;font-size:.9rem;" data-i18n="fest_card3_p">บ่าย:
-                ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์</p>
-            </div>
+        <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3rem;"
+          data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
+        <div style="max-width:680px;margin:0 auto;position:relative;">
+          <div
+            style="position:absolute;left:72px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(232,146,92,0),rgba(232,146,92,0.4),rgba(232,146,92,0));">
           </div>
-
-          <h2 class="reveal display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3rem;"
-            data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
-          <div style="max-width:680px;margin:0 auto;position:relative;">
-            <div style="position:absolute;left:72px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(232,146,92,0),rgba(232,146,92,0.4),rgba(232,146,92,0));"></div>
-            <div id="tl-items"></div>
-          </div>
+          <div id="tl-items"></div>
         </div>
+      </div>
       </div>
     </section>
   </main>
@@ -118,13 +135,17 @@
   <div id="countdown-bar">
     <span class="countdown-label" data-i18n="countdown_label">นับถอยหลังสู่คืนยี่เป็ง</span>
     <div class="countdown-units">
-      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub" data-i18n="cd_days">วัน</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-sub"
+          data-i18n="cd_days">วัน</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub" data-i18n="cd_hours">ชั่วโมง</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-sub"
+          data-i18n="cd_hours">ชั่วโมง</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub" data-i18n="cd_mins">นาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-sub"
+          data-i18n="cd_mins">นาที</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub" data-i18n="cd_secs">วินาที</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-sub"
+          data-i18n="cd_secs">วินาที</span></div>
     </div>
   </div>
 
@@ -132,7 +153,11 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
-          <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2"/><ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1"/><line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1"/></svg>
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <ellipse cx="18" cy="14" rx="7" ry="10" fill="rgba(232,146,92,0.15)" stroke="#E8925C" stroke-width="1.2" />
+            <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1" />
+            <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
+          </svg>
           <span style="font-family:var(--font-display);font-size:1.1rem;color:#FFF8E7;">ยี่เป็ง เชียงใหม่</span>
         </div>
         <p data-i18n="footer_tagline">สร้างด้วยความรักต่อเทศกาลยี่เป็งและวัฒนธรรมล้านนา</p>
@@ -157,15 +182,17 @@
 
   <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/hero.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const items = [
-        { t:'fest_tl1_time', e:'fest_tl1_ev' },
-        { t:'fest_tl2_time', e:'fest_tl2_ev' },
-        { t:'fest_tl3_time', e:'fest_tl3_ev' },
-        { t:'fest_tl4_time', e:'fest_tl4_ev' },
-        { t:'fest_tl5_time', e:'fest_tl5_ev' },
-        { t:'fest_tl6_time', e:'fest_tl6_ev' },
+        { t: 'fest_tl1_time', e: 'fest_tl1_ev' },
+        { t: 'fest_tl2_time', e: 'fest_tl2_ev' },
+        { t: 'fest_tl3_time', e: 'fest_tl3_ev' },
+        { t: 'fest_tl4_time', e: 'fest_tl4_ev' },
+        { t: 'fest_tl5_time', e: 'fest_tl5_ev' },
+        { t: 'fest_tl6_time', e: 'fest_tl6_ev' },
       ];
       const container = document.getElementById('tl-items');
       if (container) {
@@ -188,4 +215,5 @@
     });
   </script>
 </body>
+
 </html>

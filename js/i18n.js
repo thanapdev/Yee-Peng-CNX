@@ -33,8 +33,8 @@ window.LANG = {
 
     /* FESTIVAL */
     fest_eyebrow:   'ประวัติ & ที่มา',
-    fest_h2:        'เทศกาลยี่เป็ง',
-    fest_sub:       'เทศกาลโคมแห่งล้านนา ที่มีประวัติยาวนานกว่า 700 ปี สืบสานความเชื่อ ศรัทธา และงานศิลปะของชาวเหนือ',
+    fest_h2:        'ประวัติและที่มาของเทศกาลยี่เป็ง',
+    fest_sub:       'สัมผัสมรดกทางวัฒนธรรมที่สืบทอดมากว่า 700 ปี',
     fest_card1_h:   'ประวัติและที่มา',
     fest_card1_p:   'ยี่เป็งกำเนิดในราชอาณาจักรล้านนา ตรงกับวันเพ็ญเดือน 12 ของปฏิทินล้านนา (เดือนพฤศจิกายน) เป็นเทศกาลที่รวมประเพณีพุทธศาสนาและวัฒนธรรมพื้นเมืองไว้ด้วยกัน',
     fest_card2_h:   'วัน เวลา & สถานที่',
@@ -269,8 +269,8 @@ window.LANG = {
     home_stat3_num: '3 Nights', home_stat3_txt: 'of Celebration',
 
     fest_eyebrow:   'History & Origins',
-    fest_h2:        'The Yi Peng Festival',
-    fest_sub:       'A Lanna lantern festival with over 700 years of history — weaving together Buddhist devotion, folk belief, and living artistry.',
+    fest_h2:        'History and Origins of Yi Peng Festival',
+    fest_sub:       'Experience the cultural heritage passed down for over 700 years',
     fest_card1_h:   'History & Origins',
     fest_card1_p:   'Yi Peng was born in the ancient Lanna Kingdom, celebrated on the full moon of the 12th Lanna month (November). It merges Buddhist practice with indigenous northern Thai culture.',
     fest_card2_h:   'Dates, Times & Venues',
@@ -479,29 +479,48 @@ window.LANG = {
 /* ── Language state ─────────────────────────────── */
 window.currentLang = localStorage.getItem('yp-lang') || 'th';
 
-function applyLang(lang) {
+function applyLang(lang, initial = false) {
+  const t = window.LANG[lang];
+  if (!t) return;
+
   window.currentLang = lang;
   localStorage.setItem('yp-lang', lang);
-
-  const t = window.LANG[lang];
   document.documentElement.lang = lang === 'th' ? 'th' : 'en';
 
-  // Update all [data-i18n] elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = t[key];
-      } else {
-        el.textContent = t[key];
+  // ─── HTML CAPTURE LOGIC ────────────────────────────────
+  // If this is the initial load, we "capture" what the user 
+  // wrote in the HTML and use it as the source of truth for 'th'.
+  if (initial) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      // If we are in Thai (default), save the HTML text into our translation object
+      if (localStorage.getItem('yp-lang') === 'th' || !localStorage.getItem('yp-lang')) {
+        const currentText = (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') ? el.placeholder : el.textContent;
+        if (currentText && currentText.trim() !== "") {
+           window.LANG['th'][key] = currentText.trim();
+        }
       }
-    }
-  });
+    });
+  }
 
-  // Update body lang class
+  // ─── TRANSLATION LOGIC ─────────────────────────────────
+  // We only overwrite the text if we are NOT in the initial Thai load
+  // (because in the initial load, the HTML already has the correct text).
+  if (!(initial && lang === 'th')) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+  }
+
+  // Update UI components
   document.body.classList.toggle('lang-th', lang === 'th');
-
-  // Update toggle buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
