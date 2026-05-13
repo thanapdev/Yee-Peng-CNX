@@ -13,6 +13,96 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/festival.css">
+  <style>
+    /* Interactive Activity Cards */
+    .interactive-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      cursor: pointer;
+      border: 1px solid rgba(255, 248, 231, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .interactive-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+      filter: brightness(0.7);
+    }
+    
+    .interactive-card:hover img {
+      transform: scale(1.1);
+      filter: brightness(0.5);
+    }
+    
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+      transition: all 0.4s ease;
+    }
+    
+    .interactive-card:hover .card-overlay {
+      background: rgba(13, 27, 42, 0.4);
+      backdrop-filter: blur(8px);
+    }
+    
+    .card-info {
+      transition: all 0.4s var(--ease-out);
+    }
+    
+    .interactive-card:hover .card-info {
+      transform: translateY(-20px);
+    }
+    
+    .card-emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    .card-info h3 {
+      font-family: var(--font-display);
+      color: #FFF8E7;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-info p {
+      color: rgba(255, 248, 231, 0.7);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .card-action {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+    
+    .interactive-card:hover .card-action {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card-action .btn {
+      width: 100%;
+      padding: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+  </style>
 </head>
 
 <body>
@@ -127,46 +217,85 @@
             </div>
           </div>
 
-          <!-- Activity Details -->
-          <div style="display:flex;flex-direction:column;gap:8rem;">
-            
-            <!-- Tam Phang Pratip -->
-            <div class="reveal" style="display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;">
-              <img src="assets/images/phang-pratip.png" alt="ต๋ามผางประทีป" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;filter:brightness(0.9);">
-              <div>
-                <h4 style="font-size:2rem;color:var(--lantern-gold);margin-bottom:1.5rem;">ต๋ามผางประทีป</h4>
-                <p style="color:rgba(255,248,231,0.7);line-height:1.9;">
-                  การจุดประทีปหรือผางประทีปเพื่อเป็นพุทธบูชา และบูชาคุณพระแม่ธรณี แสงไฟดวงเล็กๆ นับหมื่นดวงจะถูกจุดขึ้นรอบคูเมืองและตามวัดต่างๆ สร้างบรรยากาศที่สงบและศักดิ์สิทธิ์
-                </p>
-              </div>
+          <!-- Night Schedule Timeline -->
+          <div class="reveal" style="margin-top:8rem; margin-bottom: 6rem;">
+            <h2 class="display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3.5rem;" data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
+            <div style="max-width:720px;margin:0 auto;position:relative; padding-left: 20px;">
+              <div class="schedule-line"></div>
+              <div id="tl-items"></div>
             </div>
-
-            <!-- Loy Sapao -->
-            <div class="reveal" style="display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;">
-              <div style="order:2;">
-                <img src="assets/images/loy-sapao.png" alt="ลอยสะเปา" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;filter:brightness(0.9);">
-              </div>
-              <div style="order:1;text-align:right;">
-                <h4 style="font-size:2rem;color:var(--lantern-gold);margin-bottom:1.5rem;">ลอยสะเปาพื้นเมือง</h4>
-                <p style="color:rgba(255,248,231,0.7);line-height:1.9;">
-                  "สะเปา" คือกระทงขนาดใหญ่ที่สร้างเป็นรูปเรือสำเภา บรรจุเครื่องสักการะและไฟประทีป ลอยไปตามลำน้ำปิงเพื่อสะเดาะเคราะห์และขอขมาพระแม่คงคาตามคติความเชื่อล้านนา
-                </p>
-              </div>
-            </div>
-
-            <!-- Lantern & Procession -->
-            <div class="reveal" style="display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;">
-              <img src="assets/images/procession.png" alt="ขบวนแห่" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;filter:brightness(0.9);">
-              <div>
-                <h4 style="font-size:2rem;color:var(--lantern-gold);margin-bottom:1.5rem;">ปล่อยโคม & ขบวนแห่ใหญ่</h4>
-                <p style="color:rgba(255,248,231,0.7);line-height:1.9;">
-                  จุดสูงสุดของงานคือการปล่อยโคมลอยนับพันดวงพร้อมกันจนท้องฟ้าสว่างไสว ควบคู่ไปกับขบวนแห่กระทงใหญ่ที่ตกแต่งอย่างวิจิตรตระการตา และการแสดงแสงสีเสียงสื่อผสมที่บอกเล่าประวัติศาสตร์ของเชียงใหม่
-                </p>
-              </div>
-            </div>
-
           </div>
+
+          <!-- Key Activities Grid (Reverted & Simplified) -->
+          <div class="reveal" style="margin-bottom:6rem;">
+            <h2 style="font-family:var(--font-display);font-size:2.5rem;color:#FFF8E7;text-align:center;margin-bottom:3.5rem;">กิจกรรมสำคัญประกอบด้วย</h2>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+              
+              <!-- 1. ต๋ามผางประทีป (Game) -->
+              <div class="glass-card reveal" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid var(--lantern-gold);">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🕯️</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ต๋ามผางประทีป</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">จุดกระถางดินเผาใส่น้ำมันและไส้เทียนบูชาพระ ทั้งที่วัดและบ้านเรือน</p>
+                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมจุดเทียน กำลังพัฒนา...')">เล่นเกมจุดเทียน</button>
+              </div>
+
+              <!-- 2. ปล่อยโคมลอย (Game) -->
+              <div class="glass-card reveal reveal-delay-1" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid var(--lantern-gold);">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🏮</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ปล่อยโคมลอย</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">โคมทำจากกระดาษสาหรือผ้าบาง ลอยขึ้นสู่ท้องฟ้าด้วยความร้อน</p>
+                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมลอยโคม กำลังพัฒนา...')">เล่นเกมลอยโคม</button>
+              </div>
+
+              <!-- 3. ลอยสะเปา (Game) -->
+              <div class="glass-card reveal reveal-delay-2" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid var(--lantern-gold);">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🛶</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ลอยสะเปา</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">ลอยกระทงลงแม่น้ำปิง เพื่อสะเดาะเคราะห์และขอขมาพระแม่คงคา</p>
+                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมลอยกระทง กำลังพัฒนา...')">เล่นเกมลอยกระทง</button>
+              </div>
+
+              <!-- 4. ขบวนแห่กระทงใหญ่ -->
+              <div class="glass-card reveal" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid #E8925C;">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🎭</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ขบวนแห่กระทงใหญ่</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">ขบวนแห่สะเปาล้านนาประกวดตามถนนสำคัญ เช่น ถนนท่าแพ</p>
+              </div>
+
+              <!-- 5. การแสดงแสง สี เสียง -->
+              <div class="glass-card reveal reveal-delay-1" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid #E8925C;">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🎆</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">การแสดงแสง สี เสียง</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">จัดแสดงตระการตาในตัวเมืองเชียงใหม่ บอกเล่าตำนานล้านนา</p>
+              </div>
+
+              <!-- 6. ประกวดเทพียี่เป็ง -->
+              <div class="glass-card reveal reveal-delay-2" style="padding:2rem; min-height: 220px; display: flex; flex-direction: column; border-top: 4px solid #E8925C;">
+                <div style="display:flex;gap:1.25rem;align-items:center;margin-bottom:1.25rem;">
+                  <span style="font-size:2.5rem;">🏆</span>
+                  <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ประกวดเทพียี่เป็ง</h4>
+                </div>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">ประกวดนางงามและเทพบุตรประจำเทศกาล ในชุดพื้นเมืองวิจิตร</p>
+              </div>
+
+            </div>
+          </div>
+
+
+
         </div>
+      </div>
       </div>
     </section>
   </main>
@@ -226,6 +355,34 @@
     document.addEventListener('DOMContentLoaded', () => {
       window.initDIY?.();
       window.initReveal?.();
+      
+      // Initialize Night Schedule Timeline
+      const items = [
+        { time: '17:00', event: 'ตลาดโคมและงานศิลปะพื้นบ้านเปิด' },
+        { time: '18:30', event: 'พิธีสวดมนต์และจุดเทียนที่วัด' },
+        { time: '19:30', event: 'ขบวนแห่แสงไฟและโคมแขวน' },
+        { time: '20:30', event: 'ปล่อยโคมลอยพร้อมกันหมื่นดวง' },
+        { time: '21:30', event: 'ลอยกระทงในแม่น้ำปิง' },
+        { time: 'ตลอดคืน', event: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง' },
+      ];
+      
+      const container = document.getElementById('tl-items');
+      if (container) {
+        container.innerHTML = '';
+        items.forEach((item) => {
+          container.innerHTML += `
+            <div class="reveal schedule-item">
+              <div class="schedule-time">
+                <span>${item.time}</span>
+              </div>
+              <div class="schedule-content">
+                <div class="schedule-dot"></div>
+                <p>${item.event}</p>
+              </div>
+            </div>`;
+        });
+        window.initReveal?.(); // Re-init reveal for dynamic items
+      }
     });
   </script>
 </body>
