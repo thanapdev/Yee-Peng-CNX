@@ -728,11 +728,11 @@
         <p class="sub" data-i18n="game_krathong_desc">ขอขมาพระแม่คงคาและลอยทุกข์โศกไปกับสายน้ำแม่ปิงจำลองที่ส่องสว่างด้วยศรัทธา</p>
         
         <div class="interaction-panel" id="river-panel-init">
-          <button class="action-btn" id="btn-start-krathong" style="margin-top:2rem;">เริ่มสร้างกระทง</button>
+          <button class="action-btn" id="btn-start-krathong" style="margin-top:2rem;" data-i18n="game_start_creating">เริ่มสร้างกระทง</button>
         </div>
 
         <div class="interaction-panel" id="river-panel" style="display: none;">
-          <p class="sub" style="margin-top:1.5rem; margin-bottom:0.8rem; font-size:0.9rem;">เลือกรูปแบบกระทง</p>
+          <p class="sub" style="margin-top:1.5rem; margin-bottom:0.8rem; font-size:0.9rem;" data-i18n="game_select_style">เลือกรูปแบบกระทง</p>
           <div class="kr-style-grid" style="margin-bottom:1.5rem;">
             <div class="kr-style-card active" data-style="0" title="Classic Green"><div class="kr-dot" style="background:#228b22;"></div></div>
             <div class="kr-style-card" data-style="1" title="Royal Gold"><div class="kr-dot" style="background:#ffd700;"></div></div>
@@ -741,7 +741,7 @@
             <div class="kr-style-card" data-style="4" title="Lotus Pink"><div class="kr-dot" style="background:#ff69b4;"></div></div>
           </div>
 
-          <p class="sub" style="margin-bottom:0.8rem; font-size:0.9rem;">เลือกคำอธิษฐาน</p>
+          <p class="sub" style="margin-bottom:0.8rem; font-size:0.9rem;" data-i18n="game_select_wish">เลือกคำอธิษฐาน</p>
           <div class="wish-tags" id="kr-wishes" style="max-height: 150px; overflow-y: auto; margin-bottom: 2rem;">
             <div class="wish-tag active" data-wish="kr_wish_1" data-i18n="kr_wish_1">ขอขมาพระแม่คงคา</div>
             <div class="wish-tag" data-wish="kr_wish_2" data-i18n="kr_wish_2">ลอยเคราะห์ไปกับสายน้ำ</div>
@@ -763,8 +763,8 @@
     <!-- SECTION 4: FINAL COMPLETION -->
     <section class="game-section" id="sec-final">
       <div class="section-content">
-        <h2 style="color: var(--gold); text-shadow: 0 0 30px rgba(232, 146, 92, 0.6); font-size: 4rem; margin-bottom: 1.5rem;">รุ่งโรจน์นิรันดร์</h2>
-        <p class="sub" style="margin-bottom: 3.5rem; line-height: 1.8; font-size: 1.2rem; color: #d0f0f0;">ยินดีด้วยคุณเข้าร่วมกิจกรรมสำคัญของประเพณียี่เป็งเสร็จแล้ว<br>ขอให้แสงสว่างแห่งยี่เป็งนำทางความสุขและความสำเร็จมาสู่คุณตลอดไป</p>
+        <h2 style="color: var(--gold); text-shadow: 0 0 30px rgba(232, 146, 92, 0.6); font-size: 4rem; margin-bottom: 1.5rem;" data-i18n="game_final_h">รุ่งโรจน์นิรันดร์</h2>
+        <p class="sub" style="margin-bottom: 3.5rem; line-height: 1.8; font-size: 1.2rem; color: #d0f0f0;" data-i18n="game_final_p">ยินดีด้วยคุณเข้าร่วมกิจกรรมสำคัญของประเพณียี่เป็งเสร็จแล้ว<br>ขอให้แสงสว่างแห่งยี่เป็งนำทางความสุขและความสำเร็จมาสู่คุณตลอดไป</p>
         
         <div class="badges-container">
           <!-- Lantern Badge: Faceted Paper Lantern -->
@@ -778,7 +778,7 @@
                 <path d="M10 20V23M14 20V23" stroke-dasharray="1 1" />
               </svg>
             </div>
-            <span>โคมลอย</span>
+            <span data-i18n="game_lantern_badge">โคมลอย</span>
           </div>
           <!-- Phang Badge: Clay Lamp with Flame -->
           <div class="badge-item">
@@ -790,7 +790,7 @@
                 <path d="M12 6C12 6 10 4 12 2C14 4 12 6 12 6Z" fill="currentColor" />
               </svg>
             </div>
-            <span>ผางประทีป</span>
+            <span data-i18n="game_phang_badge">ผางประทีป</span>
           </div>
           <!-- Krathong Badge: Floral Layers with Candle -->
           <div class="badge-item">
@@ -802,12 +802,13 @@
                 <circle cx="12" cy="12" r="1.5" fill="currentColor" />
               </svg>
             </div>
-            <span>กระทง</span>
+            <span data-i18n="game_krathong_badge">กระทง</span>
           </div>
         </div>
 
-        <div style="margin-top: 2rem;">
-          <a href="index.html" class="action-btn" style="text-decoration: none; display: inline-block; padding: 1.4rem 4rem; font-size: 1.2rem;">กลับหน้าหลัก</a>
+        <div style="margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <button id="btn-restart" class="action-btn" style="background: rgba(255,255,255,0.1); color: var(--gold); border: 1px solid var(--gold); padding: 1.4rem 3rem;" data-i18n="game_restart">เล่นอีกครั้ง</button>
+          <a href="index.html" class="action-btn" style="text-decoration: none; display: inline-block; padding: 1.4rem 3rem;" data-i18n="game_home_btn">กลับหน้าหลัก</a>
         </div>
       </div>
     </section>
@@ -817,13 +818,13 @@
     <div class="candle-flame"></div>
     <div class="candle-bowl"></div>
   </div>
-  <div id="candle-hint">แตะเพื่อจุดไฟ</div>
+  <div id="candle-hint" data-i18n="game_hint_light">แตะเพื่อจุดไฟ</div>
 
   <div id="wish-modal">
     <div class="modal-content">
       <h3 data-i18n="game_wish_title">คำอธิษฐานของคุณ</h3>
       <p id="modal-wish-text"></p>
-      <button class="action-btn" onclick="document.getElementById('wish-modal').classList.remove('active')">ปิด</button>
+      <button class="action-btn" onclick="document.getElementById('wish-modal').classList.remove('active')" data-i18n="game_close">ปิด</button>
     </div>
   </div>
 

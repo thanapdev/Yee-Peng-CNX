@@ -28,7 +28,7 @@
         <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
         <ellipse cx="18" cy="24" rx="3" ry="1.2" fill="rgba(212,120,74,0.5)" />
       </svg>
-      <span class="nav-logo-text">ยี่เป็ง</span>
+      <span class="nav-logo-text" data-i18n="nav_logo">ยี่เป็ง</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" data-i18n="nav_home">หน้าแรก</a></li>
@@ -65,6 +65,18 @@
           <p class="reveal reveal-delay-2"
             style="color:rgba(255,248,231,1); margin-top:1.5rem; letter-spacing:.15em; font-weight:300; text-shadow:0 0 15px rgba(0,0,0,1); opacity: 0.9;"
             data-i18n="trad_sub">ประเพณีและความเชื่อที่สืบทอดกันมา</p>
+          <div class="reveal reveal-delay-3" style="margin-top:2.5rem;">
+            <a href="game.html" class="btn btn-primary cta-button"
+              style="padding: 1.1rem 3rem; font-size: 1.05rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.8rem;"
+              data-i18n="trad_act_btn">
+              เข้าร่วมเทศกาลยี่เป็ง
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
         <div style="position:absolute;bottom:4rem;left:50%;transform:translateX(-50%);" class="anim-bounce">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(232,146,92,0.6)" stroke-width="1.5">
@@ -120,8 +132,9 @@
             <ellipse cx="18" cy="22" rx="7" ry="2.5" stroke="#E8925C" stroke-width="1" />
             <line x1="18" y1="24" x2="18" y2="30" stroke="#E8925C" stroke-width="1" />
           </svg>
-          <span style="font-family:var(--font-display);font-size:1.1rem;color:#FFF8E7;">ยี่เป็ง เชียงใหม่</span>
+          <span style="font-family:var(--font-display);font-size:1.1rem;color:#FFF8E7;" data-i18n="nav_logo">ยี่เป็ง เชียงใหม่</span>
         </div>
+        <p data-i18n="footer_tagline">สร้างด้วยความรักต่อเทศกาลยี่เป็งและวัฒนธรรมล้านนา</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_nav_h">ไปยัง</h4>
@@ -132,11 +145,21 @@
           <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
 
           <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
-                    <li><a href="member.html" data-i18n="nav_members">คณะผู้จัดทำ</a></li>
+          <li><a href="member.html" data-i18n="nav_members">คณะผู้จัดทำ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_info_h">เกี่ยวกับ</h4>
+        <ul>
+          <li><a href="member.html" data-i18n="footer_info1">เกี่ยวกับโครงการ</a></li>
+          <li><a href="member.html" data-i18n="footer_info2">ติดต่อเรา</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom"><span data-i18n="footer_copy">© 2026 ยี่เป็ง เชียงใหม่</span></div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม</span>
+      <span>🏮</span>
+    </div>
   </footer>
 
   <script src="js/i18n.js"></script>

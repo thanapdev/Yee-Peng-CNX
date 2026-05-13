@@ -514,8 +514,8 @@
         ctx.font = `700 ${16 * s}px 'Kodchasan'`; ctx.textAlign = 'center';
         ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 4;
         ctx.fillText(label, 0, -165 * s);
-        ctx.font = `400 ${12 * s}px 'Kodchasan'`; ctx.fillStyle = 'rgba(255,255,255,0.8)';
-        ctx.fillText('(คลิกเพื่อดูคำอธิษฐาน)', 0, -145 * s);
+        const hintLabel = window.LANG && window.LANG[window.currentLang] ? window.LANG[window.currentLang].game_click_wish : '(คลิกเพื่อดูคำอธิษฐาน)';
+        ctx.fillText(hintLabel, 0, -145 * s);
         ctx.shadowBlur = 0;
     }
 
