@@ -11,6 +11,7 @@ window.LANG = {
     nav_lanterns:   'กิจกรรมในประเพณียี่เป็ง',
     nav_traditions: 'เข้าร่วมงานยี่เป็งออนไลน์',
     nav_gallery:    'บรรยากาศงาน',
+    nav_members:    'คณะผู้จัดทำ',
 
     /* INTRO overlay */
     intro_scroll:   'เลื่อนลงเพื่อเริ่ม',
@@ -41,13 +42,7 @@ window.LANG = {
     fest_card2_p:   'เทศกาลจัดขึ้นคืนวันเพ็ญเดือนพฤศจิกายน บริเวณคูเมืองเชียงใหม่ ท่าแพ วัดพระธาตุดอยสุเทพ และสนามกีฬาสมโภชเชียงใหม่ 700 ปี',
     fest_card3_h:   'ไทม์ไลน์เทศกาล',
     fest_card3_p:   'บ่าย: ตกแต่งโคม · พลบค่ำ: พิธีสงฆ์ · 20:00 น.: ปล่อยโคมพร้อมกัน · ดึก: ลอยกระทง',
-    fest_timeline_h: 'ลำดับคืนยี่เป็ง',
-    fest_tl1_time: '17:00', fest_tl1_ev: 'ตลาดโคมและงานศิลปะพื้นบ้านเปิด',
-    fest_tl2_time: '18:30', fest_tl2_ev: 'พิธีสวดมนต์และจุดเทียนที่วัด',
-    fest_tl3_time: '19:30', fest_tl3_ev: 'ขบวนแห่แสงไฟและโคมแขวน',
-    fest_tl4_time: '20:30', fest_tl4_ev: 'ปล่อยโคมลอยพร้อมกันหมื่นดวง',
-    fest_tl5_time: '21:30', fest_tl5_ev: 'ลอยกระทงในแม่น้ำปิง',
-    fest_tl6_time: 'ตลอดคืน', fest_tl6_ev: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง',
+
 
     /* LANTERNS */
     lant_eyebrow:   'กิจกรรมแห่งแสงในเทศกาลยี่เป็ง',
@@ -96,6 +91,10 @@ window.LANG = {
     trad_belief3_p: 'ก่อนปล่อยโคม ผู้คนจะอธิษฐานขอสิ่งที่ปรารถนาในปีหน้า',
     trad_cloth_h:   'ชุดพื้นเมืองล้านนา',
     trad_cloth_p:   'ในเทศกาลยี่เป็ง ชาวเชียงใหม่นิยมแต่งกายชุดพื้นเมืองล้านนา ผ้าฝ้ายทอมือลายดอก สีน้ำตาล แดง และทอง นักท่องเที่ยวสามารถเช่าชุดได้ตามร้านรอบคูเมือง',
+    trad_timeline_eyebrow: 'เส้นทางแห่งแสงไฟ',
+    trad_beliefs_eyebrow: 'ตำนานและจิตวิญญาณ',
+    trad_cloth_eyebrow: 'มรดกที่ยังมีลมหายใจ',
+    lant_highlights_eyebrow: 'ไฮไลท์สำคัญของเทศกาล',
     
     /* ONLINE ACTIVITIES */
     trad_act_title: 'สัมผัสประสบการณ์ยี่เป็งแบบออนไลน์',
@@ -135,7 +134,21 @@ window.LANG = {
     wish_peace: 'พบความสุขสงบ',
     game_your_lantern: 'โคมของคุณ',
     game_your_phang: 'ผางประทีปของคุณ',
+    game_your_krathong: 'กระทงของคุณ',
     game_wish_title: 'คำอธิษฐานของคุณ',
+    game_create_krathong: 'สร้างกระทง',
+    kr_wish_1: 'ขอขมาพระแม่คงคา',
+    kr_wish_2: 'ลอยเคราะห์ไปกับสายน้ำ',
+    kr_wish_3: 'ชีวิตรุ่งเรืองเฟื่องฟู',
+    kr_wish_4: 'เงินทองไหลมาเทมา',
+    kr_wish_5: 'จิตใจแจ่มใสเบิกบาน',
+    kr_wish_6: 'รักนิรันดร์มั่นคง',
+    kr_wish_7: 'พบแต่กัลยาณมิตร',
+    kr_style_1: 'สัตตบงกช',
+    kr_style_2: 'นพมาศ',
+    kr_style_3: 'ล้านนา',
+    kr_style_4: 'ศิริมาศ',
+    kr_style_5: 'รุ่งอรุณ',
     game_hint_light: 'แตะเพื่อจุดไฟ',
     game_hint_place: 'แตะบนกำแพงเพื่อวาง',
 
@@ -189,7 +202,19 @@ window.LANG = {
     plan_map_sub: 'แตะที่จุดเพื่อดูรายละเอียด',
 
     /* GALLERY */
-    gal_eyebrow: 'ภาพถ่าย & ความทรงจำ',
+    gal_eyebrow: 'ภาพบรรยากาศ',
+    gal_h2:      'แกลเลอรีภาพถ่าย',
+    gal_sub:     'ความทรงจำแห่งแสงสีและศรัทธา',
+    gal_h2_main: 'บันทึกความทรงจำยี่เป็ง',
+    gal_card1_h: 'ทะเลโคมลอย',
+    gal_card2_h: 'วัดพระสิงห์วรมหาวิหาร',
+    gal_card3_h: 'แม่น้ำปิง',
+    gal_card4_h: 'ปล่อยโคมหมู่',
+    gal_card5_h: 'มรดกล้านนา',
+    gal_card6_h: 'แสงสีริมน้ำ',
+    gal_card7_h: 'คืนยี่เป็ง',
+    gal_card8_h: 'ต๋ามผางประทีป',
+    gal_card9_h: 'ขบวนแห่กระทงใหญ่',
     gal_h2:      'แกลเลอรีภาพถ่าย',
     gal_sub:     'ความทรงจำแห่งแสงสีและศรัทธา',
     gal_h2_main: 'บันทึกความทรงจำยี่เป็ง',
@@ -208,7 +233,7 @@ window.LANG = {
     footer_copy:    '© 2026 ยี่เป็ง เชียงใหม่ · สร้างด้วยความรักและแสงโคม',
 
     /* HOME SEGMENTS */
-    seg1_eyebrow: 'The Festival',
+    seg1_eyebrow: 'เทศกาลแห่งแสงไฟ',
     seg1_h2:      'ความหมายและที่มาของชื่อ',
     seg1_p1:      'คำว่า "ยี่" แปลว่า สอง และ "เป็ง" แปลว่า เพ็ญ หรือคืนพระจันทร์เต็มดวง รวมกันหมายถึงประเพณีในวันเพ็ญเดือนสองของชาวล้านนา',
     seg1_p2:      'ในภาษาคำเมืองเรียกว่า "ป๋าเวณียี่เป็ง" ซึ่งเป็นมรดกทางวัฒนธรรมที่สืบทอดมายาวนานกว่า 700 ปี ในคืนนี้ทั่วทั้งเชียงใหม่จะถูกเนรมิตให้สว่างไสวด้วยแสงไฟจากโคมนับหมื่นดวง',
@@ -241,7 +266,7 @@ window.LANG = {
     seg2_p2:      'โดยในเวลาค่ำคืนวันเพ็ญเดือนยี่ มีการจัดแต่งเครื่องสักการบูชาใส่กระทง จุดธูปเทียนแล้วนำปล่อยลงน้ำ แสงไฟที่กระทบกับน้ำเกิดเป็นเงาวับแวม คล้ายแสงพะเนียงไฟผีโขมด ชาวล้านนาจึงเรียกว่า "ลอยโขมด"',
     seg2_cta:     'สำรวจประวัติศาสตร์เพิ่มเติม',
 
-    seg3_eyebrow: 'จิตวิญญาณ',
+    seg3_eyebrow: 'จารีตและประเพณี',
     seg3_h2:      'ความเชื่อและจิตวิญญาณ',
     seg3_p1:      'สำหรับชาวล้านนา ยี่เป็งไม่ใช่เพียงการเที่ยวชมแสงไฟ แต่คือการปฏิบัติธรรมผ่านพิธีกรรมที่แฝงด้วยคติธรรม เช่น การลอยกระทงเพื่อขอขมาพระแม่คงคา การปล่อยโคมเพื่อบูชาพระเกศแก้วจุฬามณี และการลอยเคราะห์เพื่อเริ่มต้นชีวิตใหม่',
     seg3_p2:      'ความสำคัญยังเชื่อมโยงกับการฟังธรรม "พระเวสสันดรชาดก" ซึ่งเชื่อว่าหากฟังครบ 13 กัณฑ์ในวันเพ็ญจะได้รับอานิสงส์มหาศาล แตกต่างจากภาคกลางที่เน้นความสนุกสนาน ยี่เป็งจึงเน้นความสงบและการขัดเกลาจิตใจเป็นหลัก',
@@ -325,12 +350,26 @@ window.LANG = {
     fest_book_page3_p_summary: 'คติความเชื่อเรื่องการปล่อยโคมลอยขึ้นสู่สรวงสวรรค์ เป็นการบูชาพระเกศแก้วจุฬามณีบนสวรรค์ชั้นดาวดึงส์ และเป็นการสะเดาะเคราะห์ปล่อยทุกข์โศกให้ลอยไปกับสายลม นอกจากนี้การตกแต่ง "ซุ้มประตูป่า" ยังเป็นการจำลองป่าหิมพานต์เพื่อรับเสด็จพระเวสสันดรเข้าเมืองตามความเชื่อโบราณ',
     fest_book_page4_h3_summary: 'มรดกวัฒนธรรมล้านนาสู่สายตาโลก',
     fest_book_page4_p_summary: 'ปัจจุบันยี่เป็งเชียงใหม่กลายเป็นเทศกาลระดับโลกที่ดึงดูดผู้คนจากทั่วทุกมุมโลก แต่หัวใจสำคัญยังคงอยู่ที่การรักษารากเหง้าและความงดงามของแสงไฟแห่งล้านนาที่ส่องสว่างข้ามกาลเวลาสู่สายตาชาวโลก',
+    fest_book_eyebrow: 'บันทึกทางประวัติศาสตร์',
     fest_book_cover_p_summary: 'บันทึกการเดินทางของแสงไฟแห่งศรัทธาจากอาณาจักรหริภุญชัยสู่มหานครล้านนา...',
     fest_refs_h: 'แหล่งข้อมูลและเอกสารอ้างอิง',
     fest_ref1: '• Chiang Mai CAD: <a href="https://www.chiangmaicad.com/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">ศูนย์วัฒนธรรมเชียงใหม่ (CAD)</a>',
     fest_ref2: '• บัตรเข้าชม: <a href="https://faceticket.net/th/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
     fest_ref3: '• ข้อมูลเทศกาล: <a href="https://yipenglanternfestival.in.th/th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
     fest_ref4: '',
+
+    /* MEMBER PAGE */
+    /* MEMBER PAGE */
+    member_eyebrow: 'คณะผู้จัดทำ',
+    member_h2:      'ทีมงานผู้พัฒนาเว็บไซต์',
+    member_sub:     'ความภูมิใจในการนำเสนออัตลักษณ์ล้านนาผ่านโลกดิจิทัล',
+    member1_name:   'วิริยา เทพบางตาก',
+    member1_role:   'หัวหน้าทีมพัฒนา (Lead Developer)',
+    member1_desc:   'รับผิดชอบด้านโครงสร้างเว็บไซต์และระบบ Interactive 3D เพื่อสร้างประสบการณ์ที่ดื่มด่ำให้แก่ผู้เข้าชม',
+    member2_name:   'ธนพงษ์ แย้มกมล',
+    member2_role:   'ผู้ออกแบบประสบการณ์ (UX/UI Designer)',
+    member2_desc:   'เนรมิตความงามของล้านนาให้ร่วมสมัยผ่านการออกแบบที่ประณีตและแอนิเมชั่นที่ลื่นไหล',
+    member_contact: 'ติดต่อเรา',
 
   },
 
@@ -342,6 +381,7 @@ window.LANG = {
     nav_lanterns:   'Activities',
     nav_traditions: 'Join Online',
     nav_gallery:    'Atmosphere',
+    nav_members:    'Team members',
 
     intro_scroll:   'Scroll to begin',
 
@@ -368,13 +408,7 @@ window.LANG = {
     fest_card2_p:   'The festival occurs during the November full moon around the Old City moat, Tha Phae Gate, Doi Suthep Temple, and the 700th Anniversary Sports Complex.',
     fest_card3_h:   'Festival Timeline',
     fest_card3_p:   'Afternoon: lantern markets · Dusk: temple ceremonies · 20:00: mass lantern release · Late night: Loy Krathong on the river.',
-    fest_timeline_h: 'Yi Peng Night Schedule',
-    fest_tl1_time: '17:00', fest_tl1_ev: 'Lantern markets & folk art stalls open',
-    fest_tl2_time: '18:30', fest_tl2_ev: 'Chanting ceremonies & candle lighting at temples',
-    fest_tl3_time: '19:30', fest_tl3_ev: 'Illuminated procession & hanging lanterns',
-    fest_tl4_time: '20:30', fest_tl4_ev: 'Simultaneous mass release of ten thousand lanterns',
-    fest_tl5_time: '21:30', fest_tl5_ev: 'Loy Krathong floating on the Ping River',
-    fest_tl6_time: 'All Night', fest_tl6_ev: 'Folk music, northern Thai food, light installations',
+
 
     lant_eyebrow:   'HIGHLIGHT ACTIVITY OF YI PENG',
     lant_h2:        'Sky Lantern Release',
@@ -422,6 +456,10 @@ window.LANG = {
     trad_belief3_p: 'Before releasing the lantern, people make a heartfelt wish for the coming year.',
     trad_cloth_h:   'Lanna Traditional Dress',
     trad_cloth_p:   'During Yi Peng, locals wear handwoven Lanna cotton outfits in deep reds, browns, and gold. Visitors can rent traditional dress from shops around the Old City moat.',
+    trad_timeline_eyebrow: 'The Timeline of Light',
+    trad_beliefs_eyebrow: 'SPIRITUAL JOURNEY',
+    trad_cloth_eyebrow: 'CONTEMPORARY HERITAGE',
+    lant_highlights_eyebrow: 'FESTIVAL HIGHLIGHTS',
 
     /* ONLINE ACTIVITIES */
     trad_act_title: 'Experience Yi Peng Online',
@@ -461,7 +499,21 @@ window.LANG = {
     wish_peace: 'Inner Peace',
     game_your_lantern: 'Your Lantern',
     game_your_phang: 'Your Phang Patit',
+    game_your_krathong: 'Your Krathong',
     game_wish_title: 'Your Wishes',
+    game_create_krathong: 'Create Krathong',
+    kr_wish_1: 'Forgiveness',
+    kr_wish_2: 'Let go of bad luck',
+    kr_wish_3: 'Prosperity',
+    kr_wish_4: 'Abundant Wealth',
+    kr_wish_5: 'Joyful Mind',
+    kr_wish_6: 'Stable Love',
+    kr_wish_7: 'Good Friendship',
+    kr_style_1: 'Lotus Classic',
+    kr_style_2: 'Golden Petal',
+    kr_style_3: 'Lanna Style',
+    kr_style_4: 'Royal Pink',
+    kr_style_5: 'Dawn Bloom',
     game_hint_light: 'Tap to light',
     game_hint_place: 'Tap on wall to place',
 
@@ -513,7 +565,20 @@ window.LANG = {
     plan_map_h:   'Chiang Mai Festival Map',
     plan_map_sub: 'Tap a pin for details',
 
-    gal_eyebrow: 'Photography & Memories',
+    /* GALLERY */
+    gal_eyebrow: 'FEATURED MOMENTS',
+    gal_h2:      'Photo Gallery',
+    gal_sub:     'Memories of Light, Color, and Faith',
+    gal_h2_main: 'Yi Peng Memories',
+    gal_card1_h: 'LANTERN SKY',
+    gal_card2_h: 'WAT PHRA SINGH',
+    gal_card3_h: 'PING RIVER',
+    gal_card4_h: 'MASS RELEASE',
+    gal_card5_h: 'LANNA HERITAGE',
+    gal_card6_h: 'RIVER GLOW',
+    gal_card7_h: 'YEE PENG NIGHT',
+    gal_card8_h: 'TAM PHANG PATIT',
+    gal_card9_h: 'GRAND PARADE',
     gal_h2:      'Photo Gallery',
     gal_sub:     'Memories of Light and Faith',
     gal_h2_main: 'Yi Peng Memories',
@@ -659,6 +724,19 @@ window.LANG = {
     fest_ref2: '• Tickets: <a href="https://faceticket.net/product/cad-khomloy-sky-lantern-festival-24-25-november-2026/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">FaceTicket - CAD Khomloy 2026</a>',
     fest_ref3: '• Festival Info: <a href="https://yipenglanternfestival.in.th/" target="_blank" style="color:var(--lantern-gold); text-decoration:none;">Yi Peng Lantern Festival (Official)</a>',
     fest_ref4: '',
+
+    /* MEMBER PAGE */
+    /* MEMBER PAGE */
+    member_eyebrow: 'Our Team',
+    member_h2:      'The Developers',
+    member_sub:     'Proudly presenting Lanna identity through digital storytelling.',
+    member1_name:   'Wiriya Thepbangchag',
+    member1_role:   'Lead Developer',
+    member1_desc:   'Responsible for web architecture and interactive 3D systems to create an immersive experience for visitors.',
+    member2_name:   'Thanapong Yamkamol',
+    member2_role:   'Experience Designer (UX/UI)',
+    member2_desc:   'Crafting contemporary Lanna beauty through exquisite design and fluid animations.',
+    member_contact: 'Contact Us',
 
   }
 

@@ -320,6 +320,74 @@
       transform: scale(0.95) translateY(20px);
     }
 
+    #cursor, #cursor-ring { pointer-events: none; }
+
+    .kr-style-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin-bottom: 2rem;
+    }
+
+    .kr-style-card {
+      aspect-ratio: 1;
+      border-radius: 15px;
+      border: 2px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 10px;
+    }
+
+    .kr-style-card.active {
+      border-color: var(--gold);
+      background: rgba(232, 146, 92, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .kr-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    #btn-create-krathong {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      padding: 1.2rem 3.5rem;
+      background: #ffffff;
+      color: #1a0d0a;
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(232, 146, 92, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    #btn-create-krathong:hover {
+      background: var(--gold-gradient);
+      transform: translateX(-50%) translateY(-5px) scale(1.05);
+    }
+
+    #btn-create-krathong.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* Starter Candle UI */
     #starter-candle {
       position: fixed;
@@ -492,12 +560,98 @@
     /* Custom Cursor */
     #cursor, #cursor-ring { pointer-events: none; }
 
-    /* Final State Section */
+    /* Final State Section Redesign */
+    #sec-final {
+      background: radial-gradient(circle at center, #0a2e2d 0%, #051414 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sec-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
     #sec-final .section-content {
       background: none;
       border: none;
       box-shadow: none;
       backdrop-filter: none;
+      max-width: 900px;
+      z-index: 2;
+    }
+
+    .badges-container {
+      display: flex;
+      justify-content: center;
+      gap: 3.5rem;
+      margin-top: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      opacity: 0;
+    }
+
+    .game-section.active .badge-item {
+      animation: badgePop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .game-section.active .badge-item:nth-child(1) { animation-delay: 0.3s; }
+    .game-section.active .badge-item:nth-child(2) { animation-delay: 0.6s; }
+    .game-section.active .badge-item:nth-child(3) { animation-delay: 0.9s; }
+
+    @keyframes badgePop {
+      0% { transform: scale(0.5) translateY(30px); opacity: 0; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .badge-icon {
+      width: 120px;
+      height: 120px;
+      background: rgba(232, 146, 92, 0.05);
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(232, 146, 92, 0.4), inset 0 0 20px rgba(232, 146, 92, 0.2);
+      transition: all 0.5s ease;
+      position: relative;
+    }
+
+    .badge-icon::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 146, 92, 0.2) 0%, transparent 70%);
+      filter: blur(5px);
+    }
+
+    .badge-icon svg {
+      width: 55px;
+      height: 55px;
+      color: var(--gold);
+      stroke-width: 1.2;
+      filter: drop-shadow(0 0 12px rgba(232, 146, 92, 0.8));
+    }
+
+    .badge-item span {
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 500;
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 10px rgba(232, 146, 92, 0.3);
     }
 
     @media (max-width: 768px) {
@@ -572,9 +726,33 @@
       <div class="section-content">
         <h2 data-i18n="game_float_krathong">ลอยกระทงออนไลน์</h2>
         <p class="sub" data-i18n="game_krathong_desc">ขอขมาพระแม่คงคาและลอยทุกข์โศกไปกับสายน้ำแม่ปิงจำลองที่ส่องสว่างด้วยศรัทธา</p>
-        <div class="interaction-panel" id="river-panel">
+        
+        <div class="interaction-panel" id="river-panel-init">
+          <button class="action-btn" id="btn-start-krathong" style="margin-top:2rem;">เริ่มสร้างกระทง</button>
+        </div>
+
+        <div class="interaction-panel" id="river-panel" style="display: none;">
+          <p class="sub" style="margin-top:1.5rem; margin-bottom:0.8rem; font-size:0.9rem;">เลือกรูปแบบกระทง</p>
+          <div class="kr-style-grid" style="margin-bottom:1.5rem;">
+            <div class="kr-style-card active" data-style="0" title="Classic Green"><div class="kr-dot" style="background:#228b22;"></div></div>
+            <div class="kr-style-card" data-style="1" title="Royal Gold"><div class="kr-dot" style="background:#ffd700;"></div></div>
+            <div class="kr-style-card" data-style="2" title="Lanna Purple"><div class="kr-dot" style="background:#9370db;"></div></div>
+            <div class="kr-style-card" data-style="3" title="Elegant White"><div class="kr-dot" style="background:#ffffff;"></div></div>
+            <div class="kr-style-card" data-style="4" title="Lotus Pink"><div class="kr-dot" style="background:#ff69b4;"></div></div>
+          </div>
+
+          <p class="sub" style="margin-bottom:0.8rem; font-size:0.9rem;">เลือกคำอธิษฐาน</p>
+          <div class="wish-tags" id="kr-wishes" style="max-height: 150px; overflow-y: auto; margin-bottom: 2rem;">
+            <div class="wish-tag active" data-wish="kr_wish_1" data-i18n="kr_wish_1">ขอขมาพระแม่คงคา</div>
+            <div class="wish-tag" data-wish="kr_wish_2" data-i18n="kr_wish_2">ลอยเคราะห์ไปกับสายน้ำ</div>
+            <div class="wish-tag" data-wish="kr_wish_3" data-i18n="kr_wish_3">ชีวิตรุ่งเรืองเฟื่องฟู</div>
+            <div class="wish-tag" data-wish="kr_wish_4" data-i18n="kr_wish_4">เงินทองไหลมาเทมา</div>
+            <div class="wish-tag" data-wish="kr_wish_5" data-i18n="kr_wish_5">จิตใจแจ่มใสเบิกบาน</div>
+            <div class="wish-tag" data-wish="kr_wish_6" data-i18n="kr_wish_6">รักนิรันดร์มั่นคง</div>
+            <div class="wish-tag" data-wish="kr_wish_7" data-i18n="kr_wish_7">พบแต่กัลยาณมิตร</div>
+          </div>
+
           <div class="input-group">
-            <input type="text" id="wish-krathong" class="game-input" data-i18n="game_wish_placeholder" placeholder="เขียนคำอธิษฐานของคุณที่นี่...">
             <button class="action-btn" id="btn-float-krathong" data-i18n="game_float_krathong">ลอยกระทง</button>
           </div>
         </div>
@@ -582,12 +760,55 @@
       </div>
     </section>
 
-    <!-- SECTION 4: PANORAMA -->
+    <!-- SECTION 4: FINAL COMPLETION -->
     <section class="game-section" id="sec-final">
       <div class="section-content">
-        <h2 data-i18n="game_final_h">รุ่งโรจน์นิรันดร์</h2>
-        <p class="sub" data-i18n="game_final_p">แสงสว่างแห่งยี่เป็งจะส่องนำทางใจของคุณตลอดไป</p>
-        <button class="action-btn" id="btn-restart" data-i18n="game_restart">เริ่มใหม่อีกครั้ง</button>
+        <h2 style="color: var(--gold); text-shadow: 0 0 30px rgba(232, 146, 92, 0.6); font-size: 4rem; margin-bottom: 1.5rem;">รุ่งโรจน์นิรันดร์</h2>
+        <p class="sub" style="margin-bottom: 3.5rem; line-height: 1.8; font-size: 1.2rem; color: #d0f0f0;">ยินดีด้วยคุณเข้าร่วมกิจกรรมสำคัญของประเพณียี่เป็งเสร็จแล้ว<br>ขอให้แสงสว่างแห่งยี่เป็งนำทางความสุขและความสำเร็จมาสู่คุณตลอดไป</p>
+        
+        <div class="badges-container">
+          <!-- Lantern Badge: Faceted Paper Lantern -->
+          <div class="badge-item">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M12 2L6 6V16L12 20L18 16V6L12 2Z" />
+                <path d="M6 6L12 9L18 6" />
+                <path d="M12 9V20" />
+                <path d="M6 16L12 13L18 16" />
+                <path d="M10 20V23M14 20V23" stroke-dasharray="1 1" />
+              </svg>
+            </div>
+            <span>โคมลอย</span>
+          </div>
+          <!-- Phang Badge: Clay Lamp with Flame -->
+          <div class="badge-item">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M4 12C4 16.4 7.6 20 12 20C16.4 20 20 16.4 20 12" stroke-linecap="round" />
+                <path d="M4 12L12 10L20 12" />
+                <path d="M12 10V6" stroke-dasharray="2 1" />
+                <path d="M12 6C12 6 10 4 12 2C14 4 12 6 12 6Z" fill="currentColor" />
+              </svg>
+            </div>
+            <span>ผางประทีป</span>
+          </div>
+          <!-- Krathong Badge: Floral Layers with Candle -->
+          <div class="badge-item">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M2 15C5 12 8 12 12 12C16 12 19 12 22 15L12 18L2 15Z" />
+                <path d="M5 13Q8 9 12 9Q16 9 19 13" />
+                <path d="M11 9V3M13 9V5" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              </svg>
+            </div>
+            <span>กระทง</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <a href="index.html" class="action-btn" style="text-decoration: none; display: inline-block; padding: 1.4rem 4rem; font-size: 1.2rem;">กลับหน้าหลัก</a>
+        </div>
       </div>
     </section>
   </div>

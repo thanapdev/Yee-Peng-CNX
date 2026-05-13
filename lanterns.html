@@ -127,6 +127,7 @@
       <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
 
       <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
+                    <li><a href="member.html" data-i18n="nav_members">คณะผู้จัดทำ</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-toggle">
@@ -167,7 +168,7 @@
           
           <!-- Header -->
           <div class="reveal" style="text-align:center;margin-bottom:5rem;">
-            <p class="eyebrow" style="margin-bottom:1rem;color:var(--lantern-gold);">FESTIVAL HIGHLIGHTS</p>
+            <p class="eyebrow" style="margin-bottom:1rem;color:var(--lantern-gold);" data-i18n="lant_highlights_eyebrow">ไฮไลท์สำคัญของเทศกาล</p>
             <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);color:#FFF8E7;">มีอะไรให้ดู ให้ทำบ้าง</h2>
             <div style="width:60px;height:2px;background:var(--lantern-gold);margin:1.5rem auto;"></div>
           </div>
@@ -178,7 +179,7 @@
             <div class="glass-card reveal" style="padding:2.5rem;border-top:4px solid var(--lantern-gold);">
               <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;">
                 <span style="font-family:var(--font-display);font-size:2.5rem;color:var(--lantern-gold);opacity:0.5;">01</span>
-                <h3 style="font-size:1.8rem;color:#FFF8E7;">วันดา</h3>
+                <h3 style="font-size:1.8rem;color:#FFF8E7;">วันขึ้น 13 ค่ำ</h3>
               </div>
               <p style="color:rgba(255,248,231,0.7);line-height:1.8;margin-bottom:1.5rem;">วันแห่งการเตรียมงานและประดับตกแต่งเมืองให้งดงามด้วยแสงโคม</p>
               <ul style="color:rgba(255,248,231,0.6);list-style:none;padding:0;">
@@ -192,7 +193,7 @@
             <div class="glass-card reveal reveal-delay-1" style="padding:2.5rem;border-top:4px solid #E8925C;">
               <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;">
                 <span style="font-family:var(--font-display);font-size:2.5rem;color:#E8925C;opacity:0.5;">02</span>
-                <h3 style="font-size:1.8rem;color:#FFF8E7;">วัน 14 ค่ำ</h3>
+                <h3 style="font-size:1.8rem;color:#FFF8E7;">วันขึ้น 14 ค่ำ</h3>
               </div>
               <p style="color:rgba(255,248,231,0.7);line-height:1.8;margin-bottom:1.5rem;">คืนวันเพ็ญเล็ก เริ่มต้นการเฉลิมฉลองด้วยแสงเทียนและสายน้ำ</p>
               <ul style="color:rgba(255,248,231,0.6);list-style:none;padding:0;">
@@ -206,7 +207,7 @@
             <div class="glass-card reveal reveal-delay-2" style="padding:2.5rem;border-top:4px solid #D4784A;">
               <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;">
                 <span style="font-family:var(--font-display);font-size:2.5rem;color:#D4784A;opacity:0.5;">03</span>
-                <h3 style="font-size:1.8rem;color:#FFF8E7;">วัน 15 ค่ำ</h3>
+                <h3 style="font-size:1.8rem;color:#FFF8E7;">วันขึ้น 15 ค่ำ</h3>
               </div>
               <p style="color:rgba(255,248,231,0.7);line-height:1.8;margin-bottom:1.5rem;">ไฮไลท์สำคัญของเทศกาล: ท้องฟ้าที่เต็มไปด้วยโคมลอยและขบวนรถแห่</p>
               <ul style="color:rgba(255,248,231,0.6);list-style:none;padding:0;">
@@ -217,14 +218,7 @@
             </div>
           </div>
 
-          <!-- Night Schedule Timeline -->
-          <div class="reveal" style="margin-top:8rem; margin-bottom: 6rem;">
-            <h2 class="display-md" style="color:#FFF8E7;text-align:center;margin-bottom:3.5rem;" data-i18n="fest_timeline_h">ลำดับคืนยี่เป็ง</h2>
-            <div style="max-width:720px;margin:0 auto;position:relative; padding-left: 20px;">
-              <div class="schedule-line"></div>
-              <div id="tl-items"></div>
-            </div>
-          </div>
+
 
           <!-- Key Activities Grid (Reverted & Simplified) -->
           <div class="reveal" style="margin-bottom:6rem;">
@@ -238,8 +232,7 @@
                   <span style="font-size:2.5rem;">🕯️</span>
                   <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ต๋ามผางประทีป</h4>
                 </div>
-                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">จุดกระถางดินเผาใส่น้ำมันและไส้เทียนบูชาพระ ทั้งที่วัดและบ้านเรือน</p>
-                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมจุดเทียน กำลังพัฒนา...')">เล่นเกมจุดเทียน</button>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">จุดกระถางดินเผาใส่น้ำมันและไส้เทียนบูชาพระ ทั้งที่วัดและบ้านเรือน</p>
               </div>
 
               <!-- 2. ปล่อยโคมลอย (Game) -->
@@ -248,8 +241,7 @@
                   <span style="font-size:2.5rem;">🏮</span>
                   <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ปล่อยโคมลอย</h4>
                 </div>
-                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">โคมทำจากกระดาษสาหรือผ้าบาง ลอยขึ้นสู่ท้องฟ้าด้วยความร้อน</p>
-                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมลอยโคม กำลังพัฒนา...')">เล่นเกมลอยโคม</button>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">โคมทำจากกระดาษสาหรือผ้าบาง ลอยขึ้นสู่ท้องฟ้าด้วยความร้อน</p>
               </div>
 
               <!-- 3. ลอยสะเปา (Game) -->
@@ -258,8 +250,7 @@
                   <span style="font-size:2.5rem;">🛶</span>
                   <h4 style="color:#FFF8E7;margin:0;font-size:1.4rem;">ลอยสะเปา</h4>
                 </div>
-                <p style="color:rgba(255,248,231,0.6);line-height:1.7;flex-grow:1;margin-bottom:1.5rem;">ลอยกระทงลงแม่น้ำปิง เพื่อสะเดาะเคราะห์และขอขมาพระแม่คงคา</p>
-                <button class="btn btn-outline" style="width:100%; font-size: 0.9rem;" onclick="alert('เกมลอยกระทง กำลังพัฒนา...')">เล่นเกมลอยกระทง</button>
+                <p style="color:rgba(255,248,231,0.6);line-height:1.7;">ลอยกระทงลงแม่น้ำปิง เพื่อสะเดาะเคราะห์และขอขมาพระแม่คงคา</p>
               </div>
 
               <!-- 4. ขบวนแห่กระทงใหญ่ -->
@@ -339,6 +330,7 @@
           <li><a href="traditions.html" data-i18n="nav_traditions">ประเพณี</a></li>
 
           <li><a href="gallery.html" data-i18n="nav_gallery">แกลเลอรี</a></li>
+                    <li><a href="member.html" data-i18n="nav_members">คณะผู้จัดทำ</a></li>
         </ul>
       </div>
     </div>
@@ -356,33 +348,7 @@
       window.initDIY?.();
       window.initReveal?.();
       
-      // Initialize Night Schedule Timeline
-      const items = [
-        { time: '17:00', event: 'ตลาดโคมและงานศิลปะพื้นบ้านเปิด' },
-        { time: '18:30', event: 'พิธีสวดมนต์และจุดเทียนที่วัด' },
-        { time: '19:30', event: 'ขบวนแห่แสงไฟและโคมแขวน' },
-        { time: '20:30', event: 'ปล่อยโคมลอยพร้อมกันหมื่นดวง' },
-        { time: '21:30', event: 'ลอยกระทงในแม่น้ำปิง' },
-        { time: 'ตลอดคืน', event: 'ดนตรีพื้นเมือง อาหารเชียงใหม่ เทศกาลแสง' },
-      ];
-      
-      const container = document.getElementById('tl-items');
-      if (container) {
-        container.innerHTML = '';
-        items.forEach((item) => {
-          container.innerHTML += `
-            <div class="reveal schedule-item">
-              <div class="schedule-time">
-                <span>${item.time}</span>
-              </div>
-              <div class="schedule-content">
-                <div class="schedule-dot"></div>
-                <p>${item.event}</p>
-              </div>
-            </div>`;
-        });
-        window.initReveal?.(); // Re-init reveal for dynamic items
-      }
+
     });
   </script>
 </body>

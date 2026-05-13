@@ -35,6 +35,21 @@
     for (let i = 0; i < 400; i++) {
       stars.push({ x: Math.random() * W, y: Math.random() * H * 5, r: Math.random() * 1.2 + 0.2, o: Math.random(), s: Math.random() * 0.02 });
     }
+    // Stage 3 Krathongs
+    for(let i=0; i<15; i++) {
+        krathongs.push({
+            id: i,
+            x: Math.random()*W,
+            y: 2 * H + H * 0.7 + Math.random() * H * 0.25, // Restrict to water area
+            vx: (Math.random()-0.5)*0.2,
+            vy: (Math.random()-0.5)*0.1,
+            scale: 0.4 + Math.random()*0.4,
+            bob: Math.random()*Math.PI,
+            alpha: 1,
+            style: Math.floor(Math.random()*5),
+            isPlayer: false
+        });
+    }
   }
 
   function updateHint(key) {
@@ -89,6 +104,68 @@
         document.getElementById('starter-candle')?.classList.remove('visible');
         updateHint(null);
     });
+
+    document.getElementById('btn-start-krathong')?.addEventListener('click', () => {
+        const initPanel = document.getElementById('river-panel-init');
+        const mainPanel = document.getElementById('river-panel');
+        if (initPanel) initPanel.style.display = 'none';
+        if (mainPanel) mainPanel.style.display = 'block';
+    });
+
+    document.getElementById('btn-float-krathong')?.addEventListener('click', () => {
+        const activeWishTag = document.querySelector('#kr-wishes .wish-tag.active');
+        const wishKey = activeWishTag?.dataset.wish || 'kr_wish_1';
+        const wishText = activeWishTag?.innerText || '...';
+        const styleIdx = document.querySelector('#river-panel .kr-style-card.active')?.dataset.style || 0;
+        
+        let spawnX = W / 2 + (Math.random() - 0.5) * 100;
+        // Collision Avoidance: Check existing krathongs to prevent overlap
+        let safety = 0;
+        while (safety < 10) {
+            let tooClose = false;
+            for (let k of krathongs) {
+                if (Math.abs(k.x - spawnX) < 120 && Math.abs((H * 0.75) - (k.y - cameraY)) < 60) {
+                    tooClose = true;
+                    break;
+                }
+            }
+            if (!tooClose) break;
+            spawnX += (Math.random() > 0.5 ? 130 : -130);
+            safety++;
+        }
+
+        krathongs.push({
+            id: Date.now(),
+            x: spawnX,
+            y: cameraY + H * 0.75,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: -0.1 - Math.random() * 0.1,
+            scale: 0.8 + Math.random() * 0.3,
+            bob: Math.random() * Math.PI,
+            alpha: 1,
+            wish: wishText,
+            style: parseInt(styleIdx),
+            isPlayer: true
+        });
+        
+        const panel = document.getElementById('river-panel');
+        if(panel) panel.style.display = 'none';
+        showNextButton();
+    });
+
+    document.querySelectorAll('.kr-style-card').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.kr-style-card').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('#kr-wishes .wish-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+            document.querySelectorAll('#kr-wishes .wish-tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+        });
+    });
     document.getElementById('next-to-final')?.addEventListener('click', () => goToStage(3));
     
     document.getElementById('btn-restart')?.addEventListener('click', () => {
@@ -120,7 +197,18 @@
                 if (!l.isPlayer) continue;
                 const screenY = l.y - cameraY;
                 const dx = mx - l.x; const dy = my - screenY;
-                if (Math.sqrt(dx*dx + dy*dy) < 60 * l.scale) { showWishModal(l.wish); break; }
+                if (Math.sqrt(dx*dx + dy*dy) < 60 * l.scale) { showWishModal(l.wish); return; }
+            }
+        }
+
+        // Stage 3: Krathong Click
+        if (currentStage === 2) {
+            for (let k of krathongs) {
+                if (!k.isPlayer) continue;
+                const screenY = k.y - cameraY;
+                const dx = mx - k.x; const dy = my - screenY;
+                // Larger hit area for krathongs
+                if (Math.sqrt(dx*dx + dy*dy) < 70 * k.scale) { showWishModal(k.wish); return; }
             }
         }
 
@@ -157,6 +245,18 @@
         const content = s.querySelector('.section-content');
         if (i === 1 && phangState !== 'placed') { if(content) content.style.opacity = '0'; }
     });
+
+    // Handle Krathong Button Visibility
+    const krBtn = document.getElementById('btn-create-krathong');
+    const krCreator = document.getElementById('krathong-creator');
+    if (idx === 2) {
+        setTimeout(() => {
+            if(krBtn) krBtn.classList.add('visible');
+        }, 1000);
+    } else {
+        if(krBtn) krBtn.classList.remove('visible');
+        if(krCreator) krCreator.classList.remove('active');
+    }
   }
 
   function showNextButton() {
@@ -299,18 +399,126 @@
   }
 
   function drawKrathong(k) {
+    if (currentStage !== 2) return false;
     k.x += k.vx; k.y += k.vy; k.bob += 0.02; k.alpha = Math.min(k.alpha + 0.02, 1);
     const screenY = k.y - cameraY;
+    if (screenY < H * 0.64) k.vy = 0.1;
     if (screenY < -200 || screenY > H + 200) return true;
+
     const s = k.scale; const bobY = Math.sin(k.bob) * 4; const flicker = Math.sin(Date.now() * 0.01 + k.id) * 0.2 + 0.8;
     ctx.save(); ctx.translate(k.x, screenY + bobY);
-    const rg = ctx.createRadialGradient(0, 0, 0, 0, 0, 50 * s);
-    rg.addColorStop(0, `rgba(232, 146, 92, ${0.4 * flicker * k.alpha})`); rg.addColorStop(1, 'rgba(232, 146, 92, 0)');
-    ctx.fillStyle = rg; ctx.beginPath(); ctx.ellipse(0, 5*s, 50 * s, 15 * s, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = `rgba(26, 58, 26, ${k.alpha})`; ctx.beginPath(); ctx.ellipse(0, 0, 35 * s, 12 * s, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = `rgba(184, 92, 74, ${k.alpha})`;
-    for(let i=0; i<8; i++) { const angle = (i/8) * Math.PI * 2; ctx.beginPath(); ctx.ellipse(Math.cos(angle)*25*s, Math.sin(angle)*8*s - 5*s, 10*s, 15*s, angle + Math.PI/2, 0, Math.PI*2); ctx.fill(); }
-    ctx.fillStyle = `rgba(255, 255, 200, ${flicker * k.alpha})`; ctx.beginPath(); ctx.ellipse(0, -20 * s, 5 * s, 10 * s, 0, 0, Math.PI * 2); ctx.fill();
+    
+    // Style Themes (Restored & Enhanced)
+    const KR_THEMES = [
+        { l1: '#003300', l2: '#006400', l3: '#228b22', flower: '#800080', f2: '#ff8c00', candle: '#fff8e7' }, // Classic
+        { l1: '#5c4033', l2: '#8b6508', l3: '#ffd700', flower: '#ffffff', f2: '#b8860b', candle: '#ffcc00' }, // Royal
+        { l1: '#2a0035', l2: '#4b0082', l3: '#9370db', flower: '#ffd700', f2: '#6a5acd', candle: '#ffffff' }, // Lanna
+        { l1: '#1a1a1a', l2: '#808080', l3: '#f0f0f0', flower: '#ff69b4', f2: '#333333', candle: '#ffd700' }, // White
+        { l1: '#5c0033', l2: '#c71585', l3: '#ff69b4', flower: '#ffffff', f2: '#ff1493', candle: '#fff8e7' }  // Pink
+    ];
+    const theme = KR_THEMES[k.style % KR_THEMES.length];
+
+    // 1. Water Ripple & Glow
+    ctx.save();
+    ctx.globalAlpha = 0.2 * k.alpha;
+    ctx.fillStyle = theme.candle === '#ffffff' ? '#ffffff' : '#ffcc00';
+    ctx.beginPath(); ctx.ellipse(0, 8*s, 65*s, 18*s, 0, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+
+    // 2. High-Detail Banana Leaves
+    function drawUltraLeaf(lx, ly, lScale, color, angle, isOuter) {
+        ctx.save(); ctx.translate(lx, ly); ctx.rotate(angle);
+        // Main Shadow
+        ctx.fillStyle = 'rgba(0,0,0,0.2)'; ctx.beginPath(); ctx.moveTo(2*s, 0); ctx.quadraticCurveTo(-20*lScale, -15*lScale, 2*s, -55*lScale); ctx.quadraticCurveTo(22*lScale, -15*lScale, 2*s, 0); ctx.fill();
+        // Leaf Body with texture gradient
+        const lg = ctx.createLinearGradient(0, 0, 0, -50*lScale);
+        lg.addColorStop(0, color); lg.addColorStop(0.7, color); lg.addColorStop(1, isOuter ? color : '#dfffaf');
+        ctx.fillStyle = lg;
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(-18*lScale, -15*lScale, 0, -52*lScale); ctx.quadraticCurveTo(18*lScale, -15*lScale, 0, 0); ctx.fill();
+        // Edge Highlight
+        ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(-16*lScale, -15*lScale); ctx.quadraticCurveTo(-10*lScale, -30*lScale, 0, -52*lScale); ctx.stroke();
+        // Fine Rib Texture
+        ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+        for(let i=-2; i<=2; i++) {
+            ctx.beginPath(); ctx.moveTo(i*4*lScale, -2*lScale); ctx.lineTo(i*5*lScale, -45*lScale); ctx.stroke();
+        }
+        ctx.restore();
+    }
+    
+    // 4 Layers of Leaves for extreme detail
+    for(let i=0; i<12; i++) {
+        const a = (i/12)*Math.PI*2;
+        drawUltraLeaf(Math.cos(a)*35*s, Math.sin(a)*12*s + 12*s, s*0.85, theme.l1, a + Math.PI/2, true);
+    }
+    for(let i=0; i<10; i++) {
+        const a = (i/10)*Math.PI*2 + 0.3;
+        drawUltraLeaf(Math.cos(a)*25*s, Math.sin(a)*10*s + 5*s, s*0.95, theme.l2, a + Math.PI/2, false);
+    }
+    for(let i=0; i<8; i++) {
+        const a = (i/8)*Math.PI*2 + 0.6;
+        drawUltraLeaf(Math.cos(a)*15*s, Math.sin(a)*6*s - 5*s, s*1.05, theme.l3, a + Math.PI/2, false);
+    }
+
+    // 3. Fluffy Marigolds (Back Row - Palette Synced)
+    for(let i=0; i<4; i++) {
+        const a = (i/4)*Math.PI + Math.PI;
+        const mx = Math.cos(a)*22*s; const my = Math.sin(a)*8*s - 15*s;
+        ctx.fillStyle = theme.f2;
+        for(let j=0; j<12; j++) {
+            const pa = (j/12)*Math.PI*2;
+            ctx.beginPath(); ctx.arc(mx + Math.cos(pa)*8*s, my + Math.sin(pa)*4*s, 6*s, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.fillStyle = theme.flower; ctx.beginPath(); ctx.arc(mx, my, 8*s, 0, Math.PI*2); ctx.fill();
+    }
+
+    // 4. Purple Orchids (Front Row - Palette Synced)
+    function drawOrchid(ox, oy, oScale, color) {
+        ctx.save(); ctx.translate(ox, oy);
+        ctx.fillStyle = color;
+        for(let i=0; i<5; i++) {
+            const a = (i/5)*Math.PI*2;
+            ctx.beginPath(); ctx.ellipse(Math.cos(a)*8*oScale, Math.sin(a)*8*oScale, 6*oScale, 10*oScale, a, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.arc(0, 0, 4*oScale, 0, Math.PI*2); ctx.fill(); ctx.globalAlpha = 1;
+        ctx.restore();
+    }
+    for(let i=0; i<5; i++) {
+        const a = (i/5)*Math.PI;
+        const ox = Math.cos(a)*28*s; const oy = Math.sin(a)*12*s - 5*s;
+        drawOrchid(ox, oy, s, theme.flower);
+    }
+
+    // 5. Incense & Smoke
+    ctx.lineWidth = 1.5*s; ctx.strokeStyle = '#d2b48c';
+    for(let i=-1; i<=1; i++) {
+        const ix = i*6*s + 5*s; const iy = -15*s;
+        ctx.strokeStyle = '#d2b48c'; ctx.beginPath(); ctx.moveTo(ix, iy); ctx.lineTo(ix, iy - 95*s); ctx.stroke();
+        ctx.strokeStyle = '#b22222'; ctx.beginPath(); ctx.moveTo(ix, iy); ctx.lineTo(ix, iy-15*s); ctx.stroke();
+        ctx.strokeStyle = `rgba(255,255,255, ${0.1 * flicker})`; ctx.lineWidth = 1;
+        const smokeOffset = Math.sin(Date.now()*0.002 + i)*12*s;
+        ctx.beginPath(); ctx.moveTo(ix, iy-95*s); ctx.bezierCurveTo(ix+smokeOffset, iy-115*s, ix-smokeOffset, iy-135*s, ix, iy-155*s); ctx.stroke();
+    }
+
+    // 6. Slender Candle
+    const cx = -10*s; const cy = -20*s; const cw = 10*s; const ch = 85*s;
+    ctx.fillStyle = theme.candle; ctx.fillRect(cx - cw/2, cy - ch, cw, ch);
+    const fg = ctx.createRadialGradient(cx, cy - ch - 12*s, 0, cx, cy - ch - 12*s, 30*s);
+    fg.addColorStop(0, `rgba(255, 255, 200, ${0.8 * flicker})`); fg.addColorStop(1, 'rgba(255, 150, 0, 0)');
+    ctx.fillStyle = fg; ctx.beginPath(); ctx.arc(cx, cy - ch - 12*s, 30*s, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(cx, cy - ch - 12*s, 5*s, 11*s, 0, 0, Math.PI*2); ctx.fill();
+
+    if (k.isPlayer) {
+        const label = window.LANG && window.LANG[window.currentLang] ? window.LANG[window.currentLang].game_your_krathong : 'กระทงของคุณ';
+        ctx.fillStyle = `rgba(255, 255, 255, 0.95)`;
+        ctx.font = `700 ${16 * s}px 'Kodchasan'`; ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 4;
+        ctx.fillText(label, 0, -165 * s);
+        ctx.font = `400 ${12 * s}px 'Kodchasan'`; ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.fillText('(คลิกเพื่อดูคำอธิษฐาน)', 0, -145 * s);
+        ctx.shadowBlur = 0;
+    }
+
     ctx.restore(); return true;
   }
 
@@ -356,15 +564,97 @@
         g.addColorStop(0, 'rgba(0,0,0,0.8)'); g.addColorStop(0.3, 'rgba(0,0,0,0)'); g.addColorStop(0.7, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,0.8)');
         ctx.fillStyle = g; ctx.fillRect(0, landY, W, H);
     }
+    function drawMountain(x, y, w, h, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x - w/2, y);
+        ctx.lineTo(x, y - h);
+        ctx.lineTo(x + w/2, y);
+        ctx.closePath(); ctx.fill();
+    }
+
+    function drawFireworkPattern(x, y, scale) {
+        ctx.strokeStyle = 'rgba(255, 255, 150, 0.4)';
+        ctx.lineWidth = 1;
+        for(let i=0; i<12; i++) {
+            const a = (i/12)*Math.PI*2;
+            ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a)*40*scale, y + Math.sin(a)*40*scale); ctx.stroke();
+        }
+    }
+
     const riverY = 2 * H - cameraY;
     if (riverY < H && riverY > -H) {
-        const riverG = ctx.createLinearGradient(0, riverY, 0, riverY + H);
-        riverG.addColorStop(0, '#050a0f'); riverG.addColorStop(1, '#020508');
-        ctx.fillStyle = riverG; ctx.fillRect(0, riverY, W, H);
-        ctx.fillStyle = '#010305'; ctx.fillRect(W * 0.4, riverY + H * 0.1, W * 0.2, H * 0.1);
-        ctx.fillRect(W * 0.48, riverY, W * 0.04, H * 0.2);
-        ctx.strokeStyle = 'rgba(232, 146, 92, 0.05)';
-        for (let i = 0; i < 5; i++) { ctx.beginPath(); const waveY = riverY + H * 0.2 + i * H * 0.15; ctx.moveTo(0, waveY); const time = Date.now() * 0.001; for (let x = 0; x <= W; x += 20) { ctx.lineTo(x, waveY + Math.sin(x * 0.01 + time + i) * 5); } ctx.stroke(); }
+        // 1. Sky Gradient (Clean & Deep)
+        const skyG = ctx.createLinearGradient(0, riverY, 0, riverY + H);
+        skyG.addColorStop(0, '#002626'); skyG.addColorStop(1, '#004d4d');
+        ctx.fillStyle = skyG; ctx.fillRect(0, riverY, W, H);
+
+        // 2. Distant Mountains (Clear Layers)
+        ctx.fillStyle = '#001a1a';
+        ctx.beginPath();
+        ctx.moveTo(0, riverY + H * 0.6);
+        ctx.quadraticCurveTo(W*0.2, riverY + H * 0.4, W*0.4, riverY + H * 0.6);
+        ctx.quadraticCurveTo(W*0.6, riverY + H * 0.45, W*0.8, riverY + H * 0.6);
+        ctx.quadraticCurveTo(W*0.9, riverY + H * 0.55, W, riverY + H * 0.6);
+        ctx.lineTo(W, riverY + H * 0.7); ctx.lineTo(0, riverY + H * 0.7);
+        ctx.fill();
+
+        // 3. Moon (Simple & Glowing)
+        const moonX = W * 0.85, moonY = riverY + H * 0.25;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.beginPath(); ctx.arc(moonX, moonY, 35, 0, Math.PI*2); ctx.fill();
+
+        // Distant City Lights (Background Detail)
+        for(let i=0; i<15; i++) {
+            const lx = (Math.sin(i*555)*0.5+0.5)*W;
+            const ly = riverY + H*0.58 + Math.sin(i)*5;
+            ctx.fillStyle = `rgba(255, 200, 100, ${0.3 + Math.sin(Date.now()*0.001+i)*0.2})`;
+            ctx.beginPath(); ctx.arc(lx, ly, 2, 0, Math.PI*2); ctx.fill();
+        }
+
+        const waterline = riverY + H * 0.65;
+        
+        // 4. Water (Vibrant Teal with Depth)
+        const waterG = ctx.createLinearGradient(0, waterline, 0, riverY + H);
+        waterG.addColorStop(0, '#008080'); waterG.addColorStop(0.5, '#006666'); waterG.addColorStop(1, '#004d4d');
+        ctx.fillStyle = waterG; ctx.fillRect(0, waterline, W, H);
+
+        // 5. Stylized Water Shine & Reflections
+        for(let i=0; i<12; i++) {
+            const sx = (Math.sin(i*123)*0.5+0.5)*W;
+            const sy = waterline + 10 + i*25;
+            const sw = 80 + Math.sin(Date.now()*0.002+i)*40;
+            ctx.fillStyle = `rgba(255, 255, 255, ${0.05 + Math.sin(i)*0.03})`;
+            ctx.fillRect(sx - sw/2, sy, sw, 1.5);
+        }
+
+    }
+  }
+
+  function drawPier() {
+    const riverY = 2 * H - cameraY;
+    if (riverY < H && riverY > -H) {
+        const pierW = 200, pierH = 120;
+        const px = W/2 - pierW/2;
+        const py = riverY + H - pierH;
+        
+        ctx.fillStyle = '#1a0d0a';
+        ctx.fillRect(px + 10, py - 40, 15, pierH + 40);
+        ctx.fillRect(px + pierW - 25, py - 40, 15, pierH + 40);
+        
+        ctx.fillStyle = '#3d2b1f';
+        ctx.fillRect(px, py, pierW, pierH);
+        
+        ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 2;
+        for(let i=0; i<6; i++) {
+            const plankY = py + i * 20;
+            ctx.beginPath(); ctx.moveTo(px, plankY); ctx.lineTo(px + pierW, plankY); ctx.stroke();
+        }
+        
+        ctx.strokeStyle = '#5c4033'; ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(px + 10, py - 30); ctx.lineTo(px + pierW - 10, py - 30);
+        ctx.stroke();
     }
   }
 
@@ -377,6 +667,7 @@
     drawBackground();
     stars.forEach(s => { s.o += s.s; const op = Math.sin(s.o) * 0.4 + 0.6; const sy = s.y - cameraY * 0.5; if (sy > -10 && sy < H + 10) { ctx.fillStyle = `rgba(255, 255, 255, ${op * 0.3})`; ctx.beginPath(); ctx.arc(s.x, sy, s.r, 0, Math.PI * 2); ctx.fill(); } });
     lanterns = lanterns.filter(drawLantern); phangPatits.forEach(drawPhang); krathongs.forEach(drawKrathong);
+    drawPier();
   }
 
   resize(); initUI(); prePopulate(); loop();
