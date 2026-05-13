@@ -127,16 +127,16 @@
         // Stage 2: Wall Click to Place
         if (currentStage === 1 && phangState === 'lit') {
             const rowH = 50;
-            const landY = H - cameraY;
-            if (my > landY) {
-                const rowIdx = Math.floor((my - landY) / rowH);
-                const targetY = H + (rowIdx * rowH) - 10;
-                phangPatits.push({ id: Date.now(), x: mx, y: targetY, tx: 0, ty: 0, progress: 1, scale: 1.2, isPlayer: true });
-                phangState = 'placed';
+            const worldY = my + cameraY;
+            // Snap to brick row relative to H
+            const rowIdx = Math.floor((worldY - H) / rowH);
+            const snappedY = H + (rowIdx * rowH) - 10;
+            
+            phangPatits.push({ id: Date.now(), x: mx, y: snappedY, tx: 0, ty: 0, progress: 1, scale: 1.2, isPlayer: true });
+            phangState = 'placed';
                 document.getElementById('starter-candle')?.classList.remove('visible');
                 updateHint(null);
                 showNextButton();
-            }
         }
     });
   }
