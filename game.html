@@ -99,6 +99,54 @@
       text-align: left;
     }
 
+    /* Wish Modal */
+    #wish-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 10, 15, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+
+    #wish-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: rgba(13, 27, 42, 0.9);
+      border: 1px solid var(--gold);
+      padding: 3rem;
+      border-radius: 24px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      transform: scale(0.9);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    #wish-modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-content h3 {
+      color: var(--gold);
+      font-family: 'Kodchasan', sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
     h2 {
       font-family: 'Kodchasan', sans-serif;
       font-weight: 300;
@@ -395,20 +443,6 @@
         <p class="sub" data-i18n="game_lantern_desc">อธิษฐานและส่งโคมลอยขึ้นสู่ท้องฟ้าเสมือนจริง ร่วมสืบสานประเพณีจากทุกมุมโลก</p>
         
         <div class="interaction-panel" id="sky-panel">
-          <div class="selection-container">
-          <div class="style-option active" data-style="classic">
-            <div class="style-preview" style="background: #FFF8E7;"></div>
-            <div class="style-label" data-i18n="lantern_style_classic">โคมสีขาว</div>
-          </div>
-          <div class="style-option" data-style="gold">
-            <div class="style-preview" style="background: linear-gradient(135deg, #E8925C, #B85C4A); border: 1px solid rgba(255,255,255,0.2);"></div>
-            <div class="style-label" data-i18n="lantern_style_gold">โคมสีทอง</div>
-          </div>
-            <div class="style-option" data-style="red">
-              <div class="style-preview" style="background: #B85C4A; border-bottom: 3px solid #7D2E22;"></div>
-              <div class="style-label" data-i18n="lantern_style_red">โคมสีแดง</div>
-            </div>
-          </div>
 
         <div class="wish-tags">
           <div class="wish-tag" data-wish="health" data-i18n="wish_health">สุขภาพแข็งแรง</div>
@@ -464,6 +498,14 @@
         <button class="action-btn" id="btn-restart" data-i18n="game_restart">เริ่มใหม่อีกครั้ง</button>
       </div>
     </section>
+  </div>
+
+  <div id="wish-modal">
+    <div class="modal-content">
+      <h3 data-i18n="game_wish_title">คำอธิษฐานของคุณ</h3>
+      <p id="modal-wish-text"></p>
+      <button class="action-btn" onclick="document.getElementById('wish-modal').classList.remove('active')">ปิด</button>
+    </div>
   </div>
 
   <script src="js/i18n.js"></script>

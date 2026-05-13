@@ -133,6 +133,8 @@ window.LANG = {
     wish_success: 'ความสำเร็จ',
     wish_family: 'ครอบครัวมีความสุข',
     wish_peace: 'พบความสุขสงบ',
+    game_your_lantern: 'โคมของคุณ',
+    game_wish_title: 'คำอธิษฐานของคุณ',
 
     /* NEW TRADITIONS CONTENT (ENHANCED DEPTH) */
     trad_beliefs_h: 'ตำนานความเชื่อและจิตวิญญาณ',
@@ -454,6 +456,8 @@ window.LANG = {
     wish_success: 'Career Success',
     wish_family: 'Family Bliss',
     wish_peace: 'Inner Peace',
+    game_your_lantern: 'Your Lantern',
+    game_wish_title: 'Your Wishes',
 
     /* NEW TRADITIONS CONTENT (ENHANCED DEPTH) */
     trad_beliefs_h: 'Legends, Beliefs, and Spirit',
