@@ -701,71 +701,57 @@
           </div>
         </div>
         <!-- Segment 6: Etiquette & Rules -->
-        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:12vh 0 8vh;">
+        <div class="parallax-segment" style="position:relative;min-height:100vh;overflow:hidden;padding:15vh 0;background:var(--night-sky-2);">
           <div class="parallax-bg" style="position:absolute;inset:0;transform:translateZ(0);will-change:transform;">
             <img src="assets/images/etiquette-guide.png" alt="Etiquette"
-              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.35);">
+              style="width:100%;height:120%;object-fit:cover;filter:brightness(0.12) saturate(0.2);opacity:0.3;">
           </div>
-          <div
-            style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,27,42,1) 0%,transparent 30%,transparent 70%,rgba(13,27,42,1) 100%);">
-          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom, var(--night-sky-2) 0%, transparent 25%, transparent 75%, var(--night-sky-2) 100%);"></div>
 
           <div style="position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 2rem;">
-            <div style="text-align:center;margin-bottom:5rem;">
-              <p class="eyebrow reveal-zoom" style="color:#E8925C;" data-i18n="seg6_eyebrow">มารยาทและข้อควรรู้</p>
-              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:#FFF8E7;margin-top:.75rem;"
-                data-i18n="seg6_h2">ไปอย่างถูกต้อง เคารพวัฒนธรรม</h2>
+            <div style="text-align:center;margin-bottom:7rem;">
+              <p class="eyebrow reveal-zoom" style="color:var(--lantern-gold);letter-spacing:0.6em;font-size:0.8rem;text-transform:uppercase;" data-i18n="seg6_eyebrow">มารยาทและข้อควรรู้</p>
+              <h2 class="display-md reveal-zoom reveal-delay-1" style="color:var(--moonlight);margin-top:1rem;font-weight:300;" data-i18n="seg6_h2">ไปอย่างถูกต้อง เคารพวัฒนธรรม</h2>
             </div>
 
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;"
-              class="reveal-up reveal-delay-2">
-              <!-- Item 1 -->
-              <div class="glass-card"
-                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div
-                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
-                  <span style="font-size:1.2rem;">⚖️</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item1_h">กฎหมายโคมลอย
-                </h4>
-                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item1_p"></p>
+            <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:1.5rem;" class="reveal-up reveal-delay-2">
+              
+              <!-- Card 1: Lantern Laws -->
+              <div class="manuscript-card" style="background:var(--glass-bg); backdrop-filter:blur(20px); border-radius:12px; padding:2.5rem 1.5rem; border:1px solid var(--glass-border); position:relative; transition:all 0.6s var(--ease-smooth); display:flex; flex-direction:column; align-items:center; text-align:center;">
+                <div style="width:60px; height:60px; background:rgba(232, 146, 92, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:2rem; color:var(--lantern-gold); font-size:2rem;">⚖️</div>
+                <h4 style="font-size:1.25rem; margin-bottom:1.2rem; color:var(--moonlight); letter-spacing:0.1em; font-weight:400;" data-i18n="seg6_item1_h">กฎหมายโคมลอย</h4>
+                <div style="width:30px; height:1px; background:var(--lantern-gold); margin-bottom:1.5rem; opacity:0.4;"></div>
+                <p style="font-size:0.9rem; line-height:1.8; color:rgba(255, 248, 231, 0.65); font-weight:300;" data-i18n="seg6_item1_p">การปล่อยโคมในเชียงใหม่มีกฎระเบียบที่เคร่งครัดเรื่องเวลาและพื้นที่ เพื่อความปลอดภัยทางการบิน โปรดตรวจสอบเขตพื้นที่อนุญาตก่อนทำการปล่อย</p>
               </div>
-              <!-- Item 2 -->
-              <div class="glass-card"
-                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div
-                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
-                  <span style="font-size:1.2rem;">👗</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item2_h">มารยาทในวัด</h4>
-                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item2_p"></p>
+
+              <!-- Card 2: Dress Code -->
+              <div class="manuscript-card" style="background:var(--glass-bg); backdrop-filter:blur(20px); border-radius:12px; padding:2.5rem 1.5rem; border:1px solid var(--glass-border); position:relative; transition:all 0.6s var(--ease-smooth); display:flex; flex-direction:column; align-items:center; text-align:center;">
+                <div style="width:60px; height:60px; background:rgba(232, 146, 92, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:2rem; color:var(--lantern-gold); font-size:2rem;">👗</div>
+                <h4 style="font-size:1.25rem; margin-bottom:1.2rem; color:var(--moonlight); letter-spacing:0.1em; font-weight:400;" data-i18n="seg6_item2_h">การแต่งกาย</h4>
+                <div style="width:30px; height:1px; background:var(--lantern-gold); margin-bottom:1.5rem; opacity:0.4;"></div>
+                <p style="font-size:0.9rem; line-height:1.8; color:rgba(255, 248, 231, 0.65); font-weight:300;" data-i18n="seg6_item2_p">เมื่อเข้าสู่วัดหรือสถานที่ศักดิ์สิทธิ์ ควรแต่งกายสุภาพเรียบร้อย ปกปิดไหล่และเข่า เพื่อเป็นการเคารพสถานที่และประเพณีอันดีงามของล้านนา</p>
               </div>
-              <!-- Item 3 -->
-              <div class="glass-card"
-                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div
-                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
-                  <span style="font-size:1.2rem;">🧘</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item3_h">
-                  การเคารพความเชื่อ</h4>
-                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item3_p"></p>
+
+              <!-- Card 3: Respect Beliefs -->
+              <div class="manuscript-card" style="background:var(--glass-bg); backdrop-filter:blur(20px); border-radius:12px; padding:2.5rem 1.5rem; border:1px solid var(--glass-border); position:relative; transition:all 0.6s var(--ease-smooth); display:flex; flex-direction:column; align-items:center; text-align:center;">
+                <div style="width:60px; height:60px; background:rgba(232, 146, 92, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:2rem; color:var(--lantern-gold); font-size:2rem;">🧘</div>
+                <h4 style="font-size:1.25rem; margin-bottom:1.2rem; color:var(--moonlight); letter-spacing:0.1em; font-weight:400;" data-i18n="seg6_item3_h">การเคารพความเชื่อ</h4>
+                <div style="width:30px; height:1px; background:var(--lantern-gold); margin-bottom:1.5rem; opacity:0.4;"></div>
+                <p style="font-size:0.9rem; line-height:1.8; color:rgba(255, 248, 231, 0.65); font-weight:300;" data-i18n="seg6_item3_p">ยี่เป็งเป็นเทศกาลแห่งศรัทธา โปรดร่วมกิจกรรมด้วยความสำรวม ไม่รบกวนผู้อื่นขณะปฏิบัติพิธีกรรม และให้ความสำคัญกับแก่นแท้ของประเพณี</p>
               </div>
-              <!-- Item 4 -->
-              <div class="glass-card"
-                style="padding:2.5rem;border-radius:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(15px);height:100%;display:flex;flex-direction:column;">
-                <div
-                  style="width:40px;height:40px;background:rgba(232,146,92,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
-                  <span style="font-size:1.2rem;">📸</span>
-                </div>
-                <h4 style="color:#FFF8E7;margin-bottom:1rem;font-size:1.2rem;" data-i18n="seg6_item4_h">เคล็ดลับถ่ายภาพ
-                </h4>
-                <p style="color:rgba(255,248,231,0.55);font-size:.9rem;line-height:1.7;" data-i18n="seg6_item4_p"></p>
+
+              <!-- Card 4: Photography Tips -->
+              <div class="manuscript-card" style="background:var(--glass-bg); backdrop-filter:blur(20px); border-radius:12px; padding:2.5rem 1.5rem; border:1px solid var(--glass-border); position:relative; transition:all 0.6s var(--ease-smooth); display:flex; flex-direction:column; align-items:center; text-align:center;">
+                <div style="width:60px; height:60px; background:rgba(232, 146, 92, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:2rem; color:var(--lantern-gold); font-size:2rem;">📸</div>
+                <h4 style="font-size:1.25rem; margin-bottom:1.2rem; color:var(--moonlight); letter-spacing:0.1em; font-weight:400;" data-i18n="seg6_item4_h">เคล็ดลับถ่ายภาพ</h4>
+                <div style="width:30px; height:1px; background:var(--lantern-gold); margin-bottom:1.5rem; opacity:0.4;"></div>
+                <p style="font-size:0.9rem; line-height:1.8; color:rgba(255, 248, 231, 0.65); font-weight:300;" data-i18n="seg6_item4_p">ถ่ายภาพโดยไม่ใช้แฟลชเพื่อรักษาบรรยากาศอันศักดิ์สิทธิ์ และควรขออนุญาตก่อนถ่ายภาพบุคคลในพิธีกรรม เพื่อให้ได้ภาพที่สื่อถึงอารมณ์ที่แท้จริง</p>
               </div>
+
             </div>
 
-            <div style="text-align:center;margin-top:5rem;" class="reveal-up reveal-delay-3">
-              <a href="#" class="btn btn-primary" data-i18n="seg6_cta">อ่านข้อปฏิบัติและกฎหมายทั้งหมด</a>
+            <div style="text-align:center;margin-top:6rem;" class="reveal-up reveal-delay-3">
+              <a href="#" class="btn btn-outline" style="padding:1.2rem 3.5rem; border-radius:100px; border-color:var(--glass-border); color:var(--moonlight);" data-i18n="seg6_cta">อ่านข้อปฏิบัติและกฎหมายทั้งหมด</a>
             </div>
           </div>
         </div>
