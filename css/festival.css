@@ -13,7 +13,8 @@
 }
 
 #sec-festival .hero-container,
-#sec-traditions .hero-container {
+#sec-traditions .hero-container,
+#sec-gallery .hero-container {
     position: relative;
     height: 100vh;
     overflow: hidden;
@@ -23,7 +24,8 @@
 }
 
 #sec-festival .text-content,
-#sec-traditions .text-content {
+#sec-traditions .text-content,
+#sec-gallery .text-content {
     position: relative;
     text-align: center;
     padding: 0 1rem;

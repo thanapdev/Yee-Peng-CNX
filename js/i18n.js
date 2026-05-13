@@ -5,6 +5,7 @@
 window.LANG = {
   th: {
     /* NAV */
+    nav_logo:       'ยี่เป็ง',
     nav_home:       'หน้าแรก',
     nav_festival:   'เทศกาล',
     nav_lanterns:   'โคมลอย',
@@ -148,8 +149,9 @@ window.LANG = {
 
     /* GALLERY */
     gal_eyebrow: 'ภาพถ่าย & ความทรงจำ',
-    gal_h2:      'แกลเลอรี',
-    gal_sub:     'ช่วงเวลาที่จับภาพโดยผู้คนทั่วโลกที่ผ่านคืนนี้',
+    gal_h2:      'แกลเลอรีภาพถ่าย',
+    gal_sub:     'ความทรงจำแห่งแสงสีและศรัทธา',
+    gal_h2_main: 'บันทึกความทรงจำยี่เป็ง',
     gal_filter_all: 'ทั้งหมด',
     gal_filter_sky: 'ท้องฟ้า',
     gal_filter_river: 'แม่น้ำ',
@@ -292,6 +294,7 @@ window.LANG = {
 
 
   en: {
+    nav_logo:       'Yi Peng',
     nav_home:       'Home',
     nav_festival:   'Festival',
     nav_lanterns:   'Sky Lanterns',
@@ -427,8 +430,9 @@ window.LANG = {
     plan_map_sub: 'Tap a pin for details',
 
     gal_eyebrow: 'Photography & Memories',
-    gal_h2:      'Gallery',
-    gal_sub:     'Moments captured by people from around the world who lived this night.',
+    gal_h2:      'Photo Gallery',
+    gal_sub:     'Memories of Light and Faith',
+    gal_h2_main: 'Yi Peng Memories',
     gal_filter_all: 'All',
     gal_filter_sky: 'Sky',
     gal_filter_river: 'River',
