@@ -390,54 +390,74 @@ window.openBook = function () {
 
 
 /* ── Timeline Logic ─────────────────────────────── */
-window.selectTimelinePoint = function (point) {
-  console.log("Selecting Point:", point);
-  const card = document.getElementById('timeline-card-' + point);
+window.updateTimelineProgress = function() {
+  const wrapper = document.getElementById('timeline-main-wrapper');
   const progressLine = document.getElementById('timeline-progress-line');
-  if (!card) {
-    console.error("Timeline card not found for point:", point);
-    return;
-  }
+  if (!wrapper || !progressLine) return;
 
-  // Toggle Active Card
+  const cards = wrapper.querySelectorAll('.timeline-card');
+  const dots = wrapper.querySelectorAll('.timeline-dot');
+  const wrapperRect = wrapper.getBoundingClientRect();
+  
+  let maxTop = 0;
+  let anyActive = false;
+
+  cards.forEach((card, idx) => {
+    if (card.classList.contains('active-point')) {
+      anyActive = true;
+      const dot = dots[idx];
+      if (dot) {
+        const dotRect = dot.getBoundingClientRect();
+        // Calculate relative position to wrapper + half of dot height
+        const relativeTop = (dotRect.top - wrapperRect.top) + (dotRect.height / 2);
+        maxTop = Math.max(maxTop, relativeTop);
+      }
+    }
+  });
+  
+  progressLine.style.height = (anyActive ? maxTop : 0) + 'px';
+};
+
+window.selectTimelinePoint = function (point) {
+  const card = document.getElementById('timeline-card-' + point);
+  if (!card) return;
+
+  // Toggle active state
   card.classList.toggle('active-point');
 
-  // Update Dots and Progress Line
+  // Immediate Dot Visual Update
   const dots = document.querySelectorAll('.timeline-dot');
   const cards = document.querySelectorAll('.timeline-card');
-  let maxActiveTop = 0;
-
+  
   cards.forEach((c, idx) => {
     const dot = dots[idx];
     if (!dot) return;
     const core = dot.querySelector('.dot-core');
     
     if (c.classList.contains('active-point')) {
-      // Glow Dot
       dot.style.borderColor = '#E8925C';
       dot.style.background = '#E8925C';
       dot.style.boxShadow = '0 0 15px rgba(232, 146, 92, 0.6)';
-      if (core) {
-        core.style.opacity = '1';
-        core.style.background = '#0D1B2A';
-      }
-      
-      const stepWrapper = dot.parentElement;
-      const currentTop = stepWrapper.offsetTop + dot.offsetTop + 12;
-      maxActiveTop = Math.max(maxActiveTop, currentTop);
+      if (core) { core.style.opacity = '1'; core.style.background = '#0D1B2A'; }
     } else {
-      // Reset Dot
       dot.style.borderColor = 'rgba(232,146,92,0.3)';
       dot.style.background = '#0D1B2A';
       dot.style.boxShadow = 'none';
-      if (core) {
-        core.style.opacity = '0.3';
-        core.style.background = '#E8925C';
-      }
+      if (core) { core.style.opacity = '0.3'; core.style.background = '#E8925C'; }
     }
   });
 
-  if (progressLine) {
-    progressLine.style.height = maxActiveTop + 'px';
-  }
+  // Manual update call
+  window.updateTimelineProgress();
 };
+
+// Auto-sync line height during transitions/layout changes
+document.addEventListener('DOMContentLoaded', () => {
+  const timelineStack = document.querySelector('.timeline-flex-container');
+  if (timelineStack && window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      window.updateTimelineProgress();
+    });
+    ro.observe(timelineStack);
+  }
+});
