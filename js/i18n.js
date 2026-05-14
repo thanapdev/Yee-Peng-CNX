@@ -14,7 +14,7 @@ window.LANG = {
     nav_members:    'คณะผู้จัดทำ',
 
     /* INTRO overlay */
-    intro_title:    'ตำนานยี่เป็งล้านนา',
+    intro_title:    'ร้อยเรียงเรื่องราว เล่าเรื่องยี่เป็ง',
     intro_subtitle: 'ส่องสว่างล้านนา จากฟากฟ้าสู่วารี',
     intro_scroll:   'เลื่อนลงเพื่อเริ่ม',
 
