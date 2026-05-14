@@ -14,7 +14,7 @@ window.LANG = {
     nav_members:    'คณะผู้จัดทำ',
 
     /* INTRO overlay */
-    intro_title:    'The Yi Peng Story',
+    intro_title:    'ตำนานยี่เป็งล้านนา',
     intro_subtitle: 'ส่องสว่างล้านนา จากฟากฟ้าสู่วารี',
     intro_scroll:   'เลื่อนลงเพื่อเริ่ม',
 
@@ -36,8 +36,8 @@ window.LANG = {
 
     /* FESTIVAL */
     fest_eyebrow:   'ประวัติ & ที่มา',
-    fest_h2:        'The Yi Peng Story',
-    fest_sub:       'ส่องสว่างล้านนา จากฟากฟ้าสู่วารี',
+    fest_h2:        'ประวัติและที่มาของเทศกาลยี่เป็ง',
+    fest_sub:       'เจาะลึกตำนาน พลิกฟื้นพงศาวดารล้านนา',
     fest_chronicle_h: 'พงศาวดารแห่งแสงไฟและสายน้ำ',
     fest_chronicle_sub: 'ลำดับเหตุการณ์สำคัญจากอดีตสู่ปัจจุบันที่หล่อหลอมหัวใจล้านนา',
     fest_chronicle_item1_date: 'พุทธศตวรรษที่ 13 - 18',
@@ -471,8 +471,8 @@ window.LANG = {
     home_stat3_num: '3 Nights', home_stat3_txt: 'of Celebration',
 
     fest_eyebrow:   'History & Origins',
-    fest_h2:        'The Yi Peng Story',
-    fest_sub:       'Illuminating Lanna: From the Sky to the Waters.',
+    fest_h2:        'Chronicles of Light & Devotion',
+    fest_sub:       'Unveiling the ancient roots of the Yi Peng tradition',
     fest_chronicle_h: 'The Chronicle of Light & Water',
     fest_chronicle_sub: 'A journey through time, tracing the spiritual heritage of Lanna.',
     fest_chronicle_item1_date: '8TH - 13TH CENTURY',
