@@ -333,8 +333,8 @@ window.LANG = {
     seg3_cta:     'ศึกษาความเชื่อดั้งเดิม',
 
     /* SEGMENT 4: PLAN (Moved from 5) */
-    seg4_eyebrow: 'ปฏิทินและสถานที่',
-    seg4_h2:      'วางแผนไปงานได้เลย',
+    seg4_eyebrow: 'เตรียมตัวเข้าร่วมงาน',
+    seg4_h2:      'เพลิดเพลินไปกับวันงาน',
     seg4_day1_h:  'การเตรียมงาน (ก่อน 15 ค่ำ)',
     seg4_day1_p:  'ชาวล้านนาเตรียมทำบุญ แขวนโคมประดับบ้านเรือน และทำ "ซุ้มประตูป่า" เพื่อต้อนรับเทศกาลอย่างอบอุ่น',
     seg4_day1_detail: 'ชาวล้านนาจะเริ่มทำความสะอาดบ้านเรือน ประดับตกแต่งด้วย "ซุ้มประตูป่า" ที่ทำจากกิ่งมะพร้าวและต้นกล้วย พร้อมแขวนโคมประดับหลากหลายรูปแบบเพื่อต้อนรับสิ่งดีๆ เข้ามาในชีวิต',
@@ -432,7 +432,7 @@ window.LANG = {
     member_eyebrow: 'คณะผู้จัดทำ',
     member_h2:      'ทีมงานผู้พัฒนาเว็บไซต์',
     member_sub:     'ความภูมิใจในการนำเสนออัตลักษณ์ล้านนาผ่านโลกดิจิทัล',
-    member1_name:   'วิริยา เทพบางตาก',
+    member1_name:   'วิริยา เทพบางจาก',
     member1_role:   'หัวหน้าทีมพัฒนา (Lead Developer)',
     member1_desc:   'รับผิดชอบด้านโครงสร้างเว็บไซต์และระบบ Interactive 3D เพื่อสร้างประสบการณ์ที่ดื่มด่ำให้แก่ผู้เข้าชม',
     member2_name:   'ธนพงษ์ แย้มกมล',
@@ -765,8 +765,8 @@ window.LANG = {
     seg3_cta:     'Explore Traditional Beliefs',
 
     /* SEGMENT 4: PLAN (Moved from 5) */
-    seg4_eyebrow: 'Calendar & Locations',
-    seg4_h2:      'Plan Your Visit Now',
+    seg4_eyebrow: 'Prepare for the Event',
+    seg4_h2:      'Enjoy the Festival Days',
     seg4_day1_h:  'Preparation (Pre-15th)',
     seg4_day1_p:  'Locals prepare merit-making items, decorate homes with lanterns, and build "Jungle Gates" to welcome the festival.',
     seg4_day1_detail: 'Locals start cleaning their homes and decorating with "Sum Pratu Pa" (jungle gates) made of coconut and banana trees. Traditional lanterns are hung to welcome good fortune.',
