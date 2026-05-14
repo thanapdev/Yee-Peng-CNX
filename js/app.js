@@ -297,8 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
           // Background Parallax (Subtle)
           const bg = seg.querySelector('.parallax-bg img');
           if (bg) {
-            const shift = (rect.top / winH) * 10; 
-            bg.style.transform = `translateY(${shift}%)`;
+            const shift = (rect.top / winH) * 50; 
+            bg.style.transform = `translate3d(0, ${shift}px, 0)`;
           }
         }
       });

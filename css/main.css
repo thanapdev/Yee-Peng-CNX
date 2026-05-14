@@ -1072,3 +1072,10 @@ body.book-open #book-close-btn {
   transform: translateY(-10px) rotate(2deg);
   transition: all 0.3s ease;
 }
+
+/* Parallax Smoothing */
+.parallax-bg img {
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backface-visibility: hidden;
+}
